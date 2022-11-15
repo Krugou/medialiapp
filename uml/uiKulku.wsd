@@ -1,0 +1,18 @@
+@startuml uikulku
+käyttäjä--> (pääsivu)
+järjestelmävalvoja --> (pääsivu)
+    (pääsivu) --> (Kirjaudu sisään)
+    (Kirjaudu sisään)--> (Luo uusi käyttäjä)
+    (Luo uusi käyttäjä)--> (Kirjaudu sisään)
+    (Kirjaudu sisään)--> (Luo uusi järjestelmävalvoja)
+    (Luo uusi järjestelmävalvoja)--> (Kirjaudu sisään)
+    (Kirjaudu sisään)--> (pääsivu kirjautuneena)
+    (pääsivu kirjautuneena)-->(profiili)
+    (profiili)--> (pääsivu kirjautuneena)
+    (pääsivu kirjautuneena)--> (lisää uusi postaus)
+    (lisää uusi postaus)--> (profiili)
+    (kirjaudu ulos)-->(pääsivu)
+    (pääsivu kirjautuneena)--> (kirjaudu ulos)
+    (profiili)--> (kirjaudu ulos)
+
+  @enduml
