@@ -12,12 +12,15 @@ CREATE TABLE IF NOT EXISTS `reseptit`
     primary key (`resepti_id`)
 )ENGINE = InnoDB;;
 
-CREATE TABLE IF NOT EXISTS `kuvat` (
+CREATE TABLE IF NOT EXISTS `kuvat`  COMMENT "kuvien taulukko"(
   `kuva_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `kuvan_polku` VARCHAR(255), 
   PRIMARY KEY (`kuva_id`)
 ) ENGINE = InnoDB;
 -- vaatii tarkennusta
+
+-- q: how to add comment to table?
+-- a: https://stackoverflow.com/questions/105000/how-do-i-add-a-comment-to-a-table-in-mysql
 
 CREATE TABLE IF NOT EXISTS `valmistusaika` (
   `valmistus_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
