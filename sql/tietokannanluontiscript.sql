@@ -1,4 +1,4 @@
-CREATE DATABASE `jakrecipes` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+CREATE DATABASE IF NOT EXISTS `jakrecipes`  DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 create table IF NOT EXISTS reseptit
 (
