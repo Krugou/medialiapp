@@ -1,3 +1,10 @@
+-- Ryhmän JAK tietokantaluonti scripti
+-- jäsenet:
+-- Joonas Lamminmäki
+-- Aleksi Nokelainen
+-- Kaarle Häyhä
+
+
 CREATE DATABASE IF NOT EXISTS `jakrecipes`  DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `reseptit`
@@ -14,20 +21,20 @@ CREATE TABLE IF NOT EXISTS `reseptit`
 
 CREATE TABLE IF NOT EXISTS `kuvat`  COMMENT "kuvien taulukko"(
   `kuva_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `kuvan_polku` VARCHAR(255), 
+  `kuvan_polku` VARCHAR(255), -- vaatii tarkennusta
   PRIMARY KEY (`kuva_id`)
 ) ENGINE = InnoDB;
--- vaatii tarkennusta
+
 
 -- q: how to add comment to table?
 -- a: https://stackoverflow.com/questions/105000/how-do-i-add-a-comment-to-a-table-in-mysql
 
 CREATE TABLE IF NOT EXISTS `valmistusaika` (
   `valmistus_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `valmistusaika` int not null,
+  `valmistusaika` int not null,-- millisekunteja?
   PRIMARY KEY (`valmistus_id`)
 ) ENGINE = InnoDB;
- -- millisekunteja?
+ 
 
 CREATE TABLE IF NOT EXISTS `mitat` (
   `mitat_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -56,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `maarat` (
   `name` VARCHAR(255),
   PRIMARY KEY (`maarat_id`)
 ) ENGINE = InnoDB;
--- määrät
+
 
 CREATE TABLE IF NOT EXISTS `ruokalajit` (
   `ruokalaji_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -70,6 +77,23 @@ CREATE TABLE IF NOT EXISTS `ainekset` (
   `aine` VARCHAR(255),
   PRIMARY KEY (`ainekset_id`)
 ) ENGINE = InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS `käyttäjät` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `etunimi` VARCHAR(255),
+  `sukunimi` VARCHAR(255),
+  `sähkoposti` VARCHAR(255),
+  `nimimerkki` VARCHAR(255),
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB;
+
+
+-- index esimerkki
+-- INDEX `email_idx` (`email` ASC),
+
+
+
 
 
 
