@@ -1,0 +1,21 @@
+{
+  "name": "jakrecipesrest",
+  "version": "1.0.0",
+  "description": "Joonaksen, Aleksin ja Kaarlen backend rest api",
+  "main": "thekilledapp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "medialiapp"
+  },
+  "keywords": [
+    "recipes",
+    "food",
+    "luxury",
+    "dining"
+  ],
+  "author": "Joonas,Aleksi,Kaarle",
+  "license": "ISC"
+}
