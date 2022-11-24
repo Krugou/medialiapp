@@ -19,9 +19,9 @@ CREATE TABLE IF NOT EXISTS `reseptit`
     primary key (`resepti_id`)
 )ENGINE = InnoDB;;
 
-CREATE TABLE IF NOT EXISTS `kuvat`  COMMENT "kuvien taulukko"(
+CREATE TABLE IF NOT EXISTS `kuvat`  (
   `kuva_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `kuvan_polku` VARCHAR(255), -- vaatii tarkennusta
+  `kuvan_polku` VARCHAR(255) COMMENT "kuvien tiedostosijainti", -- vaatii tarkennusta
   PRIMARY KEY (`kuva_id`)
 ) ENGINE = InnoDB;
 
