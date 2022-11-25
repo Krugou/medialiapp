@@ -14,6 +14,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `username` VARCHAR(255) NOT NULL,
   `email` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
+  `role` INT NOT NULL,
+
   PRIMARY KEY (`user_id`)
 
 ) ENGINE = INNODB;
@@ -27,19 +29,43 @@ CREATE TABLE IF NOT EXISTS `recipes`
     `recipe_time` float,
     `recipe_meal` varchar(100) COMMENT "Esim. jälkiruoka, pääruoka",
     `recipe_type` varchar(100) COMMENT "Esim. Kasvisruoka, liharuoka tai vegaaninen",
-    `recipe_maker` int not null,
+    `recipe_owner` int not null,
     `recipe_image` int not null,
+    `recipe_stars` int not null,
+    `recipe_comments` int not null,
+
 
 
     primary key (`recipe_id`)
-
+    FOREIGN KEY (`recipe_comments`) REFERENCES `comments`(´comments_id´)
+    FOREIGN KEY (`recipe_stars`) REFERENCES `stars`(´star_id´)
     FOREIGN KEY (`recipe_image`) REFERENCES `images`(´image_id´)
-    FOREIGN KEY (`recipe_maker`) REFERENCES `users`(´user_id´)
+    FOREIGN KEY (`recipe_owner`) REFERENCES `users`(´user_id´)
 
  --       FOREIGN KEY (PersonID) REFERENCES Persons(PersonID)
-
-
 )ENGINE = InnoDB;;
+
+ CREATE TABLE IF NOT EXISTS `comments` (
+   `comment_id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT "Yhden kommentin id",
+   `comments_id` INT NOT NULL COMMENT "Yhden reseptin kommentit",
+   `comment_message` VARCHAR(300),
+   `comment_likes` INT,
+   `comment_dislikes` INT,
+
+   PRIMARY KEY (`comment_id`)
+ ) ENGINE = InnoDB;
+
+
+
+ CREATE TABLE IF NOT EXISTS `table_name` (
+   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+   `name` VARCHAR(255),
+   PRIMARY KEY `pk_id`(`id`)
+ ) ENGINE = InnoDB;
+
+
+
+
 
 CREATE TABLE IF NOT EXISTS `kuvat`  (
   `kuva_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
