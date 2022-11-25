@@ -40,11 +40,9 @@ CREATE TABLE Recipes
   Guide INT NOT NULL,
   Stars INT NOT NULL,
   UserID INT NOT NULL,
-  MealID INT NOT NULL,
   CourseID INT NOT NULL,
   PRIMARY KEY (RecipeID),
   FOREIGN KEY (UserID) REFERENCES Users(UserID),
-  FOREIGN KEY (MealID) REFERENCES Ruokalajit(MealID),
   FOREIGN KEY (CourseID) REFERENCES Course(CourseID)
 );
 
@@ -61,13 +59,31 @@ CREATE TABLE Comments
 (
   Text INT NOT NULL,
   CommentID INT NOT NULL,
-  Likes INT NOT NULL,
-  Dislikes INT NOT NULL,
   RecipeID INT NOT NULL,
+  UserID INT NOT NULL,
   PRIMARY KEY (CommentID),
-  FOREIGN KEY (RecipeID) REFERENCES Recipes(RecipeID)
+  FOREIGN KEY (RecipeID) REFERENCES Recipes(RecipeID),
+  FOREIGN KEY (UserID) REFERENCES Users(UserID)
 );
 
+CREATE TABLE Has
+(
+  RecipeID INT NOT NULL,
+  MealID INT NOT NULL,
+  PRIMARY KEY (RecipeID, MealID),
+  FOREIGN KEY (RecipeID) REFERENCES Recipes(RecipeID),
+  FOREIGN KEY (MealID) REFERENCES Ruokalajit(MealID)
+);
+
+CREATE TABLE rating
+(
+  Direction INT NOT NULL,
+  UserID INT NOT NULL,
+  CommentID INT NOT NULL,
+  PRIMARY KEY (UserID, CommentID),
+  FOREIGN KEY (UserID) REFERENCES Users(UserID),
+  FOREIGN KEY (CommentID) REFERENCES Comments(CommentID)
+);
 --sacidunacja hvasd gyGYd gYWDGYUdygiQW GYWD
 
 
