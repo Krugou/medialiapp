@@ -7,6 +7,68 @@
 
 CREATE DATABASE IF NOT EXISTS `jakrecipes`  DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
+CREATE TABLE Ruokalajit
+(
+  Nimi INT NOT NULL,
+  MealID INT NOT NULL,
+  PRIMARY KEY (MealID)
+);
+
+CREATE TABLE Course
+(
+  CourseID INT NOT NULL,
+  Type INT NOT NULL,
+  PRIMARY KEY (CourseID)
+);
+
+CREATE TABLE Users
+(
+  Email INT NOT NULL,
+  Password INT NOT NULL,
+  Role INT NOT NULL,
+  UserID INT NOT NULL,
+  ImageID INT NOT NULL,
+  PRIMARY KEY (UserID),
+  FOREIGN KEY (ImageID) REFERENCES Images(ImageID)
+);
+
+CREATE TABLE Recipes
+(
+  RecipeID INT NOT NULL,
+  Name INT NOT NULL,
+  Time INT NOT NULL,
+  Guide INT NOT NULL,
+  Stars INT NOT NULL,
+  UserID INT NOT NULL,
+  MealID INT NOT NULL,
+  CourseID INT NOT NULL,
+  PRIMARY KEY (RecipeID),
+  FOREIGN KEY (UserID) REFERENCES Users(UserID),
+  FOREIGN KEY (MealID) REFERENCES Ruokalajit(MealID),
+  FOREIGN KEY (CourseID) REFERENCES Course(CourseID)
+);
+
+CREATE TABLE Images
+(
+  Filepath INT NOT NULL,
+  ImageID INT NOT NULL,
+  RecipeID INT NOT NULL,
+  PRIMARY KEY (ImageID),
+  FOREIGN KEY (RecipeID) REFERENCES Recipes(RecipeID)
+);
+
+CREATE TABLE Comments
+(
+  Text INT NOT NULL,
+  CommentID INT NOT NULL,
+  Likes INT NOT NULL,
+  Dislikes INT NOT NULL,
+  RecipeID INT NOT NULL,
+  PRIMARY KEY (CommentID),
+  FOREIGN KEY (RecipeID) REFERENCES Recipes(RecipeID)
+);
+
+--sacidunacja hvasd gyGYd gYWDGYUdygiQW GYWD
 
 
 CREATE TABLE IF NOT EXISTS `users` (
@@ -63,7 +125,11 @@ CREATE TABLE IF NOT EXISTS `recipes`
    PRIMARY KEY `pk_id`(`id`)
  ) ENGINE = InnoDB;
 
-
+ CREATE TABLE IF NOT EXISTS `table_name` (
+   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+   `name` VARCHAR(255),
+   PRIMARY KEY `pk_id`(`id`)
+ ) ENGINE = InnoDB;
 
 
 
