@@ -131,3 +131,7 @@ thumbnails/*
 # except one (empty) file to have the folder in version control
 !uploads/.gitkeep
 !thumbnails/.gitkeep
+.idea/medialiapp.iml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
