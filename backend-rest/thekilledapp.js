@@ -19,8 +19,8 @@ const options = {
 // kommentoi yllä oleva pois että tämä toimii kotikoneella
 const date = { d: Date.now() }
 console.log(mariadbstatus)
-mariadbstatusfixed = mariadbstatus.replace('Main PID: 1228 (mysqld_safe) CGroup: /system.slice/mariadb.service ├─1228 /bin/sh /usr/bin/mysqld_safe --basedir=/usr └─1436 /usr/libexec/mysqld --basedir=/usr --datadir=/var/lib/mysql --plugin-dir=/usr/lib64/mysql/plugin --log-error=/var/log/mariadb/mariadb.log --pid-file=/var/run/mariadb/mariadb.pid --socket=/var/lib/mysql/mysql.sock', ' '
-).replace('mariadb.service - MariaDB database server Loaded: loaded (/usr/lib/systemd/system/mariadb.service; enabled; vendor preset: disabled)', ' ')
+mariadbstatusfixed = mariadbstatus.replace('Main').replace('--plugin-dir=/usr/lib64/mysql/plugin', ' ').replace('--log-error=/var/log/mariadb/mariadb.log', ' ').replace('--pid-file=/var/run/mariadb/mariadb.pid', ' ').replace('--socket=/var/lib/mysql/mysql.sock', ' '
+).replace('mariadb.service', ' ').replace('-', ' ').replace('MariaDB', ' ').replace('database', ' ').replace('server', ' ').replace('Loaded:', ' ').replace('loaded', ' ').replace('(/usr/lib/systemd/system/mariadb.service;', ' ').replace('enabled;', ' ').replace('vendor', ' ').replace('preset:', ' ').replace('disabled)', ' ')
 console.log(mariadbstatusfixed)
 
 
