@@ -9,6 +9,7 @@ app.set('view engine', 'ejs');
 // kommentoi alla oleva pois että tämä toimii kotikoneella
 // https://wiki.centos.org/HowTos/Https#head-37cd1f5c67d362756f09313cd758bef48407c325
 const mariadbstatus = fs.readFileSync('/home/allseeyingeye/medialiapp/backend-rest/mariadbstatus.txt');
+const apachestatus = fs.readFileSync('/home/allseeyingeye/medialiapp/backend-rest/apachestatus.txt');
 const sslkey = fs.readFileSync('/etc/pki/tls/private/ca.key');
 const sslcert = fs.readFileSync('/etc/pki/tls/certs/ca.crt');
 const options = {
@@ -24,7 +25,8 @@ app.get('/status', (req, res) => {
 
     res.render('status', {
         date: date.d,
-        mariadbstatus: mariadbstatus
+        mariadbstatus: mariadbstatus,
+        apachestatus: apachestatus
     });
 
     ;
