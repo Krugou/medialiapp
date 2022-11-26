@@ -46,7 +46,7 @@
             let minutes = Math.floor((newdate / 60) % 60);
             let hours = Math.floor((newdate / (60 * 60)) % 24);
             let days = Math.floor(newdate / (60 * 60 * 24));
-console.log(days + ' days ' + hours + ' hours ' + minutes + ' mins ' + seconds + ' secs ')
+            console.log(days + ' days ' + hours + ' hours ' + minutes + ' mins ' + seconds + ' secs ')
 
 
             let setTitle = document.querySelector('title');
@@ -60,14 +60,19 @@ console.log(days + ' days ' + hours + ' hours ' + minutes + ' mins ' + seconds +
                 setTitle.textContent = 'Server status uptime: ' + seconds + ' secs '
                 document.write(seconds + ' secs ')
             }
-            else  {
+            else {
                 setTitle.textContent = 'Server status uptime: ' + days + ' days ' + hours + ' hours ' + minutes + ' mins ' + seconds + ' secs '
                 document.write(days + ' days ' + hours + ' hours ' + minutes + ' mins ' + seconds + ' secs ')
             }
 
         </script>
     </h1>
-    </script>
+    <h2>
+        <script> let mariadbstatus = "<%= mariadbstatus %>"
+            document.write(mariadbstatus)
+        </script>
+    </h2>
+
 </body>
 
 </html>
