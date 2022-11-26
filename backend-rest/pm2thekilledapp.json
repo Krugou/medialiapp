@@ -5,6 +5,7 @@
   "ignore_watch": [
     "/home/allseeyingeye/medialiapp/backend-rest/node_modules",
     "/home/allseeyingeye/medialiapp/backend-rest/uploads",
-    "/home/allseeyingeye/medialiapp/backend-rest/thumbnails"
+    "/home/allseeyingeye/medialiapp/backend-rest/thumbnails",
+    "/home/allseeyingeye/medialiapp/backend-rest/views"
   ]
 }
