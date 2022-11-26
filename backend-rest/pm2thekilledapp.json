@@ -1,6 +1,10 @@
 {
-  "name": "theapp",
-  "script": "./thekilledapp.js",
-  "watch": true,
-  "ignore_watch": ["./node_modules", "./uploads", "./thumbnails"]
+  "name": "theasd",
+  "script": "/home/allseeyingeye/medialiapp/backend-rest/thekilledapp.js",
+  "watch": ["/home/allseeyingeye/medialiapp/backend-rest/"],
+  "ignore_watch": [
+    "/home/allseeyingeye/medialiapp/backend-rest/node_modules",
+    "/home/allseeyingeye/medialiapp/backend-rest/uploads",
+    "/home/allseeyingeye/medialiapp/backend-rest/thumbnails"
+  ]
 }
