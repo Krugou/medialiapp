@@ -16,7 +16,7 @@ const options = {
 };
  // kommentoi yllä oleva pois että tämä toimii kotikoneella
 const date = { d: Date.now() }
-   console.log(date)
+
         
 app.get('/status', (req, res) => {
     
