@@ -7,6 +7,8 @@
     "/home/allseeyingeye/medialiapp/backend-rest/uploads",
     "/home/allseeyingeye/medialiapp/backend-rest/thumbnails",
     "/home/allseeyingeye/medialiapp/backend-rest/views",
-    "/home/allseeyingeye/medialiapp/backend-rest/package-lock.json"
+    "/home/allseeyingeye/medialiapp/backend-rest/package-lock.json",
+    "/home/allseeyingeye/medialiapp/backend-rest/mariadbstatus.txt",
+    "/home/allseeyingeye/medialiapp/backend-rest/apachestatus.txt"
   ]
 }
