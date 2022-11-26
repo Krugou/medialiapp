@@ -26,11 +26,12 @@ app.get('/status', (req, res) => {
     
     ;
 });
+// kommentoi alla oleva pois että tämä toimii kotikoneella
 app.get('/', (req, res) => {
     if (req.secure) res.send('https secure');
     else res.send('http not secure');
 });
-
+ // kommentoi yllä oleva pois että tämä toimii kotikoneella
 app.listen(3000); //normal http traffic
 
 // kommentoi alla oleva pois että tämä toimii kotikoneella
