@@ -1,5 +1,5 @@
 {
-  "name": "theasd",
+  "name": "sovellus",
   "script": "/home/allseeyingeye/medialiapp/backend-rest/thekilledapp.js",
   "watch": ["/home/allseeyingeye/medialiapp/backend-rest/"],
   "ignore_watch": [
