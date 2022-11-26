@@ -46,30 +46,25 @@
             let minutes = Math.floor((newdate / 60) % 60);
             let hours = Math.floor((newdate / (60 * 60)) % 24);
             let days = Math.floor(newdate / (60 * 60 * 24));
+console.log(days + ' days ' + hours + ' hours ' + minutes + ' mins ' + seconds + ' secs ')
 
-           
 
             let setTitle = document.querySelector('title');
-            if (days == 0 && hours < 0) {
+            if (days == 0 && hours > 0) {
                 setTitle.textContent = 'Server status uptime: ' + hours + " hours " + minutes + ' mins ' + seconds + ' secs '
-                 document.write('Server status uptime: ' + hours + " hours " + minutes + ' mins ' + seconds + ' secs ')
-            } else if (days == 0 && hours == 0){
-                setTitle.textContent = 'Server status uptime: '  + minutes + ' mins ' + seconds + ' secs '
-                document.write('Server status uptime: '  + minutes + ' mins ' + seconds + ' secs ')
-            }
-            else if (hours == 0) {
+                document.write(hours + " hours " + minutes + ' mins ' + seconds + ' secs ')
+            } else if (days == 0 && hours == 0 && minutes > 0) {
                 setTitle.textContent = 'Server status uptime: ' + minutes + ' mins ' + seconds + ' secs '
-                document.write('Server status uptime: ' + minutes + ' mins ' + seconds + ' secs ')
-            }
-            else if (minutes == 0) {
+                document.write(minutes + ' mins ' + seconds + ' secs ')
+            } else if (days == 0 && hours == 0 && minutes == 0) {
                 setTitle.textContent = 'Server status uptime: ' + seconds + ' secs '
-                document.write('Server status uptime: ' + seconds + ' secs ')
+                document.write(seconds + ' secs ')
             }
-            else {
+            else  {
                 setTitle.textContent = 'Server status uptime: ' + days + ' days ' + hours + ' hours ' + minutes + ' mins ' + seconds + ' secs '
-                document.write('Server status uptime: ' + days + ' days ' + hours + ' hours ' + minutes + ' mins ' + seconds + ' secs ')
+                document.write(days + ' days ' + hours + ' hours ' + minutes + ' mins ' + seconds + ' secs ')
             }
-                   
+
         </script>
     </h1>
     </script>
