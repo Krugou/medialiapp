@@ -26,7 +26,7 @@ app.get('/status', (req, res) => {
     res.render('status', {
         date: date.d,
         mariadbstatus: mariadbstatus,
-        apachestatus: apachestatus
+        apachestatus: apachestatus,
     });
 
     ;
