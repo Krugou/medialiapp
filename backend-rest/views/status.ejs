@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> body { 
+        /* center body */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f5f5f5;
+
+    }</style>
+</head>
+<body>
+    <h1> serveri käynnistyi <script> let aloitusaika = "<%= date %>"
+    document.write(aloitusaika )</script> 
+    <br> <br> serveri on ollu käynnissä
+    
+    <script> let newdate = (Date.now() - "<%= date %>" ) / 1000  ;
+    let seconds = Math.floor(newdate % 60);
+    let minutes = Math.floor((newdate / 60) % 60);
+    let hours = Math.floor((newdate / (60 * 60)) % 24);
+     document.write(hours+ " tuntia "+ minutes+ " minuuttia "+ seconds+ " sekunttia ")</script>
+    </h1>
+     </script>
+</body>
+</html>
+
