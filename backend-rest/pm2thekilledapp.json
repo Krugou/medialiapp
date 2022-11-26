@@ -1,5 +1,6 @@
 {
-  "script": "thekilledapp.js",
+  "name": "theapp",
+  "script": "./thekilledapp.js",
   "watch": true,
-  "ignore_watch": ["./node_modules","./uploads", "./thumbnails"]
+  "ignore_watch": ["./node_modules", "./uploads", "./thumbnails"]
 }
