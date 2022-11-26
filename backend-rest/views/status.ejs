@@ -34,15 +34,19 @@
 
 <body>
     <h1> Server started: 
-        <script> let aloitusaika = "<%= date %>"
-            document.write(aloitusaika)</script>
+        <script> let aloitusaika = "<%= new Date(date) %>"
+            document.write(aloitusaika) 
+            
+            </script>
         <br> <br> Server uptime:
 
         <script> let newdate = (Date.now() - "<%= date %>") / 1000;
             let seconds = Math.floor(newdate % 60);
             let minutes = Math.floor((newdate / 60) % 60);
             let hours = Math.floor((newdate / (60 * 60)) % 24);
-            document.write(hours + " tuntia " + minutes + " minuuttia " + seconds + " sekunttia ")</script>
+            let days = Math.floor(newdate / (60 * 60 * 24));
+
+            document.write(days +" päivät "+ hours + " tuntia " + minutes + " minuuttia " + seconds + " sekunttia ")</script>
     </h1>
     </script>
 </body>
