@@ -21,16 +21,21 @@
             font-size: 2rem;
             font-weight: 400;
             color: #333;
-            background-color: aqua;
+            background-color: beige;
+            border: #333;
+            border-radius: 0.3rem;
+            padding: 0.5rem;
+            text-align: center;
+
         }
     </style>
 </head>
 
 <body>
-    <h1> serveri käynnistyi
+    <h1> Server started: käynnistyi
         <script> let aloitusaika = "<%= date %>"
             document.write(aloitusaika)</script>
-        <br> <br> serveri on ollu käynnissä
+        <br> <br> Server uptime:
 
         <script> let newdate = (Date.now() - "<%= date %>") / 1000;
             let seconds = Math.floor(newdate % 60);
