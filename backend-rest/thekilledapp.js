@@ -17,6 +17,8 @@ const options = {
  // kommentoi yllä oleva pois että tämä toimii kotikoneella
 const date = { d: Date.now() }
 console.log('pm2 testaus')
+console.log('pm2 testaus')
+console.log('pm2 testaus')
         
 app.get('/status', (req, res) => {
     
