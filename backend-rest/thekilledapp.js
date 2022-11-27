@@ -34,8 +34,8 @@ if (process.env.NODE_ENV === 'production') {
 
         res.render('status', {
             date: date.d,
-            mariadbstatus: 'no data available',
-            apachestatus: 'no data available',
+            mariadbstatus: 'no data available. this is localhost',
+            apachestatus: 'no data available. this is localhost',
         });
 
         ;
