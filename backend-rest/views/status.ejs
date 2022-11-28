@@ -8,19 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Server node.js status </title>
     <style>
-        body {
+        main {
             /* center body */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
             background-color: #f5f5f5;
 
         }
 
         h1 {
-            
+
             color: #333;
             background-color: beige;
             border: #333;
@@ -32,7 +31,7 @@
         }
 
         h2 {
-            
+
             color: #333;
             background-color: beige;
             border: #333;
@@ -46,48 +45,55 @@
 </head>
 
 <body>
-    <h1> Server started:
-        <script> let aloitusaika = "<%= new Date(date) %>"
-            document.write(aloitusaika)
+    <main>
+        <section>
+            <h1> Server started:
+                <script> let aloitusaika = "<%= new Date(date) %>"
+                    document.write(aloitusaika)
 
 
-        </script>
-        <br> <br> Server uptime:
+                </script>
+                Server uptime:
 
-        <script> let newdate = (Date.now() - "<%= date %>") / 1000;
-            let seconds = Math.floor(newdate % 60);
-            let minutes = Math.floor((newdate / 60) % 60);
-            let hours = Math.floor((newdate / (60 * 60)) % 24);
-            let days = Math.floor(newdate / (60 * 60 * 24));
-            console.log(days + ' days ' + hours + ' hours ' + minutes + ' mins ' + seconds + ' secs ')
+                <script> let newdate = (Date.now() - "<%= date %>") / 1000;
+                    let seconds = Math.floor(newdate % 60);
+                    let minutes = Math.floor((newdate / 60) % 60);
+                    let hours = Math.floor((newdate / (60 * 60)) % 24);
+                    let days = Math.floor(newdate / (60 * 60 * 24));
+                    // console.log(days + ' days ' + hours + ' hours ' + minutes + ' mins ' + seconds + ' secs ')
+                    let setTitle = document.querySelector('title');
+                    if (days == 0 && hours > 0) {
+                        setTitle.textContent = 'Server status uptime: ' + hours + " hours " + minutes + ' mins ' + seconds + ' secs '
+                        document.write(hours + " hours " + minutes + ' mins ' + seconds + ' secs ')
+                    } else if (days == 0 && hours == 0 && minutes > 0) {
+                        setTitle.textContent = 'Server status uptime: ' + minutes + ' mins ' + seconds + ' secs '
+                        document.write(minutes + ' mins ' + seconds + ' secs ')
+                    } else if (days == 0 && hours == 0 && minutes == 0) {
+                        setTitle.textContent = 'Server status uptime: ' + seconds + ' secs '
+                        document.write(seconds + ' secs ')
+                    }
+                    else {
+                        setTitle.textContent = 'Server status uptime: ' + days + ' days ' + hours + ' hours ' + minutes + ' mins ' + seconds + ' secs '
+                        document.write(days + ' days ' + hours + ' hours ' + minutes + ' mins ' + seconds + ' secs ')
+                    }
 
+                </script>
+            </h1>
+        </section>
+        <section>
+            <h2>
+                Mariadb status: <%= mariadbstatus %>
+            </h2>
+        </section>
+        <section>
+            <h2>
+                Apache status: <%= apachestatus %>
+            </h2>
+        
 
-            let setTitle = document.querySelector('title');
-            if (days == 0 && hours > 0) {
-                setTitle.textContent = 'Server status uptime: ' + hours + " hours " + minutes + ' mins ' + seconds + ' secs '
-                document.write(hours + " hours " + minutes + ' mins ' + seconds + ' secs ')
-            } else if (days == 0 && hours == 0 && minutes > 0) {
-                setTitle.textContent = 'Server status uptime: ' + minutes + ' mins ' + seconds + ' secs '
-                document.write(minutes + ' mins ' + seconds + ' secs ')
-            } else if (days == 0 && hours == 0 && minutes == 0) {
-                setTitle.textContent = 'Server status uptime: ' + seconds + ' secs '
-                document.write(seconds + ' secs ')
-            }
-            else {
-                setTitle.textContent = 'Server status uptime: ' + days + ' days ' + hours + ' hours ' + minutes + ' mins ' + seconds + ' secs '
-                document.write(days + ' days ' + hours + ' hours ' + minutes + ' mins ' + seconds + ' secs ')
-            }
+        </section>
 
-        </script>
-    </h1>
-    <h2>
-        Mariadb status: <%= mariadbstatus %>
-    </h2>
-    <h2>
-        Apache status: <%= apachestatus %>
-    </h2>
-
-
+    </main>
 </body>
 
 </html>
