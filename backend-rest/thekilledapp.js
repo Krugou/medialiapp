@@ -48,11 +48,11 @@ if (process.env.NODE_ENV === 'production') {
     });
 
 }
-app.use('/users', userRoute);
-app.use((req, res, next) => {
-    const err = httpError('Not found', 404);
-    next(err);
-});
+app.use('/users', userRoute );
+// app.use((req, res, next) => {
+//     const err = httpError('Not found', 404);
+//     next(err);
+// });
 
 
 
