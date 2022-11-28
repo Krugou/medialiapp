@@ -151,7 +151,7 @@ CREATE USER 'jakrecreguser'@localhost IDENTIFIED BY 'xjakrecreguserx';
 
 -- user privileges
 
-grant all privileges on jakrecipes.* to 'jakrecipesadmin'@localhost;
+grant all privileges on jakrecipes.* to 'jakrecadmin'@localhost;
 grant select, insert, update, delete on jakrecipes.* to 'jakrecreguser'@localhost;
 grant select on jakrecipes.* to 'jakrecuser'@localhost;
 
