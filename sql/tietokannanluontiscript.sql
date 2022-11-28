@@ -136,7 +136,18 @@ CREATE TABLE IF NOT EXISTS `Commentrating` (
   CONSTRAINT `Commentrating_ibfk_2` FOREIGN KEY (`Commentid`) REFERENCES `Comments` (`Commentid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
+-- user creation
+
+CREATE USER 'jakrecipesuser'@localhost IDENTIFIED BY 'xjakrecipesuserx';
+CREATE USER 'jakrecipesadmin'@localhost IDENTIFIED BY 'xjakrecipesadminx';
+CREATE USER 'jakrecipesregistereduser'@localhost IDENTIFIED BY 'xjakrecipesregistereduserx';
+grant all privileges on jakrecipes.* to 'jakrecipesadmin'@localhost;
+grant select, insert, update, delete on jakrecipes.* to 'jakrecipesregistereduser'@localhost;
+grant select on jakrecipes.* to 'jakrecipesuser'@localhost;
+
+
+
+
 
 
 
