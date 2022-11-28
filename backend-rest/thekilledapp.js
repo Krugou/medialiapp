@@ -5,10 +5,13 @@ const cors = require('cors');
 const app = express();
 const fs = require('fs');
 const userRoute = require('./routes/userRoute');
+const { httpError } = require('./utils/errors');
 
 
 app.set('view engine', 'ejs');
 app.use(cors());
+app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true }))
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 if (process.env.NODE_ENV === 'production') {
@@ -20,7 +23,7 @@ if (process.env.NODE_ENV === 'production') {
 
     const mariadbstatusfixed = mariadbstatus.toString().replace('●', '');
     app.get('/status', (req, res) => {
-        
+
         res.render('status', {
             date: date.d,
             mariadbstatus: mariadbstatusfixed,
@@ -32,9 +35,9 @@ if (process.env.NODE_ENV === 'production') {
 } else {
     require('./utils/localhost')(app, process.env.HTTP_PORT || 3000);
     const date = { d: Date.now() }
-
+   
     app.get('/status', (req, res) => {
-        
+
         res.render('status', {
             date: date.d,
             mariadbstatus: 'no data available. this is localhost',
@@ -45,7 +48,12 @@ if (process.env.NODE_ENV === 'production') {
     });
 
 }
-app.use('/user', userRoute);
+app.use('/users', userRoute);
+app.use((req, res, next) => {
+    const err = httpError('Not found', 404);
+    next(err);
+});
+
 
 
 
