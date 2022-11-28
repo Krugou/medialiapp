@@ -5,6 +5,7 @@ const promisePoolAdmin = poolAdmin.promise();
 
 
 
+
 const getUsersCountAdmin = async (next) => {
     try {
         const [rows] = await promisePoolAdmin.execute('SELECT COUNT(*) AS count FROM users');
