@@ -4,7 +4,9 @@
 -- Aleksi Nokelainen
 -- Kaarle Häyhä
 
-CREATE TABLE Mealtype
+CREATE DATABASE IF NOT EXISTS `jakrecipes`  DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+CREATE TABLE Mealtypes
 (
   MealID INT NOT NULL AUTO_INCREMENT,
   Type VARCHAR(255) NOT NULL COMMENT "Esim. Kasvisruoka, liharuoka tai vegaaninen",
@@ -12,7 +14,7 @@ CREATE TABLE Mealtype
   PRIMARY KEY (MealID)
 );
 
-CREATE TABLE Course
+CREATE TABLE Courses
 (
   CourseID INT NOT NULL,
   Type VARCHAR(255) NOT NULL COMMENT "Esim. jälkiruoka, pääruoka",
@@ -84,7 +86,7 @@ CREATE TABLE Recipemealtype
   FOREIGN KEY (MealID) REFERENCES Ruokalajit(MealID)
 );
 
-CREATE TABLE rating
+CREATE TABLE Commentrating
 (
   UserID INT NOT NULL COMMENT "Kommentin arvioija USERID",
   CommentID INT NOT NULL COMMENT "Arvioitava kommentti",
@@ -96,7 +98,7 @@ CREATE TABLE rating
   FOREIGN KEY (CommentID) REFERENCES Comments(CommentID)
 );
 
-CREATE TABLE Rate_recipe
+CREATE TABLE Reciperating
 (
   UserID INT NOT NULL,
   RecipeID INT NOT NULL,
@@ -108,7 +110,7 @@ CREATE TABLE Rate_recipe
   FOREIGN KEY (RecipeID) REFERENCES Recipes(RecipeID)
 );
 
-CREATE TABLE Favorite_recipe
+CREATE TABLE Recipefavorite
 (
   UserID INT NOT NULL COMMENT "Jos taulukosta löytyy käyttäjä/resepti pari, se on favoritattu",
   RecipeID INT NOT NULL,
