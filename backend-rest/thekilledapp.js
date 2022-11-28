@@ -52,7 +52,7 @@ if (process.env.NODE_ENV === 'production') {
     app.get('/', (req, res) => {
         res.render('status', {
             date: date.d,
-            usercount:'no data'
+            usercount:'no data',
             mariadbstatus: 'no data available. this is localhost',
             apachestatus: 'no data available. this is localhost',
         });
