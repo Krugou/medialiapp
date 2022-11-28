@@ -10,6 +10,15 @@ const local = mysql.createConnection({
     connectionLimit: 10,
     queueLimit: 0,
 });
+const admin = mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER_ALL,
+    password: process.env.DB_PASS_ALL,
+    database: process.env.DB_NAME,
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0,
+});
 
 const pooladmin = mysql.createPool({
     host: process.env.DB_HOST,
@@ -39,4 +48,4 @@ const pooluser = mysql.createPool({
     queueLimit: 0,
 });
 
-module.exports = local, pooladmin, poolreguser, pooluser;
+module.exports = local, pooladmin, poolreguser, pooluser, admin;
