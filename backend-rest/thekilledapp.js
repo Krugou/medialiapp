@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === 'production') {
 
     const mariadbstatusfixed = mariadbstatus.toString().replace('●', '');
     app.get('/status', (req, res) => {
-
+        
         res.render('status', {
             date: date.d,
             mariadbstatus: mariadbstatusfixed,
@@ -32,7 +32,7 @@ if (process.env.NODE_ENV === 'production') {
     const date = { d: Date.now() }
 
     app.get('/status', (req, res) => {
-
+        
         res.render('status', {
             date: date.d,
             mariadbstatus: 'no data available. this is localhost',
