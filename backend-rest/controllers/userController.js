@@ -31,7 +31,7 @@ const user_count_admin_get = async (req, res, next) => {
     try {
         const count = await getUsersCountAdmin(next);
         if (count < 1) {
-            next(httpError('No users found', 404));
+            next(httpError('No counts found', 404));
             return;
         }
         res.json(count);
