@@ -1,6 +1,5 @@
 const poolRegUser = require('../database/db');
 const poolUser = require('../database/db');
-
 const pooladmin = require('../database/db');
 const promisePoolAdmin = pooladmin.promise();
 const promisePoolRegUser = poolRegUser.promise();
