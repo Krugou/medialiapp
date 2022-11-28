@@ -28,7 +28,7 @@ module.exports = (app, port, httpsPort) => {
         }
     });
 
-    app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+    app.listen(port, () => console.log(`Program is listening to port:   ${port}!`));
     https.createServer(options, app).listen(8000);
 
 

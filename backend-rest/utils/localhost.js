@@ -1,6 +1,6 @@
 'use strict';
 
 module.exports = (app, port) => {
-    app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+    app.listen(port, () => console.log(`Program is listening to port:  ${port}!`));
 
 }
