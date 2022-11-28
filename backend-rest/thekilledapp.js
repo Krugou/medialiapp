@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === 'production') {
 
     const mariadbstatusfixed = mariadbstatus.toString().replace('●', '');
 
-   
+
     app.get('/status', (req, res) => {
         // get the client
         const mysql = require('mysql2');
@@ -40,16 +40,18 @@ if (process.env.NODE_ENV === 'production') {
         // simple query
         connection.query(
             'SELECT COUNT(*) AS count FROM Users',
-            function (err, results, fields) {
+            function (err, result) {
+                if (err) throw err;
+                console.log("Result: " + result);
                 res.render('status', {
                     date: date.d,
-                    usercount: results,
+                    usercount: result,
                     mariadbstatus: mariadbstatusfixed,
                     apachestatus: apachestatusfixed,
                 });
             }
         );
-       
+
 
 
     });
@@ -57,16 +59,46 @@ if (process.env.NODE_ENV === 'production') {
     require('./utils/localhost')(app, process.env.HTTP_PORT || 3000);
     const date = { d: Date.now() }
     app.get('/status', (req, res) => {
-        res.render('status', {
-            date: date.d,
-            usercount: 'no data',
-            mariadbstatus: 'no data available. this is localhost',
-            apachestatus: 'no data available. this is localhost',
+        const mysql = require('mysql2');
+
+        // create the connection to database
+        const connection = mysql.createConnection({
+            host: process.env.DB_HOST,
+            user: process.env.DB_USER,
+            password: process.env.DB_PASS,
+            database: process.env.DB_NAME,
+            waitForConnections: true,
+            connectionLimit: 10,
+            queueLimit: 0,
         });
 
-    });
+        // simple query
+        connection.query(
+            'SELECT COUNT(*) AS count FROM Users',
+            function (err, result) {
+                if (err) throw err;
+                console.log("Result: " + result);
+                res.render('status', {
+                    date: date.d,
+                    usercount: result,
+                    mariadbstatus: 'no data available. this is localhost',
+                    apachestatus: 'no data available. this is localhost',
+                });
+                
+            }); // results contains rows returned by server
+        
+    }
+    );
+    //     res.render('status', {
+    //         date: date.d,
+    //         usercount: 'no data',
+    // mariadbstatus: 'no data available. this is localhost',
+    // apachestatus: 'no data available. this is localhost',
+    //     });
 
-}
+};
+
+
 
 app.use('/users', userRoute);
 // app.use((req, res, next) => {
