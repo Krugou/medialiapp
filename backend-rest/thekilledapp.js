@@ -40,16 +40,21 @@ if (process.env.NODE_ENV === 'production') {
                 });
             }
         );
-
-
-
     });
 } else {
-    const local = require('./database/db');
+    const mysql = require('mysql2');
     require('./utils/localhost')(app, process.env.HTTP_PORT || 3000);
     const date = { d: Date.now() }
     app.get('/status', (req, res) => {
-      
+        const local = mysql.createConnection({
+            host: process.env.DB_HOST,
+            user: process.env.DB_USER,
+            password: process.env.DB_PASS,
+            database: process.env.DB_NAME,
+            waitForConnections: true,
+            connectionLimit: 10,
+            queueLimit: 0,
+        });
         local.query(
             process.env.ADMIN_USERS_COUNT,
             function (err, result) {
