@@ -7,7 +7,7 @@ const fs = require('fs');
 const userRoute = require('./routes/userRoute');
 const { httpError } = require('./utils/errors');
 const local = require('./database/db');
-const pooladmin = require('./database/db');
+const admin = require('./database/db');
 app.set('view engine', 'ejs');
 app.use(cors());
 app.use(express.json()) // for parsing application/json
@@ -26,9 +26,7 @@ if (process.env.NODE_ENV === 'production') {
 
     app.get('/status', (req, res) => {
       
-
-        // simple query
-        pooladmin.query(
+        admin.query(
             process.env.ADMIN_USERS_COUNT,
             function (err, result) {
                 if (err) throw err;
@@ -49,7 +47,7 @@ if (process.env.NODE_ENV === 'production') {
     require('./utils/localhost')(app, process.env.HTTP_PORT || 3000);
     const date = { d: Date.now() }
     app.get('/status', (req, res) => {
-        // simple query
+      
         local.query(
             process.env.ADMIN_USERS_COUNT,
             function (err, result) {
@@ -61,7 +59,7 @@ if (process.env.NODE_ENV === 'production') {
                     apachestatus: 'no data available. this is localhost',
                 });
                 
-            }); // results contains rows returned by server
+            }); 
         
     }
     );
