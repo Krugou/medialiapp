@@ -65,13 +65,9 @@ if (process.env.NODE_ENV === 'production') {
                     mariadbstatus: 'no data available. this is localhost',
                     apachestatus: 'no data available. this is localhost',
                 });
-                
             }); 
-        
     }
     );
-    
-
 };
 
 
