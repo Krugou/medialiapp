@@ -26,15 +26,15 @@ if (process.env.NODE_ENV === 'production') {
 
 
     app.get('/status', (req, res) => {
-      
+
         admin.query(
             process.env.ADMIN_USERS_COUNT,
             function (err, result) {
                 if (err) throw err;
-                
+
                 res.render('status', {
                     date: date.d,
-                    usercount: result[0].count,  
+                    usercount: result[0].count,
                     mariadbstatus: mariadbstatusfixed,
                     apachestatus: apachestatusfixed,
                 });
@@ -52,20 +52,27 @@ if (process.env.NODE_ENV === 'production') {
             password: process.env.DB_PASS,
             database: process.env.DB_NAME,
             waitForConnections: true,
+            multipleStatements: true,
             connectionLimit: 10,
             queueLimit: 0,
         });
+        
         local.query(
-            process.env.ADMIN_USERS_COUNT,
-            function (err, result) {
+            'SELECT COUNT(*) AS count FROM Users where userrole = 1; ',
+            [1,2], function (err, result) {
                 if (err) throw err;
                 res.render('status', {
                     date: date.d,
                     usercount: result[0].count,
+                    // commentcount: result[3].count,
+                    // recipecount: result[1].count,
+                    // reciperatingcount: result[2].count,
+                    // imagescount: result[5].count,
+                    // commentratingcount: result[4].count,
                     mariadbstatus: 'no data available. this is localhost',
                     apachestatus: 'no data available. this is localhost',
                 });
-            }); 
+            });
     }
     );
 };
@@ -73,10 +80,10 @@ if (process.env.NODE_ENV === 'production') {
 
 
 app.use('/users', userRoute);
-// app.use((req, res, next) => {
-//     const err = httpError('Not found', 404);
-//     next(err);
-// });
+app.use((req, res, next) => {
+    const err = httpError('Not found', 404);
+    next(err);
+});
 
 
 
