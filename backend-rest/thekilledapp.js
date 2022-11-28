@@ -4,6 +4,8 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const fs = require('fs');
+const userRoute = require('./routes/userRoute');
+
 
 app.set('view engine', 'ejs');
 app.use(cors());
@@ -43,6 +45,7 @@ if (process.env.NODE_ENV === 'production') {
     });
 
 }
+app.use('/user', userRoute);
 
 
 
