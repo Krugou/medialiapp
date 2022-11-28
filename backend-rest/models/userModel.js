@@ -8,7 +8,7 @@ const promisePoolUser = poolUser.promise();
 
 const getUsersCountAdmin = async (next) => {
     try {
-        const [rows] = await promisePoolAdmin.execute('SELECT COUNT(*) AS count FROM users');
+        const [rows] = await promisePoolAdmin.execute('SELECT COUNT(*) AS count FROM Users');
         console.log('count ', rows[0].count);
         return rows[0].count;
     } catch (e) {
@@ -20,7 +20,7 @@ const getUsersCountAdmin = async (next) => {
 const getAllUsersAdmin = async (next) => {
     try {
         const [rows] = await promisePoolAdmin.execute(`SELECT *
-                                                FROM users;
+                                                FROM Users;
                                                 `);
         return rows;
     } catch (e) {
