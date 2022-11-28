@@ -1,6 +1,4 @@
 'use strict';
-
-
 const { getAllUsersAdmin, getUsersCountAdmin} = require('../models/userModel');
 const { httpError } = require('../utils/errors');
 
