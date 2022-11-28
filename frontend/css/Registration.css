@@ -7,30 +7,32 @@
 }
 nav {
     border-bottom: solid black 1px;
+
 }
 header {
-    display: flex;
+    display:flex;
     justify-content: space-between;
     align-items: center;
     height: 50px;
     width: 100%;
+
 }
 
-.nav {
-    display:flex;
+.nav-start {
     justify-content: flex-start;
-}
-.nav2 {
     display:flex;
-    justify-content: flex-end;
 }
+.nav-end {
+    justify-content: flex-end;
+    display:flex;
+}
+
 nav ul {
     gap: 10px;
     font-size: 3vh;
 }
 nav a {
     padding: 10px;
-    display: inline-block;
 }
 img{
     display: block;
@@ -77,16 +79,15 @@ p{
     nav header {
         display: none;
     }
-
-
-}
-
     #check:checked ~ header{
         height: 20vh;
         display:flex;
         flex-direction: column;
         margin-bottom: 5%;
     }
+}
+
+
 
 
 
