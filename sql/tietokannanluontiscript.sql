@@ -6,6 +6,76 @@
 
 
 DROP DATABASE IF EXISTS jakrecipes;
+CREATE DATABASE IF NOT EXISTS `jakrecipes` DEFAULT CHARACTER SET utf8 COLLATE UTF8_UNICODE_CI; USE jakrecipes;
+CREATE TABLE Mealtypes
+(
+    Mealid INT NOT NULL AUTO_INCREMENT,
+    Mealtype VARCHAR(255) NOT NULL COMMENT "Esim. Kasvisruoka, liharuoka tai vegaaninen", PRIMARY KEY (Mealid)
+);
+CREATE TABLE Courses
+(
+    Courseid INT NOT NULL AUTO_INCREMENT,
+    Coursetype VARCHAR(255) NOT NULL COMMENT "Esim. jälkiruoka, pääruoka", PRIMARY KEY (Courseid)
+);
+CREATE TABLE Recipes
+(
+    Recipeid INT NOT NULL AUTO_INCREMENT,
+    Recipename VARCHAR(255) NOT NULL,
+    Recipetime INT COMMENT "Reseptin kesto sekuntteina",
+    Recipeguide VARCHAR(1000) NOT NULL COMMENT "Reseptin ohje max 1000 merkkiä",
+    Recipemaker INT NOT NULL COMMENT "Reseptin tekijän userid",
+    Recipecourse INT NOT NULL, PRIMARY KEY (Recipeid),
+    -- FOREIGN KEY (Recipemaker) REFERENCES Users(Userid),
+    FOREIGN KEY (Recipecourse) REFERENCES Courses(Courseid)
+);
+CREATE TABLE Images
+(
+    Imageid INT NOT NULL AUTO_INCREMENT,
+    Imagefilepath VARCHAR(255) NOT NULL,
+    Imagerecipe INT COMMENT "Voi olla NULL, koska kuvia on myös käyttäjille", PRIMARY KEY (Imageid), FOREIGN KEY (Imagerecipe) REFERENCES Recipes(Recipeid)
+);
+CREATE TABLE Users
+(
+    Userid INT NOT NULL AUTO_INCREMENT,
+    Useremail VARCHAR(255) NOT NULL,
+    Userpassword VARCHAR(255) NOT NULL,
+    Userrole INT(1) NOT NULL DEFAULT 1 COMMENT "admin=0, peruskäyttäjä=1",
+    Userimg INT, PRIMARY KEY (Userid), FOREIGN KEY (Userimg) REFERENCES Images(Imageid)
+);
+CREATE TABLE Comments
+(
+    Commentid INT NOT NULL AUTO_INCREMENT,
+    Commenttext VARCHAR(500) NOT NULL,
+    Commentrecipe INT NOT NULL,
+    Commentuserid INT NOT NULL, PRIMARY KEY (Commentid), FOREIGN KEY (Commentrecipe) REFERENCES Recipes(Recipeid), FOREIGN KEY (Commentuserid) REFERENCES Users(Userid)
+);
+CREATE TABLE Recipemealtype
+(
+    Recipeid INT NOT NULL COMMENT "Liitettävä resepti",
+    Mealid INT NOT NULL COMMENT "Liitettävä Mealtype (Kasvisruoka, liharuoka. etc)", PRIMARY KEY (Recipeid, Mealid), FOREIGN KEY (Recipeid) REFERENCES Recipes(Recipeid), FOREIGN KEY (Mealid) REFERENCES Mealtypes(Mealid)
+);
+CREATE TABLE Commentrating
+(
+    Userid INT NOT NULL COMMENT "Kommentin arvioija USERID",
+    Commentid INT NOT NULL COMMENT "Arvioitava kommentti",
+    Direction INT(1) NOT NULL COMMENT "1 = tykkää, 0 = ei tykkää", PRIMARY KEY (Userid, Commentid), FOREIGN KEY (Userid) REFERENCES Users(Userid), FOREIGN KEY (Commentid) REFERENCES Comments(Commentid)
+);
+CREATE TABLE Reciperating
+(
+    Userid INT NOT NULL,
+    Recipeid INT NOT NULL,
+    Stars INT NOT NULL COMMENT "Montako tähteä resepti saa (1,2,3,4,5) ?", PRIMARY KEY (Userid, Recipeid), FOREIGN KEY (Userid) REFERENCES Users(Userid), FOREIGN KEY (Recipeid) REFERENCES Recipes(Recipeid)
+);
+CREATE TABLE Recipefavorite
+(
+    Userid INT NOT NULL COMMENT "Jos taulukosta löytyy käyttäjä/resepti pari, se on favoritattu",
+    Recipeid INT NOT NULL, PRIMARY KEY (Userid, Recipeid), FOREIGN KEY (Userid) REFERENCES Users(Userid), FOREIGN KEY (Recipeid) REFERENCES Recipes(Recipeid)
+);
+
+
+--
+
+DROP DATABASE IF EXISTS jakrecipes;
 CREATE DATABASE IF NOT EXISTS `jakrecipes`  DEFAULT CHARACTER SET utf8 COLLATE UTF8_UNICODE_CI;
 
 USE jakrecipes;
@@ -32,7 +102,7 @@ CREATE TABLE Users
   Useremail VARCHAR(255) NOT NULL,
   Userpassword VARCHAR(255) NOT NULL,
   Userrole INT(1) NOT NULL DEFAULT 1 COMMENT "admin=0, peruskäyttäjä=1",
-  Userimg INT,
+  Userimg INT NOT NULL,
 
 
   PRIMARY KEY (Userid)
@@ -58,7 +128,7 @@ CREATE TABLE Images
 (
   Imageid INT NOT NULL AUTO_INCREMENT,
   Imagefilepath VARCHAR(255) NOT NULL,
-  Imagerecipe INT COMMENT "Voi olla NULL, koska kuvia on myös käyttäjille",
+  Imagerecipe INT COSMMENT "Voi olla NULL, koska kuvia on myös käyttäjille",
 
 
   PRIMARY KEY (Imageid),
