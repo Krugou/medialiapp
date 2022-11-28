@@ -75,8 +75,8 @@ CREATE TABLE Comments
 
 CREATE TABLE Recipemealtype
 (
-  RecipeID INT NOT NULL,
-  MealID INT NOT NULL,
+  RecipeID INT NOT NULL COMMENT "Liitettävä resepti",
+  MealID INT NOT NULL COMMENT "Liitettävä Mealtype (Kasvisruoka, liharuoka. etc)",
 
 
   PRIMARY KEY (RecipeID, MealID),
@@ -86,8 +86,8 @@ CREATE TABLE Recipemealtype
 
 CREATE TABLE rating
 (
-  UserID INT NOT NULL,
-  CommentID INT NOT NULL,
+  UserID INT NOT NULL COMMENT "Kommentin arvioija USERID",
+  CommentID INT NOT NULL COMMENT "Arvioitava kommentti",
   Direction INT(1) NOT NULL COMMENT "1 = tykkää, 0 = ei tykkää",
 
 
