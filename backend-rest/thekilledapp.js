@@ -7,6 +7,7 @@ const fs = require('fs');
 const userRoute = require('./routes/userRoute');
 const { httpError } = require('./utils/errors');
 const local = require('./database/db');
+const pooladmin = require('./database/db');
 app.set('view engine', 'ejs');
 app.use(cors());
 app.use(express.json()) // for parsing application/json
@@ -28,13 +29,13 @@ if (process.env.NODE_ENV === 'production') {
 
         // simple query
         pooladmin.query(
-            'SELECT COUNT(*) AS count FROM Users',
+            process.env.ADMIN_USERS_COUNT,
             function (err, result) {
                 if (err) throw err;
-                console.table("Result: " + result);
+                
                 res.render('status', {
                     date: date.d,
-                    usercount: JSON.stringify(result),  
+                    usercount: result[0].count,  
                     mariadbstatus: mariadbstatusfixed,
                     apachestatus: apachestatusfixed,
                 });
