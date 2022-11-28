@@ -50,10 +50,9 @@
             <h1> Server started:
                 <script> let aloitusaika = "<%= new Date(date) %>"
                     document.write(aloitusaika)
-
-
                 </script>
             </h1>
+        
             <h1>
                 Server uptime:
 
@@ -81,21 +80,17 @@
 
                 </script>
             </h1>
+            <h3> current registered users: <%= usercount %>
+            </h3>
         </section>
         <section>
             <h2>
                 Mariadb status: <%= mariadbstatus %>
             </h2>
-        </section>
-        <section>
             <h2>
                 Apache status: <%= apachestatus %>
             </h2>
-
-
         </section>
-        <section><h3> number of current registered users: <%= usercount %> </h3></section>
-
     </main>
 </body>
 
