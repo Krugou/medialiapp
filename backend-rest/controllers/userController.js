@@ -1,7 +1,7 @@
 'use strict';
 
 
-const { getAllUsersAdmin, getUsersCountAdmin, user_post } = require('../models/userModel');
+const { getAllUsersAdmin, getUsersCountAdmin} = require('../models/userModel');
 const { httpError } = require('../utils/errors');
 
 const user_post = async (req, res) => {
