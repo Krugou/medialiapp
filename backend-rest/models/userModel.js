@@ -1,9 +1,10 @@
-const { poolAdmin,poolRegUser,poolUser } = require('../database/db');
-const promisePoolAdmin = poolAdmin.promise();
-// const promisePoolRegUser = poolRegUser.promise();
-// const promisePoolUser  = poolUser.promise();
+const poolRegUser = require('../database/db');
+const poolUser = require('../database/db');
 
-
+const pooladmin = require('../database/db');
+const promisePoolAdmin = pooladmin.promise();
+const promisePoolRegUser = poolRegUser.promise();
+const promisePoolUser = poolUser.promise();
 
 
 const getUsersCountAdmin = async (next) => {
