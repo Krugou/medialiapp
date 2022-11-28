@@ -84,6 +84,8 @@ p{
     #check:checked ~ header{
         height: 20vh;
         display:flex;
+        flex-direction: column;
+        margin-bottom: 5%;
     }
 
 
