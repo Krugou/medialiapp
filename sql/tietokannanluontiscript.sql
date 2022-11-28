@@ -4,7 +4,127 @@
 -- Aleksi Nokelainen
 -- Kaarle Häyhä
 
+CREATE TABLE Mealtype
+(
+  MealID INT NOT NULL AUTO_INCREMENT,
+  Type VARCHAR(255) NOT NULL COMMENT "Esim. Kasvisruoka, liharuoka tai vegaaninen",
 
+  PRIMARY KEY (MealID)
+);
+
+CREATE TABLE Course
+(
+  CourseID INT NOT NULL,
+  Type VARCHAR(255) NOT NULL COMMENT "Esim. jälkiruoka, pääruoka",
+
+
+  PRIMARY KEY (CourseID)
+);
+
+CREATE TABLE Users
+(
+  UserID INT NOT NULL AUTO_INCREMENT,
+  Email VARCHAR(255) NOT NULL,
+  Password VARCHAR(255) NOT NULL,
+  Role INT(1) NOT NULL DEFAULT 1 COMMENT "admin=0, peruskäyttäjä=1",
+  ImageID INT,
+
+
+  PRIMARY KEY (UserID),
+  FOREIGN KEY (ImageID) REFERENCES Images(ImageID)
+);
+
+CREATE TABLE Recipes
+(
+  RecipeID INT NOT NULL AUTO_INCREMENT,
+  Name VARCHAR(255) NOT NULL,
+  Time INT COMMENT "Reseptin kesto sekuntteina",
+  Guide VARCHAR(1000) NOT NULL COMMENT "Reseptin ohje max 1000 merkkiä",
+  UserID INT NOT NULL COMMENT "Reseptin tekijän userid",
+  CourseID INT NOT NULL,
+
+
+  PRIMARY KEY (RecipeID),
+  FOREIGN KEY (UserID) REFERENCES Users(UserID),
+  FOREIGN KEY (CourseID) REFERENCES Course(CourseID)
+);
+
+CREATE TABLE Images
+(
+  ImageID INT NOT NULL AUTO_INCREMENT,
+  Filepath VARCHAR(255) NOT NULL,
+  RecipeID INT COMMENT "Voi olla NULL, koska kuvia on myös käyttäjille",
+
+
+  PRIMARY KEY (ImageID),
+  FOREIGN KEY (RecipeID) REFERENCES Recipes(RecipeID)
+);
+
+CREATE TABLE Comments
+(
+  CommentID INT NOT NULL AUTO_INCREMENT,
+  Text VARCHAR(500), NOT NULL,
+  RecipeID INT NOT NULL,
+  UserID INT NOT NULL,
+
+
+  PRIMARY KEY (CommentID),
+  FOREIGN KEY (RecipeID) REFERENCES Recipes(RecipeID),
+  FOREIGN KEY (UserID) REFERENCES Users(UserID)
+);
+
+CREATE TABLE Recipemealtype
+(
+  RecipeID INT NOT NULL,
+  MealID INT NOT NULL,
+
+
+  PRIMARY KEY (RecipeID, MealID),
+  FOREIGN KEY (RecipeID) REFERENCES Recipes(RecipeID),
+  FOREIGN KEY (MealID) REFERENCES Ruokalajit(MealID)
+);
+
+CREATE TABLE rating
+(
+  UserID INT NOT NULL,
+  CommentID INT NOT NULL,
+  Direction INT(1) NOT NULL COMMENT "1 = tykkää, 0 = ei tykkää",
+
+
+  PRIMARY KEY (UserID, CommentID),
+  FOREIGN KEY (UserID) REFERENCES Users(UserID),
+  FOREIGN KEY (CommentID) REFERENCES Comments(CommentID)
+);
+
+CREATE TABLE Rate_recipe
+(
+  UserID INT NOT NULL,
+  RecipeID INT NOT NULL,
+  Stars INT NOT NULL COMMENT "Montako tähteä resepti saa (1,2,3,4,5) ?",
+
+
+  PRIMARY KEY (UserID, RecipeID),
+  FOREIGN KEY (UserID) REFERENCES Users(UserID),
+  FOREIGN KEY (RecipeID) REFERENCES Recipes(RecipeID)
+);
+
+CREATE TABLE Favorite_recipe
+(
+  UserID INT NOT NULL COMMENT "Jos taulukosta löytyy käyttäjä/resepti pari, se on favoritattu",
+  RecipeID INT NOT NULL,
+
+  PRIMARY KEY (UserID, RecipeID),
+  FOREIGN KEY (UserID) REFERENCES Users(UserID),
+  FOREIGN KEY (RecipeID) REFERENCES Recipes(RecipeID)
+);
+
+
+
+
+
+
+
+---
 CREATE DATABASE IF NOT EXISTS `jakrecipes`  DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 CREATE TABLE Ruokalajit
