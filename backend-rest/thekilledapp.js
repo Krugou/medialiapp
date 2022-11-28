@@ -6,7 +6,7 @@ const app = express();
 const fs = require('fs');
 const userRoute = require('./routes/userRoute');
 const { httpError } = require('./utils/errors');
-const pooladmin = require('../database/db');
+const pooladmin = require('./database/db');
 const promisePoolAdmin = pooladmin.promise();
 
 
@@ -52,16 +52,16 @@ if (process.env.NODE_ENV === 'production') {
     app.get('/', (req, res) => {
         res.render('status', {
             date: date.d,
-            usercount:'no data',
+            usercount: 'no data',
             mariadbstatus: 'no data available. this is localhost',
             apachestatus: 'no data available. this is localhost',
         });
 
     });
-   
+
 }
 
-app.use('/users', userRoute );
+app.use('/users', userRoute);
 // app.use((req, res, next) => {
 //     const err = httpError('Not found', 404);
 //     next(err);
