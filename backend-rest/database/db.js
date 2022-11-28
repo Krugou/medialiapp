@@ -17,7 +17,7 @@ const poolreguser = mysql.createPool({
     password: process.env.DB_PASS_CREATEREADUPDATEDELETE,
     database: process.env.DB_NAME,
     waitForConnections: true,
-    connectionLimit: 10,
+    connectionLimit: 10000,
     queueLimit: 0,
 });
 const pooluser = mysql.createPool({
@@ -26,7 +26,7 @@ const pooluser = mysql.createPool({
     password: process.env.DB_PASS_READ,
     database: process.env.DB_NAME,
     waitForConnections: true,
-    connectionLimit: 10,
+    connectionLimit: 10000,
     queueLimit: 0,
 });
 
