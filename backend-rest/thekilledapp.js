@@ -41,16 +41,15 @@ if (process.env.NODE_ENV === 'production') {
         connection.query(
             'SELECT COUNT(*) AS count FROM Users',
             function (err, results, fields) {
-                console.log(results); // results contains rows returned by server
-                console.log(fields); // fields contains extra meta data about results, if available
+                res.render('status', {
+                    date: date.d,
+                    usercount: results,
+                    mariadbstatus: mariadbstatusfixed,
+                    apachestatus: apachestatusfixed,
+                });
             }
         );
-        res.render('status', {
-            date: date.d,
-            usercount: results,
-            mariadbstatus: mariadbstatusfixed,
-            apachestatus: apachestatusfixed,
-        });
+       
 
 
     });
