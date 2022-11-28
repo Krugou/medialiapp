@@ -83,7 +83,7 @@ p{
 
     #check:checked ~ header{
         height: 20vh;
-        display:block;
+        display:flex;
     }
 
 
