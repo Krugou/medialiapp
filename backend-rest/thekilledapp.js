@@ -6,8 +6,8 @@ const app = express();
 const fs = require('fs');
 const userRoute = require('./routes/userRoute');
 const { httpError } = require('./utils/errors');
-const local = require('./database/db');
-const admin = require('./database/db');
+
+
 app.set('view engine', 'ejs');
 app.use(cors());
 app.use(express.json()) // for parsing application/json
@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: true }))
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 if (process.env.NODE_ENV === 'production') {
+    const admin = require('./database/db');
     require('./utils/production')(app, process.env.HTTP_PORT || 3000, process.env.HTTPS_PORT || 8000);
     const mariadbstatus = fs.readFileSync('/home/allseeyingeye/medialiapp/backend-rest/mariadbstatus.txt');
     const apachestatus = fs.readFileSync('/home/allseeyingeye/medialiapp/backend-rest/apachestatus.txt');
@@ -44,6 +45,7 @@ if (process.env.NODE_ENV === 'production') {
 
     });
 } else {
+    const local = require('./database/db');
     require('./utils/localhost')(app, process.env.HTTP_PORT || 3000);
     const date = { d: Date.now() }
     app.get('/status', (req, res) => {
