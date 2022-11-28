@@ -145,15 +145,15 @@ s-
 
 -- user creation
 
-CREATE USER 'jakrecipesuser'@localhost IDENTIFIED BY 'xjakrecipesuserx';
-CREATE USER 'jakrecipesadmin'@localhost IDENTIFIED BY 'xjakrecipesadminx';
-CREATE USER 'jakrecipesregistereduser'@localhost IDENTIFIED BY 'xjakrecipesregistereduserx';
+CREATE USER 'jakrecuser'@localhost IDENTIFIED BY 'xjakrecuserx';
+CREATE USER 'jakrecadmin'@localhost IDENTIFIED BY 'xjakrecadminx';
+CREATE USER 'jakrecreguser'@localhost IDENTIFIED BY 'xjakrecreguserx';
 
 -- user privileges
 
 grant all privileges on jakrecipes.* to 'jakrecipesadmin'@localhost;
-grant select, insert, update, delete on jakrecipes.* to 'jakrecipesregistereduser'@localhost;
-grant select on jakrecipes.* to 'jakrecipesuser'@localhost;
+grant select, insert, update, delete on jakrecipes.* to 'jakrecreguser'@localhost;
+grant select on jakrecipes.* to 'jakrecuser'@localhost;
 
 
 
