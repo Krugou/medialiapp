@@ -37,12 +37,13 @@ if (process.env.NODE_ENV === 'production') {
                  
                res.render('status', {
                     date: date.d,
+                   alluserscount: result[2].count,
                    usercount: result[1].count,
                    recipecount: result[0].count,
-                   reciperatingcount: result[7].count,
-                   commentcount: result[2].count,
-                   commentratingcount: result[5].count,
-                   imagecount: result[4].count,
+                   reciperatingcount: result[8].count,
+                   commentcount: result[3].count,
+                   commentratingcount: result[6].count,
+                   imagecount: result[5].count,
                     mariadbstatus: mariadbstatusfixed,
                     apachestatus: apachestatusfixed,
                });
