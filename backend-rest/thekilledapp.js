@@ -31,23 +31,37 @@ if (process.env.NODE_ENV === 'production') {
     app.get('/status', (req, res) => {
 
         admin.query(
-            'SELECT COUNT(*) AS count FROM Users where userrole = 1; SELECT COUNT(*) AS recipes FROM Recipes; SELECT COUNT(*) AS reciperating FROM Reciperating; SELECT COUNT(*) AS comments FROM Comments;SELECT COUNT(*) AS commentratings FROM Commentrating; SELECT COUNT(*) AS images FROM Images; ',
-            function (err, result) {
+           'SELECT COUNT(*) AS count FROM Users where userrole = 1;',
+             function (err, result) {
                 if (err) throw err;
 
-                res.render('status', {
+               res.render('status', {
                     date: date.d,
-                    usercount: result[0][0].count,
-                    recipecount: result[1][0].recipes,
-                    reciperatingcount: result[2][0].reciperating,
-                    commentcount: result[3][0].comments,
-                    commentratingcount: result[4][0].commentratings,
-                    imagecount: result[5][0].images,
+                    usercount: result[0].count,
+                   
                     mariadbstatus: mariadbstatusfixed,
                     apachestatus: apachestatusfixed,
-                }, console.log('status rendered'));
+               });
             }
         );
+        // admin.query(
+        //     'SELECT COUNT(*) AS count FROM Users where userrole = 1; SELECT COUNT(*) AS recipes FROM Recipes; SELECT COUNT(*) AS reciperating FROM Reciperating; SELECT COUNT(*) AS comments FROM Comments; SELECT COUNT(*) AS commentratings FROM Commentrating; SELECT COUNT(*) AS images FROM Images;',
+        //     function (err, result) {
+        //         if (err) throw err;
+
+        //         res.render('status', {
+        //             date: date.d,
+        //             usercount: result[0][0].count,
+        //             recipecount: result[1][0].recipes,
+        //             reciperatingcount: result[2][0].reciperating,
+        //             commentcount: result[3][0].comments,
+        //             commentratingcount: result[4][0].commentratings,
+        //             imagecount: result[5][0].images,
+        //             mariadbstatus: mariadbstatusfixed,
+        //             apachestatus: apachestatusfixed,
+        //         });
+        //     }
+        // );
     });
 } else {
     const mysql = require('mysql2');
