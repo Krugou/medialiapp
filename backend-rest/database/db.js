@@ -28,9 +28,7 @@ const pooluser = mysql.createPool({
     connectionLimit: 10000,
     queueLimit: 0,
 });
-process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-
-    const admin = mysql.createConnection({
+const admin = mysql.createConnection({
         host: process.env.DB_HOST,
         user: process.env.DB_USER_ALL,
         password: process.env.DB_PASS_ALL,
