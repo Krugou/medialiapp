@@ -150,8 +150,38 @@
     <div class="profile">
     <img src="media/logos/jakrecipeslogo.svg" alt="jakrecipeslogo">
       <p>Username</p>
-      <button>Edit Profile</button>
+      <button id="edit">Edit Profile</button>
     </div>
+      <div id="editModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Some text in the Modal..</p>
+        </div>
+
+      </div>
+      <script>
+
+        const editProfile = document.getElementById("editModal");
+
+        const button = document.getElementById("edit");
+
+        let span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function() {
+          modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+      </script>
     </article>
   </main>
 

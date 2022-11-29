@@ -13,6 +13,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="media/icons/favicon-16x16.png">
     <title>testing</title>
 </head>
+
+
 <style>
     * {
         box-sizing: border-box;
@@ -50,8 +52,8 @@
     }
     H2 {
         text-align: center;
-        margin-top: 7%;
-        font-size: 2vh;
+        margin-top: 5%;
+        font-size: 30px;
     }
     p{
         font-size: 2.5vh;
@@ -67,44 +69,43 @@
     main {
         height: auto;
     }
+    .profile p {
+        font-size: 30px;
+    }
+    #recipepic {
+        width: 25%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+        display:block;
+    }
+    .recipe {
+        padding: 50px;
+        text-align: center;
+    }
+    .recipe p {
+        border: solid 1px black;
+    }
     .desc {
         display:flex;
         flex-direction: column;
         width: 50%;
         margin: auto;
     }
+    .comments {
+        text-align:center;
+        border: solid 1px black;
+    }
     .instruction {
-        margin-bottom: 5%;
-        margin-top: 5%;
-    }
-    .instruction input {
-        width: 100%;
-        height: 500px;
-    }
-    .buttons {
-        display:flex;
-        flex-direction: column;
-        margin: auto;
-        gap: 20px;
-        justify-content: center;
-        align-items: center;
-    }
-    .buttons input {
-        width: 100%;
-        height: 20px;
-    }
-
-    button {
-        width: 100%;
-    }
-
-    .post {
-        height: 50px;
-        width: 25%;
+        padding: 10px;
+        border:solid 1px black;
     }
 
     @media screen and (max-width: 525px) {
 
+        #recipepic {
+            width: 75%;
+        }
 
 
         article {
@@ -125,7 +126,10 @@
     }
 
 
+
 </style>
+
+
 <body>
 <nav>
     <input type="checkbox" id="check">
@@ -143,21 +147,15 @@
         </ul>
     </header>
 </nav>
-<H2>ADD RECIPE</H2>
-<div class="buttons">
-    <div class="recipename">
-        <input>
-        <button>Add Tags</button>
-    </div>
-    <div class="imagebutton">
-    <button class="uploadimage">Upload Image</button>
-    </div>
+<div class="recipe">
+    <img id="recipepic" src="media/logos/jakrecipeslogo.svg" alt="jakrecipeslogo">
+    <p>Likes, Reviews, stars, Tags</p>
 </div>
 <div class="desc">
     <div class="instruction">
-        <input>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque consequatur, corporis culpa cupiditate, dolor, error eum minus natus nihil nulla officia porro quam quasi qui sit? Consectetur odio perferendis porro sed! Ipsa non, tempora? Ab consequuntur culpa, debitis eius error exercitationem impedit natus nemo possimus similique sunt veniam.</p>
     </div>
-    <button class="post">Post Recipe</button>
+    <p class="comments">COMMENTS</p>
 </div>
 
 
