@@ -15,8 +15,10 @@ const user_post = async (req, res, next) => {
 
 
         if (resultFind.length > 0) {
-            next(httpError('Email already in use', 400));
-
+            next(httpError('Email is already in use', 400));
+            res.json({
+                message: 'Email is already in use',
+            });
             return;
         }
 
