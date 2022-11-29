@@ -1,7 +1,7 @@
 'use strict';
 const express = require('express');
-const {user_post, user_list_admin_get,
-    user_count_admin_get, } = require("../controllers/userController");
+const { user_post } = require("../controllers/userController");
+const { user_count_admin_get, user_list_admin_get } = require("../controllers/adminController");
 const {body} = require('express-validator');
 
 
