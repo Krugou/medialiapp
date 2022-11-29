@@ -31,12 +31,11 @@ if (process.env.NODE_ENV === 'production') {
     app.get('/status', (req, res) => {
 
         admin.query(
-            'SELECT COUNT(*) AS count FROM Users where userrole = 1;',
-            // SELECT COUNT(*) AS recipes FROM Recipes; SELECT COUNT(*) AS reciperating FROM Reciperating; SELECT COUNT(*) AS comments FROM Comments;SELECT COUNT(*) AS commentratings FROM Commentrating; SELECT COUNT(*) AS images FROM Images; ',
-           function (err, result) {
+            'SELECT COUNT(*) AS count FROM Users where userrole = 1; SELECT COUNT(*) AS recipes FROM Recipes; SELECT COUNT(*) AS reciperating FROM Reciperating; SELECT COUNT(*) AS comments FROM Comments;SELECT COUNT(*) AS commentratings FROM Commentrating; SELECT COUNT(*) AS images FROM Images; ',
+            function (err, result) {
                 if (err) throw err;
 
-               res.render('status', {
+                res.render('status', {
                     date: date.d,
                     usercount: result[0][0].count,
                     recipecount: result[1][0].recipes,
@@ -46,7 +45,7 @@ if (process.env.NODE_ENV === 'production') {
                     imagecount: result[5][0].images,
                     mariadbstatus: mariadbstatusfixed,
                     apachestatus: apachestatusfixed,
-               },console.log('status rendered'));
+                }, console.log('status rendered'));
             }
         );
     });
