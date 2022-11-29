@@ -143,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `Commentrating` (
 CREATE OR REPLACE
 ALGORITHM = UNDEFINED VIEW `jakrecipes`.`allthecounts` AS
 select
-    'Recipeid' AS `Recipescount`,
+    'Recipeid' AS `Allthecountnames`,
     count(0) AS `count`
 from
     `jakrecipes`.`Recipes`
@@ -151,6 +151,14 @@ union
 select
     'Userid' AS `userscount`,
     count(0) AS `count`
+from
+    `jakrecipes`.`Users`
+where
+    (`jakrecipes`.`Users`.`Userrole` = 1)
+union
+select
+    'Useremail' AS `userscount2`,
+    count(0) AS `count2`
 from
     `jakrecipes`.`Users`
 union
