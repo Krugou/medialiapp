@@ -1,5 +1,5 @@
 'use strict';
-const { getAllUsersAdmin, getUsersCountAdmin, addUsersAdmin} = require('../models/userModel');
+const { getAllUsersAdmin, getUsersCountAdmin, addUsersRegUser} = require('../models/userModel');
 const { httpError } = require('../utils/errors');
 
 const user_post = async (req, res, next) => {
@@ -10,7 +10,7 @@ const user_post = async (req, res, next) => {
             req.body.password,
         ];
 
-        const result = await addUsersAdmin(data, next);
+        const result = await addUsersRegUser(data, next);
         if (result.affectedRows < 1) {
             next(httpError('Invalid data', 400));
         }

@@ -28,10 +28,10 @@ const getAllUsersAdmin = async (next) => {
         next(httpError('Database error', 500));
     }
 };
-const addUsersAdmin = async (data, next) => {
+const addUsersRegUser = async (data, next) => {
     try {
         const [rows] = await promisePoolRegUser.execute(`INSERT INTO Users (Useremail, Userpassword) 
-                                                    VALUES (?, ?);
+                                                    VALUES ("testi", "asd");
                                                 `);
         return rows;
     } catch (e) {
@@ -42,6 +42,6 @@ const addUsersAdmin = async (data, next) => {
 module.exports = {
     getAllUsersAdmin,
     getUsersCountAdmin,
-    addUsersAdmin,
+    addUsersRegUser,
 
 };
