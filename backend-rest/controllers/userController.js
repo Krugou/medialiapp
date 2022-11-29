@@ -1,5 +1,5 @@
 'use strict';
-const { getAllUsersAdmin, getUsersCountAdmin, addUsersRegUser} = require('../models/userModel');
+const { getAllUsersAdmin, getUsersCountAdmin, addUsersRegUser, findUsersByEmailRegUser} = require('../models/userModel');
 const { httpError } = require('../utils/errors');
 
 const user_post = async (req, res, next) => {
@@ -10,11 +10,24 @@ const user_post = async (req, res, next) => {
             req.body.password,
         ];
 
+        const resultFind = await findUsersByEmailRegUser(data[0]);
+        console.log(resultFind);
+
+
+        if (resultFind.length > 0) {
+            next(httpError('Email already in use', 400));
+            return;
+        }
+
         const result = await addUsersRegUser(data, next);
         if (result.affectedRows < 1) {
             next(httpError('Invalid data', 400));
         }
+
+
     }
+
+
     catch (e) {
         console.error('user_post', e.message);
         next(httpError('Internal server error', 500));

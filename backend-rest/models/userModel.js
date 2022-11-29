@@ -29,6 +29,8 @@ const getAllUsersAdmin = async (next) => {
     }
 };
 const addUsersRegUser = async (data, next) => {
+
+
     console.log("addUsersRegUser");
     try {
         const [rows] = await promisePoolRegUser.execute(`INSERT INTO Users (Useremail, Userpassword) 
@@ -40,9 +42,22 @@ const addUsersRegUser = async (data, next) => {
         next(httpError('Database error', 500));
     }
 }
+const findUsersByEmailRegUser = async (name, next) => {
+
+    try {
+        const [rows] = await promisePoolRegUser.execute(`SELECT *
+                                                FROM Users WHERE Useremail = "${name}";
+                                                `);
+        return rows;
+    } catch (e) {
+        console.error('findUsersByEmailRegUser', e.message);
+        next(httpError('Database error', 500));
+    }
+}
 module.exports = {
     getAllUsersAdmin,
     getUsersCountAdmin,
     addUsersRegUser,
+    findUsersByEmailRegUser,
 
 };
