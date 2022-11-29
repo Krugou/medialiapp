@@ -32,7 +32,7 @@ signupButton.addEventListener('click', async(evt) => {
     document.querySelector('#passwordInput').value = "";
 
     if (json.message === "User Created" || "") {
-        location.href = 'signIn.html';  
+        location.href = 'signIn.html';
     }
 
 });

@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const fs = require('fs');
+const authRoute = require('./routes/authRoute');
 const userRoute = require('./routes/userRoute');
 const { httpError } = require('./utils/errors');
 
@@ -78,8 +79,10 @@ if (process.env.NODE_ENV === 'production') {
 };
 
 
+app.use('/auth', authRoute);
 
 app.use('/users', userRoute);
+
 app.use((req, res, next) => {
     const err = httpError('Not found', 404);
     next(err);
