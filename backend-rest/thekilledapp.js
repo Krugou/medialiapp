@@ -34,11 +34,10 @@ if (process.env.NODE_ENV === 'production') {
            'SELECT COUNT(*) AS count FROM Users where userrole = 1;',
              function (err, result) {
                 if (err) throw err;
-
+                 const usercountresult = result[0].count;
                res.render('status', {
                     date: date.d,
-                    usercount: result[0].count,
-                   
+                    usercount: usercountresult,
                     mariadbstatus: mariadbstatusfixed,
                     apachestatus: apachestatusfixed,
                });
@@ -85,7 +84,6 @@ if (process.env.NODE_ENV === 'production') {
                 if (err) throw err;
                 res.render('status', {
                     date: date.d,
-
                     usercount: result[0][0].count,
                     recipecount: result[1][0].recipes,
                     reciperatingcount: result[2][0].reciperating,
