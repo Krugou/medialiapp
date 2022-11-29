@@ -46,8 +46,8 @@ const findUsersByEmailRegUser = async (name, next) => {
 
     try {
         const [rows] = await promisePoolRegUser.execute(`SELECT *
-                                                FROM Users WHERE Useremail = (?);
-                                                `,name);
+                                                FROM Users WHERE Useremail = "${name}";
+                                                `);
         return rows;
     } catch (e) {
         console.error('findUsersByEmailRegUser', e.message);
