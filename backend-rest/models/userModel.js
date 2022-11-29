@@ -29,6 +29,7 @@ const getAllUsersAdmin = async (next) => {
     }
 };
 const addUsersRegUser = async (data, next) => {
+    console.log("addUsersRegUser");
     try {
         const [rows] = await promisePoolRegUser.execute(`INSERT INTO Users (Useremail, Userpassword) 
                                                     VALUES ("testi", "asd");
