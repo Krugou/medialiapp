@@ -1,10 +1,23 @@
 'use strict';
 const { getAllUsersAdmin, getUsersCountAdmin, addUsersRegUser, findUsersByEmailRegUser} = require('../models/userModel');
+const {validationResult} = require('express-validator');
 const { httpError } = require('../utils/errors');
 
 const user_post = async (req, res, next) => {
 
     try {
+        // Extract the validation errors from a request.
+        const errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            // There are errors.
+            // Error messages can be returned in an array using `errors.array()`.
+            console.error('user_post validation', errors.array());
+            next(httpError('Invalid data', 400));
+            return;
+        }
+
+        
         const data = [
             req.body.email,
             req.body.password,
