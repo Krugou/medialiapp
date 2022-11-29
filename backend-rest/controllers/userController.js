@@ -81,6 +81,5 @@ const user_count_admin_get = async (req, res, next) => {
     }
 }
 module.exports = {
-    user_list_admin_get,
-    user_count_admin_get, user_post,
+     user_post,
 };
