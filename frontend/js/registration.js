@@ -25,7 +25,7 @@ signupButton.addEventListener('click', async(evt) => {
         body: JSON.stringify(data),
     };
 
-    const response = await fetch(url + '/users/', fetchOptions);
+    const response = await fetch(url + '/users', fetchOptions);
     const json = await response.json();
     alert(json.message);
 
