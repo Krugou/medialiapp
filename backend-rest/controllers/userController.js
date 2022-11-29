@@ -1,15 +1,24 @@
 'use strict';
-const { getAllUsersAdmin, getUsersCountAdmin} = require('../models/userModel');
+const { getAllUsersAdmin, getUsersCountAdmin, addUsersAdmin} = require('../models/userModel');
 const { httpError } = require('../utils/errors');
 
-const user_post = async (req, res) => {
+const user_post = async (req, res, next) => {
 
-    const data = [
-        req.body.emailInput,
-        req.body.usernameInput,
-        req.body.passwordInput,
-    ];
+    try {
+        const data = [
+            req.body.email,
+            req.body.password,
+        ];
 
+        const result = await addUsersAdmin(data, next);
+        if (result.affectedRows < 1) {
+            next(httpError('Invalid data', 400));
+        }
+    }
+    catch (e) {
+        console.error('user_post', e.message);
+        next(httpError('Internal server error', 500));
+    }
 };
 
 const user_list_admin_get = async (req, res, next) => {
@@ -24,7 +33,7 @@ const user_list_admin_get = async (req, res, next) => {
         console.error('user_list_get', e.message);
         next(httpError('Internal server error', 500));
     }
-};
+}
 const user_count_admin_get = async (req, res, next) => {
     try {
         const count = await getUsersCountAdmin(next);

@@ -6,7 +6,7 @@ const {user_post, user_list_admin_get,
 const router = express.Router();
 
 router.route('/')
-    .put(user_post)
+    .post(user_post)
     .get(user_list_admin_get);
 router.route('/count')
     .get(user_count_admin_get);
