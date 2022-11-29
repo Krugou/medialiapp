@@ -13,7 +13,7 @@ const user_post = async (req, res, next) => {
         const resultFind = await findUsersByEmailRegUser(data[0]);
         console.log(resultFind);
 
-        /*
+
         if (resultFind.length > 0) {
             next(httpError('Email already in use', 400));
             return;
@@ -23,7 +23,7 @@ const user_post = async (req, res, next) => {
         if (result.affectedRows < 1) {
             next(httpError('Invalid data', 400));
         }
-          */
+
 
     }
 
