@@ -16,6 +16,7 @@ const user_post = async (req, res, next) => {
 
         if (resultFind.length > 0) {
             next(httpError('Email already in use', 400));
+
             return;
         }
 
@@ -24,9 +25,10 @@ const user_post = async (req, res, next) => {
             next(httpError('Invalid data', 400));
         }
 
-
+        res.json({
+            message: 'User Created',
+        });
     }
-
 
     catch (e) {
         console.error('user_post', e.message);
