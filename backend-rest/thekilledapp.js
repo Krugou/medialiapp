@@ -20,10 +20,10 @@ if (process.env.NODE_ENV === 'production') {
     const mariadbstatus = fs.readFileSync('/home/allseeyingeye/medialiapp/backend-rest/mariadbstatus.txt');
     const apachestatus = fs.readFileSync('/home/allseeyingeye/medialiapp/backend-rest/apachestatus.txt');
     const date = { d: Date.now() }
-    const apachestatusfixed = apachestatus.toString().includes("active (running)");
+    const apachestatusfixed =  apachestatus.toString().includes("active (running)");
 
     const mariadbstatusfixed = mariadbstatus.toString().includes("active (running)");
-
+   
 
     app.get('/status', (req, res) => {
 
