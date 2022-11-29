@@ -33,7 +33,7 @@ if (process.env.NODE_ENV === 'production') {
         admin.query(
             'SELECT COUNT(*) AS count FROM Users where userrole = 1;',
             // SELECT COUNT(*) AS recipes FROM Recipes; SELECT COUNT(*) AS reciperating FROM Reciperating; SELECT COUNT(*) AS comments FROM Comments;SELECT COUNT(*) AS commentratings FROM Commentrating; SELECT COUNT(*) AS images FROM Images; ',
-            '// function (err, result) {'
+           function (err, result) {'
                 if (err) throw err;
 
                 res.render('status', {
