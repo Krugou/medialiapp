@@ -137,7 +137,58 @@ CREATE TABLE IF NOT EXISTS `Commentrating` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
-s-
+-- admin count views
+-- jakrecipes.allthecounts source
+
+CREATE OR REPLACE
+ALGORITHM = UNDEFINED VIEW `jakrecipes`.`allthecounts` AS
+select
+    'Recipeid' AS `Recipescount`,
+    count(0) AS `COUNT(*)`
+from
+    `jakrecipes`.`Recipes`
+union
+select
+    'Userid' AS `userscount`,
+    count(0) AS `COUNT(*)`
+from
+    `jakrecipes`.`Users`
+union
+select
+    'Commentid' AS `commentcount`,
+    count(0) AS `COUNT(*)`
+from
+    `jakrecipes`.`Comments`
+union
+select
+    'Courseid' AS `courceidcount`,
+    count(0) AS `COUNT(*)`
+from
+    `jakrecipes`.`Courses`
+union
+select
+    'Imageid' AS `imagecount`,
+    count(0) AS `COUNT(*)`
+from
+    `jakrecipes`.`Images`
+union
+select
+    'direction' AS `directioncount`,
+    count(0) AS `COUNT(*)`
+from
+    `jakrecipes`.`Commentrating`
+union
+select
+    'Mealtype' AS `Mealtypecount`,
+    count(0) AS `COUNT(*)`
+from
+    `jakrecipes`.`Mealtypes`
+union
+select
+    'stars' AS `starscount`,
+    count(0) AS `COUNT(*)`
+from
+    `jakrecipes`.`Reciperating`;
 
 
 
