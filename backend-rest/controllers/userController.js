@@ -14,10 +14,13 @@ const user_post = async (req, res, next) => {
             // Error messages can be returned in an array using `errors.array()`.
             console.error('user_post validation', errors.array());
             next(httpError('Invalid data', 400));
+            res.json({
+                message: 'Check email and password again',
+            });
             return;
         }
 
-        
+
         const data = [
             req.body.email,
             req.body.password,
