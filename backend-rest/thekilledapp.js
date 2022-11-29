@@ -26,18 +26,24 @@ if (process.env.NODE_ENV === 'production') {
 
     const mariadbstatusfixed = mariadbstatus.toString().includes("active (running)");
     console.log(mariadbstatusfixed);
-   
+
 
     app.get('/status', (req, res) => {
 
         admin.query(
-            process.env.ADMIN_USERS_COUNT,
+            'SELECT COUNT(*) AS count FROM Users where userrole = 1; SELECT COUNT(*) AS recipes FROM Recipes;SELECT COUNT(*) AS reciperating FROM Reciperating;SELECT COUNT(*) AS comments FROM Comments;SELECT COUNT(*) AS commentratings FROM Commentrating;SELECT COUNT(*) AS images FROM Images; ',
+
             function (err, result) {
                 if (err) throw err;
 
                 res.render('status', {
                     date: date.d,
-                    usercount: result[0].count,
+                    usercount: result[0][0].count,
+                    recipecount: result[1][0].recipes,
+                    reciperatingcount: result[2][0].reciperating,
+                    commentcount: result[3][0].comments,
+                    commentratingcount: result[4][0].commentratings,
+                    imagecount: result[5][0].images,
                     mariadbstatus: mariadbstatusfixed,
                     apachestatus: apachestatusfixed,
                 });
@@ -59,23 +65,26 @@ if (process.env.NODE_ENV === 'production') {
             connectionLimit: 10,
             queueLimit: 0,
         });
-        
+
         local.query(
-            'SELECT COUNT(*) AS count FROM Users where userrole = 1; ',
-            [1,2], function (err, result) {
+            'SELECT COUNT(*) AS count FROM Users where userrole = 1; SELECT COUNT(*) AS recipes FROM Recipes;SELECT COUNT(*) AS reciperating FROM Reciperating;SELECT COUNT(*) AS comments FROM Comments;SELECT COUNT(*) AS commentratings FROM Commentrating;SELECT COUNT(*) AS images FROM Images; ',
+            [1, 2], function (err, result) {
                 if (err) throw err;
                 res.render('status', {
                     date: date.d,
-                    usercount: result[0].count,
-                    // commentcount: result[3].count,
-                    // recipecount: result[1].count,
-                    // reciperatingcount: result[2].count,
-                    // imagescount: result[5].count,
-                    // commentratingcount: result[4].count,
+
+                    usercount: result[0][0].count,
+                    recipecount: result[1][0].recipes,
+                    reciperatingcount: result[2][0].reciperating,
+                    commentcount: result[3][0].comments,
+                    commentratingcount: result[4][0].commentratings,
+                    imagecount: result[5][0].images,
                     mariadbstatus: 'no data available. this is localhost',
                     apachestatus: 'no data available. this is localhost',
-                });
-            });
+                })
+
+            })
+
     }
     );
 };
