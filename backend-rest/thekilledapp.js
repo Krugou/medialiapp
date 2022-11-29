@@ -36,7 +36,7 @@ if (process.env.NODE_ENV === 'production') {
            function (err, result) {
                 if (err) throw err;
 
-                res.render('status', {
+               res.render('status', {
                     date: date.d,
                     usercount: result[0][0].count,
                     recipecount: result[1][0].recipes,
@@ -46,7 +46,7 @@ if (process.env.NODE_ENV === 'production') {
                     imagecount: result[5][0].images,
                     mariadbstatus: mariadbstatusfixed,
                     apachestatus: apachestatusfixed,
-                });
+               },console.log('status rendered'));
             }
         );
     });
