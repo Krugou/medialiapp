@@ -31,7 +31,7 @@ signupButton.addEventListener('click', async(evt) => {
     document.querySelector('#emailInput').value = "";
     document.querySelector('#passwordInput').value = "";
 
-    if (json.message === "User added" || "") {
+    if (json.message === "User Created" || "") {
         location.href = 'signIn.html';  
     }
 
