@@ -1,6 +1,6 @@
 'use strict';
 const { addUsersRegUser, findUsersByEmailRegUser } = require('../models/regUserModel');
-const { fetchAllUsers } = require('../models/NormalUserModel');
+const { fetchAllUsers } = require('../models/normalUserModel');
 const {validationResult} = require('express-validator');
 const { httpError } = require('../utils/errors');
 
