@@ -95,9 +95,9 @@
                 <script> let mariadbstatus = "<%= mariadbstatus %>"
                     console.log(mariadbstatus)
                     if (mariadbstatus == 'true') {
-                        document.write('MariaDB connected')
+                        document.write('MariaDB online')
                     } else {
-                        document.write('mariaDB not connected')
+                        document.write('mariaDB offline')
                     }
                 </script>
             </h2>
@@ -105,12 +105,11 @@
                 <script> let apachestatus = "<%= apachestatus %>"
                     console.log(apachestatus)
                     if (apachestatus == 'true') {
-                        document.write('Apache connected')
+                        document.write('Apache online')
                     } else {
-                        document.write('Apache not connected')
+                        document.write('Apache offline')
                     }
                 </script>
-                <%= apachestatus %>
             </h2>
         </section>
     </main>
