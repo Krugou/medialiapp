@@ -18,7 +18,7 @@ const login = (req, res, next) => {
                 next(httpError('Kirjautmiserhe 2', 403));
                 return;
             }
-            const token = jwt.sign(user, 'jakrecipes-asiodjuioawjhuitah');
+            const token = jwt.sign(user, process.env.JWT_SECRET);
             return res.json({user, token});
         });
     })(req, res, next);
