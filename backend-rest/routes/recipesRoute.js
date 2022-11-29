@@ -9,3 +9,4 @@ const { recipes_list_get,
     recipes_delete, } = require("../controllers/recipesController");
 const { body } = require('express-validator');
 
+module.exports = router;
