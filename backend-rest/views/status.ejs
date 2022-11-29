@@ -89,7 +89,7 @@
         <section>
             <h2>
                 <script> let mariadbstatus = "<%= mariadbstatus %>"
-                    if (mariadbstatus == true) {
+                    if (mariadbstatus == 'true') {
                         document.write('MariaDB connected')
                     } else {
                         document.write('mariaDB not connected')
@@ -98,7 +98,7 @@
             </h2>
             <h2>
                 <script> let apachestatus = "<%= apachestatus %>"
-                    if (apachestatus == true) {
+                    if (apachestatus == 'true') {
                         document.write('Apache connected')
                     } else {
                         document.write('Apache not connected')
