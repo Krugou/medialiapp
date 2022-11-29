@@ -52,7 +52,7 @@
                     document.write(aloitusaika)
                 </script>
             </h1>
-        
+
             <h1>
                 Server uptime:
 
@@ -80,15 +80,31 @@
 
                 </script>
             </h1>
-            <h3> current registered users: <%= usercount %>
+            <h3> Current registered users: <%= usercount %>
+                 Current recipes:
+                 Current comments:
+                 Current ratings:
             </h3>
         </section>
         <section>
             <h2>
-                Mariadb status: <%= mariadbstatus %>
+                <script> let mariadbstatus = "<%= mariadbstatus %>"
+                    if (mariadbstatus == true) {
+                        document.write('MariaDB connected')
+                    } else {
+                        document.write('mariaDB not connected')
+                    }
+                </script>
             </h2>
             <h2>
-                Apache status: <%= apachestatus %>
+                <script> let apachestatus = "<%= apachestatus %>"
+                    if (apachestatus == true) {
+                        document.write('Apache connected')
+                    } else {
+                        document.write('Apache not connected')
+                    }
+                </script>
+                <%= apachestatus %>
             </h2>
         </section>
     </main>
