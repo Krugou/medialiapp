@@ -514,7 +514,8 @@ module.exports = {
     recipefavorite_count_admin_get,
     recipiemealtype_count_admin_get,
     mealtypes_count_admin_get,
-    courses_count_admin_get
+    courses_count_admin_get,
+    delete_user_by_id_admin_delete 
 
 
 }
