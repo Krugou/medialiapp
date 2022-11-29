@@ -144,49 +144,49 @@ CREATE OR REPLACE
 ALGORITHM = UNDEFINED VIEW `jakrecipes`.`allthecounts` AS
 select
     'Recipeid' AS `Recipescount`,
-    count(0) AS `COUNT(*)`
+    count(0) AS `count`
 from
     `jakrecipes`.`Recipes`
 union
 select
     'Userid' AS `userscount`,
-    count(0) AS `COUNT(*)`
+    count(0) AS `count`
 from
     `jakrecipes`.`Users`
 union
 select
     'Commentid' AS `commentcount`,
-    count(0) AS `COUNT(*)`
+    count(0) AS `count`
 from
     `jakrecipes`.`Comments`
 union
 select
     'Courseid' AS `courceidcount`,
-    count(0) AS `COUNT(*)`
+    count(0) AS `count`
 from
     `jakrecipes`.`Courses`
 union
 select
     'Imageid' AS `imagecount`,
-    count(0) AS `COUNT(*)`
+    count(0) AS `count`
 from
     `jakrecipes`.`Images`
 union
 select
     'direction' AS `directioncount`,
-    count(0) AS `COUNT(*)`
+    count(0) AS `count`
 from
     `jakrecipes`.`Commentrating`
 union
 select
     'Mealtype' AS `Mealtypecount`,
-    count(0) AS `COUNT(*)`
+    count(0) AS `count`
 from
     `jakrecipes`.`Mealtypes`
 union
 select
     'stars' AS `starscount`,
-    count(0) AS `COUNT(*)`
+    count(0) AS `count`
 from
     `jakrecipes`.`Reciperating`;
 
