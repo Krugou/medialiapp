@@ -13,7 +13,7 @@
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('user');
     alert('You have logged out');
-    location.href = 'signIn.html';
+    location.href = 'frontpage.html';
   } catch (e) {
     console.log(e.message);
   }
