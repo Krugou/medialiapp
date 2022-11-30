@@ -202,6 +202,7 @@
         </ul>
 </nav>
 </header>
+<main>
 <H2>ADD RECIPE</H2>
 <div class="buttons">
     <div class="recipename">
@@ -224,27 +225,6 @@
     <div class="imagebutton">
         <button class="uploadimage">Upload Image</button>
     </div>
-    <script>
-
-      const editProfile = document.getElementById("editModal");
-
-      const button = document.getElementById("tag");
-
-      let span = document.getElementsByClassName("close")[0];
-
-      button.onclick = function() {
-        editProfile.style.display = "block";
-      }
-
-      span.onclick = function() {
-        editProfile.style.display = "none";
-      }
-      window.onclick = function(event) {
-        if (event.target == editProfile) {
-          editProfile.style.display = "none";
-        }
-      }
-    </script>
     </div>
 </div>
 <div class="desc">
@@ -255,10 +235,28 @@
     <button class="post">Post Recipe</button>
     </div>
 </div>
-
-
-
-
+</main>
 <script src="js/registration.js" defer></script>
+<script>
+
+  const editProfile = document.getElementById("editModal");
+
+  const button = document.getElementById("tag");
+
+  let span = document.getElementsByClassName("close")[0];
+
+  button.onclick = function() {
+    editProfile.style.display = "block";
+  }
+
+  span.onclick = function() {
+    editProfile.style.display = "none";
+  }
+  window.onclick = function(event) {
+    if (event.target == editProfile) {
+      editProfile.style.display = "none";
+    }
+  }
+</script>
 </body>
 </html>

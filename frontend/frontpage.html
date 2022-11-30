@@ -195,7 +195,6 @@
     </label>
     <label class="logo"></label>
     <nav>
-
         <ul class="nav-start">
             <li><a href="#">Etusivu</a></li>
         </ul>
@@ -222,32 +221,12 @@
             </div>
         </div>
     </div>
-<script>
-  const editFilter = document.getElementById("filterModal");
 
-  const filterButton = document.getElementById("filter");
-
-  let close = document.getElementsByClassName("close")[0];
-
-  filterButton.onclick = function() {
-    editFilter.style.display = "block";
-  }
-
-  close.onclick = function() {
-    editFilter.style.display = "none";
-  }
-  window.onclick = function(event) {
-    if (event.target == editFilter) {
-      editFilter.style.display = "none";
-    }
-  }
-</script>
     <div class="recipebutton">
         <button>Tee resepti</button>
     </div>
 </section>
-
-<section class="title">
+<main class="title">
     <h2> Uusimmat Reseptit</h2>
     <div class="reseptit">
     <figure>
@@ -312,10 +291,29 @@
         </figure>
 
     </div>
-</section>
+</main>
 
 <script src="js/frontpage.js"></script>
+    <script>
+      const editFilter = document.getElementById("filterModal");
 
+      const filterButton = document.getElementById("filter");
+
+      let close = document.getElementsByClassName("close")[0];
+
+      filterButton.onclick = function() {
+        editFilter.style.display = "block";
+      }
+
+      close.onclick = function() {
+        editFilter.style.display = "none";
+      }
+      window.onclick = function(event) {
+        if (event.target == editFilter) {
+          editFilter.style.display = "none";
+        }
+      }
+    </script>
 
 </body>
 </html>
