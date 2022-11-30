@@ -6,15 +6,17 @@ const app = express();
 const fs = require('fs');
 const authRoute = require('./routes/authRoute');
 const userRoute = require('./routes/userRoute');
-const path = require('path');
+
 const statusRoute = require('./routes/statusRoute');
 const { httpError } = require('./utils/errors');
 const passport = require('./utils/pass');
 
 app.use(cors());
-app.use('/static', express.static(path.join(__dirname + '/public')));
+app.use(express.static('public'));
 
-app.set('views', path.join(__dirname, 'views'));
+
+
+
 app.set('view engine', 'ejs');
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true }))
