@@ -10,7 +10,7 @@ signinButton.addEventListener('click', async (evt) => {
     //const usernameInput = document.querySelector('#usernameInput').value;
     const passwordInput = document.querySelector('#passwordInput').value;
     const data = {
-        email: emailInput,
+        username: emailInput,
         password: passwordInput
     }
     const fetchOptions = {
@@ -20,7 +20,7 @@ signinButton.addEventListener('click', async (evt) => {
         },
         body: JSON.stringify(data),
     };
-
+    console.log(data);
     const response = await fetch(url + '/auth/login', fetchOptions);
     const json = await response.json();
     console.log('login response', json);
