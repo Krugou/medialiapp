@@ -103,14 +103,13 @@
       background-color: rgb(0,0,0);
       background-color: rgba(0,0,0,0.4);
     }
-
-
     .modal-content {
       background-color: #fefefe;
       margin: auto;
       padding: 20px;
       border: 1px solid #888;
       width: 60%;
+      text-align: center;
     }
 
 
@@ -127,8 +126,27 @@
       text-decoration: none;
       cursor: pointer;
     }
-    .username {
-      text-align: center;
+
+    .closeDelete {
+      color: #aaaaaa;
+      float: left;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .closeDelete:hover,
+    .closeDelete:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .delete{
+      justify-content: space-between;
+    }
+    .delete button {
+      height: 50px;
+      font-size: 30px;
+      width: 15%;
     }
     .pic {
       margin-top: 20%;
@@ -232,30 +250,65 @@
           </div>
           <div class="save">
             <button>Save</button>
-            <button>Delete Profile</button>
+            <button id="delete">Delete Profile</button>
+          </div>
+          <div id="deleteModal" class="modal">
+            <div class="modal-content">
+              <span class="closeDelete">&times;</span>
+              <div>
+                <p>Are you sure you want to delete your profile?</p>
+              </div>
+              <div class="delete">
+                <button id="noButton">No</button>
+                <button>Yes</button>
+              </div>
+            </div>
+          </div>
           </div>
         </div>
-        </div>
+
       <script>
+
+        const noButton = document.getElementById("noButton");
 
         const editProfile = document.getElementById("editModal");
 
         const button = document.getElementById("edit");
 
-        let span = document.getElementsByClassName("close")[0];
+        let closeModal = document.getElementsByClassName("close")[0];
+
+        let closeDelete = document.getElementsByClassName("closeDelete")[0];
+
+        const deleteProfile = document.getElementById("deleteModal");
+
+        const deleteButton = document.getElementById("delete");
 
         button.onclick = function() {
           editProfile.style.display = "block";
         }
 
-        span.onclick = function() {
+        closeModal.onclick = function() {
           editProfile.style.display = "none";
         }
+
         window.onclick = function(event) {
           if (event.target == editProfile) {
             editProfile.style.display = "none";
           }
         }
+        deleteButton.onclick = function() {
+          deleteProfile.style.display = "block";
+        }
+        closeDelete.onclick = function() {
+          deleteProfile.style.display = "none";
+        }
+
+        noButton.onclick = function() {
+          deleteProfile.style.display = "none";
+        }
+
+
+
       </script>
     </article>
   </main>
