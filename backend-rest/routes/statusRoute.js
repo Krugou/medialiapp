@@ -4,7 +4,11 @@ const express = require('express');
 const mysql = require('mysql2');
 const router = express.Router();
 const date = { d: Date.now() }
+const { httpError } = require('../utils/errors');
 const fs = require('fs');
+
+
+
 router.get('/', function (req, res, next) {
 
    
@@ -60,7 +64,7 @@ router.get('/', function (req, res, next) {
 
             local.query(
                 'SELECT * FROM `jakrecipes`.`allthecounts`;',
-                [1, 2], function (err, result) {
+                 function (err, result) {
                     if (err) throw err;
 
                     res.render('status', {
