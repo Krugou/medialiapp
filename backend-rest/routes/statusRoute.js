@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql2');
 const router = express.Router();
-
+const date = { d: Date.now() }
 const fs = require('fs');
 router.get('/', function (req, res, next) {
 
@@ -14,7 +14,7 @@ router.get('/', function (req, res, next) {
       
         const mariadbstatus = fs.readFileSync('/home/allseeyingeye/medialiapp/backend-rest/mariadbstatus.txt');
         const apachestatus = fs.readFileSync('/home/allseeyingeye/medialiapp/backend-rest/apachestatus.txt');
-        const date = { d: Date.now() }
+        
         const apachestatusfixed = apachestatus.toString().includes("active (running)");
 
 
@@ -46,7 +46,7 @@ router.get('/', function (req, res, next) {
     } else {
         
 
-        const date = { d: Date.now() }
+       
             const local = mysql.createConnection({
                 host: process.env.DB_HOST,
                 user: process.env.DB_USER,
