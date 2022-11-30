@@ -76,10 +76,10 @@ p{
     .checknappi {
         display: flex;
     }
-    nav header {
+    header nav {
         display: none;
     }
-    #check:checked ~ header{
+    #check:checked ~ nav{
         height: 20vh;
         display:flex;
         flex-direction: column;
