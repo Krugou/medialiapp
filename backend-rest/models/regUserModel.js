@@ -28,9 +28,23 @@ const findUsersByEmailRegUser = async (name, next) => {
         next(httpError('Database error', 500));
     }
 }
+const getUserLogin = async (params, next) => {
+    try {
+        console.log(params);
+        const [rows] = await promisePoolRegUser.execute(
+            'SELECT * FROM Users WHERE email = ?;',
+            params);
+        return rows;
+    } catch (e) {
+        console.error('getUserLogin', e.message);
+        next(httpError('Database error', 500));
+    }
+};
+
 module.exports = {
     
     addUsersRegUser,
     findUsersByEmailRegUser,
+    getUserLogin,
 
 };

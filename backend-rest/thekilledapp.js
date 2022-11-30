@@ -9,6 +9,8 @@ const userRoute = require('./routes/userRoute');
 const path = require('path');
 const statusRoute = require('./routes/statusRoute');
 const { httpError } = require('./utils/errors');
+const passport = require('./utils/pass');
+
 app.use(cors());
 app.use('/static', express.static(path.join(__dirname + '/public')));
 

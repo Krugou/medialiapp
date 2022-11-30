@@ -10,12 +10,18 @@ const login = (req, res, next) => {
         console.log('err1: ', err);
         if (err || !user) {
             next(httpError('Kirjautumivirhe', 403));
+            res.json({
+                message: 'Kirjautumisvirhe',
+            });
             return;
         }
         req.login(user, {session: false}, (err) => {
             if (err) {
                 console.log('err2: ', err);
                 next(httpError('Kirjautmiserhe 2', 403));
+                res.json({
+                    message: 'Kirjautumisvirhe',
+                });
                 return;
             }
             const token = jwt.sign(user, process.env.JWT_SECRET);
