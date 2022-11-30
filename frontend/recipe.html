@@ -24,14 +24,15 @@
 
     }
     nav {
-        border-bottom: solid black 1px;
-    }
-    header {
         display: flex;
         justify-content: space-between;
         align-items: center;
         height: 50px;
         width: 100%;
+
+    }
+    header {
+        border-bottom: solid black 1px;
     }
 
     .nav-start {
@@ -131,13 +132,13 @@
 
 
 <body>
-<nav>
+<header>
     <input type="checkbox" id="check">
     <label for="check" class="checknappi">
         <i class="fas fa-bars"></i>
     </label>
     <label class="logo"></label>
-    <header>
+        <nav>
         <ul class="nav-start">
             <li><a href="#">Etusivu</a></li>
         </ul>
@@ -145,8 +146,8 @@
             <li><a href="#">Kirjaudu</a></li>
             <li><a href="#">Rekisteröinti</a></li>
         </ul>
-    </header>
 </nav>
+</header>
 <div class="recipe">
     <img id="recipepic" src="media/logos/jakrecipeslogo.svg" alt="jakrecipeslogo">
     <p>Likes, Reviews, stars, Tags</p>
