@@ -3,14 +3,15 @@
 
 <%- include ('./partials/head') %>
 
-<body>
+<body onload="uptimes()" >
     <%- include ('./partials/header') %>
-    <main>
+<main>
     <%- include ('./partials/nodejsservercheck') %>
         <%- include ('./partials/statistics') %>
         <%- include ('./partials/virtualservercheck') %>
      
     </main>
+<%- include ('./partials/footer') %>
 </body>
 
 </html>
