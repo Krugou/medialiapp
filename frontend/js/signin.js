@@ -6,7 +6,13 @@ const signinButton = document.querySelector('#signinNappi');
 signinButton.addEventListener('click', async (evt) => {
     console.log("asd");
     evt.preventDefault();
-    const data = serializeJson(loginForm);
+    const emailInput = document.querySelector('#emailInput').value;
+    //const usernameInput = document.querySelector('#usernameInput').value;
+    const passwordInput = document.querySelector('#passwordInput').value;
+    const data = {
+        email: emailInput,
+        password: passwordInput
+    }
     const fetchOptions = {
         method: 'POST',
         headers: {
