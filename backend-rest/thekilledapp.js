@@ -10,7 +10,8 @@ const path = require('path');
 const statusRoute = require('./routes/statusRoute');
 const { httpError } = require('./utils/errors');
 app.use(cors());
-app.use(express.static(__dirname + '/public'));
+app.use('/static', express.static(__dirname + '/public'));
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.json()) // for parsing application/json
