@@ -2,8 +2,8 @@
 const postButton = document.querySelector('.post');
 const tagModal = document.querySelector('.tags');
 const tagButton = document.querySelector('#tag');
-
-
+//const mealtypeButtons = document.querySelector('.tagButtons')
+let selectedTags = [];
 let tags = [
     {
         Mealid:1,
@@ -20,15 +20,29 @@ const addTags = (tags) => {
     tags.forEach((tag) => {
         const button = document.createElement('button');
         button.innerHTML = tag.Mealtype;
-        button.classList.add('tagButtons');
+        button.classList.add('mealtypeButtons');
         tagModal.appendChild(button);
+        button.addEventListener('click', () => {
+            console.log("asd1");
+            for (let i=0; i<selectedTags.length; i++)
+            {
+                if (selectedTags[i]===tag.Mealid)
+                    return;
+            }
+            console.log("asd2");
+
+            selectedTags.push(tag.Mealid);
 
 
-
-
+        });
 
     });
+
+    console.log(selectedTags);
 };
+
+
+
 
 tagButton.addEventListener('click', (evt) => {
     evt.preventDefault()
@@ -36,6 +50,7 @@ tagButton.addEventListener('click', (evt) => {
 
 
 });
+
 
 
 
