@@ -3,19 +3,21 @@ const postButton = document.querySelector('.post');
 const tagModal = document.querySelector('.tags');
 const tagButton = document.querySelector('#tag');
 //const mealtypeButtons = document.querySelector('.tagButtons')
-let selectedTags = [];
+let selectedTags = []; // Tähän syötetään valittujen mealtyypien id:t
+const instructionDiv = document.querySelector('.instruction');
 let tags = [
     {
-        Mealid:1,
-        Mealtype:"Kasvisruoka",
+        Mealid: 1,
+        Mealtype: "Kasvisruoka",  //Fake database
 
     },
     {
-        Mealid:2,
-        Mealtype:"Liharuoka",
+        Mealid: 2,
+        Mealtype: "Liharuoka",
     }
 ];
-const addTags = (tags) => {
+const addTags = (tags) => { // Syötetään objekti jossa mealtype infot
+
     tagModal.innerHTML = "";
     tags.forEach((tag) => {
         const button = document.createElement('button');
@@ -24,44 +26,47 @@ const addTags = (tags) => {
         tagModal.appendChild(button);
         button.addEventListener('click', () => {
             console.log("asd1");
-            for (let i=0; i<selectedTags.length; i++)
-            {
-                if (selectedTags[i]===tag.Mealid)
+            for (let i = 0; i < selectedTags.length; i++) {
+                if (selectedTags[i] === tag.Mealtype)
                     return;
             }
-            console.log("asd2");
+            selectedTags.push(tag.Mealtype);
+            console.log(selectedTags);
 
-            selectedTags.push(tag.Mealid);
+            // TODO NÄYTÄ SELECTEDTAGS SIVULLA, MISTÄ VOI MYÖS POISTAA KO. TAGIN
+            const button2 = document.createElement('button');
+            button2.innerHTML = tag.Mealtype;
+            button2.classList.add("selectedMealTypeButtons");
+            instructionDiv.appendChild(button2);
+            button2.addEventListener('click', () => {
+               // console.log("hähää");
+             //   console.log(tag.Mealtype);
+                const poista = selectedTags.indexOf(tag.Mealtype);
+                 selectedTags.splice(poista, 1);
+                instructionDiv.removeChild(button2);
+               // console.log(selectedTags);
 
+            });
 
-        });
+            });
 
     });
 
-    console.log(selectedTags);
 };
 
 
-
-
-tagButton.addEventListener('click', (evt) => {
+tagButton.addEventListener('click', async (evt) => {
     evt.preventDefault()
+
+
+
     addTags(tags);
 
 
 });
 
 
-
-
-
-
-
-
-
-
-
-postButton.addEventListener('click', async(evt) => {
+postButton.addEventListener('click', async (evt) => {
     evt.preventDefault();
     const emailInput = document.querySelector('#emailInput').value;
     const passwordInput = document.querySelector('#passwordInput').value;
