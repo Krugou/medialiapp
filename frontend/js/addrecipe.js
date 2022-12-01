@@ -45,7 +45,7 @@ const addTags = (tags) => { // Syötetään objekti jossa mealtype infot
                  selectedTags.splice(poista, 1);
                 instructionDiv.removeChild(button2);
                // console.log(selectedTags);
-
+                alert('Tagi: "'+ tag.Mealtype + '" poistettiin.');
             });
 
             });
