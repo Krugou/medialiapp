@@ -8,6 +8,9 @@ body {
   height: 100vh;
   width: auto;
 }
+* {
+  box-sizing: border-box;
+}
 li {
   list-style-type: none;
 }
@@ -22,6 +25,10 @@ li {
   padding: 1rem;
   margin: 1rem;
   text-align: center;
+}
+img {
+  width: 100%;
+  height: auto;
 }
 
 .heart {
@@ -46,6 +53,7 @@ footer {
 #transparent {
   z-index: 0;
   opacity: 0.2;
+  height: 25vh;
 }
 #funnydogs {
   height: 100vh;
