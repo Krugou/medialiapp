@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === 'production') {
 } else {
     require('./utils/localhost')(app, process.env.HTTP_PORT || 3000);
 };
-
+app.use('/', frontRoute)
 
 app.use('/auth', authRoute);
 
