@@ -9,7 +9,12 @@
       loading script...
         
         <script> 
-      
+        let adminotsikko = document.getElementById('adminotsikko');
+       if (location === localhost){
+        adminotsikko.textContent = 'JAKRECIPES admin dashboard - localhost'
+       } else {
+        adminotsikko.textContent = 'JAKRECIPES admin dashboard - production'
+       }
                function uptimes() {      
              let newdate = (Date.now() - "<%= date %>") / 1000;
                 let seconds = Math.floor(newdate % 60);

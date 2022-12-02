@@ -24,7 +24,7 @@ router.get('/', function (req, res, next) {
 
         const mariadbstatusfixed = mariadbstatus.toString().includes("active (running)");
 
-
+        let location = process.env.NODE_ENV
 
         admin.query(
             'SELECT * FROM `jakrecipes`.`allthecounts`;',
@@ -61,7 +61,7 @@ router.get('/', function (req, res, next) {
             connectionLimit: 10,
             queueLimit: 0,
         });
-
+        let location = process.env.NODE_ENV
         local.query(
             'SELECT * FROM `jakrecipes`.`allthecounts`;',
             function (err, result) {
@@ -69,6 +69,7 @@ router.get('/', function (req, res, next) {
 
                 res.render('/status/status', {
                     date: date.d,
+                    location: location,
                     alluserscount: result[2].count,
                     usercount: result[1].count,
                     recipecount: result[0].count,
