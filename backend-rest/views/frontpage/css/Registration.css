@@ -1,0 +1,96 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    text-decoration: none;
+    list-style:none;
+
+}
+nav {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+
+
+}
+header {
+    border-bottom: solid black 1px;
+}
+
+.nav-start {
+    justify-content: flex-start;
+    display:flex;
+}
+.nav-end {
+    justify-content: flex-end;
+    display:flex;
+}
+
+nav ul {
+    gap: 10px;
+    font-size: 3vh;
+}
+nav a {
+    padding: 10px;
+}
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+}
+H2 {
+    text-align: center;
+}
+
+.tiedot {
+    text-align: center;
+    padding:0;
+}
+button {
+    text-align: center;
+}
+.nappi {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:3%;
+}
+.signup{
+    margin-top: 3%;
+}
+p{
+    font-size: 2.5vh;
+}
+.checknappi{
+    font-size: 30px;
+    display:none;
+    margin-bottom: 10px;
+}
+#check {
+    display:none;
+}
+
+@media screen and (max-width: 525px) {
+    .checknappi {
+        display: flex;
+    }
+    header nav {
+        display: none;
+    }
+    #check:checked ~ nav{
+        height: 20vh;
+        display:flex;
+        flex-direction: column;
+        margin-bottom: 5%;
+    }
+}
+
+
+
+
+
+
+
+

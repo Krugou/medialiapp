@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%- include ('./partials/head') %>
+<%- include ('./statuspartials/head') %>
 
-<body onload="uptimes()" >
-    <%- include ('./partials/header') %>
-<main>
-    <%- include ('./partials/nodejsservercheck') %>
-        <%- include ('./partials/statistics') %>
-        <%- include ('./partials/virtualservercheck') %>
-     
-    </main>
-<%- include ('./partials/footer') %>
-</body>
+    <body onload="uptimes()">
+        <%- include ('./statuspartials/header') %>
+            <main>
+                <%- include ('./statuspartials/nodejsservercheck') %>
+                    <%- include ('./statuspartials/statistics') %>
+                        <%- include ('./statuspartials/virtualservercheck') %>
+
+            </main>
+            <%- include ('./statuspartials/footer') %>
+    </body>
 
 </html>

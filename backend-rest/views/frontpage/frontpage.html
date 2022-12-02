@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="fontawesome/fontawesome.js" crossorigin="anonymous"></script>
+    <script src="fontawesome/solid.js" crossorigin="anonymous"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="media/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="media/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="media/icons/favicon-16x16.png">
+    <title>JAK Reseptit</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+        }
+        body {
+            height:100vh;
+            margin: 0;
+        }
+        .Etuylä {
+            background-color:#DFEDF2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height:35%;
+            border-bottom: 1px solid;
+            gap: 10px;
+        }
+        .title {
+            text-align: center;
+        }
+        .reseptit {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: auto;
+        }
+        nav {
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 50px;
+            width: 100%;
+
+
+        }
+        header {
+            border-bottom: solid black 1px;
+            background-color:#0D1E40;
+
+        }
+
+        .nav-start {
+            justify-content: flex-start;
+            display:flex;
+        }
+        .nav-end {
+            justify-content: flex-end;
+            display:flex;
+        }
+
+        nav ul {
+            gap: 10px;
+            font-size: 3vh;
+        }
+        nav a {
+            padding: 10px;
+            color:white;
+        }
+        .checknappi{
+            font-size: 30px;
+            display:none;
+            margin-bottom: 10px;
+        }
+        #check {
+            display:none;
+        }
+        figure {
+            border: solid 1px black;
+            width: 15%;
+            font-size: 15px;
+            padding-bottom: 15px;
+            margin: 7%;
+            background-color:#DFEDF2;
+        }
+        figure button{
+            background-color:#0D1E40;
+            color:white;
+        }
+        #addrecipesButton {
+            background:#0D1E40;
+            color:white;
+        }
+        #filter {
+            background:#0D1E40;
+            color:white;
+        }
+        .recipebutton {
+            text-align: center;
+        }
+        .Haeresepti {
+            width: 200px;
+            max-width: 100%;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 60%;
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .filters {
+            background-color: lightgray;
+            height: 300px;
+            width: 70%;
+            margin: auto;
+            border: solid 1px gray;
+        }
+        .filtersave{
+            margin-top:5%;
+        }
+
+
+        @media screen and (max-width: 1024px) {
+            figure {
+                width: 30%;
+            }
+        }
+
+
+
+
+
+        @media screen and (max-width: 750px) {
+
+            .reseptit {
+                flex-direction: column;
+            }
+        }
+
+
+        @media screen and (max-width: 525px) {
+
+            figure {
+                width: 60%;
+            }
+
+            .checknappi {
+                display: flex;
+            }
+            header nav {
+                display: none;
+            }
+            #check:checked ~ nav{
+                height: 20vh;
+                display:flex;
+                flex-direction: column;
+                margin-bottom: 5%;
+            }
+            .Etuylä {
+                flex-direction: column;
+            }
+            .recipebutton {
+                margin: 7%;
+            }
+        }
+
+
+
+    </style>
+</head>
+<body>
+<header>
+    <input type="checkbox" id="check">
+    <label for="check" class="checknappi">
+        <i class="fas fa-bars"></i>
+    </label>
+    <label class="logo"></label>
+    <nav>
+        <ul class="nav-start">
+            <li><a href="#">Etusivu</a></li>
+        </ul>
+        <ul class="nav-end">
+            <li><a href="signIn.html">Kirjaudu</a></li>
+            <li><a href="registration.html">Rekisteröinti</a></li>
+            <li><a href="logout.html">Kirjaudu ulos</a></li>
+        </ul>
+    </nav>
+</header>
+<section class="Etuylä">
+<input type="text" aria-label="Reseptien haku" placeholder="Hae Resepti" class="Haeresepti">
+    <button id="filter">Filter</button>
+    <div id="filterModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modaladd">
+                <H3>Add Filters</H3>
+                <div class="filters">
+                </div>
+                <div class="filtersave">
+                    <button>Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="recipebutton">
+        <button href="addRecipe.html" id="addrecipesButton">Tee resepti</a></button>
+    </div>
+</section>
+<main class="title">
+    <h2> Uusimmat Reseptit</h2>
+    <div class="reseptit">
+    <figure>
+        <img src="media/logos/jakrecipeslogo.svg">
+        <p>Nimi</p>
+        <p>Aika</p>
+        <p>Vaikeus</p>
+        <p>Arviot</p>
+        <p>Hinta</p>
+        <p>Tags</p>
+        <button>Katso resepti</button>
+    </figure>
+        <figure>
+            <img src="media/logos/jakrecipeslogo.svg">
+            <p>Nimi</p>
+            <p>Aika</p>
+            <p>Vaikeus</p>
+            <p>Arviot</p>
+            <p>Hinta</p>
+            <p>Tags</p>
+            <button>Katso resepti</button>
+        </figure>
+        <figure>
+            <img src="media/logos/jakrecipeslogo.svg">
+            <p>Nimi</p>
+            <p>Aika</p>
+            <p>Vaikeus</p>
+            <p>Arviot</p>
+            <p>Hinta</p>
+            <p>Tags</p>
+            <button>Katso resepti</button>
+        </figure>
+        <figure>
+            <img src="media/logos/jakrecipeslogo.svg">
+            <p>Nimi</p>
+            <p>Aika</p>
+            <p>Vaikeus</p>
+            <p>Arviot</p>
+            <p>Hinta</p>
+            <p>Tags</p>
+            <button>Katso resepti</button>
+        </figure>
+        <figure>
+            <img src="media/logos/jakrecipeslogo.svg">
+            <p>Nimi</p>
+            <p>Aika</p>
+            <p>Vaikeus</p>
+            <p>Arviot</p>
+            <p>Hinta</p>
+            <p>Tags</p>
+            <button>Katso resepti</button>
+        </figure>
+        <figure>
+            <img src="media/logos/jakrecipeslogo.svg">
+            <p>Nimi</p>
+            <p>Aika</p>
+            <p>Vaikeus</p>
+            <p>Arviot</p>
+            <p>Hinta</p>
+            <p>Tags</p>
+            <button>Katso resepti</button>
+        </figure>
+
+    </div>
+</main>
+
+<script src="js/frontpage.js"></script>
+    <script>
+      const editFilter = document.getElementById("filterModal");
+
+      const filterButton = document.getElementById("filter");
+
+      let close = document.getElementsByClassName("close")[0];
+
+      filterButton.onclick = function() {
+        editFilter.style.display = "block";
+      }
+
+      close.onclick = function() {
+        editFilter.style.display = "none";
+      }
+      window.onclick = function(event) {
+        if (event.target == editFilter) {
+          editFilter.style.display = "none";
+        }
+      }
+    </script>
+
+</body>
+</html>
