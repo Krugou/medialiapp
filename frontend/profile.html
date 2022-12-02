@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,9 +12,10 @@
   <link rel="icon" type="image/png" sizes="16x16" href="media/icons/favicon-16x16.png">
   <title>testing</title>
   <link rel="stylesheet" href="./css/main.css" />
+  <script src="./js/checkvpn.js" defer></script>
 </head>
 
-  <body class="pagebody">
+<body class="pagebody">
   <header class="headtop">
     <input type="checkbox" id="check">
     <label for="check" class="checknappi">
@@ -21,7 +23,7 @@
     </label>
     <label class="logo"></label>
 
-      <nav class="navbar">
+    <nav class="navbar">
       <ul class="nav-start">
         <li><a href="frontpage.html">Etusivu</a></li>
       </ul>
@@ -29,32 +31,38 @@
         <li><a href="logout.html">Kirjaudu Ulos</a></li>
         <li><a href="profile.html">Profiili</a></li>
       </ul>
-  </nav>
+    </nav>
   </header>
   <main class="pagemain">
     <H2 class="otsikko">Profiili</H2>
     <article id="profileArticle">
-    <div class="posts">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at corporis, eaque enim esse iure qui rerum. Ad deleniti ex libero molestias unde? Blanditiis dolorem eius est nostrum, placeat quidem?
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium assumenda dolorem doloremque, eum facere incidunt ipsum iste laudantium modi molestias numquam placeat qui quia quo ratione repudiandae tempore, velit voluptatibus.</p>
-      <br>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at corporis, eaque enim esse iure qui rerum. Ad deleniti ex libero molestias unde? Blanditiis dolorem eius est nostrum, placeat quidem?
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium assumenda dolorem doloremque, eum facere incidunt ipsum iste laudantium modi molestias numquam placeat qui quia quo ratione repudiandae tempore, velit voluptatibus.</p>
+      <div class="posts">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at corporis, eaque enim esse iure qui
+          rerum. Ad deleniti ex libero molestias unde? Blanditiis dolorem eius est nostrum, placeat quidem?
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium assumenda dolorem doloremque, eum facere
+          incidunt ipsum iste laudantium modi molestias numquam placeat qui quia quo ratione repudiandae tempore, velit
+          voluptatibus.</p>
+        <br>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at corporis, eaque enim esse iure qui
+          rerum. Ad deleniti ex libero molestias unde? Blanditiis dolorem eius est nostrum, placeat quidem?
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium assumenda dolorem doloremque, eum facere
+          incidunt ipsum iste laudantium modi molestias numquam placeat qui quia quo ratione repudiandae tempore, velit
+          voluptatibus.</p>
       </div>
-    <div class="profile">
-    <img id="profilepic" src="media/logos/jakrecipeslogo.svg" alt="jakrecipeslogo">
-      <p>Username</p>
-      <button id="edit">Edit Profile</button>
-    </div>
+      <div class="profile">
+        <img id="profilepic" src="media/logos/jakrecipeslogo.svg" alt="jakrecipeslogo">
+        <p>Username</p>
+        <button id="edit">Edit Profile</button>
+      </div>
       <div id="editModal" class="modal">
 
 
         <div class="modal-content">
           <span class="close">&times;</span>
           <div class="username">
-          <p>Username</p>
-          <input>
-            </div>
+            <p>Username</p>
+            <input>
+          </div>
           <div class="pic">
             <p>Profile Picture</p>
             <button>Upload Image</button>
@@ -75,8 +83,8 @@
               </div>
             </div>
           </div>
-          </div>
         </div>
+      </div>
 
       <script>
 
@@ -94,27 +102,27 @@
 
         const deleteButton = document.getElementById("delete");
 
-        button.onclick = function() {
+        button.onclick = function () {
           editProfile.style.display = "block";
         }
 
-        closeModal.onclick = function() {
+        closeModal.onclick = function () {
           editProfile.style.display = "none";
         }
 
-        window.onclick = function(event) {
+        window.onclick = function (event) {
           if (event.target == editProfile) {
             editProfile.style.display = "none";
           }
         }
-        deleteButton.onclick = function() {
+        deleteButton.onclick = function () {
           deleteProfile.style.display = "block";
         }
-        closeDelete.onclick = function() {
+        closeDelete.onclick = function () {
           deleteProfile.style.display = "none";
         }
 
-        noButton.onclick = function() {
+        noButton.onclick = function () {
           deleteProfile.style.display = "none";
         }
 
@@ -124,5 +132,6 @@
     </article>
   </main>
 
-  </body>
+</body>
+
 </html>
