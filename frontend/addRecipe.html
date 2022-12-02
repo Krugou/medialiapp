@@ -13,155 +13,59 @@
     <link rel="icon" type="image/png" sizes="16x16" href="media/icons/favicon-16x16.png">
     <script src="js/addrecipe.js" defer></script>
     <title>testing</title>
+    <link rel="stylesheet" href="./css/fixed.css" />
 </head>
 <style>
     * {
         box-sizing: border-box;
         padding: 0;
         text-decoration: none;
-        list-style:none;
+        list-style: none;
 
     }
+
     nav {
-        display:flex;
+        display: flex;
         justify-content: space-between;
         align-items: center;
         height: 50px;
         width: 100%;
 
     }
+
     header {
         border-bottom: solid black 1px;
     }
 
-    .nav-start {
-        display:flex;
-        justify-content: flex-start;
-    }
-    .nav-end{
-        display:flex;
-        justify-content: flex-end;
-    }
+    
+
     nav ul {
         gap: 10px;
         font-size: 3vh;
     }
+
     nav a {
         padding: 10px;
         display: inline-block;
     }
+
     H2 {
         text-align: center;
         margin-top: 7%;
         font-size: 2vh;
     }
-    p{
+
+    p {
         font-size: 2.5vh;
     }
-    .checknappi{
-        font-size: 30px;
-        display:none;
-        margin-bottom: 10px;
-    }
-    #check {
-        display:none;
-    }
+
+    
+
     main {
         height: auto;
     }
-    .desc {
-        display:flex;
-        flex-direction: column;
-        width: 50%;
-        margin: auto;
-    }
-    .instruction {
-        margin-bottom: 5%;
-        margin-top: 5%;
-    }
-    .instruction input {
-        width: 100%;
-        height: 500px;
-    }
-    .buttons {
-        display:flex;
-        flex-direction: column;
-        margin: auto;
-        gap: 20px;
-        justify-content: center;
-        align-items: center;
-    }
-    .buttons input {
-        width: 100%;
-        height: 20px;
-    }
 
-    .buttons button {
-        width: 100%;
-    }
-
-    .post {
-        height: 50px;
-        width: 25%;
-    }
-    .postButton {
-        text-align: center;
-    }
-    .modalflex {
-        display:flex;
-        flex-direction: row;
-    }
-    .modaladd {
-        text-align: center;
-    }
-    .tags{
-        background-color:lightgray;
-        height: 300px;
-        width: 70%;
-        margin:auto;
-        border:solid 1px gray;
-    }
-    .tagbutton button{
-        width: 25%;
-        margin-top:5%;
-        height: 40px;
-    }
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgb(0,0,0);
-        background-color: rgba(0,0,0,0.4);
-    }
-
-
-    .modal-content {
-        background-color: #fefefe;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 60%;
-    }
-
-
-    .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-
-    .close:hover,
-    .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-    }
+  
 
     @media screen and (max-width: 525px) {
 
@@ -172,117 +76,125 @@
         article {
             flex-direction: column-reverse;
         }
+
         .checknappi {
             display: flex;
         }
+
         header nav {
             display: none;
         }
-        #check:checked ~ nav{
+
+        #check:checked~nav {
             height: 20vh;
-            display:flex;
+            display: flex;
             flex-direction: column;
             margin-bottom: 5%;
         }
+
         nav {
             justify-content: unset;
             align-items: unset;
             width: 100%;
-            gap:10px;
+            gap: 10px;
 
         }
-        .nav-end{
-            gap:10px;
-            margin:0;
+
+        .nav-end {
+            gap: 10px;
+            margin: 0;
             flex-direction: column;
-            padding:0;
+            padding: 0;
         }
+
         .nav-start {
-            margin:0;
-            padding:0;
+            margin: 0;
+            padding: 0;
         }
+
         nav ul {
             justify-content: unset;
         }
+
         svg {
             font-size: 5vh;
-            padding:10px 10px 0px 10px;
+            padding: 10px 10px 0px 10px;
         }
     }
-
-
 </style>
+
 <body>
-<header>
-    <input type="checkbox" id="check">
-    <label for="check" class="checknappi">
-        <i class="fas fa-bars"></i>
-    </label>
-    <label class="logo"></label>
+    <header>
+        <input type="checkbox" id="check">
+        <label for="check" class="checknappi">
+            <i class="fas fa-bars"></i>
+        </label>
+        <label class="logo"></label>
         <nav>
-        <ul class="nav-start">
-            <li><a href="#">Etusivu</a></li>
-        </ul>
-        <ul class="nav-end">
-            <li><a href="#">Kirjaudu</a></li>
-            <li><a href="#">Rekisteröinti</a></li>
-        </ul>
-</nav>
-</header>
-<main>
-<H2>ADD RECIPE</H2>
-<div class="buttons">
-    <div class="recipename">
-        <input placeholder="Recipe's name">
-        <button id="tag" >Add Tags</button>
-    </div>
-    <div id="editModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="modaladd">
-                <H3>Add tags</H3>
-            <div class="tags">
+            <ul class="nav-start">
+                <li><a href="#">Etusivu</a></li>
+            </ul>
+            <ul class="nav-end">
+                <li><a href="#">Kirjaudu</a></li>
+                <li><a href="#">Rekisteröinti</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <H2>ADD RECIPE</H2>
+        <div class="buttons">
+            <div class="recipename">
+                <input placeholder="Recipe's name">
+                <button id="tag">Add Tags</button>
             </div>
-                <div class="tagbutton">
-                    <button>Save</button>
+            <div id="editModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="modaladd">
+                        <H3>Add tags</H3>
+                        <div class="tags">
+                        </div>
+                        <div class="tagbutton">
+                            <button>Save</button>
+                        </div>
+                    </div>
                 </div>
-    </div>
-    </div>
-    </div>
-    <div class="imagebutton">
-        <button class="uploadimage">Upload Image</button>
-    </div>
-    </div>
-</div>
-<div class="desc">
-    <div class="instruction">
-        <input>
-    </div>
-    <div class="postButton">
-    <button class="post">Post Recipe</button>
-    </div>
-</div>
-</main>
-<script>
+            </div>
+            <div class="imagebutton">
+                <button class="uploadimage">Upload Image</button>
+            </div>
+        </div>
+        </div>
+        <div class="desc">
+            <div class="instruction">
+                <input>
+            </div>
+            <div class="postButton">
+                <button class="post">Post Recipe</button>
+            </div>
+        </div>
+    </main>
+    <script>
 
-  const editProfile = document.getElementById("editModal");
+        const editProfile = document.getElementById("editModal");
 
-  const button = document.getElementById("tag");
+        const button = document.getElementById("tag");
 
-  let span = document.getElementsByClassName("close")[0];
+        let span = document.getElementsByClassName("close")[0];
 
-  button.onclick = function() {
-    editProfile.style.display = "block";
-  }
+        button.onclick = function () {
+            editProfile.style.display = "block";
+        }
 
-  span.onclick = function() {
-    editProfile.style.display = "none";
-  }
-  window.onclick = function(event) {
-    if (event.target == editProfile) {
-      editProfile.style.display = "none";
-    }
-  }
-</script>
+        span.onclick = function () {
+            editProfile.style.display = "none";
+        }
+        window.onclick = function (event) {
+            if (event.target == editProfile) {
+                editProfile.style.display = "none";
+            }
+        }
+    </script>
 </body>
+
 </html>
