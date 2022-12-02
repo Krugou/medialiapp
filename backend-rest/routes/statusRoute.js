@@ -63,6 +63,7 @@ router.get('/', function (req, res, next) {
             queueLimit: 0,
         });
         let location = process.env.NODE_ENV
+        
         local.query(
             'SELECT * FROM `jakrecipes`.`allthecounts`;',
             function (err, result) {

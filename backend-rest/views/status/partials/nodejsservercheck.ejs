@@ -5,52 +5,51 @@
         </script>
     </h1>
 
-    <h1  class="heart big " id="uptime"  >
-      loading script...
-        
-        <script> 
-        let adminotsikko = document.getElementById('adminotsikko');
-       if (location === localhost){
-        adminotsikko.textContent = 'JAKRECIPES admin dashboard - localhost'
-       } else {
-        adminotsikko.textContent = 'JAKRECIPES admin dashboard - production'
-       }
-               function uptimes() {      
-             let newdate = (Date.now() - "<%= date %>") / 1000;
+    <h1 class="heart big " id="uptime">
+        loading script...
+
+        <script>
+            let adminotsikko = document.getElementById('adminotsikko');
+            let development = 'development';
+            let address = '<%= location %>'
+            if (address === development) {
+                adminotsikko.textContent = 'JAKRECIPES admin dashboard - localhost'
+            } else {
+                adminotsikko.textContent = 'JAKRECIPES admin dashboard - production'
+            }</script>
+        <script>
+            function uptimes() {
+                let newdate = (Date.now() - "<%= date %>") / 1000;
                 let seconds = Math.floor(newdate % 60);
                 let minutes = Math.floor((newdate / 60) % 60);
                 let hours = Math.floor((newdate / (60 * 60)) % 24);
                 let days = Math.floor(newdate / (60 * 60 * 24));
-                
                 let setTitle = document.querySelector('title');
                 let uptime = document.getElementById('uptime');
-                let footerImageMod = document.getElementById('transparent'); 
-                      
-          
-            
-             if (days == 0 && hours > 0) {
-                setTitle.textContent = 'Server status uptime: ' + hours + " hours " + minutes + ' mins ' + seconds + ' secs '
-                uptime.innerHTML = 'Server uptime: ' + hours + " hours " + minutes + ' mins ' + seconds + ' secs '
-                 footerImageMod.innerHTML = '<img id="funnydogs" src="./images/hours.jpg" alt="hours" >'
-            } else if (days == 0 && hours == 0 && minutes > 0) {
-                setTitle.textContent = 'Server status uptime: ' + minutes + ' mins ' + seconds + ' secs '
-                uptime.innerHTML =  'Server uptime: ' + minutes + ' mins ' + seconds + ' secs ' 
-                footerImageMod.innerHTML = '<img id="funnydogs" src="./images/minutes.jpg" alt="minutes" >'
-            } else if (days == 0 && hours == 0 && minutes == 0) {
-                setTitle.textContent = 'Server status uptime: ' + seconds + ' secs '
-             uptime.innerHTML = 'Server uptime: ' + seconds + ' secs ' 
-             footerImageMod.innerHTML = '<img id="funnydogs" src="./images/seconds.jpg" alt="seconds">'
+                let footerImageMod = document.getElementById('transparent');
+                if (days == 0 && hours > 0) {
+                    setTitle.textContent = 'Server status uptime: ' + hours + " hours " + minutes + ' mins ' + seconds + ' secs '
+                    uptime.innerHTML = 'Server uptime: ' + hours + " hours " + minutes + ' mins ' + seconds + ' secs '
+                    footerImageMod.innerHTML = '<img id="funnydogs" src="./images/hours.jpg" alt="hours" >'
+                } else if (days == 0 && hours == 0 && minutes > 0) {
+                    setTitle.textContent = 'Server status uptime: ' + minutes + ' mins ' + seconds + ' secs '
+                    uptime.innerHTML = 'Server uptime: ' + minutes + ' mins ' + seconds + ' secs '
+                    footerImageMod.innerHTML = '<img id="funnydogs" src="./images/minutes.jpg" alt="minutes" >'
+                } else if (days == 0 && hours == 0 && minutes == 0) {
+                    setTitle.textContent = 'Server status uptime: ' + seconds + ' secs '
+                    uptime.innerHTML = 'Server uptime: ' + seconds + ' secs '
+                    footerImageMod.innerHTML = '<img id="funnydogs" src="./images/seconds.jpg" alt="seconds">'
 
+                }
+                else {
+                    setTitle.textContent = 'Server status uptime: ' + days + ' days ' + hours + ' hours ' + minutes + ' mins ' + seconds + ' secs '
+                    uptime.innerHTML = 'Serveruptime: ' + days + ' days ' + hours + ' hours ' + minutes + ' mins ' + seconds + ' secs '
+                    footerImageMod.innerHTML = '<img id="funnydogs" src="./images/days.jpg" alt="days" >'
+                }
+
+                setTimeout(uptimes, 1000);
             }
-            else {
-                setTitle.textContent = 'Server status uptime: ' + days + ' days ' + hours + ' hours ' + minutes + ' mins ' + seconds + ' secs '
-               uptime.innerHTML = 'Serveruptime: ' + days + ' days ' + hours + ' hours ' + minutes + ' mins ' + seconds + ' secs ' 
-               footerImageMod.innerHTML = '<img id="funnydogs" src="./images/days.jpg" alt="days" >'
-            }
-          
-                 setTimeout(uptimes, 1000);
-                 }
-                 
+
         </script>
     </h1>
 
