@@ -10,122 +10,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="media/icons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="media/icons/favicon-16x16.png">
   <title>testing</title>
-  <link rel="stylesheet" href="./css/fixed.css" />
+  <link rel="stylesheet" href="./css/main.css" />
 </head>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      padding: 0;
-      text-decoration: none;
-      list-style:none;
-
-    }
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 50px;
-      width: 100%;
-
-    }
-    header {
-      border-bottom: solid black 1px;
-    }
-
-
-    nav ul {
-      gap: 10px;
-      font-size: 3vh;
-    }
-    nav a {
-      padding: 10px;
-      display: inline-block;
-    }
-    img{
-      width: 150px;
-    }
-    H2 {
-      text-align: center;
-      margin-top: 5%;
-      font-size: 30px;
-    }
-    p{
-      font-size: 2.5vh;
-    }
-
-    main {
-    height: auto;
-    }
-    article {
-      display: flex;
-      height: auto;
-      justify-content: space-between;
-    }
-
-
-
-
-    @media screen and (max-width: 525px) {
-      article {
-        flex-direction: column-reverse;
-      }
-      .profile {
-        width: auto;
-      }
-      .posts {
-        width: auto;
-        margin-top: 15%;
-        margin-left: 7%;
-        margin-right: 7%;
-
-      }
-      .checknappi {
-        display: flex;
-      }
-      header nav {
-        display: none;
-      }
-      #check:checked ~ nav{
-        height: 20vh;
-        display:flex;
-        flex-direction: column;
-        margin-bottom: 5%;
-      }
-      nav {
-        justify-content: unset;
-        align-items: unset;
-        width: 100%;
-        gap:10px;
-
-      }
-      .nav-end{
-        gap:10px;
-        margin:0;
-        flex-direction: column;
-        padding:0;
-      }
-      .nav-start {
-        margin:0;
-        padding:0;
-      }
-      nav ul {
-        justify-content: unset;
-      }
-      svg {
-        font-size: 5vh;
-        padding:10px 10px 0px 10px;
-      }
-    }
-    @media screen and (max-width: 320px) {
-      .username input {
-        width:100%;
-      }
-    }
-
-
-
-  </style>
 
   <body class="pagebody">
   <header class="headtop">
@@ -141,10 +27,11 @@
       </ul>
       <ul class="nav-end">
         <li><a href="logout.html">Kirjaudu Ulos</a></li>
+        <li><a href="profile.html">Profiili</a></li>
       </ul>
   </nav>
   </header>
-  <main>
+  <main class="pagemain">
     <H2 class="otsikko">Profiili</H2>
     <article id="profileArticle">
     <div class="posts">
@@ -155,7 +42,7 @@
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium assumenda dolorem doloremque, eum facere incidunt ipsum iste laudantium modi molestias numquam placeat qui quia quo ratione repudiandae tempore, velit voluptatibus.</p>
       </div>
     <div class="profile">
-    <img src="media/logos/jakrecipeslogo.svg" alt="jakrecipeslogo">
+    <img id="profilepic" src="media/logos/jakrecipeslogo.svg" alt="jakrecipeslogo">
       <p>Username</p>
       <button id="edit">Edit Profile</button>
     </div>

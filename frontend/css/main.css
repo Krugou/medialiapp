@@ -1,3 +1,10 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+
+}
 .Etuylä {
   background-color: #dfedf2;
   display: flex;
@@ -8,8 +15,52 @@
   gap: 10px;
 }
 
-.title {
+
+.pagebody {
+  margin:0;
+  height:100vh;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+
+}
+
+.headtop {
+  border-bottom: solid black 1px;
+  background-color: #0D1E40;
+}
+
+
+.navbar ul {
+  gap: 10px;
+  font-size: 3vh;
+}
+
+.navbar a {
+  padding: 10px;
+  display: inline-block;
+  color:white;
+}
+.otsikko {
   text-align: center;
+  margin-top: 5em;
+  margin-bottom: 2.5em;
+  font-size: 2vh;
+}
+
+p {
+  font-size: 2.5vh;
+}
+
+
+
+.pagemain{
+  height: auto;
 }
 
 .reseptit {
@@ -87,40 +138,7 @@
   height: 40px;
 }
 
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
-}
 
-.modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 60%;
-}
-
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
 .checknappi {
   font-size: 30px;
   display: none;
@@ -185,6 +203,19 @@
   text-decoration: none;
   cursor: pointer;
 }
+.closeDelete {
+  color: #aaaaaa;
+  float: left;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.closeDelete:hover,
+.closeDelete:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
 
 .filters {
   background-color: lightgray;
@@ -223,55 +254,6 @@
   font-size: 30px;
 }
 
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
-}
-.modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 60%;
-  text-align: center;
-}
-
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.closeDelete {
-  color: #aaaaaa;
-  float: left;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.closeDelete:hover,
-.closeDelete:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
 .delete {
   justify-content: space-between;
 }
@@ -317,4 +299,143 @@
 }
 #check {
   display: none;
+}
+.recipefigure {
+  border: solid 1px black;
+  width: 15%;
+  font-size: 15px;
+  padding-bottom: 15px;
+  margin: 7%;
+  background-color: #DFEDF2;
+  text-align: center;
+}
+
+.recipefigure button {
+  background-color: #0D1E40;
+  color: white;
+}
+#profileArticle {
+  display: flex;
+  height: auto;
+  justify-content: space-between;
+}
+#profilepic{
+  width: 25%;
+}
+.profile p {
+  font-size: 30px;
+}
+#recipepic {
+  text-align: center;
+  width:25%;
+}
+.recipe {
+  padding: 50px;
+  text-align: center;
+}
+.recipe p {
+  border: solid 1px black;
+}
+.comments {
+  text-align:center;
+  border: solid 1px black;
+}
+#signupImage{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 15em;
+}
+.signup {
+  text-align:center;
+}
+.nappi {
+  text-align: center;
+  margin-top: 5em;
+}
+
+
+
+
+@media screen and (max-width: 1024px) {
+  .recipefigure {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+
+  .reseptit {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 525px) {
+
+  .recipefigure {
+    width: 60%;
+  }
+
+  .Etuylä {
+    flex-direction: column;
+  }
+  .recipebutton {
+    margin: 7%;
+  }
+  .desc {
+    width: 75%;
+  }
+  .checknappi {
+    display: flex;
+  }
+  .navbar {
+    display: none;
+  }
+  #check:checked ~ .navbar{
+    height: 15vh;
+    display:flex;
+    flex-direction: column;
+    margin-bottom: 5%;
+  }
+  .navbar {
+    justify-content: unset;
+    align-items: unset;
+    width: 100%;
+    gap:10px;
+  }
+  .navbar a{
+    padding:0;
+  }
+  .nav-end{
+    gap:10px;
+    margin:0;
+    flex-direction: column;
+    padding:0;
+  }
+  .nav-start {
+    margin:0;
+    padding:0;
+  }
+  .navbar ul {
+    justify-content: unset;
+  }
+  svg {
+    font-size: 5vh;
+    padding:10px 10px 0px 10px;
+  }
+  #profileArticle{
+    flex-direction: column-reverse;
+  }
+  .profile {
+    width: auto;
+  }
+  .posts {
+    width: auto;
+    margin-top: 15%;
+    margin-left: 7%;
+    margin-right: 7%;
+  }
+  #recipepic {
+    width: 75%;
+  }
 }

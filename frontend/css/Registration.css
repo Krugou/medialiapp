@@ -34,12 +34,7 @@
 .navbar a {
     padding: 10px;
 }
-img{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 150px;
-}
+
 .otsikko{
     text-align: center;
 }
@@ -85,8 +80,7 @@ p{
         flex-direction: column;
         margin-bottom: 5%;
     }
-    .navb
-    ar {
+    .navbar {
         justify-content: unset;
         align-items: unset;
         width: 100%;
