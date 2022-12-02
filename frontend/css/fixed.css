@@ -233,14 +233,8 @@
       display:flex;
       justify-content: flex-end;
     }
-    .nav-start {
-        display:flex;
-        justify-content: flex-start;
-    }
-    .nav-end{
-        display:flex;
-        justify-content: flex-end;
-    }
+   
+   
      .posts{
       width: 40%;
       margin-left: 7%;
@@ -358,14 +352,6 @@
       font-size: 30px;
       display:none;
       margin-bottom: 10px;
-    }
-    #check {
-      display:none;
-    }
-     .checknappi{
-        font-size: 30px;
-        display:none;
-        margin-bottom: 10px;
     }
     #check {
         display:none;
