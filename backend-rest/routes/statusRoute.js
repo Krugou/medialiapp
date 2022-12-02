@@ -33,6 +33,7 @@ router.get('/', function (req, res, next) {
 
                 res.render('/status/status', {
                     date: date.d,
+                    location: location,
                     alluserscount: result[2].count,
                     usercount: result[1].count,
                     recipecount: result[0].count,
