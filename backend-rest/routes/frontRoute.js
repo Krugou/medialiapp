@@ -9,7 +9,7 @@ router.get('/', function (req, res, next) {
 
 });
 router.get('/signIn', function (req, res, next) {
-    res.render('signIn')
+    res.render('/frontpage/signIn')
 
 
 });
