@@ -6,7 +6,7 @@ const app = express();
 const fs = require('fs');
 const authRoute = require('./routes/authRoute');
 const userRoute = require('./routes/userRoute');
-
+const frontRoute = require('./routes/frontRoute');
 const statusRoute = require('./routes/statusRoute');
 const { httpError } = require('./utils/errors');
 const passport = require('./utils/pass');
