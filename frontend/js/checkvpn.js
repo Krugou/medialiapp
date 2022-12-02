@@ -5,7 +5,7 @@ function existsFile(url) {
     http.send();
     return http.status != 404;
 }
-const checkvalue = existsFile('10.114.34.72');
+const checkvalue = existsFile('https://10.114.34.72/app/status');
 
 if (checkvalue === true) {
     var url = 'https://10.114.34.72/app'
