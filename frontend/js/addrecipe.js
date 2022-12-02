@@ -23,33 +23,37 @@ const addTags = (tags) => { // Syötetään objekti jossa mealtype infot
         const button = document.createElement('button');
         button.innerHTML = tag.Mealtype;
         button.classList.add('mealtypeButtons');
-        tagModal.appendChild(button);
-        button.addEventListener('click', () => {
-            console.log("asd1");
-            for (let i = 0; i < selectedTags.length; i++) {
-                if (selectedTags[i] === tag.Mealtype)
-                    return;
-            }
-            selectedTags.push(tag.Mealtype);
-            console.log(selectedTags);
+        if (!selectedTags.includes(tag.Mealtype)) {
+            tagModal.appendChild(button);
+            button.addEventListener('click', () => {
+                console.log("asd1");
+                /*for (let i = 0; i < selectedTags.length; i++) {
+                    if (selectedTags[i] === tag.Mealtype)
+                        return;
+                }
+                */
+                 
+                selectedTags.push(tag.Mealtype);
+                tagModal.removeChild(button);
+                console.log(selectedTags);
 
-            // TODO NÄYTÄ SELECTEDTAGS SIVULLA, MISTÄ VOI MYÖS POISTAA KO. TAGIN
-            const button2 = document.createElement('button');
-            button2.innerHTML = tag.Mealtype;
-            button2.classList.add("selectedMealTypeButtons");
-            instructionDiv.appendChild(button2);
-            button2.addEventListener('click', () => {
-               // console.log("hähää");
-             //   console.log(tag.Mealtype);
-                const poista = selectedTags.indexOf(tag.Mealtype);
-                 selectedTags.splice(poista, 1);
-                instructionDiv.removeChild(button2);
-               // console.log(selectedTags);
-                alert('Tagi: "'+ tag.Mealtype + '" poistettiin.');
+                // TODO NÄYTÄ SELECTEDTAGS SIVULLA, MISTÄ VOI MYÖS POISTAA KO. TAGIN
+                const button2 = document.createElement('button');
+                button2.innerHTML = tag.Mealtype;
+                button2.classList.add("selectedMealTypeButtons");
+                instructionDiv.appendChild(button2);
+                button2.addEventListener('click', () => {
+                    // console.log("hähää");
+                    //   console.log(tag.Mealtype);
+                    const poista = selectedTags.indexOf(tag.Mealtype);
+                    selectedTags.splice(poista, 1);
+                    instructionDiv.removeChild(button2);
+                    // console.log(selectedTags);
+                    alert('Tagi: "' + tag.Mealtype + '" poistettiin.');
+                });
+
             });
-
-            });
-
+        }
     });
 
 };
