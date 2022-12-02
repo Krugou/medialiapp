@@ -31,7 +31,7 @@ router.get('/', function (req, res, next) {
             function (err, result) {
                 if (err) throw err;
 
-                res.render('/status/status', {
+                res.render('status/status', {
                     date: date.d,
                     location: location,
                     alluserscount: result[2].count,
@@ -68,7 +68,7 @@ router.get('/', function (req, res, next) {
             function (err, result) {
                 if (err) throw err;
 
-                res.render('/status/status', {
+                res.render('status/status', {
                     date: date.d,
                     location: location,
                     alluserscount: result[2].count,
