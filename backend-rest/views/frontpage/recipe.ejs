@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./fontawesome/fontawesome.js" crossorigin="anonymous"></script>
+    <script src="./fontawesome/solid.js" crossorigin="anonymous"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="./media/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./media/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./media/icons/favicon-16x16.png">
+    <title>testing</title>
+</head>
+
+
+<style>
+    * {
+        box-sizing: border-box;
+        padding: 0;
+        text-decoration: none;
+        list-style: none;
+
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 50px;
+        width: 100%;
+
+    }
+
+    header {
+        border-bottom: solid black 1px;
+    }
+
+    .nav-start {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .nav-end {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    nav ul {
+        gap: 10px;
+        font-size: 3vh;
+    }
+
+    nav a {
+        padding: 10px;
+        display: inline-block;
+    }
+
+    H2 {
+        text-align: center;
+        margin-top: 5%;
+        font-size: 30px;
+    }
+
+    p {
+        font-size: 2.5vh;
+    }
+
+    .checknappi {
+        font-size: 30px;
+        display: none;
+        margin-bottom: 10px;
+    }
+
+    #check {
+        display: none;
+    }
+
+    main {
+        height: auto;
+    }
+
+    .profile p {
+        font-size: 30px;
+    }
+
+    #recipepic {
+        width: 25%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    .recipe {
+        padding: 50px;
+        text-align: center;
+    }
+
+    .recipe p {
+        border: solid 1px black;
+    }
+
+    .desc {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        margin: auto;
+    }
+
+    .comments {
+        text-align: center;
+        border: solid 1px black;
+    }
+
+    .instruction {
+        padding: 10px;
+        border: solid 1px black;
+    }
+
+    @media screen and (max-width: 525px) {
+
+        #recipepic {
+            width: 75%;
+        }
+
+
+        article {
+            flex-direction: column-reverse;
+        }
+
+        .checknappi {
+            display: flex;
+        }
+
+        header nav {
+            display: none;
+        }
+
+        #check:checked~nav {
+            height: 20vh;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 5%;
+        }
+    }
+</style>
+
+
+<body>
+    <header>
+        <input type="checkbox" id="check">
+        <label for="check" class="checknappi">
+            <i class="fas fa-bars"></i>
+        </label>
+        <label class="logo"></label>
+        <nav>
+            <ul class="nav-start">
+                <li><a href="frontpage">Etusivu</a></li>
+            </ul>
+            <ul class="nav-end">
+                <li><a href="signIn">Kirjaudu</a></li>
+                <li><a href="registration">Rekisteröinti</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="recipe">
+            <img id="recipepic" src="./media/logos/jakrecipeslogo.svg" alt="jakrecipeslogo">
+            <p>Likes, Reviews, stars, Tags</p>
+        </div>
+        <div class="desc">
+            <div class="instruction">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque consequatur,
+                    corporis culpa cupiditate, dolor, error eum minus natus nihil nulla officia porro quam quasi qui
+                    sit? Consectetur odio perferendis porro sed! Ipsa non, tempora? Ab consequuntur culpa, debitis eius
+                    error exercitationem impedit natus nemo possimus similique sunt veniam.</p>
+            </div>
+            <p class="comments">COMMENTS</p>
+        </div>
+    </main>
+    <script src="./js/registration.js" defer></script>
+</body>
+
+</html>
