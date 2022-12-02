@@ -23,8 +23,11 @@
         list-style: none;
 
     }
+    .body {
+        margin:0;
+    }
 
-    nav {
+    .navbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -33,23 +36,22 @@
 
     }
 
-    header {
+    .headtop {
         border-bottom: solid black 1px;
     }
 
     
 
-    nav ul {
+    .navbar ul {
         gap: 10px;
         font-size: 3vh;
     }
 
-    nav a {
+    .navbar a {
         padding: 10px;
         display: inline-block;
     }
-
-    H2 {
+    .otsikko {
         text-align: center;
         margin-top: 7%;
         font-size: 2vh;
@@ -61,7 +63,7 @@
 
     
 
-    main {
+    #addRecipeMain{
         height: auto;
     }
 
@@ -73,15 +75,11 @@
             width: 75%;
         }
 
-        article {
-            flex-direction: column-reverse;
-        }
-
         .checknappi {
             display: flex;
         }
 
-        header nav {
+        .navbar {
             display: none;
         }
 
@@ -92,7 +90,7 @@
             margin-bottom: 5%;
         }
 
-        nav {
+        .navbar {
             justify-content: unset;
             align-items: unset;
             width: 100%;
@@ -112,7 +110,7 @@
             padding: 0;
         }
 
-        nav ul {
+        .navbar ul {
             justify-content: unset;
         }
 
@@ -123,14 +121,14 @@
     }
 </style>
 
-<body>
-    <header>
+<body class="pagebody">
+    <header class="headtop">
         <input type="checkbox" id="check">
         <label for="check" class="checknappi">
             <i class="fas fa-bars"></i>
         </label>
         <label class="logo"></label>
-        <nav>
+        <nav class="navbar">
             <ul class="nav-start">
                 <li><a href="#">Etusivu</a></li>
             </ul>
@@ -140,8 +138,8 @@
             </ul>
         </nav>
     </header>
-    <main>
-        <H2>ADD RECIPE</H2>
+    <main id="addRecipeMain">
+        <H2 class="otsikko">ADD RECIPE</H2>
         <div class="buttons">
             <div class="recipename">
                 <input placeholder="Recipe's name">

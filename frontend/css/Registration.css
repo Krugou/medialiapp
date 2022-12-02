@@ -5,7 +5,7 @@
     list-style:none;
 
 }
-nav {
+.navbar {
     display:flex;
     justify-content: space-between;
     align-items: center;
@@ -14,7 +14,7 @@ nav {
 
 
 }
-header {
+.headtop {
     border-bottom: solid black 1px;
 }
 
@@ -27,11 +27,11 @@ header {
     display:flex;
 }
 
-nav ul {
+.navbar ul {
     gap: 10px;
     font-size: 3vh;
 }
-nav a {
+.navbar a {
     padding: 10px;
 }
 img{
@@ -40,7 +40,7 @@ img{
     margin-right: auto;
     width: 150px;
 }
-H2 {
+.otsikko{
     text-align: center;
 }
 
@@ -76,16 +76,16 @@ p{
     .checknappi {
         display: flex;
     }
-    header nav {
+    .navbar {
         display: none;
     }
-    #check:checked ~ nav{
+    #check:checked ~ .navbar{
         height: 20vh;
         display:flex;
         flex-direction: column;
         margin-bottom: 5%;
     }
-    nav {
+    .navbar {
         justify-content: unset;
         align-items: unset;
         width: 100%;
@@ -102,7 +102,7 @@ p{
         margin:0;
         padding:0;
     }
-    nav ul {
+    .navbar ul {
         justify-content: unset;
     }
     svg {
