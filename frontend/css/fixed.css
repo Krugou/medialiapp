@@ -19,24 +19,7 @@
   align-items: center;
   height: auto;
 }
-.nav-start {
-  display: flex;
-  justify-content: flex-start;
-}
 
-.nav-end {
-  display: flex;
-  justify-content: flex-end;
-}
-.checknappi {
-  font-size: 30px;
-  display: none;
-  margin-bottom: 10px;
-}
-
-#check {
-  display: none;
-}
 .desc {
   display: flex;
   flex-direction: column;
@@ -215,18 +198,10 @@
   margin-top: 5%;
 }
 .nav-start {
-  justify-content: flex-start;
   display: flex;
+  justify-content: flex-start;
 }
 
-.nav-end {
-  justify-content: flex-end;
-  display: flex;
-}
-.nav-start {
-  display: flex;
-  justify-content: flex-start;
-}
 .nav-end {
   display: flex;
   justify-content: flex-end;
@@ -316,18 +291,10 @@
   text-align: center;
   gap: 10px;
 }
+
 .save button {
   height: 35px;
   width: 25%;
-}
-
-.Etuylä {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50%;
-  border-bottom: 1px solid;
-  background-color: whitesmoke;
 }
 
 .Reseptikuva {
