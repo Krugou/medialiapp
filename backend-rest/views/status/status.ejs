@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%- include ('./statuspartials/head') %>
+<%- include ('./partials/head') %>
 
     <body onload="uptimes()">
         <%- include ('./partials/header') %>
             <main>
                 <%- include ('./partials/nodejsservercheck') %>
-                    <%- include ('./statuspartials/statistics') %>
-                        <%- include ('./statuspartials/virtualservercheck') %>
+                    <%- include ('./partials/statistics') %>
+                        <%- include ('./partials/virtualservercheck') %>
 
             </main>
             <%- include ('./partials/footer') %>
