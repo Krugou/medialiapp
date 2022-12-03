@@ -9,7 +9,7 @@ function insertPresentationData(amount) {
     presentationdata.innerHTML = loadout;
    
 }
-
+// esimerkki ei toimi
 function loadDBPresentationData() {
     const response = await fetch(url + '/recipes', fetchOptions);
     const json = await response.json();
