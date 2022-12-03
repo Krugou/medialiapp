@@ -25,7 +25,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 50px;
+  height: 5em;
   width: 100%;
 
 }
@@ -33,6 +33,7 @@
 .headtop {
   border-bottom: solid black 1px;
   background-color: #0D1E40;
+  height: 5em;
 }
 
 
@@ -155,6 +156,14 @@ p {
   margin-top: 5%;
   height: 40px;
 }
+.modal-content button{
+  background-color: #0D1E40;
+  border: solid 1px #0D1E40;
+  border-radius: 1em;
+  color: white;
+  height:3em;
+  width: 7em;
+}
 
 
 .checknappi {
@@ -167,13 +176,22 @@ p {
   display: none;
 }
 #addrecipesButton {
-  background: #0d1e40;
+  width: 7em;
+  height: 3em;
+  background-color: #0D1E40;
+  border-color: #0D1E40;
+  border-radius: 1em;
   color: white;
 }
 
 #filter {
-  background: #0d1e40;
+  width: 7em;
+  height: 3em;
+  background-color: #0D1E40;
+  border-color: #0D1E40;
+  border-radius: 1em;
   color: white;
+
 }
 
 .marpad1rem {
@@ -308,6 +326,15 @@ p {
   height: 35px;
   width: 25%;
 }
+.nappi button {
+  width: 7em;
+  height: 3em;
+  background-color: #0D1E40;
+  border-color: #0D1E40;
+  border-radius: 1em;
+  color: white;
+}
+
 .uploadimage {
   background-color: #0D1E40;
   border: solid 1px #0D1E40;
@@ -396,6 +423,14 @@ p {
 .nappi {
   text-align: center;
   margin-top: 5em;
+}
+#edit {
+  background-color: #0D1E40;
+  border: solid 1px #0D1E40;
+  border-radius: 1em;
+  color: white;
+  height:3em;
+  width: 7em;
 }
 
 @media screen and (max-width: 1024px) {
