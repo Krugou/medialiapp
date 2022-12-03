@@ -26,6 +26,18 @@ const getRecipesCount = async (next) => {
         next(httpError('Database error', 500));
     }
 }
+const getRecipeMealTypes = async (next) => {
+    try {
+        const [rows] = await promisePoolRegUser.execute(
+            `SELECT * FROM Mealtypes;
+                        `);
+        return rows;
+    }
+    catch (e){
+        console.error('getMealTypes', e.message);
+        next(httpError('Database error', 500));
+    }
+}
 const addRecipes = async (data, next) => {
 
     console.log("addRecipes");
@@ -107,6 +119,8 @@ const deleteRecipes = async (id, next) => {
     }
 }
 
+
+
 module.exports = {
     getAllRecipes,
     getRecipesCount,
@@ -116,5 +130,6 @@ module.exports = {
     findRecipesByAuthor,
     findRecipesById,
     updateRecipes,
-    deleteRecipes
+    deleteRecipes,
+    getRecipeMealTypes,
 }

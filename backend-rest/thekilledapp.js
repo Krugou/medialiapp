@@ -8,6 +8,7 @@ const authRoute = require('./routes/authRoute');
 const userRoute = require('./routes/userRoute');
 const frontRoute = require('./routes/frontRoute');
 const statusRoute = require('./routes/statusRoute');
+const recipesRoute = require('./routes/recipesRoute');
 const { httpError } = require('./utils/errors');
 const passport = require('./utils/pass');
 
@@ -30,12 +31,14 @@ if (process.env.NODE_ENV === 'production') {
 } else {
     require('./utils/localhost')(app, process.env.HTTP_PORT || 3000);
 };
-app.use('/front', frontRoute)
 
+app.use('/front', frontRoute);
 app.use('/auth', authRoute);
+app.use('/recipes', recipesRoute);
 
 app.use('/users', userRoute);
-app.use('/status', statusRoute)
+app.use('/status', statusRoute);
+
 // app.use((req, res, next) => {
 //     const err = httpError('Not found', 404);
 //     next(err);

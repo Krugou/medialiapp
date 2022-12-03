@@ -1,4 +1,5 @@
 'use strict';
+//const url = '10.114.34.72/app'; // change url when uploading to server
 const postButton = document.querySelector('.post');
 const tagModal = document.querySelector('.tags');
 const tagButton = document.querySelector('#tag');
@@ -63,8 +64,24 @@ tagButton.addEventListener('click', async (evt) => {
     evt.preventDefault()
 
 
+    console.log(url);
+    //TODO HAE TAGIT DYNAAMISESTI TIETOKANNASTA
+    try {
+        /*
+        const fetchOptions = {
+            headers: {
+                Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+            },
+        };
+        */
 
-    addTags(tags);
+        const response = await fetch(url + '/recipes/mealtypes');
+        const tags2 = await response.json();
+        addTags(tags2);
+    } catch (e) {
+        console.log(e.message);
+    }
+
 
 
 });

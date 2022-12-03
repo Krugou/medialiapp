@@ -7,9 +7,27 @@ const { getAllRecipes,
     findRecipesByAuthor,
     findRecipesById,
     updateRecipes,
-    deleteRecipes } = require('../models/recipesModel');
+    deleteRecipes, getRecipeMealTypes
+} = require('../models/recipesModel');
 const { validationResult } = require('express-validator');
 const { httpError } = require('../utils/errors');
+
+
+const recipes_mealtypes_get = async (req, res, next) => {
+
+    try {
+        const result = await getRecipeMealTypes(next);
+        if (result.length < 1) {
+            next(httpError('No Mealtypes Found', 500));
+        }
+        res.json(result);
+    }
+    catch (e){
+        console.error('recipes_mealtypes_get', e.message);
+        next(httpError('Internal server error', 500));
+    }
+
+};
 
 const recipes_list_get = async (req, res, next) => {
     try {
@@ -199,6 +217,7 @@ module.exports = {
     recipes_list_by_id_get,
     recipes_put,
     recipes_delete,
+    recipes_mealtypes_get,
 };
 
     
