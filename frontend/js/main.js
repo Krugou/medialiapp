@@ -12,4 +12,4 @@ function insertPresentationData(amount) {
 
 // valitse korttien määrä 
 
-insertPresentationData(99);
+insertPresentationData(6);
