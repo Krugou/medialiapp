@@ -19,7 +19,7 @@
 </head>
 
 <body class="pagebody">
-  <header class="headtop">
+  <header class="pageheader">
     <input type="checkbox" id="check">
     <label for="check" class="checknappi">
       <i class="fas fa-bars"></i>
@@ -39,7 +39,7 @@
   <main class="pagemain">
     <H2 class="otsikko">Profiili</H2>
     <article id="profileArticle">
-      <div class="posts">
+      <div class="userPosts">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at corporis, eaque enim esse iure qui
           rerum. Ad deleniti ex libero molestias unde? Blanditiis dolorem eius est nostrum, placeat quidem?
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium assumenda dolorem doloremque, eum facere
@@ -52,10 +52,10 @@
           incidunt ipsum iste laudantium modi molestias numquam placeat qui quia quo ratione repudiandae tempore, velit
           voluptatibus.</p>
       </div>
-      <div class="profile">
+      <div class="userProfile">
         <img id="profilepic" src="media/logos/jakrecipeslogo.svg" alt="jakrecipeslogo">
         <p>Username</p>
-        <button id="edit">Edit Profile</button>
+        <button id="editProfile">Edit Profile</button>
       </div>
       <div id="editModal" class="modal">
 
@@ -80,7 +80,7 @@
               <div>
                 <p>Are you sure you want to delete your profile?</p>
               </div>
-              <div class="delete">
+              <div class="deleteProfile">
                 <button id="noButton">No</button>
                 <button>Yes</button>
               </div>
@@ -95,7 +95,7 @@
 
         const editProfile = document.getElementById("editModal");
 
-        const button = document.getElementById("edit");
+        const button = document.getElementById("editProfile");
 
         let closeModal = document.getElementsByClassName("close")[0];
 

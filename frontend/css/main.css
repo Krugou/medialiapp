@@ -30,7 +30,7 @@
 
 }
 
-.headtop {
+.pageheader {
   border-bottom: solid black 1px;
   background-color: #0D1E40;
 
@@ -49,7 +49,7 @@
 }
 .otsikko {
   text-align: center;
-  margin-top: 5em;
+  margin-top: 1em;
   margin-bottom: 2.5em;
   font-size: 2.5rem;
 }
@@ -72,7 +72,7 @@ p {
   height: auto;
 }
 
-.desc {
+.Recipe_desc {
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -94,7 +94,7 @@ p {
   resize: none;
 }
 
-.buttons {
+.addRecipe_detail {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -121,7 +121,7 @@ p {
   height: 3em;
 }
 
-.post {
+.postRecipe {
   height: 3em;
   width: 7em;
   background-color: #0D1E40;
@@ -205,7 +205,7 @@ p {
     padding: 0.5rem;
 }
 
-.recipebutton {
+.addRecipes {
   text-align: center;
 }
 
@@ -287,7 +287,7 @@ p {
   padding-right: 1em;
 }
 
-.posts {
+.userPosts {
   width: 40%;
   margin-left: 7%;
   margin-top: 5%;
@@ -295,11 +295,11 @@ p {
   padding: 10px;
 }
 
-.profile {
+.userProfile {
   width: 50%;
   text-align: center;
 }
-.profile p {
+.userProfile p {
   font-size: 30px;
 }
 
@@ -431,7 +431,7 @@ p {
   text-align: center;
   margin-top: 5em;
 }
-#edit {
+#editProfile {
   background-color: #0D1E40;
   border: solid 1px #0D1E40;
   border-radius: 1em;
@@ -467,7 +467,7 @@ p {
   .recipebutton {
     margin: 7%;
   }
-  .desc {
+  .Recipe_desc {
     width: 75%;
   }
   .checknappi {
@@ -510,10 +510,10 @@ p {
   #profileArticle{
     flex-direction: column-reverse;
   }
-  .profile {
+  .userProfile {
     width: auto;
   }
-  .posts {
+  .userPosts {
     width: auto;
     margin-top: 15%;
     margin-left: 7%;
