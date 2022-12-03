@@ -25,15 +25,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 5em;
   width: 100%;
+  height: 4em;
 
 }
 
 .headtop {
   border-bottom: solid black 1px;
   background-color: #0D1E40;
-  height: 5em;
+
 }
 
 
@@ -128,6 +128,7 @@ p {
   border: solid 1px #0D1E40;
   border-radius: 1em;
   color: white;
+  margin-bottom: 2em;
 }
 
 .postButton {
@@ -476,16 +477,14 @@ p {
     display: none;
   }
   #check:checked ~ .navbar{
-    height: 15vh;
-    display:flex;
-    flex-direction: column;
-    margin-bottom: 5%;
-  }
-  .navbar {
     justify-content: unset;
     align-items: unset;
     width: 100%;
     gap:10px;
+    height: 17vh;
+    display:flex;
+    flex-direction: column;
+    padding-left:1em;
   }
   .navbar a{
     padding:0;
