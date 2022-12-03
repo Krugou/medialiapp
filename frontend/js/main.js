@@ -10,6 +10,15 @@ function insertPresentationData(amount) {
    
 }
 
+function loadDBPresentationData() {
+    const response = await fetch(url + '/recipes', fetchOptions);
+    const json = await response.json();
+    for (let i = 0; i < (json.length); i++) {
+        loadout += '<figure class="recipefigure"><img src="' + json.img[i] + '"><p>' + json.name[i] + '</p><p>' + json.time[i] + '</p><p>' + json.difficulty[i] + '</p><p>' + json.rating[i] + '</p><p>' + json.price[i] + '</p><p>' + json.tags[i]  
+
+    }
+}
+
 // valitse korttien määrä 
 
 insertPresentationData(6);
