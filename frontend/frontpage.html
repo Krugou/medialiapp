@@ -12,6 +12,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="media/icons/favicon-16x16.png">
     <title>JAK Reseptit</title>
     <link rel="stylesheet" href="./css/main.css" />
+    <script src="./js/main.js "defer></script>
     <script src="./js/utils/url.js" defer></script>
 
     <!-- <script src="./js/utils/checkvpn.js" defer></script> -->
@@ -28,18 +29,18 @@
         <label class="logo"></label>
         <nav class="navbar">
             <ul class="nav-start">
-                <li><a href="#">Etusivu</a></li>
+                <li class="marpad1rem"><a href="#">Etusivu</a></li>
             </ul>
             <ul class="nav-end">
-                <li><a href="signIn.html">Kirjaudu</a></li>
-                <li><a href="registration.html">Rekisteröinti</a></li>
-                <li><a href="logout.html">Kirjaudu ulos</a></li>
+                <li class="marpad1rem"><a href="signIn.html">Kirjaudu</a></li>
+                <li class="marpad1rem"><a href="registration.html">Rekisteröinti</a></li>
+                <li class="marpad1rem"><a href="logout.html">Kirjaudu ulos</a></li>
             </ul>
         </nav>
     </header>
     <section class="Etuylä">
-        <input type="text" aria-label="Reseptien haku" placeholder="Hae Resepti" class="Haeresepti">
-        <button id="filter">Filter</button>
+        <input type="text" aria-label="Reseptien haku" placeholder="Hae Resepti" class="Haeresepti marginhalfrem">
+        <button id="filter" class="marpad1rem">Filter</button>
         <div id="filterModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
@@ -55,13 +56,14 @@
         </div>
 
         <div class="recipebutton">
-            <button href="addRecipe.html" id="addrecipesButton">Tee resepti</a></button>
+            <button href="addRecipe.html" id="addrecipesButton" class="marpad1rem">Tee resepti</a></button>
         </div>
     </section>
     <main class="pagemain">
         <h2 class="otsikko"> Uusimmat Reseptit</h2>
-        <div class="reseptit">
-            <figure class="recipefigure">
+        <hr>
+        <div class="reseptit " id="presentationdata">
+            <!-- <figure class="recipefigure" >
                 <img src="media/logos/jakrecipeslogo.svg">
                 <p>Nimi</p>
                 <p>Aika</p>
@@ -120,7 +122,7 @@
                 <p>Hinta</p>
                 <p>Tags</p>
                 <button>Katso resepti</button>
-            </figure>
+            </figure> -->
 
         </div>
     </main>

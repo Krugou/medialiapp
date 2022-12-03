@@ -50,7 +50,7 @@
   text-align: center;
   margin-top: 5em;
   margin-bottom: 2.5em;
-  font-size: 2vh;
+  font-size: 2.5rem;
 }
 
 p {
@@ -156,6 +156,16 @@ p {
 #filter {
   background: #0d1e40;
   color: white;
+}
+
+.marpad1rem {
+    /* margin: 1rem; */
+    /* padding: 1rem; */
+}
+
+.marginhalfrem {
+    /* margin: 0.5rem; */
+    padding: 0.5rem;
 }
 
 .recipebutton {
@@ -300,12 +310,14 @@ p {
 #check {
   display: none;
 }
+
+ /* Resepti kortti */
 .recipefigure {
   border: solid 1px black;
-  width: 15%;
+  width: 25vw;
   font-size: 15px;
   padding-bottom: 15px;
-  margin: 7%;
+  margin: 1rem;
   background-color: #DFEDF2;
   text-align: center;
 }
@@ -359,12 +371,14 @@ p {
 
 @media screen and (max-width: 1024px) {
   .recipefigure {
-    width: 30%;
+    width: 30vw;
   }
 }
 
 @media screen and (max-width: 750px) {
-
+ .recipefigure {
+    width: 60vw;
+  }
   .reseptit {
     flex-direction: column;
   }
@@ -373,7 +387,7 @@ p {
 @media screen and (max-width: 525px) {
 
   .recipefigure {
-    width: 60%;
+    width: 60vw;
   }
 
   .Etuylä {
