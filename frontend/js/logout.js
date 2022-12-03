@@ -12,8 +12,15 @@
     // remove token
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('user');
-    alert('You have logged out');
-    location.href = 'frontpage.html';
+    // alert('You have logged out');
+    document.write('Redirecting to  Homepage...');
+    function redirect() {
+      
+      location.href = 'frontpage.html'
+    }
+    // little bit of delay
+    setTimeout(redirect, 500); // ms
+
   } catch (e) {
     console.log(e.message);
   }
