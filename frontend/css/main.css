@@ -343,6 +343,7 @@ p {
   height:3em;
   width:100%;
 }
+
 .imagebutton {
   width: 7em;
   text-align: center;
@@ -379,11 +380,16 @@ p {
   margin: 1rem;
   background-color: #DFEDF2;
   text-align: center;
+
 }
 
 .recipefigure button {
   background-color: #0D1E40;
+  border: solid 1px #0D1E40;
+  border-radius: 1em;
   color: white;
+  height:3em;
+  width: 7em;
 }
 #profileArticle {
   display: flex;
