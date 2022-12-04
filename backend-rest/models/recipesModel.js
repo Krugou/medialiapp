@@ -33,24 +33,13 @@ const getRecipeMealTypes = async (next) => {
                         `);
         return rows;
     }
-    catch (e){
+    catch (e) {
         console.error('getMealTypes', e.message);
         next(httpError('Database error', 500));
     }
 }
-const addRecipes = async (data, next) => {
 
-    console.log("addRecipes");
-    try {
-        const [rows] = await promisePoolRegUser.execute(`INSERT INTO Recipes (RecipeName, RecipeDescription, RecipeImage, RecipeIngredients, RecipeInstructions, RecipeCategory, RecipeAuthor) 
-                                                    VALUES (?, ?, ?, ?, ?, ?, ?);`,
-                                                    data);
-        return rows;
-    } catch (e) {
-        console.error('addRecipes', e.message);
-        next(httpError('Database error', 500));
-    }
-}
+
 const findRecipesByName = async (name, next) => {
 
     try {
@@ -63,10 +52,10 @@ const findRecipesByName = async (name, next) => {
         next(httpError('Database error', 500));
     }
 }
-const findRecipesByCategory = async (name, next) => {    
+const findRecipesByCourseCategory = async (name, next) => {
     try {
         const [rows] = await promisePoolRegUser.execute(`SELECT *
-                                                FROM Recipes WHERE RecipeCategory = "${name}";
+                                                FROM Recipes INNER JOIN courses on recipes.Recipecourse = courses.Courseid  WHERE courses.Coursetype = "${name}";
                                                 `);
         return rows;
     } catch (e) {
@@ -74,10 +63,22 @@ const findRecipesByCategory = async (name, next) => {
         next(httpError('Database error', 500));
     }
 }
-const findRecipesByAuthor = async (name, next) => {    
+const findRecipesByMealType = async (name, next) => {
     try {
-        const [rows] = await promisePoolRegUser.execute(`SELECT *
-                                                FROM Recipes WHERE RecipeAuthor = "${name}";
+        const [rows] = await promisePoolRegUser.execute(`SELECT recipename, recipetime,recipeguide,recipemaker,recipecourse,mealtype,imagefilepath
+FROM recipes INNER JOIN users ON recipes.recipemaker = users.Userid INNER JOIN recipemealtype on recipes.Recipeid = recipemealtype.Mealid INNER JOIN mealtypes on recipemealtype.Mealid = mealtypes.Mealtype INNER JOIN images on recipes.Recipeid = images.Imagerecipes   WHERE mealtypes.Mealtype = "${name}";
+                                                `);
+        return rows;
+    } catch (e) {
+        console.error('findRecipesByMealType', e.message);
+        next(httpError('Database error', 500));
+    }
+}
+
+const findRecipesByAuthorId = async (name, next) => {
+    try {
+        const [rows] = await promisePoolRegUser.execute(`SELECT recipename, recipetime,recipeguide,recipemaker,recipecourse,mealtype,imagefilepath
+FROM recipes INNER JOIN users ON recipes.recipemaker = users.Userid INNER JOIN recipemealtype on recipes.Recipeid = recipemealtype.Mealid INNER JOIN mealtypes on recipemealtype.Mealid = mealtypes.Mealtype INNER JOIN images on recipes.Recipeid = images.Imagerecipes     WHERE users.Userid = "${name};
                                                 `);
         return rows;
     } catch (e) {
@@ -85,10 +86,10 @@ const findRecipesByAuthor = async (name, next) => {
         next(httpError('Database error', 500));
     }
 }
-const findRecipesById = async (id, next) => {    
+const findRecipesById = async (id, next) => {
     try {
-        const [rows] = await promisePoolRegUser.execute(`SELECT *
-                                                FROM Recipes WHERE RecipeId = "${id}";
+        const [rows] = await promisePoolRegUser.execute(`SELECT recipename, recipetime,recipeguide,recipemaker,recipecourse,mealtype,imagefilepath
+FROM recipes INNER JOIN users ON recipes.recipemaker = users.Userid INNER JOIN recipemealtype on recipes.Recipeid = recipemealtype.Mealid INNER JOIN mealtypes on recipemealtype.Mealid = mealtypes.Mealtype INNER JOIN images on recipes.Recipeid = images.Imagerecipes    WHERE recipes.recipeid = "${name};
                                                 `);
         return rows;
     } catch (e) {
@@ -100,7 +101,7 @@ const updateRecipes = async (data, next) => {
     console.log("updateRecipes");
     try {
         const [rows] = await promisePoolRegUser.execute(`UPDATE Recipes SET RecipeName = ?, RecipeDescription = ?, RecipeImage = ?, RecipeIngredients = ?, RecipeInstructions = ?, RecipeCategory = ?, RecipeAuthor = ? WHERE RecipeId = ?;`,
-                                                    data);
+            data);
         return rows;
     } catch (e) {
         console.error('updateRecipes', e.message);
@@ -111,7 +112,7 @@ const deleteRecipes = async (id, next) => {
     console.log("deleteRecipes");
     try {
         const [rows] = await promisePoolRegUser.execute(`DELETE FROM Recipes WHERE RecipeId = ?;`,
-                                                    id);
+            id);
         return rows;
     } catch (e) {
         console.error('deleteRecipes', e.message);
