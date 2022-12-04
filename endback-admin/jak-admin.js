@@ -29,7 +29,7 @@ if (process.env.NODE_ENV === 'production') {
 } else {
     require('./utils/localhost')(app, process.env.HTTP_PORT || 3001);
 };
-app.get('/', res.send('hello world'));
+app.get('/', function (req, res) { res.send('hello world') });
 app.use('/front', frontRoute);
 app.use('/auth', authRoute);
 
