@@ -5,10 +5,8 @@ const cors = require('cors');
 const app = express();
 const fs = require('fs');
 const authRoute = require('./routes/authRoute');
-const userRoute = require('./routes/userRoute');
 const frontRoute = require('./routes/frontRoute');
 const statusRoute = require('./routes/statusRoute');
-const recipesRoute = require('./routes/recipesRoute');
 const { httpError } = require('./utils/errors');
 const passport = require('./utils/pass');
 
@@ -34,9 +32,7 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use('/front', frontRoute);
 app.use('/auth', authRoute);
-app.use('/recipes', recipesRoute);
 
-app.use('/users', userRoute);
 app.use('/status', statusRoute);
 
 // app.use((req, res, next) => {
