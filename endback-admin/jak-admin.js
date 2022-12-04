@@ -25,7 +25,7 @@ app.use(passport.initialize());
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 if (process.env.NODE_ENV === 'production') {
-    require('./utils/production')(app, process.env.HTTP_PORT || 3000, process.env.HTTPS_PORT || 8000);
+    require('./utils/production')(app, process.env.HTTP_PORT || 3001, process.env.HTTPS_PORT || 8001);
 } else {
     require('./utils/localhost')(app, process.env.HTTP_PORT || 3000);
 };
