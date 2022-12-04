@@ -22,20 +22,20 @@ FROM recipes
 }
 
 // admin komento 
-const getAllRecipes = async (next) => {
-    try {
-        const [rows] = await promisePoolAdmin.execute(`SELECT *
-FROM recipes 
- INNER JOIN  users  on recipes.recipemaker = users.Userid 
- INNER JOIN recipemealtype ON recipes.Recipeid = recipemealtype.Recipeid 
-  INNER JOIN mealtypes 
-  INNER JOIN courses ON recipes.Recipecourse = courses.Courseid   INNER JOIN images ON  recipes.Recipeid = images.Imagerecipe `);
-        return rows;
-    } catch (e) {
-        console.error('getAllRecipes', e.message);
-        next(httpError('Database error', 500));
-    }
-}
+// const getAllRecipes = async (next) => {
+//     try {
+//         const [rows] = await promisePoolAdmin.execute(`SELECT *
+// FROM recipes 
+//  INNER JOIN  users  on recipes.recipemaker = users.Userid 
+//  INNER JOIN recipemealtype ON recipes.Recipeid = recipemealtype.Recipeid 
+//   INNER JOIN mealtypes 
+//   INNER JOIN courses ON recipes.Recipecourse = courses.Courseid   INNER JOIN images ON  recipes.Recipeid = images.Imagerecipe `);
+//         return rows;
+//     } catch (e) {
+//         console.error('getAllRecipes', e.message);
+//         next(httpError('Database error', 500));
+//     }
+// }
 
 const getRecipesCount = async (next) => {
     try {
