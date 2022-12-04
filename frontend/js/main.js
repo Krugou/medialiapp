@@ -4,7 +4,7 @@ const presentationdata = document.getElementById('presentationdata');
 
 
 async function loadDBPresentationData() {
-    const response = await fetch('http://localhost:3000/recipes/allrecipes');
+    const response = await fetch(url+'/recipes/allrecipes');
     const json = await response.json();
     let loadout = "";
 
