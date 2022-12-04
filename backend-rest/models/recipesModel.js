@@ -66,7 +66,7 @@ const findRecipesByCourseCategory = async (name, next) => {
 const findRecipesByMealType = async (name, next) => {
     try {
         const [rows] = await promisePoolRegUser.execute(`SELECT recipename, recipetime,recipeguide,recipemaker,recipecourse,mealtype,imagefilepath
-FROM recipes INNER JOIN users ON recipes.recipemaker = users.Userid INNER JOIN recipemealtype on recipes.Recipeid = recipemealtype.Mealid INNER JOIN mealtypes on recipemealtype.Mealid = mealtypes.Mealtype INNER JOIN images on recipes.Recipeid = images.Imagerecipes   WHERE mealtypes.Mealtype = "${name}";
+FROM recipes INNER JOIN users ON recipes.recipemaker = users.Userid INNER JOIN recipemealtype on recipes.Recipeid = recipemealtype.Mealid INNER JOIN mealtypes on recipemealtype.Mealid = mealtypes.Mealtype INNER JOIN images on recipes.Recipeid = images.Imagerecipe   WHERE mealtypes.Mealtype = "${name}";
                                                 `);
         return rows;
     } catch (e) {
@@ -78,7 +78,7 @@ FROM recipes INNER JOIN users ON recipes.recipemaker = users.Userid INNER JOIN r
 const findRecipesByAuthorId = async (name, next) => {
     try {
         const [rows] = await promisePoolRegUser.execute(`SELECT recipename, recipetime,recipeguide,recipemaker,recipecourse,mealtype,imagefilepath
-FROM recipes INNER JOIN users ON recipes.recipemaker = users.Userid INNER JOIN recipemealtype on recipes.Recipeid = recipemealtype.Mealid INNER JOIN mealtypes on recipemealtype.Mealid = mealtypes.Mealtype INNER JOIN images on recipes.Recipeid = images.Imagerecipes     WHERE users.Userid = "${name};
+FROM recipes INNER JOIN users ON recipes.recipemaker = users.Userid INNER JOIN recipemealtype on recipes.Recipeid = recipemealtype.Mealid INNER JOIN mealtypes on recipemealtype.Mealid = mealtypes.Mealtype INNER JOIN images on recipes.Recipeid = images.Imagerecipe     WHERE users.Userid = "${name};
                                                 `);
         return rows;
     } catch (e) {
@@ -89,7 +89,7 @@ FROM recipes INNER JOIN users ON recipes.recipemaker = users.Userid INNER JOIN r
 const findRecipesById = async (id, next) => {
     try {
         const [rows] = await promisePoolRegUser.execute(`SELECT recipename, recipetime,recipeguide,recipemaker,recipecourse,mealtype,imagefilepath
-FROM recipes INNER JOIN users ON recipes.recipemaker = users.Userid INNER JOIN recipemealtype on recipes.Recipeid = recipemealtype.Mealid INNER JOIN mealtypes on recipemealtype.Mealid = mealtypes.Mealtype INNER JOIN images on recipes.Recipeid = images.Imagerecipes    WHERE recipes.recipeid = "${name};
+FROM recipes INNER JOIN users ON recipes.recipemaker = users.Userid INNER JOIN recipemealtype on recipes.Recipeid = recipemealtype.Mealid INNER JOIN mealtypes on recipemealtype.Mealid = mealtypes.Mealtype INNER JOIN images on recipes.Recipeid = images.Imagerecipe    WHERE recipes.recipeid = "${name};
                                                 `);
         return rows;
     } catch (e) {
@@ -108,10 +108,9 @@ const updateRecipes = async (data, next) => {
         next(httpError('Database error', 500));
     }
 }
-const deleteRecipes = async (id, next) => {
-    console.log("deleteRecipes");
+const deleteRecipesById = async (id, next) => {
     try {
-        const [rows] = await promisePoolRegUser.execute(`DELETE FROM Recipes WHERE RecipeId = ?;`,
+        const [rows] = await promisePoolRegUser.execute(`DELETE FROM Recipes,users,recipemealtype,mealtypes,images AND recipes.Recipeid = images.Imagerecipe  AND recipes.Recipeid = recipemealtype.Mealid AND recipes.recipemaker = users.Userid AND recipemealtype.Mealid = mealtypes.Mealtype WHERE RecipeId = ?;`,
             id);
         return rows;
     } catch (e) {
@@ -119,18 +118,36 @@ const deleteRecipes = async (id, next) => {
         next(httpError('Database error', 500));
     }
 }
-
-
-
-module.exports = {
-    getAllRecipes,
-    getRecipesCount,
-    addRecipes,
-    findRecipesByName,
-    findRecipesByCategory,
-    findRecipesByAuthor,
-    findRecipesById,
-    updateRecipes,
-    deleteRecipes,
-    getRecipeMealTypes,
+const deleteRecipeByAuthorId = async (id, next) => {
+    try {
+        const [rows] = await promisePoolRegUser.execute(`DELETE FROM Recipes,users,recipemealtype,mealtypes,images AND recipes.Recipeid = images.Imagerecipe  AND recipes.Recipeid = recipemealtype.Mealid AND recipes.recipemaker = users.Userid AND recipemealtype.Mealid = mealtypes.Mealtype WHERE UserId = ?;`,
+            id);
+        return rows;
+    } catch (e) {
+        console.error('deleteRecipes', e.message);
+        next(httpError('Database error', 500));
+    }
 }
+const addRecipes = async (data, next) => {
+    try {
+        const [rows] = await promisePoolRegUser.execute(`INSERT INTO Recipes (RecipeName, RecipeDescription, RecipeImage, RecipeIngredients, RecipeInstructions, RecipeCategory, RecipeAuthor) VALUES (?, ?, ?, ?, ?, ?, ?);`,
+
+
+
+            module.exports = {
+                getAllRecipes,
+                getRecipesCount,
+                addRecipes,
+                findRecipesByName,
+                findRecipesByCategory,
+                findRecipesByAuthor,
+                findRecipesById,
+                updateRecipes,
+                deleteRecipes,
+                getRecipeMealTypes,
+                findRecipesByMealType,
+                findRecipesByAuthorId,
+                findRecipesByCourseCategory,
+                deleteRecipeByAuthorId,
+                deleteRecipesById
+            };
