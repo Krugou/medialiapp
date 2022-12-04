@@ -156,12 +156,12 @@ const deleteRecipeByAuthorId = async (id, next) => {
 // ei valmis frontti ohjaus puuttuu
 const addRecipes = async (data, next) => {
     try {
-        const [rows] = await promisePoolRegUser.execute(`INSERT INTO recipes (recipename,recipetime,recipeguide,recipemaker,recipecourse)
+        const [rows] = await promisePoolRegUser.execute(`INSERT INTO Recipes (Recipename,Recipetime,Recipeguide,Recipemaker,Recipecourse)
 VALUES ('asdasd',30,'fdsadf',33,4) ;
-INSERT INTO recipemealtype (Recipeid,mealid) 
+INSERT INTO Recipemealtype (Recipeid,Mealid) 
 VALUES ( LAST_INSERT_ID() ,1) ;
-INSERT INTO images (imagerecipe,imagefilepath) 
-VALUES ( LAST_INSERT_ID() ,'./imagetest5.jpg') ;`,
+INSERT INTO Images (Imagerecipe ,Imagefilepath) 
+VALUES ( LAST_INSERT_ID() ,'./media/logos/jakrecipesjakrecipesjakrecipeslogo.svg.') ;`,
             data);
         return rows;
     } catch (e) {
