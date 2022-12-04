@@ -6,14 +6,14 @@ module.exports = (app, port, httpsPort) => {
     app.enable('trust proxy');
 
 
-    const sslkey  = fs.readFileSync('/etc/pki/tls/private/ca.key');
+    const sslkey = fs.readFileSync('/etc/pki/tls/private/ca.key');
     const sslcert = fs.readFileSync('/etc/pki/tls/certs/ca.crt');
     const options = {
         key: sslkey,
         cert: sslcert
     };
 
-    app.use ((req, res, next) => {
+    app.use((req, res, next) => {
         if (req.secure) {
             // request was via https, so do no special handling
             next();
@@ -29,7 +29,7 @@ module.exports = (app, port, httpsPort) => {
     });
 
     app.listen(port, () => console.log(`Program is listening to port:   ${port}!  time now is: ${Date(Date.now())}`));
-    https.createServer(options, app).listen(8000);
+    https.createServer(options, app).listen(8001);
 
 
 };
