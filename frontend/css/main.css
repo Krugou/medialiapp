@@ -318,7 +318,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 70vh;
+
 }
 .admin-main__form {
   display: flex;
@@ -351,6 +352,9 @@
   text-align: center;
   font-size: 2em;
   margin-bottom: 1em;
+}
+#admin-quotes {
+  text-align: center;
 }
 * {
   box-sizing: border-box;

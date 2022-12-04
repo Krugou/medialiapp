@@ -18,7 +18,6 @@ ul.appendChild(li);
 loginlink = document.createElement('a');
 loginlink.classList.add('admin-nav__link');
 loginlink.setAttribute ('id','admin-nav_login') 
-loginlink.innerHTML = 'login';
 li.appendChild(loginlink);
 main = document.createElement('main');
 main.classList.add('admin-main');
@@ -28,7 +27,7 @@ section.classList.add('admin-main__section');
 main.appendChild(section);
 h2 = document.createElement('h2');
 h2.classList.add('admin-main__title');
-h2.innerHTML = 'Recipes';
+h2.innerHTML = 'Login to Admin Dashboard';
 section.appendChild(h2);
 form = document.createElement('form');
 form.classList.add('admin-main__form');
@@ -60,8 +59,19 @@ quotes.setAttribute('id', 'admin-quotes');
 main.appendChild(quotes);
 
 quotesinput = document.getElementById('admin-quotes');
-quotesinput.innerHTML = '“The only thing that interferes with my learning is my education.”  Albert Einstein';
+// default quote if api is offline
+quotesinput.innerHTML = '<h3 id="admin-quotes">“The only thing that interferes with my learning is my education.” <br>  Albert Einstein</h3>'; 
 
+
+fetch("https://type.fit/api/quotes")
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        const theRandomNumber = Math.floor(Math.random() * (data.length-1)) ;
+        quotesinput.innerHTML = '<h3 id="admin-quotes">'+data[theRandomNumber].text+ '<br>  -' + data[theRandomNumber].author+ '</h3>';  
+        // console.table(data);
+    });
 
 document.getElementById("admin-submit-button").addEventListener("click", function () {
     const username = document.getElementById('admin-input-id').value;
