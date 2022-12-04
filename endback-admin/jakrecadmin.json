@@ -1,5 +1,5 @@
 {
-  "name": "jakrecipes",
+  "name": "jak-admin",
   "script": "/home/allseeyingeye/medialiapp/endback-admin/jak-admin.js",
   "watch": ["/home/allseeyingeye/medialiapp/endback-admin/"],
   "ignore_watch": [
