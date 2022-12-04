@@ -8,7 +8,7 @@ const promisePoolUser = poolUser.promise();
 // pääsivu  komento
 const getAllRecipesMainPage = async (next) => {
     try {
-        const [rows] = await promisePoolUser.execute(`SELECT Recipes.Recipeid,Recipes.Recipename , Recipes.Recipetime, Recipes.Recipeguide, Recipes.Recipemaker, Courses.coursetype, Mealtypes.Mealtype, Images.Imagefilepath
+        const [rows] = await promisePoolUser.execute(`SELECT Recipes.Recipeid,Recipes.Recipename , Recipes.Recipetime, Recipes.Recipeguide, Recipes.Recipemaker, Courses.Coursetype, Mealtypes.Mealtype, Images.Imagefilepath
 FROM Recipes 
 
  INNER JOIN Recipemealtype ON Recipes.Recipeid = Recipemealtype.Recipeid 
