@@ -8,12 +8,12 @@ const promisePoolUser = poolUser.promise();
 // pääsivu  komento
 const getAllRecipesMainPage = async (next) => {
     try {
-        const [rows] = await promisePoolUser.execute(`SELECT Recipes.Recipeid,Recipes.Recipename , Recipes.Recipetime, Recipes.Recipeguide, Recipes.Recipemaker, Courses.coursetype, mealtypes.Mealtype, images.Imagefilepath
+        const [rows] = await promisePoolUser.execute(`SELECT Recipes.Recipeid,Recipes.Recipename , Recipes.Recipetime, Recipes.Recipeguide, Recipes.Recipemaker, Courses.coursetype, mealtypes.Mealtype, Images.Imagefilepath
 FROM Recipes 
 
  INNER JOIN Recipemealtype ON Recipes.Recipeid = Recipemealtype.Recipeid 
   INNER JOIN Mealtypes 
-  INNER JOIN Courses ON Recipes.Recipecourse = Courses.Courseid   INNER JOIN images ON  Recipes.Recipeid = images.ImageRecipe ORDER BY Recipeid DESC limit 6 `);
+  INNER JOIN Courses ON Recipes.Recipecourse = Courses.Courseid   INNER JOIN Images ON  Recipes.Recipeid = Images.ImageRecipe ORDER BY Recipeid DESC limit 6 `);
         return rows;
     } catch (e) {
         console.error('getAllRecipes', e.message);
@@ -29,7 +29,7 @@ FROM Recipes
  INNER JOIN  Users  on Recipes.Recipemaker = Users.Userid 
  INNER JOIN Recipemealtype ON Recipes.Recipeid = Recipemealtype.Recipeid 
   INNER JOIN Mealtypes 
-  INNER JOIN Courses ON Recipes.Recipecourse = Courses.Courseid   INNER JOIN images ON  Recipes.Recipeid = images.ImageRecipe `);
+  INNER JOIN Courses ON Recipes.Recipecourse = Courses.Courseid   INNER JOIN Images ON  Recipes.Recipeid = Images.ImageRecipe `);
         return rows;
     } catch (e) {
         console.error('getAllRecipes', e.message);
@@ -87,7 +87,7 @@ const findRecipesByCourseCategory = async (name, next) => {
 const findRecipesByMealType = async (name, next) => {
     try {
         const [rows] = await promisePoolRegUser.execute(`SELECT Recipename, Recipetime,Recipeguide,Recipemaker,Recipecourse,Mealtype,imagefilepath
-FROM Recipes INNER JOIN Users ON Recipes.Recipemaker = Users.Userid INNER JOIN Recipemealtype on Recipes.Recipeid = Recipemealtype.Mealid INNER JOIN Mealtypes on Recipemealtype.Mealid = mealtypes.Mealtype INNER JOIN images on Recipes.Recipeid = images.ImageRecipe   WHERE mealtypes.Mealtype = "${name}";
+FROM Recipes INNER JOIN Users ON Recipes.Recipemaker = Users.Userid INNER JOIN Recipemealtype on Recipes.Recipeid = Recipemealtype.Mealid INNER JOIN Mealtypes on Recipemealtype.Mealid = mealtypes.Mealtype INNER JOIN Images on Recipes.Recipeid = Images.ImageRecipe   WHERE mealtypes.Mealtype = "${name}";
                                                 `);
         return rows;
     } catch (e) {
@@ -99,7 +99,7 @@ FROM Recipes INNER JOIN Users ON Recipes.Recipemaker = Users.Userid INNER JOIN R
 const findRecipesByAuthorId = async (name, next) => {
     try {
         const [rows] = await promisePoolRegUser.execute(`SELECT Recipename, Recipetime,Recipeguide,Recipemaker,Recipecourse,Mealtype,imagefilepath
-FROM Recipes INNER JOIN Users ON Recipes.Recipemaker = Users.Userid INNER JOIN Recipemealtype on Recipes.Recipeid = Recipemealtype.Mealid INNER JOIN Mealtypes on Recipemealtype.Mealid = mealtypes.Mealtype INNER JOIN images on Recipes.Recipeid = images.ImageRecipe     WHERE Users.Userid = "${name};
+FROM Recipes INNER JOIN Users ON Recipes.Recipemaker = Users.Userid INNER JOIN Recipemealtype on Recipes.Recipeid = Recipemealtype.Mealid INNER JOIN Mealtypes on Recipemealtype.Mealid = mealtypes.Mealtype INNER JOIN Images on Recipes.Recipeid = Images.ImageRecipe     WHERE Users.Userid = "${name};
                                                 `);
         return rows;
     } catch (e) {
@@ -114,7 +114,7 @@ const findRecipesById = async (id, next) => {
 INNER JOIN Users ON Recipes.Recipemaker = Users.Userid
 INNER JOIN Recipemealtype  
 INNER JOIN Mealtypes   
-INNER JOIN Courses INNER JOIN images   WHERE Recipes.Recipeid = "${name};
+INNER JOIN Courses INNER JOIN Images   WHERE Recipes.Recipeid = "${name};
                                                 `);
         return rows;
     } catch (e) {
@@ -135,7 +135,7 @@ const updateRecipes = async (data, next) => {
 }
 const deleteRecipesById = async (id, next) => {
     try {
-        const [rows] = await promisePoolRegUser.execute(`DELETE FROM Recipes,Users,RecipeMealtype,mealtypes,images AND Recipes.Recipeid = images.ImageRecipe  AND Recipes.Recipeid = Recipemealtype.Mealid AND Recipes.Recipemaker = Users.Userid AND Recipemealtype.Mealid = mealtypes.Mealtype WHERE RecipeId = ?;`,
+        const [rows] = await promisePoolRegUser.execute(`DELETE FROM Recipes,Users,RecipeMealtype,mealtypes,Images AND Recipes.Recipeid = Images.ImageRecipe  AND Recipes.Recipeid = Recipemealtype.Mealid AND Recipes.Recipemaker = Users.Userid AND Recipemealtype.Mealid = mealtypes.Mealtype WHERE RecipeId = ?;`,
             id);
         return rows;
     } catch (e) {
@@ -145,7 +145,7 @@ const deleteRecipesById = async (id, next) => {
 }
 const deleteRecipeByAuthorId = async (id, next) => {
     try {
-        const [rows] = await promisePoolRegUser.execute(`DELETE FROM Recipes,RecipeMealtype,mealtypes,images AND Recipes.Recipeid = images.ImageRecipe  AND Recipes.Recipeid = Recipemealtype.Mealid AND Recipes.Recipemaker = Users.Userid AND Recipemealtype.Mealid = mealtypes.Mealtype WHERE UserId = ?;`,
+        const [rows] = await promisePoolRegUser.execute(`DELETE FROM Recipes,RecipeMealtype,mealtypes,Images AND Recipes.Recipeid = Images.ImageRecipe  AND Recipes.Recipeid = Recipemealtype.Mealid AND Recipes.Recipemaker = Users.Userid AND Recipemealtype.Mealid = mealtypes.Mealtype WHERE UserId = ?;`,
             id);
         return rows;
     } catch (e) {
