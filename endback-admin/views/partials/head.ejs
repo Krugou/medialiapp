@@ -1,0 +1,292 @@
+<head>
+    <!-- basics of meta -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- favicon stuff -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./media/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./media/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./media/icons/favicon-16x16.png">
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Jakrecipes">
+    <meta name="author" content="Joonas Lamminmäki, Aleksi Nokelainen, Kaarle Häyhä">
+    <meta name="description" content="Jakrecipes is a recipe sharing website.">
+    <meta name="image" content="./media/logos/jakrecipeswide.svg">
+    <meta name="application-name" content="Jakrecipes">
+    <meta name="copyright" content="JAK ltd">
+    <meta name="page-topic" content="Food">
+    <meta name="page-type" content="Recipes">
+    <meta name="audience" content="Everyone">
+    <!-- avainsanat -->
+    <!-- näitä voi viel säätää -->
+    <meta name="keywords" content="HTML, CSS, JavaScript,recipes,accessible, ">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="10.114.34.72">
+    <meta property="og:title" content="Jakrecipes">
+    <meta property="og:description" content="Jakrecipes is a recipe sharing website">
+    <meta property="og:image" content="./media/logos/jakrecipeswide.svg">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="10.114.34.72">
+    <meta property="twitter:title" content="Jakrecipes">
+    <meta property="twitter:description" content="Jakrecipes is a recipe sharing website.">
+    <meta property="twitter:image" content="./media/logos/jakrecipeswide.svg">
+    <!-- Google Analytics  -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PGLYY82MB9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-PGLYY82MB9');
+    </script>
+    <!-- fontawesome stuff -->
+    <script src="./fontawesome/fontawesome.js" crossorigin="anonymous" defer></script>
+    <script src="./fontawesome/solid.js" crossorigin="anonymous" defer></script>
+    <!-- basic css and js link -->
+    <link rel="stylesheet" href="./css/whatever.css" />
+    <link rel="stylesheet" href="./css/changefont.css" />
+    <script src="./js/whatever.js" defer></script>
+    <!-- title -->
+    <title>Jak Reseptit</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+        }
+    
+        body {
+            height: 100vh;
+            margin: 0;
+        }
+    
+        .Etuylä {
+            background-color: #DFEDF2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 35%;
+            border-bottom: 1px solid;
+            gap: 10px;
+        }
+    
+        .title {
+            text-align: center;
+        }
+    
+        .reseptit {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: auto;
+        }
+    
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 50px;
+            width: 100%;
+        }
+    
+        header {
+            border-bottom: solid black 1px;
+            background-color: #0D1E40;
+    
+        }
+    
+        .nav-start {
+            justify-content: flex-start;
+            display: flex;
+        }
+    
+        .nav-end {
+            justify-content: flex-end;
+            display: flex;
+        }
+    
+        nav ul {
+            gap: 10px;
+            font-size: 3vh;
+        }
+    
+        nav a {
+            padding: 10px;
+            color: white;
+        }
+    
+        .checknappi {
+            font-size: 30px;
+            display: none;
+            margin-bottom: 10px;
+        }
+    
+        #check {
+            display: none;
+        }
+    
+        figure {
+            border: solid 1px black;
+            width: 15%;
+            font-size: 15px;
+            padding-bottom: 15px;
+            margin: 7%;
+            background-color: #DFEDF2;
+        }
+    
+        figure button {
+            background-color: #0D1E40;
+            color: white;
+        }
+    
+        #addrecipesButton {
+            background: #0D1E40;
+            color: white;
+        }
+    
+        #filter {
+            background: #0D1E40;
+            color: white;
+        }
+    
+        .recipebutton {
+            text-align: center;
+        }
+    
+        .Haeresepti {
+            width: 200px;
+            max-width: 100%;
+        }
+    
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+    
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 60%;
+            text-align: center;
+        }
+    
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+    
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    
+        .filters {
+            background-color: lightgray;
+            height: 300px;
+            width: 70%;
+            margin: auto;
+            border: solid 1px gray;
+        }
+    
+        .filtersave {
+            margin-top: 5%;
+        }
+    
+    
+        @media screen and (max-width: 1024px) {
+            figure {
+                width: 30%;
+            }
+        }
+    
+    
+    
+    
+    
+        @media screen and (max-width: 750px) {
+    
+            .reseptit {
+                flex-direction: column;
+            }
+        }
+    
+    
+        @media screen and (max-width: 525px) {
+    
+            figure {
+                width: 60%;
+            }
+    
+            .checknappi {
+                display: flex;
+            }
+    
+            header nav {
+                display: none;
+            }
+    
+            #check:checked~nav {
+                height: 17vh;
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 5%;
+            }
+    
+            .Etuylä {
+                flex-direction: column;
+            }
+    
+            .recipebutton {
+                margin: 7%;
+            }
+    
+            nav {
+                justify-content: unset;
+                align-items: unset;
+                width: 100%;
+                gap: 10px;
+    
+            }
+    
+            .nav-end {
+                gap: 10px;
+                margin: 0;
+                flex-direction: column;
+                padding: 0;
+            }
+    
+            .nav-start {
+                margin: 0;
+                padding: 0;
+            }
+    
+            nav ul {
+                justify-content: unset;
+            }
+    
+            svg {
+                color: white;
+                font-size: 5vh;
+                padding: 10px 10px 0px 10px;
+            }
+        }
+        </style>
+</head>

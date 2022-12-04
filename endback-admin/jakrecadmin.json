@@ -1,0 +1,14 @@
+{
+  "name": "jakrecipes",
+  "script": "/home/allseeyingeye/medialiapp/endback-admin/jak-admin.js",
+  "watch": ["/home/allseeyingeye/medialiapp/endback-admin/"],
+  "ignore_watch": [
+    "/home/allseeyingeye/medialiapp/endback-admin/node_modules",
+    "/home/allseeyingeye/medialiapp/endback-admin/uploads",
+    "/home/allseeyingeye/medialiapp/endback-admin/thumbnails",
+    "/home/allseeyingeye/medialiapp/endback-admin/views",
+    "/home/allseeyingeye/medialiapp/endback-admin/package-lock.json",
+    "/home/allseeyingeye/medialiapp/endback-admin/mariadbstatus.txt",
+    "/home/allseeyingeye/medialiapp/endback-admin/apachestatus.txt"
+  ]
+}

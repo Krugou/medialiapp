@@ -1,8 +1,8 @@
 {
-  "name": "jakrecipesrest",
+  "name": "jakrecipesadmin",
   "version": "1.0.0",
-  "description": "Joonaksen, Aleksin ja Kaarlen backend rest api",
-  "main": "jak.js",
+  "description": "Joonaksen, Aleksin ja Kaarlen backend admin api",
+  "main": "jak-admin.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
