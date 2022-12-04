@@ -1,6 +1,6 @@
 {
   "name": "jakrecipes",
-  "script": "/home/allseeyingeye/medialiapp/backend-rest/thekilledapp.js",
+  "script": "/home/allseeyingeye/medialiapp/backend-rest/jak.js",
   "watch": ["/home/allseeyingeye/medialiapp/backend-rest/"],
   "ignore_watch": [
     "/home/allseeyingeye/medialiapp/backend-rest/node_modules",
