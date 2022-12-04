@@ -198,7 +198,30 @@ select
 from
     `jakrecipes`.`Reciperating`;
 
+-- jakrecipes.recipesview source
 
+create or replace
+algorithm = UNDEFINED view `jakrecipes`.`recipesview` as
+select
+    `jakrecipes`.`recipes`.`Recipename` as `recipename`,
+    `jakrecipes`.`recipes`.`Recipetime` as `recipetime`,
+    `jakrecipes`.`recipes`.`Recipeguide` as `recipeguide`,
+    `jakrecipes`.`users`.`Userid` as `Userid`,
+    `jakrecipes`.`courses`.`Coursetype` as `coursetype`,
+    `jakrecipes`.`mealtypes`.`Mealtype` as `mealtype`,
+    `jakrecipes`.`images`.`Imagefilepath` as `imagefilepath`
+from
+    (((((`jakrecipes`.`recipes`
+join `jakrecipes`.`users` on
+    (`jakrecipes`.`recipes`.`Recipemaker` = `jakrecipes`.`users`.`Userid`))
+join `jakrecipes`.`recipemealtype` on
+    (`jakrecipes`.`recipes`.`Recipeid` = `jakrecipes`.`recipemealtype`.`Mealid`))
+join `jakrecipes`.`mealtypes` on
+    (`jakrecipes`.`recipemealtype`.`Mealid` = `jakrecipes`.`mealtypes`.`Mealtype`))
+join `jakrecipes`.`courses` on
+    (`jakrecipes`.`recipes`.`Recipecourse` = `jakrecipes`.`courses`.`Coursetype`))
+join `jakrecipes`.`images` on
+    (`jakrecipes`.`recipes`.`Recipeid` = `jakrecipes`.`images`.`Imagerecipe`));
 
 
 

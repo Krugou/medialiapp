@@ -5,17 +5,38 @@ const promisePoolAdmin = pooladmin.promise();
 const promisePoolRegUser = poolRegUser.promise();
 const promisePoolUser = poolUser.promise();
 
-const getAllRecipes = async (next) => {
+// pääsivu  komento
+const getAllRecipesMainPage = async (next) => {
     try {
-        const [rows] = await promisePoolAdmin.execute(`SELECT *
-                                                FROM Recipes;
-                                                `);
+        const [rows] = await promisePoolAdmin.execute(`SELECT recipes.Recipeid,recipes.Recipename , recipes.Recipetime, recipes.Recipeguide, recipes.Recipemaker, courses.coursetype, mealtypes.Mealtype, images.Imagefilepath
+FROM recipes 
+
+ INNER JOIN recipemealtype ON recipes.Recipeid = recipemealtype.Recipeid 
+  INNER JOIN mealtypes 
+  INNER JOIN courses ON recipes.Recipecourse = courses.Courseid   INNER JOIN images ON  recipes.Recipeid = images.Imagerecipe ORDER BY Recipeid DESC limit 6 `);
         return rows;
     } catch (e) {
         console.error('getAllRecipes', e.message);
         next(httpError('Database error', 500));
     }
 }
+
+// admin komento 
+const getAllRecipes = async (next) => {
+    try {
+        const [rows] = await promisePoolAdmin.execute(`SELECT *
+FROM recipes 
+ INNER JOIN  users  on recipes.recipemaker = users.Userid 
+ INNER JOIN recipemealtype ON recipes.Recipeid = recipemealtype.Recipeid 
+  INNER JOIN mealtypes 
+  INNER JOIN courses ON recipes.Recipecourse = courses.Courseid   INNER JOIN images ON  recipes.Recipeid = images.Imagerecipe `);
+        return rows;
+    } catch (e) {
+        console.error('getAllRecipes', e.message);
+        next(httpError('Database error', 500));
+    }
+}
+
 const getRecipesCount = async (next) => {
     try {
         const [rows] = await promisePoolAdmin.execute('SELECT COUNT(*) AS count FROM Recipes');
@@ -59,7 +80,7 @@ const findRecipesByCourseCategory = async (name, next) => {
                                                 `);
         return rows;
     } catch (e) {
-        console.error('findRecipesByCategory', e.message);
+        console.error('findRecipesByCourseCategory', e.message);
         next(httpError('Database error', 500));
     }
 }
@@ -89,7 +110,11 @@ FROM recipes INNER JOIN users ON recipes.recipemaker = users.Userid INNER JOIN r
 const findRecipesById = async (id, next) => {
     try {
         const [rows] = await promisePoolRegUser.execute(`SELECT recipename, recipetime,recipeguide,recipemaker,recipecourse,mealtype,imagefilepath
-FROM recipes INNER JOIN users ON recipes.recipemaker = users.Userid INNER JOIN recipemealtype on recipes.Recipeid = recipemealtype.Mealid INNER JOIN mealtypes on recipemealtype.Mealid = mealtypes.Mealtype INNER JOIN images on recipes.Recipeid = images.Imagerecipe    WHERE recipes.recipeid = "${name};
+        from recipes
+INNER JOIN users ON recipes.Recipemaker = users.Userid
+INNER JOIN recipemealtype  
+INNER JOIN mealtypes   
+INNER JOIN courses INNER JOIN images   WHERE recipes.recipeid = "${name};
                                                 `);
         return rows;
     } catch (e) {
@@ -120,7 +145,7 @@ const deleteRecipesById = async (id, next) => {
 }
 const deleteRecipeByAuthorId = async (id, next) => {
     try {
-        const [rows] = await promisePoolRegUser.execute(`DELETE FROM Recipes,users,recipemealtype,mealtypes,images AND recipes.Recipeid = images.Imagerecipe  AND recipes.Recipeid = recipemealtype.Mealid AND recipes.recipemaker = users.Userid AND recipemealtype.Mealid = mealtypes.Mealtype WHERE UserId = ?;`,
+        const [rows] = await promisePoolRegUser.execute(`DELETE FROM Recipes,recipemealtype,mealtypes,images AND recipes.Recipeid = images.Imagerecipe  AND recipes.Recipeid = recipemealtype.Mealid AND recipes.recipemaker = users.Userid AND recipemealtype.Mealid = mealtypes.Mealtype WHERE UserId = ?;`,
             id);
         return rows;
     } catch (e) {
@@ -128,26 +153,41 @@ const deleteRecipeByAuthorId = async (id, next) => {
         next(httpError('Database error', 500));
     }
 }
+// ei valmis frontti ohjaus puuttuu
 const addRecipes = async (data, next) => {
     try {
-        const [rows] = await promisePoolRegUser.execute(`INSERT INTO Recipes (RecipeName, RecipeDescription, RecipeImage, RecipeIngredients, RecipeInstructions, RecipeCategory, RecipeAuthor) VALUES (?, ?, ?, ?, ?, ?, ?);`,
+        const [rows] = await promisePoolRegUser.execute(`INSERT INTO recipes (recipename,recipetime,recipeguide,recipemaker,recipecourse)
+VALUES ('asdasd',30,'fdsadf',33,4) ;
+INSERT INTO recipemealtype (Recipeid,mealid) 
+VALUES ( LAST_INSERT_ID() ,1) ;
+INSERT INTO images (imagerecipe,imagefilepath) 
+VALUES ( LAST_INSERT_ID() ,'./imagetest5.jpg') ;`,
+            data);
+        return rows;
+    } catch (e) {
+        console.error('addRecipes', e.message);
+        next(httpError('Database error', 500));
+    }
+}
 
 
 
-            module.exports = {
-                getAllRecipes,
-                getRecipesCount,
-                addRecipes,
-                findRecipesByName,
-                findRecipesByCategory,
-                findRecipesByAuthor,
-                findRecipesById,
-                updateRecipes,
-                deleteRecipes,
-                getRecipeMealTypes,
-                findRecipesByMealType,
-                findRecipesByAuthorId,
-                findRecipesByCourseCategory,
-                deleteRecipeByAuthorId,
-                deleteRecipesById
-            };
+module.exports = {
+    getAllRecipes,
+    getRecipesCount,
+    addRecipes,
+    getAllRecipesMainPage,
+    findRecipesByName,
+    findRecipesByCourseCategory,
+    addRecipes,
+    findRecipesById,
+    updateRecipes,
+    getRecipeMealTypes,
+    findRecipesByMealType,
+    findRecipesByAuthorId,
+    findRecipesByCourseCategory,
+    deleteRecipeByAuthorId,
+    deleteRecipesById
+
+
+};

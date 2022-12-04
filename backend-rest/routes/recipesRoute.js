@@ -9,7 +9,9 @@ const { recipes_list_get,
     recipes_list_by_id_get,
     recipes_put,
     recipes_delete,
+    getAllRecipesController,
     recipes_mealtypes_get,} = require("../controllers/recipesController");
 const { body } = require('express-validator');
 router.get('/mealtypes', recipes_mealtypes_get);
+router.get('/allrecipes', getAllRecipesController );
 module.exports = router;
