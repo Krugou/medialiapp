@@ -25,7 +25,7 @@
 
 
 // production
-var url = `https://10.114.34.72/app`
+var url = `https://10.114.34.72/jak`
 
 
 // development
