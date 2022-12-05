@@ -1,9 +1,9 @@
 'use strict';
-const { 
-    getAllRecipesMainPage,
+const {
     getRecipeMealTypes,
 
 } = require('../models/recipesModel');
+const { getAllRecipesMainPage } = require('../models/normalUserModel');
 const { validationResult } = require('express-validator');
 const { httpError } = require('../utils/errors');
 
