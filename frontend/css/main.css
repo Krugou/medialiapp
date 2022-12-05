@@ -522,20 +522,24 @@ p {
 }
 .fa-heart {
   font-size: 3em;
-  margin-top: 0.5em;
 }
 .recipeStats {
+  align-items:center;
   text-align: center;
   padding: 1em;
   gap: 2em;
   display: flex;
-  width: 70%;
+  width: 60%;
   background-color:lightgray;
   height: auto;
   margin:auto;
 }
 .recipeTags {
   padding-top:2em;
+}
+#recipeName {
+  text-align: center;
+  font-size: 2em;
 }
 
 
@@ -557,6 +561,9 @@ p {
   }
   .Recipe_desc {
     width: 90%;
+  }
+  .recipeStats {
+    width:90%;
   }
 }
 
