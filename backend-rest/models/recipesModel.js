@@ -1,7 +1,8 @@
+'use strict'
 const poolRegUser = require('../database/db');
 const poolUser = require('../database/db');
 const pooladmin = require('../database/db');
-const {httpError} = require("../utils/errors");
+const { httpError } = require("../utils/errors");
 const promisePoolAdmin = pooladmin.promise();
 const promisePoolRegUser = poolRegUser.promise();
 const promisePoolUser = poolUser.promise();
@@ -162,7 +163,8 @@ const addRecipes = async (data, next) => {
  */
 const addRecipes = async (data, next) => {
     try {
-        console.log("addrecipes");
+        console.log("addrecipes asd", data);
+
         /*
                 const [rows] = await promisePoolRegUser.execute(`INSERT INTO Recipes (Recipename, Recipeguide, Recipecourse, Recipetime, Recipemaker)
                                                                     VALUES ("asd", "jep", 1, "232", 32);`, data
@@ -170,15 +172,20 @@ const addRecipes = async (data, next) => {
 
                 );
                 */
-        const [rows] = await promisePoolRegUser.execute(`INSERT INTO Recipes (Recipename, Recipeguide, Recipecourse, Recipetime, Recipemaker)
-                                                         VALUES ("${data[0]}", "${data[1]}", 1, "${data[3]}", 32)
-                                                          `)
+        const [rows] = await promisePoolRegUser.execute(` 
+                                                        INSERT INTO Recipes (Recipename, Recipeguide, Recipecourse, Recipetime, Recipemaker)
+                                                         VALUES ("${data[0]}", "${data[1]}", 4, "${data[3]}", 32);
+                                                         INSERT INTO Recipemealtype (recipeid,mealid) VALUES ( LAST_INSERT_ID() ,1);
+                                                        INSERT INTO images (Images.Imagerecipe ,Images.Imagefilepath)
+                                                        VALUES ( LAST_INSERT_ID() ,'./media/logos/jakrecipeslogo.svg');
+                                                        `, data);
+                                                          
 
-
+        console.log("addrecipes", rows);
 
         return rows;
     } catch (e) {
-        console.error('addRecipes', e.message);
+        console.error('addRecipes input', e.message);
         next(httpError('Database error', 500));
     }
 }
