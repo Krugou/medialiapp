@@ -27,8 +27,8 @@ module.exports = (app, port, httpsPort) => {
             res.redirect(301, `https://${req.headers.host}${proxypath}${req.url}`);
         }
     });
-
-    app.listen(port, () => console.log(`Program is listening to port:   ${port}!  time now is: ${Date(Date.now())}`));
+    let date = new Date(Date.now()).toISOString();
+    app.listen(port, () => console.log(`JAK-admin port:  ${port}!  time: ${date}`));
     https.createServer(options, app).listen(8001);
 
 

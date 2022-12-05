@@ -17,13 +17,14 @@ app.use(express.static('public'));
 
 
 
-
 app.set('view engine', 'ejs');
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true }))
 
 app.use(passport.initialize());
 
+app.use(express.static('uploads'));
+app.use('/thumbnails', express.static('thumbnails'));
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 if (process.env.NODE_ENV === 'production') {
