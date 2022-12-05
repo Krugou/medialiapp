@@ -230,9 +230,6 @@
   padding: 50px;
   text-align: center;
 }
-.recipe p {
-  border: solid 1px black;
-}
 .Recipe_desc {
   display: flex;
   flex-direction: column;
@@ -417,8 +414,10 @@
 #profilepic {
   width: 25%;
 }
-#recipepic {
-  text-align: center;
+.recipePic {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   width: 25%;
 }
 #signupImage {
@@ -508,8 +507,37 @@ p {
   float:right;
   padding-left: 1.5em;
   padding-right: 0.5em;
-
 }
+
+.fa-thumbs-up {
+  margin-right: 0.5em;
+  font-size: 2em;
+  margin-bottom: 1em;
+  border-color:white;
+}
+.fa-thumbs-down {
+  font-size: 2em;
+  margin-bottom: 1em;
+  border-color:white;
+}
+.fa-heart {
+  font-size: 3em;
+  margin-top: 0.5em;
+}
+.recipeStats {
+  text-align: center;
+  padding: 1em;
+  gap: 2em;
+  display: flex;
+  width: 70%;
+  background-color:lightgray;
+  height: auto;
+  margin:auto;
+}
+.recipeTags {
+  padding-top:2em;
+}
+
 
 
 
@@ -615,7 +643,7 @@ p {
     margin-right: 7%;
   }
 
-  #recipepic {
+  .recipePic {
     width: 75%;
   }
 
@@ -629,6 +657,10 @@ p {
   .commentUsername {
     margin-top: 2.5em;
     font-size: 1.5em;
+  }
+  .recipeStats {
+    flex-direction: column;
+    gap: unset;
   }
 
 }
