@@ -174,7 +174,7 @@ const addRecipes = async (data, next) => {
 
         const [rows] = await promisePoolRegUser.execute(` 
                                                         INSERT INTO Recipes (Recipename, Recipeguide, Recipecourse, Recipetime, Recipemaker)
-                                                         VALUES ("${data[0]}", "${data[1]}", 4, "${data[3]}", 32);
+                                                         VALUES ("${data[0]}", "${data[1]}", ${data[2]}, ${data[3]}", 32);
                                                         `, data);
         const [rows2] = await promisePoolRegUser.execute(`INSERT INTO Recipemealtype (Recipeid,Mealid) VALUES ( LAST_INSERT_ID() ,1);`, data)
         const [rows3] = await promisePoolRegUser.execute(` INSERT INTO images (Images.Imagerecipe ,Images.Imagefilepath)
