@@ -28,7 +28,7 @@ module.exports = (app, port, httpsPort) => {
         }
     });
     let date = new Date(Date.now()).toISOString();
-    app.listen(port, () => console.log(`JAK port:  ${port}!  time: ${date}`));
+    app.listen(port, () => console.log(`JAK-admin port:  ${port}!  time: ${date}`));
     https.createServer(options, app).listen(8001);
 
 
