@@ -53,17 +53,27 @@ const recipes_post = async (req, res, next) => {
         png().
         toFile('./thumbnails/' + req.file.filename);
 */
-
-        const data = [
+        let data = [];
+    if (req.file) {
+         data = [
             req.body.name,
             req.body.guide,
             req.body.course,
             req.body.time,
-           // req.user.user_id,
-           req.body.mealtypes,
+            // req.user.user_id,
+            req.body.mealtypes,
             req.file.filename,
         ];
-
+    } else {
+         data = [
+            req.body.name,
+            req.body.guide,
+            req.body.course,
+            req.body.time,
+            // req.user.user_id,
+            req.body.mealtypes,
+        ];
+    }
         const result = await addRecipes(data, next);
         if (result.affectedRows < 1) {
             next(httpError('Invalid data', 400));
@@ -82,7 +92,7 @@ const recipes_post = async (req, res, next) => {
         */
     }
     catch (e) {
-        console.error('recipe_post', e.message);
+        console.error('recipes_post', e.message);
         next(httpError('Internal server error', 500));
     }
     

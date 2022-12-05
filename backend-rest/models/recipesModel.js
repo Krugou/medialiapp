@@ -162,6 +162,8 @@ const addRecipes = async (data, next) => {
 
  */
 const addRecipes = async (data, next) => {
+    let rows2;
+    let rows3;
     try {
         console.log("addRecipes data", data);
         /*
@@ -176,12 +178,25 @@ const addRecipes = async (data, next) => {
                                                         INSERT INTO Recipes (Recipename, Recipeguide, Recipecourse, Recipetime, Recipemaker)
                                                          VALUES ("${data[0]}", "${data[1]}", "${data[2]}", "${data[3]}", 32);
                                                         `, data);
-        const [rows2] = await promisePoolRegUser.execute(`INSERT INTO Recipemealtype (Recipeid,Mealid) VALUES ( LAST_INSERT_ID() ,'${data[4]}');`, data)
-        const [rows3] = await promisePoolRegUser.execute(` INSERT INTO images (Images.Imagerecipe ,Images.Imagefilepath)
-                                                        VALUES ( LAST_INSERT_ID() ,'${data[5]}');
-                                                        `, data)
+        const tempArray = data[4].split(",")
+        try {
+            for (let i = 0; i < tempArray.length; i++) {
+                [rows2] = await promisePoolRegUser.execute(`INSERT INTO Recipemealtype (Recipeid, Mealid)
+                                                            VALUES (LAST_INSERT_ID(), ${tempArray[i]});`)
+            }
+        }
+        catch (e) {
+            
+        }
+        try {
+             [rows3] = await promisePoolRegUser.execute(`INSERT INTO Images (Images.Imagerecipe, Images.Imagefilepath)
+                                                              VALUES (LAST_INSERT_ID(), '${data[5]}');
+            `, data)
 
-
+        }
+        catch (e) {
+            
+        }
         return rows, rows2, rows3;
     } catch (e) {
         console.error('addRecipes input', e.message);
