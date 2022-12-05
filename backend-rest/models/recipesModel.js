@@ -175,7 +175,7 @@ const addRecipes = async (data, next) => {
         const [rows] = await promisePoolRegUser.execute(` 
                                                         INSERT INTO Recipes (Recipename, Recipeguide, Recipecourse, Recipetime, Recipemaker)
                                                          VALUES ("${data[0]}", "${data[1]}", 4, "${data[3]}", 32);
-                                                         INSERT INTO Recipemealtype (recipeid,mealid) VALUES ( LAST_INSERT_ID() ,1);
+                                                         INSERT INTO Recipemealtype (Recipeid,Mealid) VALUES ( LAST_INSERT_ID() ,1);
                                                         INSERT INTO images (Images.Imagerecipe ,Images.Imagefilepath)
                                                         VALUES ( LAST_INSERT_ID() ,'./media/logos/jakrecipeslogo.svg');
                                                         `, data);
