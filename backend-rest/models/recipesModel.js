@@ -13,7 +13,7 @@ FROM Recipes
 
  INNER JOIN Recipemealtype ON Recipes.Recipeid = Recipemealtype.Recipeid 
   INNER JOIN Mealtypes 
-  INNER JOIN Courses ON Recipes.Recipecourse = Courses.Courseid   INNER JOIN Images ON  Recipes.Recipeid = Images.ImageRecipe ORDER BY Recipeid DESC limit 6 `);
+  INNER JOIN Courses ON Recipes.Recipecourse = Courses.Courseid   INNER JOIN Images ON  Recipes.Recipeid = Images.ImageRecipe GROUP BY Recipeid DESC limit 6 `);
         return rows;
     } catch (e) {
         console.error('getAllRecipes', e.message);
