@@ -7,7 +7,7 @@ const pooladmin = mysql.createPool({
     password: process.env.DB_PASS_ALL,
     database: process.env.DB_NAME,
     waitForConnections: true,
-    connectionLimit: 10,
+    connectionLimit: 10000,
     queueLimit: 0,
 });
 const poolreguser = mysql.createPool({
@@ -34,7 +34,7 @@ const admin = mysql.createConnection({
         password: process.env.DB_PASS_ALL,
         database: process.env.DB_NAME,
         waitForConnections: true,
-        connectionLimit: 10,
+        connectionLimit: 10000,
         queueLimit: 0,
     });
     
