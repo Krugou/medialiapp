@@ -45,14 +45,17 @@ const recipes_post = async (req, res, next) => {
             // Error messages can be returned in an array using `errors.array()`.
             console.error('user_post validation', errors.array());
             next(httpError('Invalid data', 400));
+             res.json({
+                message: 'Täytä vaaditut kentät',
+            });
             return;
         }
-        /*
+
         const thumbnail = await sharp(req.file.path).
         resize(160, 160).
         png().
         toFile('./thumbnails/' + req.file.filename);
-*/
+
         let data = [];
     if (req.file) {
          data = [
