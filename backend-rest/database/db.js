@@ -29,21 +29,21 @@ const pooluser = mysql.createPool({
     queueLimit: 0,
 });
 const admin = mysql.createConnection({
-        host: process.env.DB_HOST,
-        user: process.env.DB_USER_ALL,
-        password: process.env.DB_PASS_ALL,
-        database: process.env.DB_NAME,
-        waitForConnections: true,
-        connectionLimit: 10000,
-        queueLimit: 0,
-    });
-    
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER_ALL,
+    password: process.env.DB_PASS_ALL,
+    database: process.env.DB_NAME,
+    waitForConnections: true,
+    connectionLimit: 10000,
+    queueLimit: 0,
+});
 
 
 
-    
-    
 
 
 
-module.exports = admin,  pooladmin, poolreguser, pooluser;
+
+
+
+module.exports = admin, pooladmin, poolreguser, pooluser;
