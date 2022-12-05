@@ -50,12 +50,9 @@ const recipes_post = async (req, res, next) => {
             });
             return;
         }
-
-        const thumbnail = await sharp(req.file.path).
-        resize(160, 160).
-        png().
-        toFile('./thumbnails/' + req.file.filename);
-
+        if (req.file) {
+            const thumbnail = await sharp(req.file.path).resize(160, 160).png().toFile('./thumbnails/' + req.file.filename);
+        }
         let data = [];
     if (req.file) {
          data = [
