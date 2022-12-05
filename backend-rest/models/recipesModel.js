@@ -9,11 +9,8 @@ const promisePoolUser = poolUser.promise();
 const getAllRecipesMainPage = async (next) => {
     try {
         const [rows] = await promisePoolUser.execute(`SELECT Recipes.Recipeid,Recipes.Recipename , Recipes.Recipetime, Recipes.Recipeguide, Recipes.Recipemaker, Courses.Coursetype, Mealtypes.Mealtype, Images.Imagefilepath
-FROM Recipes 
-
- INNER JOIN Recipemealtype ON Recipes.Recipeid = Recipemealtype.Recipeid 
-  INNER JOIN Mealtypes 
-  INNER JOIN Courses ON Recipes.Recipecourse = Courses.Courseid   INNER JOIN Images ON  Recipes.Recipeid = Images.ImageRecipe GROUP BY Recipeid DESC limit 6 `);
+FROM Recipes INNER JOIN Recipemealtype ON Recipes.Recipeid = Recipemealtype.Recipeid 
+  INNER JOIN Mealtypes  INNER JOIN Courses ON Recipes.Recipecourse = Courses.Courseid   INNER JOIN Images ON  Recipes.Recipeid = Images.ImageRecipe GROUP BY Recipeid DESC limit 6 `);
         return rows;
     } catch (e) {
         console.error('getAllRecipes', e.message);
@@ -64,8 +61,9 @@ const getRecipeMealTypes = async (next) => {
 const findRecipesByName = async (name, next) => {
 
     try {
-        const [rows] = await promisePoolRegUser.execute(`SELECT *
-                                                FROM Recipes WHERE RecipeName = "${name}";
+        const [rows] = await promisePoolRegUser.execute(`SELECT Recipes.Recipeid,Recipes.Recipename , Recipes.Recipetime, Recipes.Recipeguide, Recipes.Recipemaker, Courses.Coursetype, Mealtypes.Mealtype, Images.Imagefilepath
+FROM Recipes INNER JOIN Recipemealtype ON Recipes.Recipeid = Recipemealtype.Recipeid 
+  INNER JOIN Mealtypes  INNER JOIN Courses ON Recipes.Recipecourse = Courses.Courseid   INNER JOIN Images ON  Recipes.Recipeid = Images.ImageRecipe RecipeName = "${name}";GROUP BY Recipeid
                                                 `);
         return rows;
     } catch (e) {
@@ -75,8 +73,9 @@ const findRecipesByName = async (name, next) => {
 }
 const findRecipesByCourseCategory = async (name, next) => {
     try {
-        const [rows] = await promisePoolRegUser.execute(`SELECT *
-                                                FROM Recipes INNER JOIN Courses on Recipes.Recipecourse = Courses.Courseid  WHERE Courses.Coursetype = "${name}";
+        const [rows] = await promisePoolRegUser.execute(`SELECT Recipes.Recipeid,Recipes.Recipename , Recipes.Recipetime, Recipes.Recipeguide, Recipes.Recipemaker, Courses.Coursetype, Mealtypes.Mealtype, Images.Imagefilepath
+FROM Recipes INNER JOIN Recipemealtype ON Recipes.Recipeid = Recipemealtype.Recipeid 
+  INNER JOIN Mealtypes  INNER JOIN Courses ON Recipes.Recipecourse = Courses.Courseid   INNER JOIN Images ON  Recipes.Recipeid = Images.ImageRecipe WHERE Courses.Coursetype = "${name}";GROUP BY Recipeid
                                                 `);
         return rows;
     } catch (e) {
@@ -86,8 +85,9 @@ const findRecipesByCourseCategory = async (name, next) => {
 }
 const findRecipesByMealType = async (name, next) => {
     try {
-        const [rows] = await promisePoolRegUser.execute(`SELECT Recipename, Recipetime,Recipeguide,Recipemaker,Recipecourse,Mealtype,Imagefilepath
-FROM Recipes INNER JOIN Users ON Recipes.Recipemaker = Users.Userid INNER JOIN Recipemealtype on Recipes.Recipeid = Recipemealtype.Mealid INNER JOIN Mealtypes on Recipemealtype.Mealid = Mealtypes.Mealtype INNER JOIN Images on Recipes.Recipeid = Images.ImageRecipe   WHERE Mealtypes.Mealtype = "${name}";
+        const [rows] = await promisePoolRegUser.execute(`SELECT Recipes.Recipeid,Recipes.Recipename , Recipes.Recipetime, Recipes.Recipeguide, Recipes.Recipemaker, Courses.Coursetype, Mealtypes.Mealtype, Images.Imagefilepath
+FROM Recipes INNER JOIN Recipemealtype ON Recipes.Recipeid = Recipemealtype.Recipeid 
+  INNER JOIN Mealtypes  INNER JOIN Courses ON Recipes.Recipecourse = Courses.Courseid   INNER JOIN Images ON  Recipes.Recipeid = Images.ImageRecipe  WHERE Mealtypes.Mealtype = "${name}"; = 'test' GROUP BY Recipeid
                                                 `);
         return rows;
     } catch (e) {
@@ -98,8 +98,9 @@ FROM Recipes INNER JOIN Users ON Recipes.Recipemaker = Users.Userid INNER JOIN R
 
 const findRecipesByAuthorId = async (name, next) => {
     try {
-        const [rows] = await promisePoolRegUser.execute(`SELECT Recipename, Recipetime,Recipeguide,Recipemaker,Recipecourse,Mealtype,Imagefilepath
-FROM Recipes INNER JOIN Users ON Recipes.Recipemaker = Users.Userid INNER JOIN Recipemealtype on Recipes.Recipeid = Recipemealtype.Mealid INNER JOIN Mealtypes on Recipemealtype.Mealid = Mealtypes.Mealtype INNER JOIN Images on Recipes.Recipeid = Images.ImageRecipe     WHERE Users.Userid = "${name};
+        const [rows] = await promisePoolRegUser.execute(`SELECT Recipes.Recipeid,Recipes.Recipename , Recipes.Recipetime, Recipes.Recipeguide, Recipes.Recipemaker, Courses.Coursetype, Mealtypes.Mealtype, Images.Imagefilepath
+FROM Recipes INNER JOIN Recipemealtype ON Recipes.Recipeid = Recipemealtype.Recipeid 
+  INNER JOIN Mealtypes  INNER JOIN Courses ON Recipes.Recipecourse = Courses.Courseid   INNER JOIN Images ON  Recipes.Recipeid = Images.ImageRecipe    WHERE Users.Userid = "${name};GROUP BY Recipeid
                                                 `);
         return rows;
     } catch (e) {
@@ -109,12 +110,9 @@ FROM Recipes INNER JOIN Users ON Recipes.Recipemaker = Users.Userid INNER JOIN R
 }
 const findRecipesById = async (id, next) => {
     try {
-        const [rows] = await promisePoolRegUser.execute(`SELECT Recipename, Recipetime,Recipeguide,Recipemaker,Recipecourse,Mealtype,Imagefilepath
-        from Recipes
-INNER JOIN Users ON Recipes.Recipemaker = Users.Userid
-INNER JOIN Recipemealtype  
-INNER JOIN Mealtypes   
-INNER JOIN Courses INNER JOIN Images   WHERE Recipes.Recipeid = "${name};
+        const [rows] = await promisePoolRegUser.execute(`SELECT Recipes.Recipeid,Recipes.Recipename , Recipes.Recipetime, Recipes.Recipeguide, Recipes.Recipemaker, Courses.Coursetype, Mealtypes.Mealtype, Images.Imagefilepath
+FROM Recipes INNER JOIN Recipemealtype ON Recipes.Recipeid = Recipemealtype.Recipeid 
+  INNER JOIN Mealtypes  INNER JOIN Courses ON Recipes.Recipecourse = Courses.Courseid   INNER JOIN Images ON  Recipes.Recipeid = Images.ImageRecipe   WHERE Recipes.Recipeid = "${name};GROUP BY Recipeid
                                                 `);
         return rows;
     } catch (e) {
@@ -157,11 +155,11 @@ const deleteRecipeByAuthorId = async (id, next) => {
 const addRecipes = async (data, next) => {
     try {
         const [rows] = await promisePoolRegUser.execute(`INSERT INTO Recipes (Recipename,Recipetime,Recipeguide,Recipemaker,Recipecourse)
-VALUES ('asdasd',30,'fdsadf',33,4) ;
-INSERT INTO Recipemealtype (Recipeid,Mealid) 
-VALUES ( LAST_INSERT_ID() ,1) ;
-INSERT INTO Images (ImageRecipe ,Imagefilepath) 
-VALUES ( LAST_INSERT_ID() ,'./media/logos/jakRecipesjakRecipesjakRecipeslogo.svg.') ;`,
+                                                            VALUES ('asdasd',30,'fdsadf',33,4) ;
+                                                            INSERT INTO Recipemealtype (Recipeid,Mealid) 
+                                                            VALUES ( LAST_INSERT_ID() ,1) ;
+                                                            INSERT INTO Images (ImageRecipe ,Imagefilepath) 
+                                                            VALUES ( LAST_INSERT_ID() ,'./media/logos/jakRecipesjakRecipesjakRecipeslogo.svg.') ;`,
             data);
         return rows;
     } catch (e) {
