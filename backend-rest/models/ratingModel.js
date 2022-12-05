@@ -24,7 +24,7 @@ const deleteCommentRatingById = async (params, next) => {
         next(httpError('Database error', 500));
     }
 }
-
+// miten nää lasketaan tulokseksi?
 const getCommentRatingByRecipe = async (params, next) => {
     try {
         const [rows] = await promisePoolRegUser.execute(
