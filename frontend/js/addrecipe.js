@@ -80,24 +80,32 @@ postButton.addEventListener('click', async (evt) => {
             course:courseselect,
             time:recipetimeInput,
     };
+    const fd = new FormData(addForm);
+    fd.append("name", recipenameInput);
+    fd.append("guide", recipeguide);
+    fd.append("course", courseselect);
+    fd.append("time", recipetimeInput);
+
     console.log("data",data);
     console.log("recipeguide",recipeguide);
     console.log("courseselect",courseselect);
     // const data2 = new FormData(addForm);
+    console.log("fd",fd);
     const fetchOptions = {
         method: 'POST',
         headers: {
             // Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-          "Content-Type":"application/json",
-        },
-        body: JSON.stringify(data),
+          //"Content-Type":"application/json",
 
+        },
+      //  body: JSON.stringify(data),
+        body: fd,
     };
     console.log(fetchOptions);
     const response = await fetch(url + '/recipes', fetchOptions);
     console.log("ioahujsdhujioads");
     const json = await response.json();
     alert(json.message);
-    location.href = 'frontpage.html';
+  //  location.href = 'frontpage.html';
 
 });
