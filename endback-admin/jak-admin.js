@@ -7,8 +7,8 @@ const fs = require('fs');
 const authRoute = require('./routes/authRoute');
 const frontRoute = require('./routes/frontRoute');
 const statusRoute = require('./routes/statusRoute');
-const { httpError } = require('./utils/errors');
-const passport = require('./utils/pass');
+const { httpError } = require('../backend-rest/utils/errors');
+const passport = require('../backend-rest/utils/pass');
 
 app.use(cors());
 app.use(express.static('public'));
@@ -25,9 +25,9 @@ app.use(passport.initialize());
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 if (process.env.NODE_ENV === 'production') {
-    require('./utils/production')(app, process.env.HTTP_PORT || 3001, process.env.HTTPS_PORT || 8001);
+    require('../backend-rest/utils/production')(app, process.env.HTTP_PORT || 3001, process.env.HTTPS_PORT || 8001);
 } else {
-    require('./utils/localhost')(app, process.env.HTTP_PORT || 3000);
+    require('../backend-rest/utils/localhost')(app, process.env.HTTP_PORT || 3000);
 };
 app.get('/', function (req, res) { res.send('hello world') });
 app.use('/front', frontRoute);

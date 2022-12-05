@@ -1,6 +1,6 @@
 'use strict';
-
+let date = new Date(Date.now()).toISOString();
 module.exports = (app, port) => {
-    app.listen(port, () => console.log(`Program is listening to port:  ${port}!  time now is: ${Date(Date.now())}`));
+    app.listen(port, () => console.log(`JAK port:  ${port}!  time: ${date}`));
 
 }
