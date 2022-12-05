@@ -74,19 +74,13 @@ postButton.addEventListener('click', async (evt) => {
 
     console.log("selectedtags",selectedTags);
 
-    const data = {
-            name:recipenameInput,
-            guide:recipeguide,
-            course:courseselect,
-            time:recipetimeInput,
-    };
+
     const fd = new FormData(addForm);
     fd.append("name", recipenameInput);
     fd.append("guide", recipeguide);
     fd.append("course", courseselect);
     fd.append("time", recipetimeInput);
-
-    console.log("data",data);
+    fd.append("mealtypes", selectedTags);
     console.log("recipeguide",recipeguide);
     console.log("courseselect",courseselect);
     // const data2 = new FormData(addForm);
