@@ -82,8 +82,25 @@
   text-align: center;
 }
 .instruction {
+  margin-top: 2em;
+  margin-bottom: 1.5em;
+}
+.recipeInstruction {
   margin-bottom: 2em;
   margin-top: 2em;
+  width: 100%;
+  background-color: lightgray;
+  height: auto;
+  border-radius: 5px;
+  color:black;
+}
+.recipeInstruction p {
+  margin: 1.5em;
+}
+.recipeInstruction h2 {
+  text-align: center;
+  margin: 1em;
+  font-size: 2em;
 }
 .instruction form textarea {
   width: 100%;
@@ -219,7 +236,7 @@
 .Recipe_desc {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 60%;
   margin: auto;
 }
 .recipefigure {
@@ -502,7 +519,7 @@ p {
   }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 770px) {
   .recipefigure {
     width: 60vw;
   }
@@ -510,11 +527,15 @@ p {
   .reseptit {
     flex-direction: column;
   }
-}
-@media screen and (max-width: 850px) {
-  .recipeUserComment {
-
+  .Recipe_desc {
+    width: 90%;
   }
+}
+
+
+
+@media screen and (max-width: 850px) {
+
 
   .commentContent {
     margin: 0.25em 0.25em 0.25em 0.25em;
@@ -532,10 +553,6 @@ p {
 
   .recipebutton {
     margin: 7%;
-  }
-
-  .Recipe_desc {
-    width: 75%;
   }
 
   .checknappi {
