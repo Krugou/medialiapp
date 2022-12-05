@@ -1,6 +1,6 @@
 'use strict';
 
 module.exports = (app, port) => {
-    app.listen(port, () => console.log(`Program is listening to port:  ${port}!  time now is: ${Date(Date.now())}`));
+    app.listen(port, () => console.log(`Program port:  ${port}!  time: ${Date(Date.now())}`));
 
 }
