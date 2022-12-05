@@ -25,9 +25,9 @@ app.use(passport.initialize());
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 if (process.env.NODE_ENV === 'production') {
-    require('../backend-rest/utils/production')(app, process.env.HTTP_PORT || 3001, process.env.HTTPS_PORT || 8001);
+    require('./utils/production')(app, process.env.HTTP_PORT || 3001, process.env.HTTPS_PORT || 8001);
 } else {
-    require('../backend-rest/utils/localhost')(app, process.env.HTTP_PORT || 3000);
+    require('./utils/localhost')(app, process.env.HTTP_PORT || 3000);
 };
 app.get('/', function (req, res) { res.send('hello world') });
 app.use('/front', frontRoute);
