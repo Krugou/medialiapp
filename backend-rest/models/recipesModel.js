@@ -1,6 +1,7 @@
 const poolRegUser = require('../database/db');
 const poolUser = require('../database/db');
 const pooladmin = require('../database/db');
+const {httpError} = require("../utils/errors");
 const promisePoolAdmin = pooladmin.promise();
 const promisePoolRegUser = poolRegUser.promise();
 const promisePoolUser = poolUser.promise();
@@ -141,6 +142,7 @@ const deleteRecipeByAuthorId = async (id, next) => {
     }
 }
 // ei valmis frontti ohjaus puuttuu
+/*
 const addRecipes = async (data, next) => {
     try {
         const [rows] = await promisePoolRegUser.execute(`INSERT INTO Recipes (Recipename,Recipetime,Recipeguide,Recipemaker,Recipecourse)
@@ -157,6 +159,29 @@ const addRecipes = async (data, next) => {
     }
 }
 
+ */
+const addRecipes = async (data, next) => {
+    try {
+        console.log("addrecipes");
+        /*
+                const [rows] = await promisePoolRegUser.execute(`INSERT INTO Recipes (Recipename, Recipeguide, Recipecourse, Recipetime, Recipemaker)
+                                                                    VALUES ("asd", "jep", 1, "232", 32);`, data
+
+
+                );
+                */
+        const [rows] = await promisePoolRegUser.execute(`INSERT INTO Recipes (Recipename, Recipeguide, Recipecourse, Recipetime, Recipemaker)
+                                                         VALUES ("${data[0]}", "${data[1]}", 1, "${data[3]}", 32)
+                                                          `)
+
+
+
+        return rows;
+    } catch (e) {
+        console.error('addRecipes', e.message);
+        next(httpError('Database error', 500));
+    }
+}
 
 
 module.exports = {
@@ -164,8 +189,6 @@ module.exports = {
     getRecipesCount,
     addRecipes,
     findRecipesByName,
-    findRecipesByCourseCategory,
-    addRecipes,
     findRecipesById,
     updateRecipes,
     getRecipeMealTypes,

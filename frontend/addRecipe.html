@@ -38,8 +38,15 @@
         <H2 class="otsikko">ADD RECIPE</H2>
         <div class="addRecipe_detail">
             <div class="recipename">
-                <input placeholder="Recipe's name">
+                <input id="recipenameInput" placeholder="Recipe's name">
                 <button id="tag">Add Tags</button>
+                <select name="course" id="courseselect">
+                    <option>Aamiainen</option>
+                    <option>Lounas</option>
+                    <option>Päivällinen</option>
+                    <option>Illallinen</option>
+                </select>
+
             </div>
             <div id="editModal" class="modal">
                 <div class="modal-content">
@@ -51,17 +58,18 @@
                     </div>
                 </div>
             </div>
-            <div class="imagebutton">
-                <button class="uploadimage">Upload Image</button>
-            </div>
+            <form class="imagebutton" enctype="multipart/form-data">
+                <input type="file" multiple='multiple' name="recipe" accept="image/*" id="file">
+            </form>
         </div>
         </div>
         <div class="Recipe_desc">
             <div class="instruction">
                 <form>
-                    <textarea></textarea>
+                    <textarea id="recipeguide"></textarea>
                 </form>
             </div>
+            <input id="recipetimeInput" placeholder="Recipe's time">
             <div class="postButton">
                 <button class="postRecipe">Post Recipe</button>
             </div>
