@@ -163,7 +163,7 @@ const addRecipes = async (data, next) => {
  */
 const addRecipes = async (data, next) => {
     try {
-
+        console.log("addRecipes data", data);
         /*
                 const [rows] = await promisePoolRegUser.execute(`INSERT INTO Recipes (Recipename, Recipeguide, Recipecourse, Recipetime, Recipemaker)
                                                                     VALUES ("asd", "jep", 1, "232", 32);`, data
@@ -171,18 +171,18 @@ const addRecipes = async (data, next) => {
 
                 );
                 */
-        
+
         const [rows] = await promisePoolRegUser.execute(` 
                                                         INSERT INTO Recipes (Recipename, Recipeguide, Recipecourse, Recipetime, Recipemaker)
                                                          VALUES ("${data[0]}", "${data[1]}", 4, "${data[3]}", 32);
                                                         `, data);
-        const [rows2] = await promisePoolRegUser.execute(`INSERT INTO Recipemealtype (Recipeid,Mealid) VALUES ( LAST_INSERT_ID() ,1);`, data)                               
+        const [rows2] = await promisePoolRegUser.execute(`INSERT INTO Recipemealtype (Recipeid,Mealid) VALUES ( LAST_INSERT_ID() ,1);`, data)
         const [rows3] = await promisePoolRegUser.execute(` INSERT INTO images (Images.Imagerecipe ,Images.Imagefilepath)
-                                                        VALUES ( LAST_INSERT_ID() ,'./media/logos/jakrecipeslogo.svg');
+                                                        VALUES ( LAST_INSERT_ID() ,'${data[4]}');
                                                         `, data)
-        
 
-        return rows,rows2,rows3;
+
+        return rows, rows2, rows3;
     } catch (e) {
         console.error('addRecipes input', e.message);
         next(httpError('Database error', 500));
