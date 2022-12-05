@@ -35,11 +35,11 @@
         </nav>
     </header>
     <main class="pagemain">
-        <H2 class="otsikko">ADD RECIPE</H2>
+        <H2 class="otsikko">Tee Uusi Resepti</H2>
         <div class="addRecipe_detail">
             <div class="recipename">
-                <input id="recipenameInput" placeholder="Recipe's name">
-                <button id="tag">Add Tags</button>
+                <input id="recipenameInput" placeholder="Reseptin nimi (pakollinen)">
+                <button id="tag">Lisää tagi</button>
 
                 <select title="ruoka" name="course" id="courseselect">
                     <option value="1">Aamiainen</option>
@@ -53,7 +53,7 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <div class="modaladd">
-                        <H3>Add tags</H3>
+                        <H3>Lisää tageja</H3>
                         <div class="tags" id="tags">
                         </div>
                     </div>
@@ -67,12 +67,12 @@
         <div class="Recipe_desc">
             <div class="instruction">
                 <form>
-                    <textarea id="recipeguide"></textarea>
+                    <textarea id="recipeguide" placeholder="Reseptin ohje (pakollinen)."></textarea>
                 </form>
             </div>
-            <input type="number" id="recipetimeInput" placeholder="Recipe's time">
+            <input type="number" id="recipetimeInput" placeholder="Reseptin valmistusaika">
             <div class="postButton">
-                <button class="postRecipe" id="postRecipe">Post Recipe</button>
+                <button class="postRecipe" id="postRecipe">Tee Lisäys!</button>
             </div>
         </div>
     </main>
