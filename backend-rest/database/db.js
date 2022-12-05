@@ -9,6 +9,7 @@ const pooladmin = mysql.createPool({
     waitForConnections: true,
     connectionLimit: 10000,
     queueLimit: 0,
+    multipleStatements: true
 });
 const poolreguser = mysql.createPool({
     host: process.env.DB_HOST,
@@ -18,6 +19,7 @@ const poolreguser = mysql.createPool({
     waitForConnections: true,
     connectionLimit: 10000,
     queueLimit: 0,
+    multipleStatements: true
 });
 const pooluser = mysql.createPool({
     host: process.env.DB_HOST,
@@ -27,6 +29,7 @@ const pooluser = mysql.createPool({
     waitForConnections: true,
     connectionLimit: 10000,
     queueLimit: 0,
+    multipleStatements: true
 });
 const admin = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -36,6 +39,7 @@ const admin = mysql.createConnection({
     waitForConnections: true,
     connectionLimit: 10000,
     queueLimit: 0,
+    multipleStatements: true
 });
 
 
