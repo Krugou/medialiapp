@@ -72,3 +72,11 @@ const deleteRecipeRatingById = async (params, next) => {
         next(httpError('Database error', 500));
     }
 }
+module.exports = {
+    addCommentRating,
+    deleteCommentRatingById,
+    getCommentRatingByRecipe,
+    getRecipeRatingByRecipe,
+    addRecipeRating,
+    deleteRecipeRatingById,
+};
