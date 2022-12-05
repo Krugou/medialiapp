@@ -422,6 +422,33 @@ p {
   font-size: 2.5vh;
 }
 
+
+.recipeUserComment {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: lightgray;
+  height: auto;
+  margin-top:1em;
+
+}
+
+.commentPicture {
+  height: auto;
+  float: left;
+}
+
+.commentPicture img {
+  height: 6em;
+  width: 6em;
+  margin: 1.5em 1em 1em 1em;
+}
+.commentUsername {
+  margin-top: 20px;
+  font-size: 1.5em;
+}
+
+
 @media screen and (max-width: 1024px) {
   .recipefigure {
     width: 30vw;
@@ -435,6 +462,21 @@ p {
 
   .reseptit {
     flex-direction: column;
+  }
+}
+@media screen and (max-width: 850px) {
+  .recipeUserComment {
+    flex-direction: column;
+  }
+  .commentPicture {
+    float: none;
+    text-align: center;
+  }
+  .commentUsername {
+    text-align: center;
+  }
+  .commentContent p {
+    padding: 1em 1em 1em 1.75em;
   }
 }
 
