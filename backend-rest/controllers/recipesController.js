@@ -37,9 +37,6 @@ const recipes_mealtypes_get = async (req, res, next) => {
 };
 const recipes_post = async (req, res, next) => {
     try {
-        console.log("asd");
-        console.log("req.body",req.body);
-        console.log("req.file", req.file);
         // Extract the validation errors from a request.
         const errors = validationResult(req);
 
@@ -63,8 +60,8 @@ const recipes_post = async (req, res, next) => {
             req.body.course,
             req.body.time,
            // req.user.user_id,
-          //  req.body.mealtypes,
-           // req.file.filename,
+           req.body.mealtypes,
+            req.file.filename,
         ];
 
         const result = await addRecipes(data, next);
