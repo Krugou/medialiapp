@@ -69,7 +69,7 @@ postButton.addEventListener('click', async (evt) => {
     const recipeguide = document.querySelector('#recipeguide').value;
     const courseselect = document.querySelector('#courseselect').value;
     const recipetimeInput = document.querySelector('#recipetimeInput').value;
-    const addForm = document.querySelector('.imagebutton');
+    const addForm = document.querySelector('#recipeAddimagebutton');
 
 
     console.log("selectedtags",selectedTags);
