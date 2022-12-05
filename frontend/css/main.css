@@ -434,7 +434,6 @@ p {
 }
 .addComment form {
   padding-left: 2.5em;
-  margin-bottom: 2em;
 }
 .addComment form textarea {
   width: 80%;
@@ -445,14 +444,16 @@ p {
   font-size: 1.5em;
   resize: none;
 }
-#postCommentButton {
-  background-color: #0d1e40;
+.postCommentButton {
+  padding: 1em 1em 1em 2.5em;
+}
+.postCommentButton button {
+  background-color: white;
   border: solid 1px white;
   border-radius: 1em;
-  color: white;
+  color: #0d1e40;
   height: 3em;
   width: 7em;
-
 }
 
 
@@ -479,12 +480,18 @@ p {
   margin: 1.5em 1em 1em 1em;
 }
 .commentUsername {
-  margin-top: 20px;
-  font-size: 1.5em;
+  margin-top: 1.75em;
+  font-size: 2em;
 }
 
 .commentUsername a {
   color:white;
+}
+.commentContent {
+  float:right;
+  padding-left: 1.5em;
+  padding-right: 0.5em;
+
 }
 
 
@@ -506,17 +513,11 @@ p {
 }
 @media screen and (max-width: 850px) {
   .recipeUserComment {
-    flex-direction: column;
+
   }
-  .commentPicture {
-    float: none;
-    text-align: center;
-  }
-  .commentUsername {
-    text-align: center;
-  }
-  .commentContent p {
-    padding: 1em 1em 1em 1.75em;
+
+  .commentContent {
+    margin: 0.25em 0.25em 0.25em 0.25em;
   }
 }
 
@@ -608,4 +609,9 @@ p {
   .tags {
     width: 100%;
   }
+  .commentUsername {
+    margin-top: 2.5em;
+    font-size: 1.5em;
+  }
+
 }
