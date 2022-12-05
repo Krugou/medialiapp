@@ -163,7 +163,6 @@ module.exports = {
     getAllRecipes,
     getRecipesCount,
     addRecipes,
-    getAllRecipesMainPage,
     findRecipesByName,
     findRecipesByCourseCategory,
     addRecipes,
