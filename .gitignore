@@ -137,3 +137,5 @@ dist
 .idea/vcs.xml
 .idea/workspace.xml
 package-lock.json
+discordjstest/config.json
+stats/config.json
