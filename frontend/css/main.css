@@ -198,7 +198,7 @@
 }
 .pagebody {
   margin: 0;
-  height: 100vh;
+  height: auto;
 }
 .pageheader {
   border-bottom: solid black 1px;
@@ -530,13 +530,14 @@ p {
 .recipeStats {
   align-items:center;
   text-align: center;
+  border-radius: 1em;
   padding: 1em;
   gap: 2em;
   display: flex;
   width: 60%;
   background-color:lightgray;
   height: auto;
-  margin:auto;
+  margin: auto;
 }
 .recipeTags {
   padding-top:2em;
@@ -603,6 +604,11 @@ p {
 
   .commentContent {
     margin: 0.25em 0.25em 0.25em 0.25em;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .recipeStats {
+    width: 39.5%;
   }
 }
 
