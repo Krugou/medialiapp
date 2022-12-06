@@ -69,7 +69,7 @@ const importantStuff = async (restart) => {
                     function (err, result) {
                         if (err) throw err;
                         if (restart === true) {
-                            jakbot.channels.cache.get(channelID).send('Node.js restarted ' + new Date(Date.now()).toISOString());
+                            jakbot.channels.cache.get(ChannelIDrecipes).send('Node.js restarted ' + new Date(Date.now()).toISOString());
 
                         }
                         jakbot.channels.cache.get(ChannelIDrecipes).send('Our newest 3 recipes as time now ' + new Date(Date.now()).toISOString());
@@ -82,7 +82,7 @@ const importantStuff = async (restart) => {
                     function (err, result) {
                         if (err) throw err;
                         if (restart === true) {
-                            jakbot.channels.cache.get(channelID).send('Node.js restarted ' + new Date(Date.now()).toISOString());
+                            jakbot.channels.cache.get(channelIDwelcome).send('Node.js restarted ' + new Date(Date.now()).toISOString());
 
                         }
                         jakbot.channels.cache.get(channelIDwelcome).send('Our newest user as time now ' + new Date(Date.now()).toISOString());
