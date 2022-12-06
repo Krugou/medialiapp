@@ -78,7 +78,7 @@ const importantStuff = async (restart) => {
                         }
                     });
                 admin.query(
-                    'SELECT Useremail  FROM `users` group by Userid limit 1;',
+                    'SELECT Useremail  FROM `Users` group by Userid limit 1;',
                     function (err, result) {
                         if (err) throw err;
                         if (restart === true) {
