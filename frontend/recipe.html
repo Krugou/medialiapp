@@ -41,7 +41,7 @@
         <div class="recipePic">
             <img src="media/logos/jakrecipeslogo.svg" alt="jakrecipeslogo">
             </div>
-            <div class="recipeStats">
+            <div id="Stats" class="recipeStats">
                 <p>50 Likes</p>
                 <div class="recipeTags">
                     <button class="postRecipe">Kasvisruoka</button>
@@ -54,7 +54,7 @@
                 <div class="recipeTags">
                     <button class="postRecipe">Mealtype</button>
                 </div>
-                <i class="fa-solid fa-heart"></i>
+                    <i id="likeHeart" class="fa-solid fa-heart" ></i>
             </div>
         <div class="Recipe_desc">
             <div class="recipeInstruction">
@@ -139,29 +139,32 @@
                 </li>
             </ul>
             </section>
-            <script>
 
-              function openFunction() {
-                document.getElementById("comments").style.display = "unset";
-                document.getElementById("openCommentsButton").remove();
-                const hide = document.createElement("button");
-                hide.setAttribute("id", "hideCommentsButton");
-                hide.innerText = "Hide Comments";
-
-                  document.getElementById("openComments").append(hide);
-                  document.getElementById("hideCommentsButton").addEventListener("click", function() {
-                    document.getElementById("comments").style.display = "none";
-                    document.getElementById("hideCommentsButton").remove();
-                    const show = document.createElement("button");
-                    show.setAttribute("id", "openCommentsButton");
-                    show.setAttribute("onclick", "openFunction()");
-                    show.innerText = "Show Comments";
-                    document.getElementById("openComments").append(show);
-                  })
-              }
-            </script>
         </div>
     </main>
+    <script>
+
+      function openFunction() {
+        document.getElementById("comments").style.display = "unset";
+        document.getElementById("openCommentsButton").remove();
+        const hide = document.createElement("button");
+        hide.setAttribute("id", "hideCommentsButton");
+        hide.innerText = "Hide Comments";
+        document.getElementById("openComments").append(hide);
+
+        document.getElementById("hideCommentsButton").addEventListener("click", function() {
+          document.getElementById("comments").style.display = "none";
+          document.getElementById("hideCommentsButton").remove();
+          const show = document.createElement("button");
+          show.setAttribute("id", "openCommentsButton");
+          show.setAttribute("onclick", "openFunction()");
+          show.innerText = "Show Comments";
+          document.getElementById("openComments").append(show);
+        })
+      }
+
+
+    </script>
     <script src="js/registration.js" defer></script>
 
 </body>
