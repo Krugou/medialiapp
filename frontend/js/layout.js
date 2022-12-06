@@ -10,14 +10,14 @@ const frontPageNavLink = document.getElementById('frontpage');
 function startUp() {
     if (sessionStorage.getItem('token') === null) {
        
-        removeChildren(logOutNavLink);
+        // removeChildren(logOutNavLink);
         frontPage();
         newestPresentationData();
         // SignIn();
        
 
     } else {
-        removeChildren(SignInNavLink);
+        // removeChildren(SignInNavLink);
         frontPage();
         newestPresentationData();
     }
