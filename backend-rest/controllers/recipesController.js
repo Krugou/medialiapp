@@ -1,16 +1,15 @@
 'use strict';
 const {
     getRecipeMealTypes, addRecipes,
-
 } = require('../models/recipesModel');
-const { getAllRecipesMainPage } = require('../models/normalUserModel');
+const { getAllNewestRecipesMainPage, getAllOldestRecipesMainPage } = require('../models/normalUserModel');
 const { validationResult } = require('express-validator');
 const { httpError } = require('../utils/errors');
 const sharp = require('sharp');
 
-const getAllRecipesController = async (req, res, next) => {
+const getAllNewestRecipesController = async (req, res, next) => {
     try {
-        const rows = await getAllRecipesMainPage(next);
+        const rows = await getAllNewestRecipesMainPage(next);
         if (rows.length < 1) {
             return next(httpError('No recipes found', 404));
         }
@@ -20,6 +19,19 @@ const getAllRecipesController = async (req, res, next) => {
         next(httpError('Database error', 500));
     }
 };
+const getAllOldestRecipesMainPage = async (req, res, next) => {
+    try {
+        const rows = await getAllOldestRecipesMainPage(next);
+        if (rows.length < 1) {
+            return next(httpError('No recipes found', 404));
+        }
+        res.json(rows);
+    } catch (e) {
+        console.error('getAllRecipesController', e.message);
+        next(httpError('Database error', 500));
+    }
+};
+
 const recipes_mealtypes_get = async (req, res, next) => {
 
     try {
@@ -45,7 +57,7 @@ const recipes_post = async (req, res, next) => {
             // Error messages can be returned in an array using `errors.array()`.
             console.error('user_post validation', errors.array());
             next(httpError('Invalid data', 400));
-             res.json({
+            res.json({
                 message: 'Täytä vaaditut kentät',
             });
             return;
@@ -54,26 +66,26 @@ const recipes_post = async (req, res, next) => {
             const thumbnail = await sharp(req.file.path).resize(160, 160).png().toFile('./thumbnails/' + req.file.filename);
         }
         let data = [];
-    if (req.file) {
-         data = [
-            req.body.name,
-            req.body.guide,
-            req.body.course,
-            req.body.time,
-            // req.user.user_id,
-            req.body.mealtypes,
-            req.file.filename,
-        ];
-    } else {
-         data = [
-            req.body.name,
-            req.body.guide,
-            req.body.course,
-            req.body.time,
-            // req.user.user_id,
-            req.body.mealtypes,
-        ];
-    }
+        if (req.file) {
+            data = [
+                req.body.name,
+                req.body.guide,
+                req.body.course,
+                req.body.time,
+                // req.user.user_id,
+                req.body.mealtypes,
+                req.file.filename,
+            ];
+        } else {
+            data = [
+                req.body.name,
+                req.body.guide,
+                req.body.course,
+                req.body.time,
+                // req.user.user_id,
+                req.body.mealtypes,
+            ];
+        }
         const result = await addRecipes(data, next);
         if (result.affectedRows < 1) {
             next(httpError('Invalid data', 400));
@@ -95,7 +107,7 @@ const recipes_post = async (req, res, next) => {
         console.error('recipes_post', e.message);
         next(httpError('Internal server error', 500));
     }
-    
+
 }
 /*
 const cat_post = async (req, res, next) => {
@@ -149,7 +161,8 @@ const cat_post = async (req, res, next) => {
 */
 
 module.exports = {
-    getAllRecipesController,
+    getAllNewestRecipesController,
+    getAllOldestRecipesMainPage,
     recipes_mealtypes_get,
     recipes_post,
 };

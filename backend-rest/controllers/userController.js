@@ -1,7 +1,6 @@
 'use strict';
 const { addUsersRegUser, findUsersByEmailRegUser } = require('../models/regUserModel');
-const { fetchAllUsers } = require('../models/normalUserModel');
-const {validationResult} = require('express-validator');
+const { validationResult } = require('express-validator');
 const { httpError } = require('../utils/errors');
 
 const user_post = async (req, res, next) => {
@@ -57,5 +56,5 @@ const user_post = async (req, res, next) => {
 
 
 module.exports = {
-     user_post,
+    user_post,
 };

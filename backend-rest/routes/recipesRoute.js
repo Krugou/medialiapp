@@ -22,7 +22,8 @@ const {
     recipes_mealtypes_get,} = require("../controllers/recipesController");
 const { body } = require('express-validator');
 router.get('/mealtypes', recipes_mealtypes_get);
-router.get('/allrecipes', getAllRecipesController );
+router.get('/allrecipes/newest', getAllNewestRecipesController);
+router.get('/allrecipes/oldest', getAllOldestRecipesMainPage);
 router.post('/',
  upload.single('recipe'),
 
