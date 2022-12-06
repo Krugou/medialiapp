@@ -16,6 +16,7 @@
     "luxury",
     "dining"
   ],
+  "type": "module",
   "author": "Joonas,Aleksi,Kaarle",
   "license": "ISC",
   "dependencies": {
@@ -37,4 +38,6 @@
     "passport-local": "^1.0.0",
     "path": "^0.12.7"
   }
+  
 }
+

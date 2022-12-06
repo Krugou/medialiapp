@@ -1,11 +1,8 @@
-'use strict';
-require('dotenv').config();
-// import fetch from 'node-fetch';
-const admin = require('./db/db');
-
-const { Client, Events, GatewayIntentBits, Message, Messageembed } = require('discord.js');
-const { token } = require('./config.json');
-require('discord-reply');
+import "dotenv/config";
+import fetch from 'node-fetch';
+import mysql from  'mysql2'
+import { Client, Events, GatewayIntentBits  } from 'discord.js';
+import "discord-reply"
 const dateStarted = Date.now();
 let dbStarted
 const jakbot = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -16,7 +13,19 @@ const channelIDwelcome = '1049557618261250119';
 const ChannelIDrecipes = '1049558898706759751'
 const ChannelIDstatus = '1049563466794532944'
 const ChannelIDwebsite = '1049563915719299142'
-jakbot.login(token);
+
+
+const admin = mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER_ALL,
+    password: process.env.DB_PASS_ALL,
+    database: process.env.DB_NAME,
+    waitForConnections: true,
+    connectionLimit: 10000,
+    queueLimit: 0,
+    multipleStatements: true
+});
+jakbot.login(process.env.DISCORD_TOKEN);
 jakbot.once(Events.ClientReady, c => {
     // console.log(`Ready! Logged in as ${c.user.tag}`);
 
@@ -32,6 +41,34 @@ jakbot.on('ready', jakbot => {
 });
 
 const restart = true
+const websiteHealth = async () => {
+    jakbot.on('ready', async jakbot => {
+    if (process.env.NODE_ENV === 'production') {
+        const response1 = await fetch('http://10.114.34.72/status/apachestatus')
+        const fetchDataJson1 = await response1.json();
+        jakbot.channels.cache.get(ChannelIDstatus).send('Apache status: ' + fetchDataJson1[0].status);
+        const response2 = await fetch('http://10.114.34.72/status/mariadbstatus')
+        const fetchDataJson2 = await response2.json();
+        jakbot.channels.cache.get(ChannelIDstatus).send('MariaDB status: ' + fetchDataJson2[0].status);
+        const response = await fetch('http://10.114.34.72/status/starttime')
+        const fetchDataJson3 = await response.json();
+        jakbot.channels.cache.get(ChannelIDwebsite).send('Server uptime: ' + Math.floor((dateNow - fetchDataJson3[0].datenow) / 1000 / 60) % 60 + ' minutes ' + Math.floor((dateNow - fetchDataJson3[0].datenow) / 1000 % 60) + ' seconds')
+    } else {
+
+        const response1 = await fetch('http://localhost:3000/status/apachestatus')
+        const fetchDataJson1 = await response1.json();
+        jakbot.channels.cache.get(ChannelIDstatus).send('Apache status: ' + fetchDataJson1[0].status)
+        const response2 = await fetch('http://localhost:3000/status/mariadbstatus')
+        const fetchDataJson2 = await response2.json();
+        jakbot.channels.cache.get(ChannelIDstatus).send('MariaDB status: ' + fetchDataJson2[0].status)
+        const response3 = await fetch('http://localhost:3000/status/starttime')
+        const fetchDataJson3 = await response3.json();
+        jakbot.channels.cache.get(ChannelIDwebsite).send('Server uptime: ' + Math.floor((dateNow - fetchDataJson3[0].datenow) / 1000 / 60) % 60 + ' minutes ' + Math.floor((dateNow - fetchDataJson3[0].datenow) / 1000 % 60) + ' seconds')
+
+       
+        }
+    });
+}
 const importantStuff = async (restart) => {
 
     jakbot.on('ready', jakbot => {
@@ -92,35 +129,7 @@ const importantStuff = async (restart) => {
                             jakbot.channels.cache.get(channelIDwelcome).send('Useremail: ' + result[i].Useremail);
                         }
                     });
-                // if (process.env.NODE_ENV === 'production') {
-                //     fetch('http://10.114.34.72/status/apachestatus')
-                //         .then(res => res.json())
-                //         .then(json => jakbot.channels.cache.get(ChannelIDstatus).send('Apache status: ' + json[0].status))
-                //         .catch(err => console.log(err));
-                //     fetch('http://10.114.34.72/status/mariadbstatus')
-                //         .then(res => res.json())
-                //         .then(json => jakbot.channels.cache.get(ChannelIDstatus).send('MariaDB status: ' + json[0].status))
-                //         .catch(err => console.log(err));
-                //     fetch('http://10.114.34.72/status/starttime')
-                //         .then(res => res.json())
-                //         .then(json => jakbot.channels.cache.get(ChannelIDwebsite).send('Server uptime: ' + Math.floor((dateNow - json[0].datenow) / 1000 / 60) % 60 + ' minutes ' + Math.floor((dateNow - json[0].datenow) / 1000 % 60) + ' seconds'))
-                //         .catch(err => console.log(err));
-                // } else {
-                //     fetch('http://localhost:3000/status/apachestatus')
-                //         .then(res => res.json())
-                //         .then(json => jakbot.channels.cache.get(ChannelIDstatus).send('Apache status: ' + json[0].status))
-                //         .catch(err => console.log(err));
-                //     fetch('http://localhost:3000/status/mariadbstatus')
-                //         .then(res => res.json())
-                //         .then(json => jakbot.channels.cache.get(ChannelIDstatus).send('MariaDB status: ' + json[0].status))
-                //         .catch(err => console.log(err));
-                //     fetch('http://localhost:3000/status/starttime')
-                //         .then(res => res.json())
-                //         .then(json => jakbot.channels.cache.get(ChannelIDwebsite).send('Server uptime: ' + Math.floor((dateNow - json[0].datenow) / 1000 / 60) % 60 + ' minutes ' + Math.floor((dateNow - json[0].datenow) / 1000 % 60) + ' seconds'))
-                //         .catch(err => console.log(err));
-
-
-                // }
+ 
             });
         jakbot.user.setUsername('JAK-BOT on break');
         console.log('JAK-BOT cycle done');
@@ -129,5 +138,7 @@ const importantStuff = async (restart) => {
 
 
 importantStuff(restart);
-setInterval(importantStuff, 1200000); // 
+websiteHealth();
+setInterval(importantStuff, 1200000); //
+setInterval(websiteHealth, 600000); // 10 minutes
 
