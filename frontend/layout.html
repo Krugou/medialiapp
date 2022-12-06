@@ -84,7 +84,7 @@
         <label class="logo"></label>
         <nav class="navbar">
             <ul class="nav-start">
-                <li class="marpad1rem"><a href="#">Etusivu</a></li>
+                <li class="marpad1rem"><a id="frontpage" href="">Etusivu</a></li>
             </ul>
             <ul class="nav-end">
                 <li id="signIn" class="marpad1rem"><a href="signIn.html">Kirjaudu</a></li>
@@ -173,11 +173,11 @@
                 <li>
                     <p>Email</p>
                 </li>
-                <li><input id="emailInput"></li>
+                <li><input id="emailInputSignIn"></li>
                 <li>
                     <p>Password</p>
                 </li>
-                <li><input id="passwordInput"></li>
+                <li><input id="passwordInputSignIn"></li>
             </ul>
         </div>
         <div id="signinNappi" class="nappi">
@@ -192,11 +192,11 @@
                 <li>
                     <p>Email</p>
                 </li>
-                <li><input required type="email" id="emailInput" placeholder="(Eg. John@gmail.com)"></li>
+                <li><input required type="email" id="emailInputSignUp" placeholder="(Eg. John@gmail.com)"></li>
                 <li>
                     <p>Password</p>
                 </li>
-                <li><input pattern="(?=.*[\p{Lu}]).{8,}" required type="password" id="passwordInput"
+                <li><input pattern="(?=.*[\p{Lu}]).{8,}" required type="password" id="passwordInputSignUp"
                         placeholder="(Atleast 8 letters & 1 capital)"></li>
             </ul>
         </div>

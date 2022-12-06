@@ -39,44 +39,44 @@ async function oldestPresentationData() {
     }
 }
 
-newestPresentationData()
+
 
 // main.js loppuu tähän
 
 
 // page generation
 
-   // kesken
-function checktoken() {
-        // check sessionStorage
-        if (!sessionStorage.getItem('token') || !sessionStorage.getItem('user')) {
-            location.href = 'login.html';
-            return;
+// kesken
+async function checktoken() {
+    // check sessionStorage
+    if (!sessionStorage.getItem('token') || !sessionStorage.getItem('user')) {
+        location.href = 'login.html';
+        return;
+    }
+    // check if token valid
+    try {
+        const fetchOptions = {
+            headers: {
+                Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+            },
+        };
+        const response = await fetch(url + '/user/token', fetchOptions);
+        if (!response.ok) {
+            location.href = 'logout.html';
+        } else {
+            const json = await response.json();
+            sessionStorage.setItem('user', JSON.stringify(json.user));
         }
-        // check if token valid
-        try {
-            const fetchOptions = {
-                headers: {
-                    Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-                },
-            };
-            const response = await fetch(url + '/user/token', fetchOptions);
-            if (!response.ok) {
-                location.href = 'logout.html';
-            } else {
-                const json = await response.json();
-                sessionStorage.setItem('user', JSON.stringify(json.user));
-            }
-        } catch (e) {
-            console.log(e.message);
-        }
+    } catch (e) {
+        // console.log(e.message);
+    }
 
 }
 
 // frontpage.html alkaa tästä
 const editFilter = document.getElementById("filterModal");
 const filterButton = document.getElementById("filter");
-let close = document.getElementById("close");
+let close = document.getElementsByClassName("close")[0]
 filterButton.onclick = function () {
     editFilter.style.display = "block";
 }
@@ -92,6 +92,7 @@ window.onclick = function (event) {
 // frontpage.html loppuu tähän
 
 //frontpage.js alkaa tästä
+
 const addRecipeButton = document.querySelector('#addrecipesButton');
 
 addRecipeButton.addEventListener('click', async (evt) => {
@@ -108,7 +109,7 @@ function logOut() {
     sessionStorage.removeItem('user');
     frontPage();
 }
- 
+
 // logout.js loppuu tähän
 
 // addRecipe.js alkaa tästä
@@ -158,7 +159,7 @@ tagButton.addEventListener('click', async (evt) => {
         const tags2 = await response.json();
         addTags(tags2);
     } catch (e) {
-        console.log(e.message);
+        // console.log(e.message);
     }
 });
 
@@ -202,13 +203,13 @@ postButton.addEventListener('click', async (evt) => {
 const signinButton = document.querySelector('#signinNappi');
 
 signinButton.addEventListener('click', async (evt) => {
-    console.log("asd");
+    // console.log("asd");
     evt.preventDefault();
-    const emailInput = document.querySelector('#emailInput').value;
+    const emailInputSignIn = document.querySelector('#emailInputSignIn').value;
     //const usernameInput = document.querySelector('#usernameInput').value;
-    const passwordInput = document.querySelector('#passwordInput').value;
+    const passwordInput = document.querySelector('#passwordInputSignIn').value;
     const data = {
-        username: emailInput,
+        username: emailInputSignIn,
         password: passwordInput
     }
     const fetchOptions = {
@@ -218,10 +219,10 @@ signinButton.addEventListener('click', async (evt) => {
         },
         body: JSON.stringify(data),
     };
-    console.log(data);
+    // console.log(data);
     const response = await fetch(url + '/auth/login', fetchOptions);
     const json = await response.json();
-    console.log('login response', json);
+    // console.log('login response', json);
     if (!json.user) {
         alert(json.message);
     } else {
@@ -239,16 +240,16 @@ const signupButton = document.querySelector('#signupNappi');
 
 signupButton.addEventListener('click', async (evt) => {
     evt.preventDefault();
-    const emailInput = document.querySelector('#emailInput').value;
+    const emailInputSignUp = document.querySelector('#emailInputSignUp').value;
     //const usernameInput = document.querySelector('#usernameInput').value;
-    const passwordInput = document.querySelector('#passwordInput').value;
+    const passwordInput = document.querySelector('#passwordInputSignUp').value;
 
     const data = {
-        email: emailInput,
+        email: emailInputSignUp,
         password: passwordInput
     };
 
-    console.log(data);
+    // console.log(data);
 
     const fetchOptions = {
         method: 'POST',
@@ -261,8 +262,8 @@ signupButton.addEventListener('click', async (evt) => {
     const response = await fetch(url + '/users', fetchOptions);
     const json = await response.json();
     alert(json.message);
-    document.querySelector('#emailInput').value = "";
-    document.querySelector('#passwordInput').value = "";
+    document.querySelector('#emailInputSignUp').value = "";
+    document.querySelector('#passwordInputSignUp').value = "";
 
     if (json.message === "User Created" || "") {
         location.href = 'signIn.html';
@@ -274,6 +275,6 @@ signupButton.addEventListener('click', async (evt) => {
 // recipe.js alkaa tästä
 
 // recipe.js loppuu tähän
-
-
+console.log("asd");
+newestPresentationData()
 
