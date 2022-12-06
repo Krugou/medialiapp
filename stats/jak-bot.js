@@ -57,18 +57,22 @@ const websiteHealth = async () => {
 
         const response1 = await fetch('http://localhost:3000/status/apachestatus')
         const fetchDataJson1 = await response1.json();
-        jakbot.channels.cache.get(ChannelIDstatus).send('Apache status: ' + fetchDataJson1[0].status)
+        jakbot.channels.cache.get(ChannelIDstatus).send(' Local Apache status: ' + fetchDataJson1[0].status)
         const response2 = await fetch('http://localhost:3000/status/mariadbstatus')
         const fetchDataJson2 = await response2.json();
-        jakbot.channels.cache.get(ChannelIDstatus).send('MariaDB status: ' + fetchDataJson2[0].status)
+        jakbot.channels.cache.get(ChannelIDstatus).send(' Local MariaDB status: ' + fetchDataJson2[0].status)
         const response3 = await fetch('http://localhost:3000/status/starttime')
         const fetchDataJson3 = await response3.json();
-        jakbot.channels.cache.get(ChannelIDwebsite).send('Server uptime: ' + Math.floor((dateNow - fetchDataJson3[0].datenow) / 1000 / 60) % 60 + ' minutes ' + Math.floor((dateNow - fetchDataJson3[0].datenow) / 1000 % 60) + ' seconds')
+        jakbot.channels.cache.get(ChannelIDwebsite).send(' Local Server uptime: ' + Math.floor((dateNow - fetchDataJson3[0].datenow) / 1000 / 60) % 60 + ' minutes ' + Math.floor((dateNow - fetchDataJson3[0].datenow) / 1000 % 60) + ' seconds')
 
        
         }
     });
 }
+
+
+
+
 const importantStuff = async (restart) => {
 
     jakbot.on('ready', jakbot => {
