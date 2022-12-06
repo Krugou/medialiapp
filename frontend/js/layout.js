@@ -38,12 +38,15 @@ async function oldestPresentationData() {
         presentationdata.innerHTML = loadout;
     }
 }
+
+newestPresentationData()
+
+// main.js loppuu tähän
+
+// frontpage.html alkaa tästä
 const editFilter = document.getElementById("filterModal");
-
 const filterButton = document.getElementById("filter");
-
-let close = document.getElementsByClassName("close")[0];
-
+let close = document.getElementById("close");
 filterButton.onclick = function () {
     editFilter.style.display = "block";
 }
@@ -56,9 +59,7 @@ window.onclick = function (event) {
         editFilter.style.display = "none";
     }
 }
-newestPresentationData()
-
-// main.js loppuu tähän
+// frontpage.html loppuu tähän
 
 //frontpage.js alkaa tästä
 const addRecipeButton = document.querySelector('#addrecipesButton');
