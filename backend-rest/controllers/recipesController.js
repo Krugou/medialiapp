@@ -19,7 +19,7 @@ const getAllNewestRecipesController = async (req, res, next) => {
         next(httpError('Database error', 500));
     }
 };
-const getAllOldestRecipesMainPage = async (req, res, next) => {
+const getAllOldestRecipesController = async (req, res, next) => {
     try {
         const rows = await getAllOldestRecipesMainPage(next);
         if (rows.length < 1) {
@@ -162,7 +162,7 @@ const cat_post = async (req, res, next) => {
 
 module.exports = {
     getAllNewestRecipesController,
-    getAllOldestRecipesMainPage,
+    getAllOldestRecipesController,
     recipes_mealtypes_get,
     recipes_post,
 };
