@@ -27,7 +27,7 @@ module.exports = (app, port, httpsPort) => {
             res.redirect(301, `https://${req.headers.host}${proxypath}${req.url}`);
         }
     });
-    let date = new Date(Date.now()).toISOString();
+    let date = new Date(Date.now()).toLocaleString(fi - FI)();
     app.listen(port, () => console.log(`JAK port:  ${port}!  time: ${date}`));
     https.createServer(options, app).listen(8000);
 

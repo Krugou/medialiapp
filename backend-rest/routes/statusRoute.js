@@ -95,7 +95,7 @@ router.get('/mariadbstatus', function (req, res, next) {
         const mariadbstatusfixed = mariadbstatus.toString().includes("active (running)");
         res.send(mariadbstatusfixed);
     } else {
-        res.send('{ "status":"no mariadb data available. this is localhost"}');
+        res.send('[{ "status":"no mariadb data available. this is localhost"}]');
     }
 });
 router.get('/apachestatus', function (req, res, next) {
@@ -104,7 +104,7 @@ router.get('/apachestatus', function (req, res, next) {
         const apachestatusfixed = apachestatus.toString().includes("active (running)");
         res.send(apachestatusfixed);
     } else {
-        res.send('{ "status":"no apache data available. this is localhost"}');
+        res.send('[{ "status":"no apache data available. this is localhost"}]');
     }
 
 });
