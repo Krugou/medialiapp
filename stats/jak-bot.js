@@ -25,8 +25,8 @@ jakbot.once(Events.ClientReady, c => {
 
 jakbot.on('ready', jakbot => {
 
-    jakbot.user.setUsername('JAK-BOT running');
-    jakbot.user.setActivity('Node.js', { type: 'PLAYING' });
+
+
     jakbot.channels.cache.get(channelIDstart).send('Node.js is running! at ' + new Date(Date.now()).toISOString());
 });
 
@@ -34,7 +34,8 @@ const restart = true
 const importantStuff = async (restart) => {
 
     jakbot.on('ready', jakbot => {
-
+        jakbot.user.setUsername('JAK-BOT running');
+        jakbot.user.setActivity('Node.js', { type: 'PLAYING' });
 
 
         admin.query(
@@ -120,7 +121,7 @@ const importantStuff = async (restart) => {
 
                 // }
             });
-
+        jakbot.user.setUsername('JAK-BOT on break');
     })
 };
 
