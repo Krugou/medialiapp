@@ -93,7 +93,8 @@ router.get('/mariadbstatus', function (req, res, next) {
     if (process.env.NODE_ENV === 'production') {
         const mariadbstatus = fs.readFileSync('/home/allseeyingeye/medialiapp/backend-rest/mariadbstatus.txt');
         const mariadbstatusfixed = mariadbstatus.toString().includes("active (running)");
-        res.send(mariadbstatusfixed);
+        const mariadbstatusfixedJson = [{ "status": mariadbstatusfixed }]
+        res.send(mariadbstatusfixedJson);
     } else {
         res.send('[{ "status":"no mariadb data available. this is localhost"}]');
     }
@@ -102,7 +103,8 @@ router.get('/apachestatus', function (req, res, next) {
     if (process.env.NODE_ENV === 'production') {
         const apachestatus = fs.readFileSync('/home/allseeyingeye/medialiapp/backend-rest/apachestatus.txt');
         const apachestatusfixed = apachestatus.toString().includes("active (running)");
-        res.send(apachestatusfixed);
+        const apachestatusfixedJson = [{ "status": apachestatusfixed }]
+        res.send(apachestatusfixedJson);
     } else {
         res.send('[{ "status":"no apache data available. this is localhost"}]');
     }
