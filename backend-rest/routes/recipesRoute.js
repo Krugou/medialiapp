@@ -16,14 +16,8 @@ const fileFilter = (req, file, cb) => {
 
 
 const upload = multer({dest: 'uploads/', fileFilter});
-const { recipes_list_get,
-    recipes_count_get,
+const { 
     recipes_post,
-    recipes_list_by_category_get,
-    recipes_list_by_author_get,
-    recipes_list_by_id_get,
-    recipes_put,
-    recipes_delete,
     getAllRecipesController,
     recipes_mealtypes_get,} = require("../controllers/recipesController");
 const { body } = require('express-validator');

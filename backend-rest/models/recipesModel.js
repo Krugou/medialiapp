@@ -197,6 +197,7 @@ const addRecipes = async (data, next) => {
         catch (e) {
             
         }
+        console.log('he knocks on the door')
         return rows, rows2, rows3;
     } catch (e) {
         console.error('addRecipes input', e.message);
