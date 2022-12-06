@@ -81,5 +81,169 @@ function logOut() {
  
 // logout.js loppuu tähän
 
+// addRecipe.js alkaa tästä
+const postButton = document.querySelector('#postRecipe');
+const tagModal = document.querySelector('#tags');
+const tagButton = document.querySelector('#tag');
+let selectedTags = []; // Tähän syötetään valittujen mealtyypien id:t
+const instructionDiv = document.querySelector('.instruction');
+
+const addTags = (tags) => { // Syötetään objekti jossa mealtype infot
+
+    tagModal.innerHTML = "";
+    tags.forEach((tag) => {
+        const button = document.createElement('button');
+        button.innerHTML = tag.Mealtype;
+        button.classList.add('mealtypeButtons');
+        if (!selectedTags.includes(tag.Mealid)) {
+            tagModal.appendChild(button);
+            button.addEventListener('click', () => {
+                selectedTags.push(tag.Mealid); // Laitetaan Valittuihin tageihin ainoastaan ID:t
+                tagModal.removeChild(button);
+
+                // TODO NÄYTÄ SELECTEDTAGS SIVULLA, MISTÄ VOI MYÖS POISTAA KO. TAGIN
+                const button2 = document.createElement('button');
+                button2.innerHTML = tag.Mealtype;
+                button2.classList.add("selectedMealTypeButtons");
+                instructionDiv.appendChild(button2);
+                button2.addEventListener('click', () => {
+                    const poista = selectedTags.indexOf(tag.Mealid);
+                    selectedTags.splice(poista, 1);
+                    instructionDiv.removeChild(button2);
+                    alert('Tagi: "' + tag.Mealtype + '" poistettiin.');
+                });
+
+            });
+        }
+    });
+
+};
+
+
+tagButton.addEventListener('click', async (evt) => {
+    evt.preventDefault()
+    //TODO HAE TAGIT DYNAAMISESTI TIETOKANNASTA
+    try {
+        const response = await fetch(url + '/recipes/mealtypes');
+        const tags2 = await response.json();
+        addTags(tags2);
+    } catch (e) {
+        console.log(e.message);
+    }
+});
+
+postButton.addEventListener('click', async (evt) => {
+    evt.preventDefault();
+    const recipenameInput = document.querySelector('#recipenameInput').value;
+    const recipeguide = document.querySelector('#recipeguide').value;
+    const courseselect = document.querySelector('#courseselect').value;
+    const recipetimeInput = document.querySelector('#recipetimeInput').value;
+    const addForm = document.querySelector('#recipeAddimagebutton');
+
+
+
+
+    const fd = new FormData(addForm);
+    fd.append("name", recipenameInput);
+    fd.append("guide", recipeguide);
+    fd.append("course", courseselect);
+    fd.append("time", recipetimeInput);
+    fd.append("mealtypes", selectedTags);
+
+    console.log("fd", fd);
+    const fetchOptions = {
+        method: 'POST',
+        headers: {
+            // Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+        },
+        //  body: JSON.stringify(data),
+        body: fd,
+    };
+    console.log(fetchOptions);
+    const response = await fetch(url + '/recipes', fetchOptions);
+    const json = await response.json();
+    alert(json.message);
+    //  location.href = 'frontpage.html';
+
+});
+// addRecipe.js loppuu tähän
+
+// signIn.js alkaa tästä
+const signinButton = document.querySelector('#signinNappi');
+
+signinButton.addEventListener('click', async (evt) => {
+    console.log("asd");
+    evt.preventDefault();
+    const emailInput = document.querySelector('#emailInput').value;
+    //const usernameInput = document.querySelector('#usernameInput').value;
+    const passwordInput = document.querySelector('#passwordInput').value;
+    const data = {
+        username: emailInput,
+        password: passwordInput
+    }
+    const fetchOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    };
+    console.log(data);
+    const response = await fetch(url + '/auth/login', fetchOptions);
+    const json = await response.json();
+    console.log('login response', json);
+    if (!json.user) {
+        alert(json.message);
+    } else {
+        // save token
+        sessionStorage.setItem('token', json.token);
+        sessionStorage.setItem('user', JSON.stringify(json.user));
+        location.href = 'frontpage.html';
+    }
+});
+// signIn.js loppuu tähän
+
+// registration.js alkaa tästä
+const signupButton = document.querySelector('#signupNappi');
+
+
+signupButton.addEventListener('click', async (evt) => {
+    evt.preventDefault();
+    const emailInput = document.querySelector('#emailInput').value;
+    //const usernameInput = document.querySelector('#usernameInput').value;
+    const passwordInput = document.querySelector('#passwordInput').value;
+
+    const data = {
+        email: emailInput,
+        password: passwordInput
+    };
+
+    console.log(data);
+
+    const fetchOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    };
+
+    const response = await fetch(url + '/users', fetchOptions);
+    const json = await response.json();
+    alert(json.message);
+    document.querySelector('#emailInput').value = "";
+    document.querySelector('#passwordInput').value = "";
+
+    if (json.message === "User Created" || "") {
+        location.href = 'signIn.html';
+    }
+
+});
+// registration.js loppuu tähän
+
+// recipe.js alkaa tästä
+
+// recipe.js loppuu tähän
+
 
 
