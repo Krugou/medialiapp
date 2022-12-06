@@ -39,5 +39,22 @@ async function oldestPresentationData() {
         presentationdata.innerHTML = loadout;
     }
 }
+const editFilter = document.getElementById("filterModal");
 
+const filterButton = document.getElementById("filter");
+
+let close = document.getElementsByClassName("close")[0];
+
+filterButton.onclick = function () {
+    editFilter.style.display = "block";
+}
+
+close.onclick = function () {
+    editFilter.style.display = "none";
+}
+window.onclick = function (event) {
+    if (event.target == editFilter) {
+        editFilter.style.display = "none";
+    }
+}
 newestPresentationData()
