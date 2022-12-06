@@ -37,10 +37,10 @@ app.use('/recipes', recipesRoute);
 app.use('/users', userRoute);
 app.use('/status', statusRoute);
 
-app.use((req, res, next) => {
-    const err = httpError('Not found', 404);
-    next(err);
-});
+// app.use((req, res, next) => {
+//     const err = httpError('Not found', 404);
+//     next(err);
+// });
 
 
 
