@@ -47,7 +47,7 @@ const importantStuff = async (restart) => {
             }
         );
         admin.query(
-            'SELECT * FROM `jakrecipes`.`allthecounts`;',
+            'SELECT * FROM `jakrecipes`.`Allthecounts`;',
             function (err, result) {
                 if (err) throw err;
                 if (restart === true) {
