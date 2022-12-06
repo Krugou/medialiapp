@@ -136,7 +136,6 @@ const importantStuff = async (restart) => {
 
             });
         jakbot.user.setUsername('JAK-BOT on break');
-        console.log('JAK-BOT cycle done');
     })
 };
 
