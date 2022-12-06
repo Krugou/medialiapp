@@ -18,12 +18,13 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({dest: 'uploads/', fileFilter});
 const { 
     recipes_post,
-    getAllRecipesController,
+    getAllNewestRecipesController,
+    getAllOldestRecipesController,
     recipes_mealtypes_get,} = require("../controllers/recipesController");
 const { body } = require('express-validator');
 router.get('/mealtypes', recipes_mealtypes_get);
 router.get('/allrecipes/newest', getAllNewestRecipesController);
-router.get('/allrecipes/oldest', getAllOldestRecipesMainPage);
+router.get('/allrecipes/oldest', getAllOldestRecipesController);
 router.post('/',
  upload.single('recipe'),
 
