@@ -55,11 +55,11 @@
   width: 15%;
 }
 .Etuylä {
+  height: 30em;
   background-color: #dfedf2;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 35%;
   border-bottom: 1px solid;
   gap: 10px;
 }
@@ -318,11 +318,13 @@
   width: 100%;
 }
 .userPosts {
-  width: 40%;
-  margin-left: 7%;
-  margin-top: 5%;
+  display:flex;
+  flex-wrap: wrap;
+  width: 55.5vw;
+  margin-bottom: 5vw;
+  margin-left: 7vw;
+  justify-content: center;
   box-shadow: 1px 2px 14px 5px rgba(0, 0, 0, 0.75);
-  padding: 10px;
 }
 .userProfile {
   width: 50%;
@@ -388,12 +390,14 @@
   border-radius: 1em;
   color: white;
 }
+
 #check {
   display: none;
 }
-#check {
+#checkLike {
   display: none;
 }
+
 #editProfile {
   background-color: #0d1e40;
   border: solid 1px #0d1e40;
@@ -416,7 +420,7 @@
   justify-content: space-between;
 }
 #profilepic {
-  width: 25%;
+  width: 15em;
 }
 .recipePic {
   display: block;
@@ -526,6 +530,7 @@ p {
 }
 .fa-heart {
   font-size: 3em;
+  color: white;
 }
 .recipeStats {
   align-items:center;
@@ -571,6 +576,30 @@ p {
   height: 4em;
   width: 10em;
 }
+.userPosts figure {
+  border: solid 1px black;
+  width: 10vw;
+  height: auto;
+  font-size: 15px;
+  padding-bottom: 15px;
+  margin: 1rem;
+  background-color: #dfedf2;
+  text-align: center;
+}
+.userPosts figure button {
+  background-color: #0d1e40;
+  border: solid 1px #0d1e40;
+  border-radius: 1em;
+  color: white;
+  height: 3em;
+  width: 7em;
+}
+.userPosts figure img {
+  width: 100%;
+  max-width: 100%;
+  height: auto
+}
+
 
 
 
@@ -579,9 +608,33 @@ p {
   .recipefigure {
     width: 30vw;
   }
+  .recipeStats {
+    width: 80%;
+  }
+  .Recipe_desc {
+    width: 80%;
+  }
 }
 
 @media screen and (max-width: 770px) {
+
+
+  #profileArticle {
+    flex-direction: column-reverse;
+  }
+  .userPosts {
+    margin:auto;
+    width:auto;
+    flex-direction: column;
+  }
+  .userPosts figure {
+    width: auto;
+  }
+  .userProfile {
+    width: auto;
+    margin-bottom: 5em;
+  }
+
   .recipefigure {
     width: 60vw;
   }
@@ -615,6 +668,10 @@ p {
 @media screen and (max-width: 525px) {
   .recipefigure {
     width: 60vw;
+  }
+  .userPosts figure {
+    width: auto;
+    height: 100%;
   }
 
   .Etuylä {
@@ -683,6 +740,10 @@ p {
     margin-top: 15%;
     margin-left: 7%;
     margin-right: 7%;
+    flex-direction: column;
+  }
+  .userPosts figure {
+    width: auto;
   }
 
   .recipePic {
@@ -704,5 +765,10 @@ p {
     flex-direction: column;
     gap: unset;
   }
-
 }
+@media screen and (max-width: 375px) {
+  p {
+    font-size: 1.5vh;
+  }
+}
+
