@@ -6,14 +6,15 @@ const SignInNavLink = document.getElementById('signIn');
 const SignUpNavLink = document.getElementById('signUp');
 const logOutNavLink = document.getElementById('logOut');
 const frontPageNavLink = document.getElementById('frontpage');
-const presentationdata = document.getElementById('presentationdata');
-function startUp()
-{
+
+function startUp() {
     if (sessionStorage.getItem('token') === null) {
+       
         removeChildren(logOutNavLink);
         frontPage();
-        // SignIn();
         newestPresentationData();
+        // SignIn();
+       
 
     } else {
         removeChildren(SignInNavLink);
@@ -27,7 +28,8 @@ async function newestPresentationData() {
     const response = await fetch(url + '/recipes/allrecipes/newest');
     const json = await response.json();
     let loadout = "";
-
+    console.log("newest")
+    const presentationdata = document.getElementById('presentationdata');
 
     for (let i = 0; i < (json.length); i++) {
 
@@ -48,9 +50,9 @@ function removeChildren(element) {
     }
 }
 
-    
-function frontPage() {
 
+async function frontPage() {
+ console.log("frontpage")
     pageGeneration.innerHTML = ` <section id="etuyla" class="Etuylä"> <input type="text" aria-label="Reseptien haku" placeholder="Hae Resepti" class="Haeresepti marginhalfrem"> <button id="filter" class="marpad1rem">Filter</button> <div id="filterModal" class="modal"> <div class="modal-content"> <span class="close">&times;</span> <div class="modaladd"> <h3>Add Filters</h3> <div class="filters"> </div><div class="filtersave"> </div></div></div></div><div class="addRecipes"> <button href="addRecipe.html" id="addrecipesButton" class="marpad1rem">Tee resepti</a></button> </div></section> <h2 class="otsikko"> Uusimmat Reseptit</h2> <hr> <div class="reseptit" id="presentationdata"> </div>`
 }
 function clearPage() {
@@ -251,94 +253,94 @@ SignUpNavLink.addEventListener('click', async (evt) => {
     register();
 });
 
-    // kesken
-    // async function checktoken() {
-    //     // check sessionStorage
-    //     if (!sessionStorage.getItem('token') || !sessionStorage.getItem('user')) {
-    //         location.href = 'login.html';
-    //         return;
-    //     }
-    //     // check if token valid
-    //     try {
-    //         const fetchOptions = {
-    //             headers: {
-    //                 Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-    //             },
-    //         };
-    //         const response = await fetch(url + '/user/token', fetchOptions);
-    //         if (!response.ok) {
-    //             location.href = 'logout.html';
-    //         } else {
-    //             const json = await response.json();
-    //             sessionStorage.setItem('user', JSON.stringify(json.user));
-    //         }
-    //     } catch (e) {
-    //         // console.log(e.message);
-    //     }
+// kesken
+// async function checktoken() {
+//     // check sessionStorage
+//     if (!sessionStorage.getItem('token') || !sessionStorage.getItem('user')) {
+//         location.href = 'login.html';
+//         return;
+//     }
+//     // check if token valid
+//     try {
+//         const fetchOptions = {
+//             headers: {
+//                 Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+//             },
+//         };
+//         const response = await fetch(url + '/user/token', fetchOptions);
+//         if (!response.ok) {
+//             location.href = 'logout.html';
+//         } else {
+//             const json = await response.json();
+//             sessionStorage.setItem('user', JSON.stringify(json.user));
+//         }
+//     } catch (e) {
+//         // console.log(e.message);
+//     }
 
-    // }
-    // main.js alkaa tästä
-
- 
-    async function oldestPresentationData() {
-        const response = await fetch(url + '/recipes/allrecipes/oldest');
-        const json = await response.json();
-        let loadout = "";
+// }
+// main.js alkaa tästä
 
 
-        for (let i = 0; i < (json.length); i++) {
+async function oldestPresentationData() {
+    const response = await fetch(url + '/recipes/allrecipes/oldest');
+    const json = await response.json();
+    let loadout = "";
 
-            // jos kuvaa ei ole, laitetaan placeholder
-            if (json[i].Imagefilepath === 'null') {
-                const replaceimage = "./media/logos/jakrecipeslogo.svg";
-                loadout += '<figure class="recipefigure"><img src="' + replaceimage + '"><p>' + json[i].Recipename + '</p><p>' + json[i].Recipetime + '</p><p>' + json[i].Coursetype + '</p><p>' + json[i].Mealtype + '</p> <button > Katso resepti</button ></figure >'
-            } else {
-                loadout += '<figure class="recipefigure"><img src="' + url + '/' + json[i].Imagefilepath + '"><p>' + json[i].Recipename + '</p><p>' + json[i].Recipetime + '</p><p>' + json[i].Coursetype + '</p><p>' + json[i].Mealtype + '</p> <button > Katso resepti</button ></figure >'
-            }
-            presentationdata.innerHTML = loadout;
+
+    for (let i = 0; i < (json.length); i++) {
+
+        // jos kuvaa ei ole, laitetaan placeholder
+        if (json[i].Imagefilepath === 'null') {
+            const replaceimage = "./media/logos/jakrecipeslogo.svg";
+            loadout += '<figure class="recipefigure"><img src="' + replaceimage + '"><p>' + json[i].Recipename + '</p><p>' + json[i].Recipetime + '</p><p>' + json[i].Coursetype + '</p><p>' + json[i].Mealtype + '</p> <button > Katso resepti</button ></figure >'
+        } else {
+            loadout += '<figure class="recipefigure"><img src="' + url + '/' + json[i].Imagefilepath + '"><p>' + json[i].Recipename + '</p><p>' + json[i].Recipetime + '</p><p>' + json[i].Coursetype + '</p><p>' + json[i].Mealtype + '</p> <button > Katso resepti</button ></figure >'
         }
+        presentationdata.innerHTML = loadout;
     }
+}
 
 
 
-    // main.js loppuu tähän
-    // frontpage.html alkaa tästä
-    const editFilter = document.getElementById("filterModal");
-    const filterButton = document.getElementById("filter");
-    let close = document.getElementsByClassName("close")[0]
-    filterButton.onclick = function () {
-        editFilter.style.display = "block";
-    }
+// main.js loppuu tähän
+// frontpage.html alkaa tästä
+const editFilter = document.getElementById("filterModal");
+const filterButton = document.getElementById("filter");
+let close = document.getElementsByClassName("close")[0]
+filterButton.onclick = function () {
+    editFilter.style.display = "block";
+}
 
-    close.onclick = function () {
+close.onclick = function () {
+    editFilter.style.display = "none";
+}
+window.onclick = function (event) {
+    if (event.target == editFilter) {
         editFilter.style.display = "none";
     }
-    window.onclick = function (event) {
-        if (event.target == editFilter) {
-            editFilter.style.display = "none";
-        }
-    }
-    // frontpage.html loppuu tähän
+}
+// frontpage.html loppuu tähän
 
-    //frontpage.js alkaa tästä
+//frontpage.js alkaa tästä
 
-    const addRecipeButton = document.querySelector('#addrecipesButton');
+const addRecipeButton = document.querySelector('#addrecipesButton');
 
-    addRecipeButton.addEventListener('click', async (evt) => {
-        evt.preventDefault();
-        clearPage();
-        addRecipes()
+addRecipeButton.addEventListener('click', async (evt) => {
+    evt.preventDefault();
+    clearPage();
+    addRecipes()
 
 
-    });
-    // frontpage.js loppuu tähän
+});
+// frontpage.js loppuu tähän
 
-    // logout.js alkaa tästä
-    function logOut() {
-        sessionStorage.removeItem('token');
-        sessionStorage.removeItem('user');
-        frontPage();
-    }
+// logout.js alkaa tästä
+function logOut() {
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('user');
+    frontPage();
+}
 
     // logout.js loppuu tähän
 
