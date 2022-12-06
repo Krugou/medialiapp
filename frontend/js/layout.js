@@ -11,7 +11,9 @@ function startUp()
 {
     if (sessionStorage.getItem('token') === null) {
         removeChildren(logOutNavLink);
-        SignIn();
+        frontPage();
+        // SignIn();
+        newestPresentationData();
 
     } else {
         removeChildren(SignInNavLink);
