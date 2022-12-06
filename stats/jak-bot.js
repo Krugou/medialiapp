@@ -46,24 +46,30 @@ const websiteHealth = async () => {
         if (process.env.NODE_ENV === 'production') {
             const response1 = await fetch('http://10.114.34.72/status/apachestatus')
             const fetchDataJson1 = await response1.text()
-            jakbot.channels.cache.get(ChannelIDstatus).send('Apache status: ' + fetchDataJson1[0].status);
+            const parsedDataJson1 = JSON.parse(fetchDataJson1)
+            jakbot.channels.cache.get(ChannelIDstatus).send('Apache status: ' + parsedDataJson1[0].status);
             const response2 = await fetch('http://10.114.34.72/status/mariadbstatus')
             const fetchDataJson2 = await response2.text()
-            jakbot.channels.cache.get(ChannelIDstatus).send('MariaDB status: ' + fetchDataJson2[0].status);
+            const parsedDataJson2 = JSON.parse(fetchDataJson2)
+            jakbot.channels.cache.get(ChannelIDstatus).send('MariaDB status: ' + parsedDataJson2[0].status);
             const response = await fetch('http://10.114.34.72/status/starttime')
             const fetchDataJson3 = await response.text()
-            jakbot.channels.cache.get(ChannelIDwebsite).send('Server uptime: ' + Math.floor((dateNow - fetchDataJson3[0].datenow) / 1000 / 60) % 60 + ' minutes ' + Math.floor((dateNow - fetchDataJson3[0].datenow) / 1000 % 60) + ' seconds')
+            const parsedDataJson3 = JSON.parse(fetchDataJson3)
+            jakbot.channels.cache.get(ChannelIDwebsite).send('Server uptime: ' + Math.floor((dateNow - parsedDataJson3[0].datenow) / 1000 / 60) % 60 + ' minutes ' + Math.floor((dateNow - parsedDataJson3[0].datenow) / 1000 % 60) + ' seconds')
         } else {
 
             const response1 = await fetch('http://localhost:3000/status/apachestatus')
             const fetchDataJson1 = await response1.text()
-            jakbot.channels.cache.get(ChannelIDstatus).send(' Local Apache status: ' + fetchDataJson1[0].status)
+            const parsedDataJson1 = JSON.parse(fetchDataJson1)
+            jakbot.channels.cache.get(ChannelIDstatus).send(' Local Apache status: ' + parsedDataJson1[0].status)
             const response2 = await fetch('http://localhost:3000/status/mariadbstatus')
             const fetchDataJson2 = await response2.text()
-            jakbot.channels.cache.get(ChannelIDstatus).send(' Local MariaDB status: ' + fetchDataJson2[0].status)
+            const parsedDataJson2 = JSON.parse(fetchDataJson2)
+            jakbot.channels.cache.get(ChannelIDstatus).send(' Local MariaDB status: ' + parsedDataJson2[0].status)
             const response3 = await fetch('http://localhost:3000/status/starttime')
             const fetchDataJson3 = await response3.text()
-            jakbot.channels.cache.get(ChannelIDwebsite).send(' Local Server uptime: ' + Math.floor((dateNow - fetchDataJson3[0].datenow) / 1000 / 60) % 60 + ' minutes ' + Math.floor((dateNow - fetchDataJson3[0].datenow) / 1000 % 60) + ' seconds')
+            const parsedDataJson3 = JSON.parse(fetchDataJson3)
+            jakbot.channels.cache.get(ChannelIDwebsite).send(' Local Server uptime: ' + Math.floor((dateNow - parsedDataJson3[0].datenow) / 1000 / 60) % 60 + ' minutes ' + Math.floor((dateNow - parsedDataJson3[0].datenow) / 1000 % 60) + ' seconds')
 
 
         }
