@@ -3,9 +3,12 @@ require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql2');
 const router = express.Router();
-const date = { d: Date.now() }
+
+const datenow = Date.now()
+const date = [{ "datenow": datenow }]
 const { httpError } = require('../utils/errors');
 const fs = require('fs');
+const { route } = require('./authRoute');
 
 
 
@@ -30,9 +33,8 @@ router.get('/', function (req, res, next) {
             'SELECT * FROM `jakrecipes`.`allthecounts`;',
             function (err, result) {
                 if (err) throw err;
-
                 res.render('status/status', {
-                    date: date.d,
+                    date: date[0].datenow,
                     location: location,
                     alluserscount: result[2].count,
                     usercount: result[1].count,
@@ -63,14 +65,14 @@ router.get('/', function (req, res, next) {
             queueLimit: 0,
         });
         let location = process.env.NODE_ENV
-        
+
         local.query(
             'SELECT * FROM `jakrecipes`.`allthecounts`;',
             function (err, result) {
                 if (err) throw err;
 
                 res.render('status/status', {
-                    date: date.d,
+                    date: date[0].datenow,
                     location: location,
                     alluserscount: result[2].count,
                     usercount: result[1].count,
@@ -87,5 +89,43 @@ router.get('/', function (req, res, next) {
 
     };
 });
+router.get('/mariadbstatus', function (req, res, next) {
+    if (process.env.NODE_ENV === 'production') {
+        const mariadbstatus = fs.readFileSync('/home/allseeyingeye/medialiapp/backend-rest/mariadbstatus.txt');
+        const mariadbstatusfixed = mariadbstatus.toString().includes("active (running)");
+        res.send(mariadbstatusfixed);
+    } else {
+        res.send('{ "status":"no mariadb data available. this is localhost"}');
+    }
+});
+router.get('/apachestatus', function (req, res, next) {
+    if (process.env.NODE_ENV === 'production') {
+        const apachestatus = fs.readFileSync('/home/allseeyingeye/medialiapp/backend-rest/apachestatus.txt');
+        const apachestatusfixed = apachestatus.toString().includes("active (running)");
+        res.send(apachestatusfixed);
+    } else {
+        res.send('{ "status":"no apache data available. this is localhost"}');
+    }
 
+});
+router.get('/alluserscount', function (req, res, next) {
+
+    const admin = require('../database/db');
+    admin.query(
+        'SELECT COUNT(*) AS count FROM `jakrecipes`.`users`;',
+        function (err, result) {
+            if (err) throw err;
+            res.send(result);
+        }
+    );
+
+
+}
+);
+
+router.get('/starttime', function (req, res, next) {
+    res.send(date)
+}
+
+);
 module.exports = router;
