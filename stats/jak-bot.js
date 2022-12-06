@@ -65,7 +65,7 @@ const importantStuff = async (restart) => {
 
 
                 admin.query(
-                    'SELECT `Recipename` FROM `recipes` group by Recipeid limit 3;',
+                    'SELECT `Recipename` FROM `Recipes` group by Recipeid limit 3;',
                     function (err, result) {
                         if (err) throw err;
                         if (restart === true) {
