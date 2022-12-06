@@ -44,13 +44,13 @@ const restart = true
 const websiteHealth = async () => {
     jakbot.on('ready', async jakbot => {
     if (process.env.NODE_ENV === 'production') {
-        // const response1 = await fetch('http://10.114.34.72/status/apachestatus')
-        // const fetchDataJson1 = await response1.json();
-        // jakbot.channels.cache.get(ChannelIDstatus).send('Apache status: ' + fetchDataJson1[0].status);
-        // const response2 = await fetch('http://10.114.34.72/status/mariadbstatus')
-        // const fetchDataJson2 = await response2.json();
-        // jakbot.channels.cache.get(ChannelIDstatus).send('MariaDB status: ' + fetchDataJson2[0].status);
-        const response = await fetch('http://10.114.34.72/status/starttime')
+        const response1 = await fetch('https://10.114.34.72/status/apachestatus')
+        const fetchDataJson1 = await response1.json();
+        jakbot.channels.cache.get(ChannelIDstatus).send('Apache status: ' + fetchDataJson1[0].status);
+        const response2 = await fetch('https://10.114.34.72/status/mariadbstatus')
+        const fetchDataJson2 = await response2.json();
+        jakbot.channels.cache.get(ChannelIDstatus).send('MariaDB status: ' + fetchDataJson2[0].status);
+        const response = await fetch('https://10.114.34.72/status/starttime')
         const fetchDataJson3 = await response.json();
         jakbot.channels.cache.get(ChannelIDwebsite).send('Server uptime: ' + Math.floor((dateNow - fetchDataJson3[0].datenow) / 1000 / 60) % 60 + ' minutes ' + Math.floor((dateNow - fetchDataJson3[0].datenow) / 1000 % 60) + ' seconds')
     } else {
