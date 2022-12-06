@@ -75,6 +75,10 @@
                     error exercitationem impedit natus nemo possimus similique sunt veniam.
                 </p>
             </div>
+            <div id="openComments">
+                <button onclick="openFunction()" id="openCommentsButton">Show Comments</button>
+            </div>
+            <section id="comments">
             <div class="addComment">
                 <form>
                     <h2>Add Comment</h2>
@@ -132,10 +136,30 @@
                     </div>
                 </li>
             </ul>
+            </section>
+            <script>
+
+              function openFunction() {
+                document.getElementById("comments").style.display = "unset";
+                document.getElementById("openCommentsButton").remove();
+                const hide = document.createElement("button");
+                hide.setAttribute("id", "hideCommentsButton");
+                hide.innerText = "Hide Comments";
+
+                  document.getElementById("openComments").append(hide);
+                  document.getElementById("hideCommentsButton").addEventListener("click", function() {
+                    document.getElementById("comments").style.display = "none";
+                    document.getElementById("hideCommentsButton").remove();
+                    const show = document.createElement("button");
+                    show.setAttribute("id", "openCommentsButton");
+                    show.setAttribute("onclick", "openFunction()");
+                    show.innerText = "Show Comments";
+                    document.getElementById("openComments").append(show);
+                  })
+              }
+            </script>
         </div>
     </main>
-    <script>
-    </script>
     <script src="js/registration.js" defer></script>
 
 </body>

@@ -545,6 +545,31 @@ p {
   text-align: center;
   font-size: 2em;
 }
+#comments {
+  display: none;
+
+}
+#openComments {
+  text-align: center;
+  margin-bottom: 3em;
+  margin-top: 2em;
+}
+#openCommentsButton {
+  background-color: #0d1e40;
+  border: solid 1px white;
+  border-radius: 1em;
+  color: white;
+  height: 4em;
+  width: 10em;
+}
+#hideCommentsButton {
+  background-color: #0d1e40;
+  border: solid 1px white;
+  border-radius: 1em;
+  color: white;
+  height: 4em;
+  width: 10em;
+}
 
 
 
