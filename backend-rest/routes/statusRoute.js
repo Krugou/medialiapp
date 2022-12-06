@@ -91,8 +91,10 @@ router.get('/', function (req, res, next) {
 });
 router.get('/mariadbstatus', function (req, res, next) {
     if (process.env.NODE_ENV === 'production') {
+        console.log('mariadbstatus')
         const mariadbstatus = fs.readFileSync('/home/allseeyingeye/medialiapp/backend-rest/mariadbstatus.txt');
         const mariadbstatusfixed = mariadbstatus.toString().includes("active (running)");
+
         const mariadbstatusfixedJson = [{ "status": mariadbstatusfixed }]
         res.send(mariadbstatusfixedJson);
     } else {
@@ -101,6 +103,7 @@ router.get('/mariadbstatus', function (req, res, next) {
 });
 router.get('/apachestatus', function (req, res, next) {
     if (process.env.NODE_ENV === 'production') {
+        console.log('apachestatus')
         const apachestatus = fs.readFileSync('/home/allseeyingeye/medialiapp/backend-rest/apachestatus.txt');
         const apachestatusfixed = apachestatus.toString().includes("active (running)");
         const apachestatusfixedJson = [{ "status": apachestatusfixed }]
