@@ -90,35 +90,35 @@ const importantStuff = async (restart) => {
                             jakbot.channels.cache.get(channelIDwelcome).send('Useremail: ' + result[i].Useremail);
                         }
                     });
-                if (process.env.NODE_ENV === 'production') {
-                    fetch('http://10.114.34.72/status/apachestatus')
-                        .then(res => res.json())
-                        .then(json => jakbot.channels.cache.get(ChannelIDstatus).send('Apache status: ' + json[0].status))
-                        .catch(err => console.log(err));
-                    fetch('http://10.114.34.72/status/mariadbstatus')
-                        .then(res => res.json())
-                        .then(json => jakbot.channels.cache.get(ChannelIDstatus).send('MariaDB status: ' + json[0].status))
-                        .catch(err => console.log(err));
-                    fetch('http://10.114.34.72/status/starttime')
-                        .then(res => res.json())
-                        .then(json => jakbot.channels.cache.get(ChannelIDwebsite).send('Server uptime: ' + Math.floor((dateNow - json[0].datenow) / 1000 / 60) % 60 + ' minutes ' + Math.floor((dateNow - json[0].datenow) / 1000 % 60) + ' seconds'))
-                        .catch(err => console.log(err));
-                } else {
-                    fetch('http://localhost:3000/status/apachestatus')
-                        .then(res => res.json())
-                        .then(json => jakbot.channels.cache.get(ChannelIDstatus).send('Apache status: ' + json[0].status))
-                        .catch(err => console.log(err));
-                    fetch('http://localhost:3000/status/mariadbstatus')
-                        .then(res => res.json())
-                        .then(json => jakbot.channels.cache.get(ChannelIDstatus).send('MariaDB status: ' + json[0].status))
-                        .catch(err => console.log(err));
-                    fetch('http://localhost:3000/status/starttime')
-                        .then(res => res.json())
-                        .then(json => jakbot.channels.cache.get(ChannelIDwebsite).send('Server uptime: ' + Math.floor((dateNow - json[0].datenow) / 1000 / 60) % 60 + ' minutes ' + Math.floor((dateNow - json[0].datenow) / 1000 % 60) + ' seconds'))
-                        .catch(err => console.log(err));
+                // if (process.env.NODE_ENV === 'production') {
+                //     fetch('http://10.114.34.72/status/apachestatus')
+                //         .then(res => res.json())
+                //         .then(json => jakbot.channels.cache.get(ChannelIDstatus).send('Apache status: ' + json[0].status))
+                //         .catch(err => console.log(err));
+                //     fetch('http://10.114.34.72/status/mariadbstatus')
+                //         .then(res => res.json())
+                //         .then(json => jakbot.channels.cache.get(ChannelIDstatus).send('MariaDB status: ' + json[0].status))
+                //         .catch(err => console.log(err));
+                //     fetch('http://10.114.34.72/status/starttime')
+                //         .then(res => res.json())
+                //         .then(json => jakbot.channels.cache.get(ChannelIDwebsite).send('Server uptime: ' + Math.floor((dateNow - json[0].datenow) / 1000 / 60) % 60 + ' minutes ' + Math.floor((dateNow - json[0].datenow) / 1000 % 60) + ' seconds'))
+                //         .catch(err => console.log(err));
+                // } else {
+                //     fetch('http://localhost:3000/status/apachestatus')
+                //         .then(res => res.json())
+                //         .then(json => jakbot.channels.cache.get(ChannelIDstatus).send('Apache status: ' + json[0].status))
+                //         .catch(err => console.log(err));
+                //     fetch('http://localhost:3000/status/mariadbstatus')
+                //         .then(res => res.json())
+                //         .then(json => jakbot.channels.cache.get(ChannelIDstatus).send('MariaDB status: ' + json[0].status))
+                //         .catch(err => console.log(err));
+                //     fetch('http://localhost:3000/status/starttime')
+                //         .then(res => res.json())
+                //         .then(json => jakbot.channels.cache.get(ChannelIDwebsite).send('Server uptime: ' + Math.floor((dateNow - json[0].datenow) / 1000 / 60) % 60 + ' minutes ' + Math.floor((dateNow - json[0].datenow) / 1000 % 60) + ' seconds'))
+                //         .catch(err => console.log(err));
 
 
-                }
+                // }
             });
 
     })
