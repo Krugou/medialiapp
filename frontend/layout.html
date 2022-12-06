@@ -93,7 +93,7 @@
             </ul>
         </nav>
     </header>
-    <section class="Etuylä">
+    <section id="etuyla"class="Etuylä">
         <input type="text" aria-label="Reseptien haku" placeholder="Hae Resepti" class="Haeresepti marginhalfrem">
         <button id="filter" class="marpad1rem">Filter</button>
         <div id="filterModal" class="modal">
@@ -121,6 +121,192 @@
 
 
         </div>
+    </main>
+    <main class="pagemain">
+        <H2 class="otsikko">Tee Uusi Resepti</H2>
+        <div class="addRecipe_detail">
+            <div class="recipename">
+                <input id="recipenameInput" placeholder="Reseptin nimi (pakollinen).">
+                <button id="tag">Lisää tagi</button>
+    
+                <select title="ruoka" name="course" id="courseselect">
+                    <option value="1">Aamiainen</option>
+                    <option value="2">Lounas</option>
+                    <option value="3">Päivällinen</option>
+                    <option value="4">Illallinen</option>
+                </select>
+    
+            </div>
+            <div id="editModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="modaladd">
+                        <H3>Lisää tageja</H3>
+                        <div class="tags" id="tags">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form id="recipeAddimagebutton" class="imagebutton" enctype="multipart/form-data">
+                <input type="file" multiple='multiple' name="recipe" accept="image/*" id="file">
+            </form>
+        </div>
+        </div>
+        <div class="Recipe_desc">
+            <div class="instruction">
+                <form>
+                    <textarea id="recipeguide" placeholder="Reseptin ohje (pakollinen)."></textarea>
+                </form>
+            </div>
+            <input type="number" id="recipetimeInput" placeholder="Reseptin valmistusaika.">
+            <div class="postButton">
+                <button class="postRecipe" id="postRecipe">Tee Lisäys!</button>
+            </div>
+        </div>
+    </main>
+    <main>
+        <img id="signupImage" src="media/logos/jakrecipeslogo.png" alt="jakrecipeslogo">
+        <H2 class="otsikko">Kirjaudu</H2>
+    
+        <div class="signup">
+            <ul class="tiedot">
+                <li>
+                    <p>Email</p>
+                </li>
+                <li><input id="emailInput"></li>
+                <li>
+                    <p>Password</p>
+                </li>
+                <li><input id="passwordInput"></li>
+            </ul>
+        </div>
+        <div id="signinNappi" class="nappi">
+            <button>Sign In</button>
+        </div>
+    </main>
+    <main>
+        <img id="signupImage" src="media/logos/jakrecipeslogo.svg" alt="jakrecipeslogo">
+        <H2 class="otsikko">Rekisteröidy</H2>
+        <div class="signup">
+            <ul class="tiedot">
+                <li>
+                    <p>Email</p>
+                </li>
+                <li><input required type="email" id="emailInput" placeholder="(Eg. John@gmail.com)"></li>
+                <li>
+                    <p>Password</p>
+                </li>
+                <li><input pattern="(?=.*[\p{Lu}]).{8,}" required type="password" id="passwordInput"
+                        placeholder="(Atleast 8 letters & 1 capital)"></li>
+            </ul>
+        </div>
+        <div class="nappi">
+            <button id="signupNappi">Sign Up</button>
+        </div>
+    </main>
+    <main class="pagemain">
+        <H2 class="otsikko">Profiili</H2>
+        <article id="profileArticle">
+            <div class="userPosts">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at corporis, eaque enim esse iure
+                    qui
+                    rerum. Ad deleniti ex libero molestias unde? Blanditiis dolorem eius est nostrum, placeat quidem?
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium assumenda dolorem doloremque, eum
+                    facere
+                    incidunt ipsum iste laudantium modi molestias numquam placeat qui quia quo ratione repudiandae tempore,
+                    velit
+                    voluptatibus.</p>
+                <br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at corporis, eaque enim esse iure
+                    qui
+                    rerum. Ad deleniti ex libero molestias unde? Blanditiis dolorem eius est nostrum, placeat quidem?
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium assumenda dolorem doloremque, eum
+                    facere
+                    incidunt ipsum iste laudantium modi molestias numquam placeat qui quia quo ratione repudiandae tempore,
+                    velit
+                    voluptatibus.</p>
+            </div>
+            <div class="userProfile">
+                <img id="profilepic" src="media/logos/jakrecipeslogo.svg" alt="jakrecipeslogo">
+                <p>Username</p>
+                <button id="editProfile">Edit Profile</button>
+            </div>
+            <div id="editModal" class="modal">
+    
+    
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="username">
+                        <p>Username</p>
+                        <input>
+                    </div>
+                    <div class="pic">
+                        <p>Profile Picture</p>
+                        <button>Upload Image</button>
+                    </div>
+                    <div class="save">
+                        <button>Save</button>
+                        <button id="delete">Delete Profile</button>
+                    </div>
+                    <div id="deleteModal" class="modal">
+                        <div class="modal-content">
+                            <span class="closeDelete">&times;</span>
+                            <div>
+                                <p>Are you sure you want to delete your profile?</p>
+                            </div>
+                            <div class="deleteProfile">
+                                <button id="noButton">No</button>
+                                <button>Yes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <script>
+
+                const noButton = document.getElementById("noButton");
+
+                const editProfile = document.getElementById("editModal");
+
+                const button = document.getElementById("editProfile");
+
+                let closeModal = document.getElementsByClassName("close")[0];
+
+                let closeDelete = document.getElementsByClassName("closeDelete")[0];
+
+                const deleteProfile = document.getElementById("deleteModal");
+
+                const deleteButton = document.getElementById("delete");
+
+                button.onclick = function () {
+                    editProfile.style.display = "block";
+                }
+
+                closeModal.onclick = function () {
+                    editProfile.style.display = "none";
+                }
+
+                window.onclick = function (event) {
+                    if (event.target == editProfile) {
+                        editProfile.style.display = "none";
+                    }
+                }
+                deleteButton.onclick = function () {
+                    deleteProfile.style.display = "block";
+                }
+                closeDelete.onclick = function () {
+                    deleteProfile.style.display = "none";
+                }
+
+                noButton.onclick = function () {
+                    deleteProfile.style.display = "none";
+                }
+
+
+
+            </script>
+        </article>
     </main>
 
 
