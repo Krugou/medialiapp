@@ -6,6 +6,8 @@ const SignInNavLink = document.getElementById('signIn');
 const SignUpNavLink = document.getElementById('signUp');
 const logOutNavLink = document.getElementById('logOut');
 const frontPageNavLink = document.getElementById('frontpage');
+const profileNavLink = document.getElementById('profile');
+const RecipeNavLink = document.getElementById('recipes');
 
 function startUp() {
     if (sessionStorage.getItem('token') === null) {
@@ -229,6 +231,13 @@ function LogOut() {
     alert("Olet kirjautunut ulos")
 }
 
+function recipePage() {
+    pageGeneration.innerHTML = ` <h2 id="recipeName">Recipe Name</h2> <div class="recipePic"> <img src="media/logos/jakrecipeslogo.svg" alt="jakrecipeslogo"> </div><div id="Stats" class="recipeStats"> <p>50 Likes</p><div class="recipeTags"> <button class="postRecipe">Kasvisruoka</button> <button class="postRecipe" >Gluteiiniton</button> <button class="postRecipe" >Laktoositon</button> </div><div class="recipeTime"> <p>Cooking time: 60 Min</p>
+    </div><div class="recipeTags"> <button class="postRecipe">Mealtype</button> </div><i id="likeHeart" class="fa-solid fa-heart" ></i> </div><div class="Recipe_desc"> <div class="recipeInstruction"> <h2>Instructions</h2> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque consequatur, corporis culpa cupiditate, dolor, error eum minus natus nihil nulla officia porro quam quasi qui sit? Consectetur odio perferendis porro sed! Ipsa non, tempora? Ab consequuntur culpa, debitis eius error exercitationem impedit natus nemo possimus similique sunt veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque consequatur, corporis culpa cupiditate, dolor, error eum minus natus nihil nulla officia porro quam quasi qui sit? Consectetur odio perferendis porro sed! Ipsa non, tempora? Ab consequuntur culpa, debitis eius error exercitationem
+     impedit natus nemo possimus similique sunt veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque consequatur, corporis culpa cupiditate, dolor, error eum minus natus nihil nulla officia porro quam quasi qui sit? Consectetur odio perferendis porro sed! Ipsa non, tempora? Ab consequuntur culpa, debitis eius error exercitationem impedit natus nemo possimus similique sunt veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque consequatur, corporis
+     culpa cupiditate, dolor, error eum minus natus nihil nulla officia porro quam quasi qui sit? Consectetur odio perferendis porro sed! Ipsa non, tempora? Ab consequuntur culpa, debitis eius error exercitationem impedit natus nemo possimus similique sunt veniam. </p></div><div id="openComments"> <button onclick="openFunction()" id="openCommentsButton">Show Comments</button> </div><section id="comments"> <div class="addComment"> <form> <h2>Add Comment</h2> <textarea> </textarea> </form> <div class="postCommentButton"> <button>Post Comment</button> </div></div><ul class="recipeComments"> <li class="recipeUserComment"> <div> <div class="commentPicture"> <img src="media/logos/jakrecipeslogo.svg"> </div><div class="commentUsername"> <a href="profile.html">Username</a> </div><div class="commentContent"> <p>Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin.</p><i class="fa-solid fa-thumbs-up"></i> <i class="fa-solid fa-thumbs-down"></i> </div></div></li><li class="recipeUserComment"> <div> <div class="commentPicture"> <img src="media/logos/jakrecipeslogo.svg"> </div><div class="commentUsername"> <a href="profile.html">Username</a> </div><div class="commentContent"> <p>Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin.</p><i class="fa-solid fa-thumbs-up"></i> <i class="fa-solid fa-thumbs-down"></i> </div></div></li><li class="recipeUserComment"> <div> <div class="commentPicture"> <img src="media/logos/jakrecipeslogo.svg"> </div><div class="commentUsername"> <a href="profile.html">Username</a> </div><div class="commentContent"> <p>Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin.</p><i class="fa-solid fa-thumbs-up"></i> <i class="fa-solid fa-thumbs-down"></i> </div></div></li></ul> </section> </div>
+    `}
+
 
 SignInNavLink.addEventListener('click', async (evt) => {
     evt.preventDefault();
@@ -252,6 +261,19 @@ SignUpNavLink.addEventListener('click', async (evt) => {
     clearPage();
     register();
 });
+profileNavLink.addEventListener('click', async (evt) => {
+    evt.preventDefault();
+    clearPage();
+    profile();
+});
+RecipeNavLink.addEventListener('click', async (evt) => {
+    evt.preventDefault();
+    clearPage();
+    recipePage();
+});
+
+
+
 
 // kesken
 // async function checktoken() {
@@ -304,6 +326,28 @@ async function oldestPresentationData() {
 
 
 // main.js loppuu tähän
+
+// recipe.html alkaa tästä
+function openFunction() {
+    document.getElementById("comments").style.display = "unset";
+    document.getElementById("openCommentsButton").remove();
+    const hide = document.createElement("button");
+    hide.setAttribute("id", "hideCommentsButton");
+    hide.innerText = "Hide Comments";
+    document.getElementById("openComments").append(hide);
+
+    document.getElementById("hideCommentsButton").addEventListener("click", function () {
+        document.getElementById("comments").style.display = "none";
+        document.getElementById("hideCommentsButton").remove();
+        const show = document.createElement("button");
+        show.setAttribute("id", "openCommentsButton");
+        show.setAttribute("onclick", "openFunction()");
+        show.innerText = "Show Comments";
+        document.getElementById("openComments").append(show);
+    })
+}
+
+// recipe.html loppuu tähän
 // frontpage.html alkaa tästä
 const editFilter = document.getElementById("filterModal");
 const filterButton = document.getElementById("filter");

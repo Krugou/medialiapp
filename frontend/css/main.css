@@ -54,7 +54,7 @@
   font-size: 30px;
   width: 15%;
 }
-.Etuylä {
+.EtuylÃ¤ {
   height: 30em;
   background-color: #dfedf2;
   display: flex;
@@ -92,7 +92,7 @@
   background-color: lightgray;
   height: auto;
   border-radius: 5px;
-  color:black;
+  color: black;
 }
 .recipeInstruction p {
   margin: 1.5em;
@@ -254,7 +254,7 @@
   width: 7em;
 }
 .recipefigure img {
-  max-width:100%;
+  max-width: 100%;
   height: auto;
 }
 .recipename {
@@ -318,7 +318,7 @@
   width: 100%;
 }
 .userPosts {
-  display:flex;
+  display: flex;
   flex-wrap: wrap;
   width: 55.5vw;
   margin-bottom: 5vw;
@@ -339,7 +339,6 @@
   align-items: center;
   justify-content: center;
   height: 70vh;
-
 }
 .admin-main__form {
   display: flex;
@@ -376,6 +375,23 @@
 #admin-quotes {
   text-align: center;
 }
+.pageFooter {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  padding: 1em;
+}
+.pageFooterContainer {
+  flex-direction: column;
+  flex-grow: 4;
+  flex-basis: content;
+  border-width:thin;
+  border-right: black outset;
+  border-left: black outset;
+  border-top: black outset;
+  /* border: solid; */
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -449,9 +465,9 @@ p {
   width: 100%;
   background-color: #0d1e40;
   height: auto;
-  margin-top:1em;
+  margin-top: 1em;
   border-radius: 5px;
-  color:white;
+  color: white;
 }
 .test {
   text-align: center;
@@ -480,17 +496,15 @@ p {
   width: 7em;
 }
 
-
 .recipeUserComment {
   display: flex;
   flex-direction: row;
   width: 100%;
   background-color: #0d1e40;
   height: auto;
-  margin-top:1em;
+  margin-top: 1em;
   border-radius: 5px;
-  color:white;
-
+  color: white;
 }
 
 .commentPicture {
@@ -509,10 +523,10 @@ p {
 }
 
 .commentUsername a {
-  color:white;
+  color: white;
 }
 .commentContent {
-  float:right;
+  float: right;
   padding-left: 1.5em;
   padding-right: 0.5em;
 }
@@ -521,31 +535,31 @@ p {
   margin-right: 0.5em;
   font-size: 2em;
   margin-bottom: 1em;
-  border-color:white;
+  border-color: white;
 }
 .fa-thumbs-down {
   font-size: 2em;
   margin-bottom: 1em;
-  border-color:white;
+  border-color: white;
 }
 .fa-heart {
   font-size: 3em;
   color: white;
 }
 .recipeStats {
-  align-items:center;
+  align-items: center;
   text-align: center;
   border-radius: 1em;
   padding: 1em;
   gap: 2em;
   display: flex;
   width: 60%;
-  background-color:lightgray;
+  background-color: lightgray;
   height: auto;
   margin: auto;
 }
 .recipeTags {
-  padding-top:2em;
+  padding-top: 2em;
 }
 #recipeName {
   text-align: center;
@@ -553,7 +567,6 @@ p {
 }
 #comments {
   display: none;
-
 }
 #openComments {
   text-align: center;
@@ -597,12 +610,8 @@ p {
 .userPosts figure img {
   width: 100%;
   max-width: 100%;
-  height: auto
+  height: auto;
 }
-
-
-
-
 
 @media screen and (max-width: 1024px) {
   .recipefigure {
@@ -617,14 +626,12 @@ p {
 }
 
 @media screen and (max-width: 770px) {
-
-
   #profileArticle {
     flex-direction: column-reverse;
   }
   .userPosts {
-    margin:auto;
-    width:auto;
+    margin: auto;
+    width: auto;
     flex-direction: column;
   }
   .userPosts figure {
@@ -646,15 +653,11 @@ p {
     width: 90%;
   }
   .recipeStats {
-    width:90%;
+    width: 90%;
   }
 }
 
-
-
 @media screen and (max-width: 850px) {
-
-
   .commentContent {
     margin: 0.25em 0.25em 0.25em 0.25em;
   }
@@ -674,7 +677,7 @@ p {
     height: 100%;
   }
 
-  .Etuylä {
+  .EtuylÃ¤ {
     flex-direction: column;
   }
 
@@ -771,4 +774,3 @@ p {
     font-size: 1.5vh;
   }
 }
-
