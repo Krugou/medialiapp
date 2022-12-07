@@ -18,7 +18,10 @@ const recipe_get = async (req, res, next) => {
         }
 
         if (rows2.length < 1) {
-            res.json(rows1.pop());
+            res.json({
+                recipes:rows1.pop()
+            }
+            );
         } else {
             res.json({
                 recipes: rows1.pop(),
