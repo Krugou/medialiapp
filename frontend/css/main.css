@@ -630,7 +630,12 @@ p {
   text-align:center;
   margin-bottom: 4em;
 }
-
+#recipeAddimagebutton {
+  margin-right: 8em;
+}
+.recipeSearch {
+  padding: 2em;
+}
 @media screen and (max-width: 1024px) {
   .recipefigure {
     width: 30vw;
@@ -675,6 +680,9 @@ p {
   }
   .recipeStats {
     width: 90%;
+  }
+  .recipeSearch {
+    text-align:center;
   }
 }
 
@@ -744,10 +752,16 @@ p {
     flex-direction: column;
     gap: unset;
   }
+  #tag {
+    margin: 2.5em;
+  }
 }
 @media screen and (max-width: 375px) {
   p {
     font-size: 1.5vh;
+  }
+  #filter {
+    margin-top: 1em;
   }
 }
 @media screen and (max-width: 1120px) {
