@@ -17,6 +17,18 @@ const getRecipe = async (Recipeid, next) => {
         next(httpError('Database error', 500));
     }
 };
+const getMealtypeById = async (Recipeid, next) => {
+    try {
+        const [rows] = await promisePoolUser.execute(`SELECT DISTINCT Mealtypes.Mealtype
+                                                      FROM Recipes INNER JOIN Recipemealtype
+                                                                   INNER JOIN Mealtypes
+                                                      WHERE Recipes.Recipeid = ${Recipeid};`);
+        return rows;
+    } catch (e) {
+        console.error('getRecipe', e.message);
+        next(httpError('Database error', 500));
+    }
+};
 /*
 const getRecipe = async (Recipeid, next) => {
     try {
@@ -249,6 +261,7 @@ module.exports = {
     deleteRecipeByAuthorId,
     deleteRecipesById,
     getRecipe,
+    getMealtypeById,
 
 
 };

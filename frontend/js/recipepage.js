@@ -12,7 +12,10 @@ const recipe_id = getQParam('id');
 // select existing html elements
 const img = document.querySelector('#recipesImage');
 const recipeName = document.querySelector('#recipeName');
-const instructions = document.querySelector('#instructionPara')
+const instructions = document.querySelector('#instructionPara');
+const recipeTime = document.querySelector('#recipesTime');
+const recipeTags= document.querySelector('#recipesTags');
+
 // add existing cat data to form
 const getRecipe = async (id) => {
     const fetchOptions = {
@@ -22,8 +25,16 @@ const getRecipe = async (id) => {
     };
     const response = await fetch(url + '/recipes/' + id, fetchOptions);
     const recipe = await response.json();
-    recipeName.innerHTML = recipe[0].Recipename;
-    instructions.innerText = recipe[0].Recipeguide;
+    console.log(recipe);
+    recipeName.innerHTML = recipe.Recipename;
+    instructions.innerText = recipe.Recipeguide;
+    if (recipe.Recipetime) {
+       const recipeTimePara = document.createElement('p');
+       recipeTimePara.innerText = "Valmistusaika: " +recipe.Recipetime+ " Minuuttia";
+       recipetime.appendChild(recipeTimePara);
+    }
+
+
    // img.src=
 
    // img.src = `${url}/${cat.filename}`;
