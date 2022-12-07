@@ -27,7 +27,7 @@ const getRecipe = async (id) => {
     const response = await fetch(url + '/recipes/' + id, fetchOptions);
     const recipe = await response.json();
 
-    
+    console.log(recipe);
     recipeName.innerHTML = recipe.recipes.Recipename;
     instructions.innerText = recipe.recipes.Recipeguide;
     if (recipe.recipes.Recipetime) {
@@ -43,9 +43,8 @@ const getRecipe = async (id) => {
             recipeTags.appendChild(button);
         }
     }
-
-
-   // img.src=
+    console.log(recipe.Images[0]);
+    img.src=url+'/'+recipe.Images[0].Imagefilepath;
 
    // img.src = `${url}/${cat.filename}`;
     //addMarker(JSON.parse(cat.coords));
