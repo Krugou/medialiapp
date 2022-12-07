@@ -45,7 +45,7 @@ const getRecipe = async (id) => {
     }
     console.log(recipe.Images[0]);
     img.src=url+'/'+recipe.Images[0].Imagefilepath;
-    if (recipe.Images[0].Imagefilepath === 'null') {
+    if (recipe.Images[0].Imagefilepath === 'undefined') {
         img.src="./media/logos/jakrecipeslogo.svg";
 
     }
