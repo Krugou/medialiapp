@@ -237,7 +237,8 @@
   margin: auto;
 }
 .recipefigure {
-  border: solid 1px black;
+  border: solid 2px #0d1e40;
+  border-radius: 1em;
   width: 25vw;
   font-size: 15px;
   padding-bottom: 15px;
@@ -256,6 +257,8 @@
 .recipefigure img {
   max-width: 100%;
   height: auto;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
 }
 .recipename {
   text-align: center;
@@ -321,8 +324,6 @@
   display: flex;
   flex-wrap: wrap;
   width: 55.5vw;
-  margin-bottom: 5vw;
-  margin-left: 7vw;
   justify-content: center;
   box-shadow: 1px 2px 14px 5px rgba(0, 0, 0, 0.75);
 }
@@ -443,6 +444,10 @@
   display: flex;
   height: auto;
   justify-content: space-between;
+}
+#profileArticle section {
+  margin-bottom: 5vw;
+  margin-left: 7vw;
 }
 #profilepic {
   width: 15em;
@@ -621,6 +626,10 @@ p {
   max-width: 100%;
   height: auto;
 }
+#userPostTitle {
+  text-align:center;
+  margin-bottom: 4em;
+}
 
 @media screen and (max-width: 1024px) {
   .recipefigure {
@@ -632,16 +641,16 @@ p {
   .Recipe_desc {
     width: 80%;
   }
-}
-
-@media screen and (max-width: 770px) {
   #profileArticle {
     flex-direction: column-reverse;
   }
   .userPosts {
-    margin: auto;
-    width: auto;
-    flex-direction: column;
+    margin:auto;
+    flex-wrap: wrap;
+    width: 80%;
+  }
+  #profileArticle section {
+    margin: unset;
   }
   .userPosts figure {
     width: auto;
@@ -650,6 +659,9 @@ p {
     width: auto;
     margin-bottom: 5em;
   }
+}
+
+@media screen and (max-width: 770px) {
 
   .recipefigure {
     width: 60vw;
@@ -694,50 +706,7 @@ p {
     margin: 7%;
   }
 
-  .checknappi {
-    display: flex;
-  }
 
-  .navbar {
-    display: none;
-  }
-
-  #check:checked ~ .navbar {
-    justify-content: unset;
-    align-items: unset;
-    width: 100%;
-    gap: 10px;
-    height: 17vh;
-    display: flex;
-    flex-direction: column;
-    padding-left: 1em;
-  }
-
-  .navbar a {
-    padding: 0;
-  }
-
-  .nav-end {
-    gap: 10px;
-    margin: 0;
-    flex-direction: column;
-    padding: 0;
-  }
-
-  .nav-start {
-    margin: 0;
-    padding: 0;
-  }
-
-  .navbar ul {
-    justify-content: unset;
-  }
-
-  svg {
-    font-size: 5vh;
-    padding: 10px 10px 0px 10px;
-    color: white;
-  }
 
   #profileArticle {
     flex-direction: column-reverse;
@@ -749,10 +718,8 @@ p {
 
   .userPosts {
     width: auto;
-    margin-top: 15%;
-    margin-left: 7%;
-    margin-right: 7%;
-    flex-direction: column;
+    margin-left: 1em;
+    margin-right: 1em;
   }
   .userPosts figure {
     width: auto;
@@ -782,4 +749,53 @@ p {
   p {
     font-size: 1.5vh;
   }
+}
+@media screen and (max-width: 1120px) {
+
+  .checknappi {
+    display: unset;
+  }
+
+  .navbar {
+    display: none;
+  }
+
+  #check:checked ~ .navbar {
+    justify-content: unset;
+    align-items: unset;
+    width: 100%;
+    gap: 10px;
+    height: 20em;
+    display: flex;
+    flex-direction: column;
+    padding-left: 1em;
+  }
+
+  .navbar a {
+    padding: 0;
+  }
+
+  .nav-end {
+    gap: 10px;
+    margin: 0;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .nav-start {
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+  }
+
+  .navbar ul {
+    justify-content: unset;
+  }
+
+  svg {
+    font-size: 5vh;
+    padding: 10px 10px 0px 10px;
+    color: white;
+  }
+
 }
