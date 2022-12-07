@@ -45,7 +45,10 @@ const getRecipe = async (id) => {
     }
     console.log(recipe.Images[0]);
     img.src=url+'/'+recipe.Images[0].Imagefilepath;
+    if (recipe.Images[0].Imagefilepath === 'null') {
+        img.src="./media/logos/jakrecipeslogo.svg";
 
+    }
    // img.src = `${url}/${cat.filename}`;
     //addMarker(JSON.parse(cat.coords));
 };
