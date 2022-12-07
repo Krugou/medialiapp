@@ -456,7 +456,7 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 25%;
+  width: 25em;
 }
 #signupImage {
   display: block;
@@ -734,7 +734,7 @@ p {
   }
 
   .recipePic {
-    width: 75%;
+    width: 20em;
   }
 
   .modal-content {
