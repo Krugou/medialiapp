@@ -2,40 +2,45 @@
 const {
     getRecipeMealTypes, addRecipes, getRecipe, getMealtypeById
 } = require('../models/recipesModel');
-const { getAllNewestRecipesMainPage, getAllOldestRecipesMainPage } = require('../models/normalUserModel');
-const { validationResult } = require('express-validator');
-const { httpError } = require('../utils/errors');
+const {getAllNewestRecipesMainPage, getAllOldestRecipesMainPage} = require('../models/normalUserModel');
+const {validationResult} = require('express-validator');
+const {httpError} = require('../utils/errors');
 const sharp = require('sharp');
 
 
 const recipe_get = async (req, res, next) => {
     let rows1, rows2;
     try {
-         rows1 = await getRecipe(req.params.id, next);
+        rows1 = await getRecipe(req.params.id, next);
+        rows2 = await getMealtypeById(req.params.id, next);
         if (rows1.length < 1) {
             return next(httpError('No recipe found', 404));
         }
-    } catch (e) {
-        console.error('recipe_get', e.message);
-        next(httpError('Internal server error', 500));
-    }
 
-    try {
-         rows2 = await getMealtypeById(req.params.id, next);
         if (rows2.length < 1) {
-            return next(httpError('No recipe found', 404));
+            res.json(rows1.pop());
+        } else {
+            res.json({
+                recipes: rows1.pop(),
+                mealtypes: rows2
+            });
         }
     } catch (e) {
         console.error('recipe_get', e.message);
-        next(httpError('Internal server error', 500));
+        next(httpError('Database error', 500));
     }
+    /*
+            if (rows2.length>5) {
+                console.log("asd");
+                res.json({
+                    recipes: rows1.pop(),
+                    mealtypes: rows2
+                });
+            }
 
-    res.json({
-        recipes:rows1.pop(),
-        mealtypes:rows2
-        });
+     */
+
 };
-
 
 
 const getAllNewestRecipesController = async (req, res, next) => {
@@ -71,8 +76,7 @@ const recipes_mealtypes_get = async (req, res, next) => {
             next(httpError('No Mealtypes Found', 500));
         }
         res.json(result);
-    }
-    catch (e) {
+    } catch (e) {
         console.error('recipes_mealtypes_get', e.message);
         next(httpError('Internal server error', 500));
     }
@@ -133,8 +137,7 @@ const recipes_post = async (req, res, next) => {
             });
         }
         */
-    }
-    catch (e) {
+    } catch (e) {
         console.error('recipes_post', e.message);
         next(httpError('Internal server error', 500));
     }
