@@ -71,7 +71,7 @@ jakbot.on('ready', async jakbot => {
 
         }
         jakbot.user.setUsername('J A K B O T');
-    }, 10000);
+    }, 100000);
 });
 
 
