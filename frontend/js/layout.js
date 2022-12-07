@@ -8,15 +8,18 @@ const logOutNavLink = document.getElementById('logOut');
 const frontPageNavLink = document.getElementById('frontpage');
 const profileNavLink = document.getElementById('profile');
 const RecipeNavLink = document.getElementById('recipes');
+const contactUsNavLink = document.getElementById('contact');
+const supportSiteNavLink = document.getElementById('supportSite');
+const aboutUsNavLink = document.getElementById('aboutUs');
 
 function startUp() {
     if (sessionStorage.getItem('token') === null) {
-       
+
         // removeChildren(logOutNavLink);
         frontPage();
         newestPresentationData();
         // SignIn();
-       
+
 
     } else {
         // removeChildren(SignInNavLink);
@@ -30,7 +33,6 @@ async function newestPresentationData() {
     const response = await fetch(url + '/recipes/allrecipes/newest');
     const json = await response.json();
     let loadout = "";
-    console.log("newest")
     const presentationdata = document.getElementById('presentationdata');
 
     for (let i = 0; i < (json.length); i++) {
@@ -54,8 +56,7 @@ function removeChildren(element) {
 
 
 async function frontPage() {
- console.log("frontpage")
-    pageGeneration.innerHTML = ` <section id="etuyla" class="Etuylä"> <input type="text" aria-label="Reseptien haku" placeholder="Hae Resepti" class="Haeresepti marginhalfrem"> <button id="filter" class="marpad1rem">Filter</button> <div id="filterModal" class="modal"> <div class="modal-content"> <span class="close">&times;</span> <div class="modaladd"> <h3>Add Filters</h3> <div class="filters"> </div><div class="filtersave"> </div></div></div></div><div class="addRecipes"> <button href="addRecipe.html" id="addrecipesButton" class="marpad1rem">Tee resepti</a></button> </div></section> <h2 class="otsikko"> Uusimmat Reseptit</h2> <hr> <div class="reseptit" id="presentationdata"> </div>`
+    pageGeneration.innerHTML = ` <section id="frontUp" class="frontUp"> <input type="text" aria-label="Reseptien haku" placeholder="Hae Resepti" class="Haeresepti marginhalfrem"> <button id="filter" class="marpad1rem">Filter</button> <div id="filterModal" class="modal"> <div class="modal-content"> <span class="close">&times;</span> <div class="modaladd"> <h3>Add Filters</h3> <div class="filters"> </div><div class="filtersave"> </div></div></div></div><div class="addRecipes"> <button href="addRecipe.html" id="addrecipesButton" class="marpad1rem">Tee resepti</a></button> </div></section> <h2 class="otsikko"> Uusimmat Reseptit</h2> <hr> <div class="reseptit" id="presentationdata"> </div>`
 }
 function clearPage() {
     pageGeneration.innerHTML = "";
@@ -238,7 +239,41 @@ function recipePage() {
      culpa cupiditate, dolor, error eum minus natus nihil nulla officia porro quam quasi qui sit? Consectetur odio perferendis porro sed! Ipsa non, tempora? Ab consequuntur culpa, debitis eius error exercitationem impedit natus nemo possimus similique sunt veniam. </p></div><div id="openComments"> <button onclick="openFunction()" id="openCommentsButton">Show Comments</button> </div><section id="comments"> <div class="addComment"> <form> <h2>Add Comment</h2> <textarea> </textarea> </form> <div class="postCommentButton"> <button>Post Comment</button> </div></div><ul class="recipeComments"> <li class="recipeUserComment"> <div> <div class="commentPicture"> <img src="media/logos/jakrecipeslogo.svg"> </div><div class="commentUsername"> <a href="profile.html">Username</a> </div><div class="commentContent"> <p>Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin.</p><i class="fa-solid fa-thumbs-up"></i> <i class="fa-solid fa-thumbs-down"></i> </div></div></li><li class="recipeUserComment"> <div> <div class="commentPicture"> <img src="media/logos/jakrecipeslogo.svg"> </div><div class="commentUsername"> <a href="profile.html">Username</a> </div><div class="commentContent"> <p>Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin.</p><i class="fa-solid fa-thumbs-up"></i> <i class="fa-solid fa-thumbs-down"></i> </div></div></li><li class="recipeUserComment"> <div> <div class="commentPicture"> <img src="media/logos/jakrecipeslogo.svg"> </div><div class="commentUsername"> <a href="profile.html">Username</a> </div><div class="commentContent"> <p>Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin.</p><i class="fa-solid fa-thumbs-up"></i> <i class="fa-solid fa-thumbs-down"></i> </div></div></li></ul> </section> </div>
     `}
 
+function contactUs() {
+    const div = document.createElement('div')
+
+    div.classList.add('contactUs')
+
+    div.innerHTML = `<form class="contactUs" id="palaute2" action=".php"> <fieldset><legend>Palautelomake</legend><label for="fname">Etunimi:</label><br> <input type="text" id="fname" name="fname" placeholder="Matti"><br>  <label for="lname">Sukunimi:</label><br>  <input type="text" id="lname" name="lname" placeholder="Meikäläinen"><br> <label for="email">Sähköposti:</label><br><input type="email" id="email" name="email" placeholder="mattimeikalainen@hel.fi"> <br><br><label for="feedback">Palaute:</label><br><textarea id="feedback" placeholder="Palautteesi"></textarea><br><input type="submit" value="Submit"><input type="reset"></fieldset></form>`
+    pageGeneration.appendChild(div)
+}
+function aboutUs() {
+    const div = document.createElement('div')
+
+    div.classList.add('aboutUs')
+    const h2 = document.createElement('h2')
+    h2.classList.add('aboutTitle')
+    h2.innerHTML = 'about Us'
+    div.appendChild(h2)
+
+    const p = document.createElement('p')
+    p.classList.add('aboutText')
+    p.innerHTML = `  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi harum voluptate magnam omnis? Ad voluptatibus dolores labore error reiciendis, sequi sunt explicabo saepe!
+     Eos eum nemo id cumque aperiam at! Et consequatur cumque doloribus obcaecati placeat illum eos, animi ut repudiandae veritatis perspiciatis blanditiis accusantium quidem, rerum esse, corrupti aspernatur eligendi rem odit.Magni cumque totam veniam saepe dolores est.       Eaque natus ducimus nemo nostrum impedit iure accusamus vero pariatur reiciendis labore, assumenda harum, molestiae eius voluptatem eligendi rerum doloribus sapiente totam.Aliquid sequi facilis rem quibusdam tenetur, architecto asperiores.Repudiandae accusamus officia optio, sequi ex repellat corrupti dolorem aliquid tenetur nesciunt magnam ab voluptas similique voluptatibus ipsam soluta nulla, quae id.Aut adipisci blanditiis ex molestias ab culpa non.Reprehenderit dolores similique sequi consectetur possimus, culpa voluptatibus eius quae ipsa sed dolor iure quibusdam, omnis cumque aliquid excepturi in placeat quo, ab repellendus necessitatibus praesentium! Optio odio nulla architecto.`
+    div.appendChild(p)
+    pageGeneration.appendChild(div)
+}
 // nav polut ja eventlistenerit
+contactUsNavLink.addEventListener('click', async (evt) => {
+    evt.preventDefault();
+    clearPage();
+    contactUs();
+});
+aboutUsNavLink.addEventListener('click', async (evt) => {
+    evt.preventDefault();
+    clearPage();
+    aboutUs();
+});
 SignInNavLink.addEventListener('click', async (evt) => {
     evt.preventDefault();
     clearPage();
@@ -271,6 +306,7 @@ RecipeNavLink.addEventListener('click', async (evt) => {
     clearPage();
     recipePage();
 });
+
 
 
 

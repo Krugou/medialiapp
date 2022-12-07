@@ -54,7 +54,7 @@
   font-size: 30px;
   width: 15%;
 }
-.EtuylÃ¤ {
+.EtuylÃƒÂ¤ {
   height: 30em;
   background-color: #dfedf2;
   display: flex;
@@ -385,11 +385,20 @@
   flex-direction: column;
   flex-grow: 4;
   flex-basis: content;
-  border-width:thin;
+  border-width: thin;
   border-right: black outset;
   border-left: black outset;
   border-top: black outset;
-  /* border: solid; */
+}
+.contactUs {
+  /* flex-direction: column; */
+  flex-direction: row;
+  /* flex-grow: 4; */
+  flex-basis: content;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+  padding: 1rem;
 }
 
 * {
@@ -677,7 +686,7 @@ p {
     height: 100%;
   }
 
-  .EtuylÃ¤ {
+  .frontUp {
     flex-direction: column;
   }
 

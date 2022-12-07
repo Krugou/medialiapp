@@ -56,13 +56,13 @@
             list-style: none;
             text-decoration: none;
         }
-    
+
         body {
             height: 100vh;
             margin: 0;
         }
-    
-        .Etuylä {
+
+        .frontUp {
             background-color: #DFEDF2;
             display: flex;
             justify-content: center;
@@ -71,11 +71,11 @@
             border-bottom: 1px solid;
             gap: 10px;
         }
-    
+
         .title {
             text-align: center;
         }
-    
+
         .reseptit {
             display: flex;
             flex-wrap: wrap;
@@ -83,7 +83,7 @@
             align-items: center;
             height: auto;
         }
-    
+
         nav {
             display: flex;
             justify-content: space-between;
@@ -91,43 +91,43 @@
             height: 50px;
             width: 100%;
         }
-    
+
         header {
             border-bottom: solid black 1px;
             background-color: #0D1E40;
-    
+
         }
-    
+
         .nav-start {
             justify-content: flex-start;
             display: flex;
         }
-    
+
         .nav-end {
             justify-content: flex-end;
             display: flex;
         }
-    
+
         nav ul {
             gap: 10px;
             font-size: 3vh;
         }
-    
+
         nav a {
             padding: 10px;
             color: white;
         }
-    
+
         .checknappi {
             font-size: 30px;
             display: none;
             margin-bottom: 10px;
         }
-    
+
         #check {
             display: none;
         }
-    
+
         figure {
             border: solid 1px black;
             width: 15%;
@@ -136,31 +136,31 @@
             margin: 7%;
             background-color: #DFEDF2;
         }
-    
+
         figure button {
             background-color: #0D1E40;
             color: white;
         }
-    
+
         #addrecipesButton {
             background: #0D1E40;
             color: white;
         }
-    
+
         #filter {
             background: #0D1E40;
             color: white;
         }
-    
+
         .recipebutton {
             text-align: center;
         }
-    
+
         .Haeresepti {
             width: 200px;
             max-width: 100%;
         }
-    
+
         .modal {
             display: none;
             position: fixed;
@@ -174,7 +174,7 @@
             background-color: rgb(0, 0, 0);
             background-color: rgba(0, 0, 0, 0.4);
         }
-    
+
         .modal-content {
             background-color: #fefefe;
             margin: auto;
@@ -183,21 +183,21 @@
             width: 60%;
             text-align: center;
         }
-    
+
         .close {
             color: #aaa;
             float: right;
             font-size: 28px;
             font-weight: bold;
         }
-    
+
         .close:hover,
         .close:focus {
             color: black;
             text-decoration: none;
             cursor: pointer;
         }
-    
+
         .filters {
             background-color: lightgray;
             height: 300px;
@@ -205,88 +205,88 @@
             margin: auto;
             border: solid 1px gray;
         }
-    
+
         .filtersave {
             margin-top: 5%;
         }
-    
-    
+
+
         @media screen and (max-width: 1024px) {
             figure {
                 width: 30%;
             }
         }
-    
-    
-    
-    
-    
+
+
+
+
+
         @media screen and (max-width: 750px) {
-    
+
             .reseptit {
                 flex-direction: column;
             }
         }
-    
-    
+
+
         @media screen and (max-width: 525px) {
-    
+
             figure {
                 width: 60%;
             }
-    
+
             .checknappi {
                 display: flex;
             }
-    
+
             header nav {
                 display: none;
             }
-    
+
             #check:checked~nav {
                 height: 17vh;
                 display: flex;
                 flex-direction: column;
                 margin-bottom: 5%;
             }
-    
-            .Etuylä {
+
+            .frontUp {
                 flex-direction: column;
             }
-    
+
             .recipebutton {
                 margin: 7%;
             }
-    
+
             nav {
                 justify-content: unset;
                 align-items: unset;
                 width: 100%;
                 gap: 10px;
-    
+
             }
-    
+
             .nav-end {
                 gap: 10px;
                 margin: 0;
                 flex-direction: column;
                 padding: 0;
             }
-    
+
             .nav-start {
                 margin: 0;
                 padding: 0;
             }
-    
+
             nav ul {
                 justify-content: unset;
             }
-    
+
             svg {
                 color: white;
                 font-size: 5vh;
                 padding: 10px 10px 0px 10px;
             }
         }
-        </style>
+    </style>
 </head>
