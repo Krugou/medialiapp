@@ -1,6 +1,6 @@
 'use strict';
 const {
-    getRecipeMealTypes, addRecipes, getRecipe, getMealtypeById
+    getRecipeMealTypes, addRecipes, getRecipeById, getMealtypeByRecipeId, getImageByRecipeId
 } = require('../models/recipesModel');
 const {getAllNewestRecipesMainPage, getAllOldestRecipesMainPage} = require('../models/normalUserModel');
 const {validationResult} = require('express-validator');
@@ -9,25 +9,27 @@ const sharp = require('sharp');
 
 
 const recipe_get = async (req, res, next) => {
-    let rows1, rows2;
+    let rows1, rows2, rows3;
     try {
-        rows1 = await getRecipe(req.params.id, next);
-        rows2 = await getMealtypeById(req.params.id, next);
+        rows1 = await getRecipeById(req.params.id, next);
+        rows2 = await getMealtypeByRecipeId(req.params.id, next);
+        rows3 = await getImageByRecipeId(req.params.id, next);
         if (rows1.length < 1) {
             return next(httpError('No recipe found', 404));
         }
 
         if (rows2.length < 1) {
-            res.json({
-                recipes:rows1.pop()
-            }
-            );
-        } else {
+            rows2="";
+        }
+        if (rows3.length < 1) {
+            rows3="";
+        }
             res.json({
                 recipes: rows1.pop(),
-                mealtypes: rows2
+                mealtypes: rows2,
+                Images:rows3,
             });
-        }
+
     } catch (e) {
         console.error('recipe_get', e.message);
         next(httpError('Database error', 500));

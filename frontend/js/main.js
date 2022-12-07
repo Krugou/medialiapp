@@ -66,7 +66,7 @@ function createRecipes(json){
             img.src=url+'/'+json[i].Imagefilepath;
             //loadout += '<figure class="recipefigure"><img src="' + url + '/' + json[i].Imagefilepath + '"><p>' + json[i].Recipename + '</p><p>' + json[i].Recipetime + '</p><p>' + json[i].Coursetype + '</p><p>' + json[i].Mealtype + '</p> <button class="recipesButtonFront"id="'+json[i].Recipeid+'"> Katso resepti</button ></figure >'
         }
-
+        img.alt="Reseptin kuva";
         const p = document.createElement('p');
         const p2 = document.createElement('p');
         const p3 = document.createElement('p');

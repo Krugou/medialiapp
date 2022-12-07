@@ -8,7 +8,7 @@ const promisePoolRegUser = poolRegUser.promise();
 const promisePoolUser = poolUser.promise();
 
 
-const getRecipe = async (Recipeid, next) => {
+const getRecipeById = async (Recipeid, next) => {
     try {
         const [rows] = await promisePoolUser.execute(`SELECT * FROM Recipes WHERE Recipeid = ${Recipeid}`);
         return rows;
@@ -17,7 +17,7 @@ const getRecipe = async (Recipeid, next) => {
         next(httpError('Database error', 500));
     }
 };
-const getMealtypeById = async (Recipeid, next) => {
+const getMealtypeByRecipeId = async (Recipeid, next) => {
     try {
         const [rows] = await promisePoolUser.execute(`SELECT DISTINCT Mealtypes.Mealtype
                                                       FROM Recipes INNER JOIN Recipemealtype ON Recipes.Recipeid = Recipemealtype.Recipeid
@@ -25,7 +25,17 @@ const getMealtypeById = async (Recipeid, next) => {
                                                       WHERE Recipes.Recipeid = ${Recipeid};`);
         return rows;
     } catch (e) {
-        console.error('getRecipe', e.message);
+        console.error('getMealtypeByRecipeId', e.message);
+        next(httpError('Database error', 500));
+    }
+};
+const getImageByRecipeId = async (Recipeid, next) => {
+    try {
+        const [rows] = await promisePoolUser.execute(`SELECT Images.Imagefilepath FROM Images
+                                                      WHERE Images.Imagerecipe = ${Recipeid};`);
+        return rows;
+    } catch (e) {
+        console.error('getImageByRecipeId', e.message);
         next(httpError('Database error', 500));
     }
 };
@@ -260,8 +270,9 @@ module.exports = {
     findRecipesByCourseCategory,
     deleteRecipeByAuthorId,
     deleteRecipesById,
-    getRecipe,
-    getMealtypeById,
+    getRecipeById,
+    getMealtypeByRecipeId,
+    getImageByRecipeId,
 
 
 };
