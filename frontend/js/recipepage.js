@@ -23,9 +23,11 @@ const getRecipe = async (id) => {
           //  Authorization: 'Bearer ' + sessionStorage.getItem('token'),
         },
     };
+    let recipes;
     const response = await fetch(url + '/recipes/' + id, fetchOptions);
     const recipe = await response.json();
-    console.log(recipe);
+
+    
     recipeName.innerHTML = recipe.recipes.Recipename;
     instructions.innerText = recipe.recipes.Recipeguide;
     if (recipe.recipes.Recipetime) {
@@ -33,7 +35,7 @@ const getRecipe = async (id) => {
        recipeTimePara.innerText = "Valmistusaika: " +recipe.recipes.Recipetime+ " Minuuttia";
        recipeTime.appendChild(recipeTimePara);
     }
-    if (recipe.mealtypes[0]){
+    if (recipe.mealtypes){
         for (let i=0; i<recipe.mealtypes.length; i++) {
             const button = document.createElement('button');
             button.innerText = recipe.mealtypes[i].Mealtype;
