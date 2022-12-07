@@ -8,6 +8,35 @@ const promisePoolRegUser = poolRegUser.promise();
 const promisePoolUser = poolUser.promise();
 
 
+const getRecipe = async (Recipeid, next) => {
+    try {
+        const [rows] = await promisePoolUser.execute(`SELECT * FROM Recipes WHERE Recipeid = ${Recipeid}`);
+        return rows;
+    } catch (e) {
+        console.error('getRecipe', e.message);
+        next(httpError('Database error', 500));
+    }
+};
+/*
+const getRecipe = async (Recipeid, next) => {
+    try {
+        const [rows] = await promisePoolUser.execute(`SELECT Recipes.Recipeid,Recipes.Recipename,Recipes.Recipetime, Recipes.Recipeguide, Recipes.Recipemaker, Reciperating.Stars, Images.Imagefilepath, Mealtypes.Mealtype,Courses.Coursetype, Comments.Commenttext, Commentrating.Direction
+FROM Recipes
+INNER JOIN Images ON Recipes.Recipeid = Images.Imagerecipe
+INNER JOIN Recipemealtype ON Recipes.Recipeid = Recipemealtype.Recipeid
+INNER JOIN Mealtypes
+INNER JOIN Courses ON Recipes.Recipecourse = Courses.Courseid
+INNER JOIN Comments ON Recipes.Recipeid = Comments.Commentrecipe
+INNER JOIN Commentrating ON Commentrating.Commentid = Comments.Commentid
+INNER JOIN Reciperating ON Reciperating.Recipeid = Recipes.Recipeid
+WHERE Recipes.Recipeid = ${Recipeid};`);
+        return rows;
+    } catch (e) {
+        console.error('getRecipe', e.message);
+        next(httpError('Database error', 500));
+    }
+};
+*/
 
 // admin komento 
 const getAllRecipes = async (next) => {
@@ -218,7 +247,8 @@ module.exports = {
     findRecipesByAuthorId,
     findRecipesByCourseCategory,
     deleteRecipeByAuthorId,
-    deleteRecipesById
+    deleteRecipesById,
+    getRecipe,
 
 
 };

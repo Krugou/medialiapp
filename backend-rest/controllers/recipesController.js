@@ -1,11 +1,27 @@
 'use strict';
 const {
-    getRecipeMealTypes, addRecipes,
+    getRecipeMealTypes, addRecipes, getRecipe
 } = require('../models/recipesModel');
 const { getAllNewestRecipesMainPage, getAllOldestRecipesMainPage } = require('../models/normalUserModel');
 const { validationResult } = require('express-validator');
 const { httpError } = require('../utils/errors');
 const sharp = require('sharp');
+
+
+const recipe_get = async (req, res, next) => {
+    try {
+        const rows = await getRecipe(req.params.id, next);
+        if (rows.length < 1) {
+            return next(httpError('No recipe found', 404));
+        }
+        res.json(rows);
+    } catch (e) {
+        console.error('recipe_get', e.message);
+        next(httpError('Internal server error', 500));
+    }
+};
+
+
 
 const getAllNewestRecipesController = async (req, res, next) => {
     try {
@@ -165,6 +181,7 @@ module.exports = {
     getAllOldestRecipesController,
     recipes_mealtypes_get,
     recipes_post,
+    recipe_get,
 };
 
 

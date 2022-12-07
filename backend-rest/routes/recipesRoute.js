@@ -20,11 +20,14 @@ const {
     recipes_post,
     getAllNewestRecipesController,
     getAllOldestRecipesController,
-    recipes_mealtypes_get,} = require("../controllers/recipesController");
+    recipes_mealtypes_get,
+    recipe_get} = require("../controllers/recipesController");
 const { body } = require('express-validator');
 router.get('/mealtypes', recipes_mealtypes_get);
 router.get('/allrecipes/newest', getAllNewestRecipesController);
 router.get('/allrecipes/oldest', getAllOldestRecipesController);
+router.get('/:id', recipe_get);
+
 router.post('/',
  upload.single('recipe'),
 
