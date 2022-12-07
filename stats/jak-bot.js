@@ -12,7 +12,7 @@ const ChannelIDrecipes = '1049558898706759751'
 const ChannelIDUptime = '1049563466794532944'
 const ChannelIDwebsite = '1049563915719299142'
 const ChannelIDApache = '1050156462795653191'
-const ChannelIDMariadb = '1050156462795653191'
+const ChannelIDMariadb = '1050156941864874014'
 
 const admin = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -97,7 +97,6 @@ jakbot.on('ready', jakbot => {
         );
         jakbot.user.setUsername('J A K B O T');
     }, 650000);
-    // 10 minutes in ms  600000
     setInterval(() => {
         jakbot.user.setUsername('JAK-BOT counting');
         admin.query(
