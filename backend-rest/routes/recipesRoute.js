@@ -2,26 +2,45 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const {httpError} = require("../utils/errors");
+const { httpError } = require("../utils/errors");
+const path = require('path');
 
+// sekalaisia numeroita tiedostonimien generointiin
+const random = (Math.floor(Math.random() * 420) + 69)
+const fileStorage = multer.diskStorage({
+    // kohdekansio tiedostoille
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/');
+    },
+    // tiedostonimi määrittely
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + random + path.extname(file.originalname));
+    },
 
-const fileFilter = (req, file, cb) => {
-    if (file.mimetype.includes('image')) {
-        cb(null, true);
-    } else {
-        cb(httpError('Invalid file', 400));
-
+});
+const upload = multer({
+    storage: fileStorage,
+    // ei hyväksy yli 100mb kokoisia tiedostoja
+    limits: {
+        fileSize: 100000000
+    },
+    // suodattaan tiedostoja, jotta ne ovat vain kuvia
+    fileFilter: (req, file, cb) => {
+        if (file.mimetype === 'image/png' || file.mimetype === 'image/jpg' || file.mimetype === 'image/jpeg') {
+            cb(null, true);
+        } else {
+            cb(null, false);
+            return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
+        }
     }
-}
-
-
-const upload = multer({dest: 'uploads/', fileFilter});
-const { 
+    
+ });
+const {
     recipes_post,
     getAllNewestRecipesController,
     getAllOldestRecipesController,
     recipes_mealtypes_get,
-    recipe_get} = require("../controllers/recipesController");
+    recipe_get } = require("../controllers/recipesController");
 const { body } = require('express-validator');
 router.get('/mealtypes', recipes_mealtypes_get);
 router.get('/allrecipes/newest', getAllNewestRecipesController);
@@ -29,15 +48,12 @@ router.get('/allrecipes/oldest', getAllOldestRecipesController);
 router.get('/:id', recipe_get);
 
 router.post('/',
- upload.single('recipe'),
-
-     body('name').isLength({min: 1}).escape(),
-    body('guide').isLength({min: 1}).escape(),
-    body('course').isLength({min: 1}).escape(),
+    upload.single('recipeImage'),
+    body('name').isLength({ min: 1 }).escape(),
+    body('guide').isLength({ min: 1 }).escape(),
+    body('course').isLength({ min: 1 }).escape(),
     body('time').escape(),
     //body('mealtypes').escape,
-
-
     recipes_post);
 
 module.exports = router;

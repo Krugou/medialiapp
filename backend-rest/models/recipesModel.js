@@ -216,7 +216,6 @@ const addRecipes = async (data, next) => {
     let rows2;
     let rows3;
     try {
-        console.log("addRecipes data", data);
         /*
                 const [rows] = await promisePoolRegUser.execute(`INSERT INTO Recipes (Recipename, Recipeguide, Recipecourse, Recipetime, Recipemaker)
                                                                     VALUES ("asd", "jep", 1, "232", 32);`, data
@@ -248,7 +247,6 @@ const addRecipes = async (data, next) => {
         catch (e) {
             
         }
-        console.log('he knocks on the door')
         return rows, rows2, rows3;
     } catch (e) {
         console.error('addRecipes input', e.message);
