@@ -63,7 +63,7 @@ function createRecipes(json){
             img.src="./media/logos/jakrecipeslogo.svg";
 
         } else {
-            img.src=json[i].Imagefilepath;
+            img.src=url+'/'+json[i].Imagefilepath;
             //loadout += '<figure class="recipefigure"><img src="' + url + '/' + json[i].Imagefilepath + '"><p>' + json[i].Recipename + '</p><p>' + json[i].Recipetime + '</p><p>' + json[i].Coursetype + '</p><p>' + json[i].Mealtype + '</p> <button class="recipesButtonFront"id="'+json[i].Recipeid+'"> Katso resepti</button ></figure >'
         }
 
