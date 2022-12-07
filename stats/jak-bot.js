@@ -9,9 +9,10 @@ const channelIDstart = '1049544820277911582'
 const channelID = '1044563808716328960';
 const channelIDwelcome = '1049557618261250119';
 const ChannelIDrecipes = '1049558898706759751'
-const ChannelIDstatus = '1049563466794532944'
+const ChannelIDUptime = '1049563466794532944'
 const ChannelIDwebsite = '1049563915719299142'
-
+const ChannelIDApache = '1050156462795653191'
+const ChannelIDMariadb = '1050156462795653191'
 
 const admin = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -49,10 +50,10 @@ jakbot.on('ready', async jakbot => {
         if (process.env.NODE_ENV === 'production') {
             const response1 = await fetch('https://10.114.34.72/jak/status/apachestatus')
             const fetchDataJson1 = await response1.json()
-            jakbot.channels.cache.get(ChannelIDstatus).send('Apache status: ' + fetchDataJson1[0].status);
+            jakbot.channels.cache.get(ChannelIDApache).send('Apache status: ' + fetchDataJson1[0].status);
             const response2 = await fetch('https://10.114.34.72/jak/status/mariadbstatus')
             const fetchDataJson2 = await response2.json()
-            jakbot.channels.cache.get(ChannelIDstatus).send('MariaDB status: ' + fetchDataJson2[0].status);
+            jakbot.channels.cache.get(ChannelIDMariadb).send('MariaDB status: ' + fetchDataJson2[0].status);
             const response3 = await fetch('https://10.114.34.72/jak/status/starttime')
             const fetchDataJson3 = await response3.json()
             jakbot.channels.cache.get(ChannelIDwebsite).send('Server uptime: ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000 / (60 * 60) % 24) + ' hours ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000 / 60 % 60) + ' minutes ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000 % 60) + ' seconds')
@@ -60,10 +61,10 @@ jakbot.on('ready', async jakbot => {
 
             const response1 = await fetch('http://localhost:3000/status/apachestatus')
             const fetchDataJson1 = await response1.json()
-            jakbot.channels.cache.get(ChannelIDstatus).send(' Local Apache status: ' + fetchDataJson1[0].status)
+            jakbot.channels.cache.get(ChannelIDApache).send(' Local Apache status: ' + fetchDataJson1[0].status)
             const response2 = await fetch('http://localhost:3000/status/mariadbstatus')
             const fetchDataJson2 = await response2.json()
-            jakbot.channels.cache.get(ChannelIDstatus).send(' Local MariaDB status: ' + fetchDataJson2[0].status)
+            jakbot.channels.cache.get(ChannelIDMariadb).send(' Local MariaDB status: ' + fetchDataJson2[0].status)
             const response3 = await fetch('http://localhost:3000/status/starttime')
             const fetchDataJson3 = await response3.json()
             jakbot.channels.cache.get(ChannelIDwebsite).send(' Local Server uptime: ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000 / (60 * 60) % 24) + ' hours ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000 / 60 % 60) + ' minutes ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000 % 60) + ' seconds')
@@ -91,7 +92,7 @@ jakbot.on('ready', jakbot => {
                 if (err) throw err;
                 let serverUptimeInMilliseconds = result[0].Value;
                 serverUptimeInMilliseconds = Math.floor(serverUptimeInMilliseconds / (60 * 60 * 24)) + ' days ' + Math.floor(serverUptimeInMilliseconds / (60 * 60) % 24) + ' hours ' + Math.floor(serverUptimeInMilliseconds / 60 % 60) + ' minutes ' + Math.floor(serverUptimeInMilliseconds % 60) + ' seconds'
-                jakbot.channels.cache.get(ChannelIDstatus).send('with SHOW STATUS db uptime since ' + serverUptimeInMilliseconds);
+                jakbot.channels.cache.get(ChannelIDUptime).send('with SHOW STATUS db uptime since ' + serverUptimeInMilliseconds);
             }
         );
         jakbot.user.setUsername('J A K B O T');
