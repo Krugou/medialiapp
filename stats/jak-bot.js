@@ -3,10 +3,8 @@ import fetch from 'node-fetch';
 import mysql from 'mysql2'
 import { Client, Events, GatewayIntentBits } from 'discord.js';
 import "discord-reply"
-const dateStarted = Date.now();
-let dbStarted
 const jakbot = new Client({ intents: [GatewayIntentBits.Guilds] });
-const dateNow = Date.now();
+const dateStarted = Date.now();
 const channelIDstart = '1049544820277911582'
 const channelID = '1044563808716328960';
 const channelIDwelcome = '1049557618261250119';
@@ -52,7 +50,7 @@ const websiteHealth = async () => {
             jakbot.channels.cache.get(ChannelIDstatus).send('MariaDB status: ' + fetchDataJson2[0].status);
             const response3 = await fetch('https://10.114.34.72/jak/status/starttime')
             const fetchDataJson3 = await response3.json()
-            jakbot.channels.cache.get(ChannelIDwebsite).send('Server uptime: ' + Math.floor((dateNow - fetchDataJson3[0].datenow) / 1000 / 60 / 60) % 60 + ' hours ' + Math.floor((dateNow - fetchDataJson3[0].datenow) / 1000 / 60) % 60 + ' minutes ' + Math.floor((dateNow - fetchDataJson3[0].datenow) / 1000 % 60) + ' seconds')
+            jakbot.channels.cache.get(ChannelIDwebsite).send('Server uptime: ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000 / (60 * 60) % 24) + ' hours ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000 / 60 % 60) + ' minutes ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000  % 60) + ' seconds')
         } else {
 
             const response1 = await fetch('http://localhost:3000/status/apachestatus')
@@ -63,7 +61,7 @@ const websiteHealth = async () => {
             jakbot.channels.cache.get(ChannelIDstatus).send(' Local MariaDB status: ' + fetchDataJson2[0].status)
             const response3 = await fetch('http://localhost:3000/status/starttime')
             const fetchDataJson3 = await response3.json()
-            jakbot.channels.cache.get(ChannelIDwebsite).send(' Local Server uptime: ' + Math.floor((dateNow - fetchDataJson3[0].datenow) / 1000 / 60 / 60) % 60 + ' hours ' + Math.floor((dateNow - fetchDataJson3[0].datenow) / 1000 / 60) % 60 + ' minutes ' + Math.floor((dateNow - fetchDataJson3[0].datenow) / 1000 % 60) + ' seconds')
+            jakbot.channels.cache.get(ChannelIDwebsite).send(' Local Server uptime: ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000 / (60 * 60) % 24) + ' hours ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000  / 60 % 60) + ' minutes ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000  % 60) + ' seconds')
 
 
         }
@@ -84,9 +82,9 @@ const importantStuff = async (restart) => {
             'show status LIKE "uptime%"',
             function (err, result) {
                 if (err) throw err;
-                dbStarted = dateNow - result[0].Value;
-                dbStarted = new Date(dbStarted).toISOString();
-                jakbot.channels.cache.get(ChannelIDstatus).send('with SHOW STATUS db uptime since ' + dbStarted);
+               let serverUptimeInMilliseconds = result[0].Value ;
+                serverUptimeInMilliseconds = Math.floor(serverUptimeInMilliseconds / (60 * 60 * 24)) + ' days ' + Math.floor(serverUptimeInMilliseconds / (60 * 60) % 24) + ' hours ' + Math.floor(serverUptimeInMilliseconds / 60 % 60) + ' minutes ' + Math.floor(serverUptimeInMilliseconds  % 60) + ' seconds'
+                jakbot.channels.cache.get(ChannelIDstatus).send('with SHOW STATUS db uptime since ' + serverUptimeInMilliseconds);
             }
         );
         admin.query(
