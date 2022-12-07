@@ -63,7 +63,7 @@ const websiteHealth = async () => {
             jakbot.channels.cache.get(ChannelIDstatus).send(' Local MariaDB status: ' + fetchDataJson2[0].status)
             const response3 = await fetch('http://localhost:3000/status/starttime')
             const fetchDataJson3 = await response3.json()
-            jakbot.channels.cache.get(ChannelIDwebsite).send(' Local Server uptime: ' + Math.floor((dateNow - fetchDataJson3[0].datenow) / 1000 / 60 / 60) % 60 +' hours ' + Math.floor((dateNow - fetchDataJson3[0].datenow) / 1000 / 60) % 60 + ' minutes ' + Math.floor((dateNow - fetchDataJson3[0].datenow) / 1000 % 60) + ' seconds')
+            jakbot.channels.cache.get(ChannelIDwebsite).send(' Local Server uptime: ' + Math.floor((dateNow - fetchDataJson3[0].datenow) / 1000 / 60 / 60) % 60 + ' hours ' + Math.floor((dateNow - fetchDataJson3[0].datenow) / 1000 / 60) % 60 + ' minutes ' + Math.floor((dateNow - fetchDataJson3[0].datenow) / 1000 % 60) + ' seconds')
 
 
         }
@@ -142,6 +142,8 @@ const importantStuff = async (restart) => {
 
 importantStuff(restart);
 websiteHealth();
-setInterval(importantStuff, 1200000); //
-setInterval(websiteHealth, 600000); // 10 minutes
-
+setInterval(() => {
+    // Your code here
+    websiteHealth
+    importantStuff
+}, 300000);
