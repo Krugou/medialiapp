@@ -35,12 +35,17 @@ jakbot.on('ready', jakbot => {
 
 
 
-    jakbot.channels.cache.get(channelIDstart).send('Node.js is running! at ' + new Date(Date.now()).toISOString());
+    jakbot.channels.cache.get(channelIDstart).send('Node.js restarted at ' + new Date(Date.now()).toISOString());
 });
 
 const restart = true
-const websiteHealth = async () => {
-    jakbot.on('ready', async jakbot => {
+
+
+jakbot.on('ready', async jakbot => {
+    setInterval(async () => {
+        jakbot.user.setUsername('JAK-BOT status');
+
+        jakbot.user.setUsername('JAK-BOT running');
         if (process.env.NODE_ENV === 'production') {
             const response1 = await fetch('https://10.114.34.72/jak/status/apachestatus')
             const fetchDataJson1 = await response1.json()
@@ -50,7 +55,7 @@ const websiteHealth = async () => {
             jakbot.channels.cache.get(ChannelIDstatus).send('MariaDB status: ' + fetchDataJson2[0].status);
             const response3 = await fetch('https://10.114.34.72/jak/status/starttime')
             const fetchDataJson3 = await response3.json()
-            jakbot.channels.cache.get(ChannelIDwebsite).send('Server uptime: ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000 / (60 * 60) % 24) + ' hours ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000 / 60 % 60) + ' minutes ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000  % 60) + ' seconds')
+            jakbot.channels.cache.get(ChannelIDwebsite).send('Server uptime: ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000 / (60 * 60) % 24) + ' hours ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000 / 60 % 60) + ' minutes ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000 % 60) + ' seconds')
         } else {
 
             const response1 = await fetch('http://localhost:3000/status/apachestatus')
@@ -61,32 +66,39 @@ const websiteHealth = async () => {
             jakbot.channels.cache.get(ChannelIDstatus).send(' Local MariaDB status: ' + fetchDataJson2[0].status)
             const response3 = await fetch('http://localhost:3000/status/starttime')
             const fetchDataJson3 = await response3.json()
-            jakbot.channels.cache.get(ChannelIDwebsite).send(' Local Server uptime: ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000 / (60 * 60) % 24) + ' hours ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000  / 60 % 60) + ' minutes ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000  % 60) + ' seconds')
+            jakbot.channels.cache.get(ChannelIDwebsite).send(' Local Server uptime: ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000 / (60 * 60) % 24) + ' hours ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000 / 60 % 60) + ' minutes ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000 % 60) + ' seconds')
 
 
         }
-    });
-}
+        jakbot.user.setUsername('J A K B O T');
+    }, 10000);
+});
 
 
 
 
-const importantStuff = async (restart) => {
 
-    jakbot.on('ready', jakbot => {
-        jakbot.user.setUsername('JAK-BOT running');
-        jakbot.user.setActivity('Node.js', { type: 'PLAYING' });
+jakbot.on('ready', jakbot => {
+    jakbot.user.setActivity('Node js ', { type: 'PLAYING' });
 
 
+
+    setInterval(() => {
+        jakbot.user.setUsername('JAK-BOT uptime');
         admin.query(
             'show status LIKE "uptime%"',
             function (err, result) {
                 if (err) throw err;
-               let serverUptimeInMilliseconds = result[0].Value ;
-                serverUptimeInMilliseconds = Math.floor(serverUptimeInMilliseconds / (60 * 60 * 24)) + ' days ' + Math.floor(serverUptimeInMilliseconds / (60 * 60) % 24) + ' hours ' + Math.floor(serverUptimeInMilliseconds / 60 % 60) + ' minutes ' + Math.floor(serverUptimeInMilliseconds  % 60) + ' seconds'
+                let serverUptimeInMilliseconds = result[0].Value;
+                serverUptimeInMilliseconds = Math.floor(serverUptimeInMilliseconds / (60 * 60 * 24)) + ' days ' + Math.floor(serverUptimeInMilliseconds / (60 * 60) % 24) + ' hours ' + Math.floor(serverUptimeInMilliseconds / 60 % 60) + ' minutes ' + Math.floor(serverUptimeInMilliseconds % 60) + ' seconds'
                 jakbot.channels.cache.get(ChannelIDstatus).send('with SHOW STATUS db uptime since ' + serverUptimeInMilliseconds);
             }
         );
+        jakbot.user.setUsername('J A K B O T');
+    }, 650000);
+    // 10 minutes in ms  600000
+    setInterval(() => {
+        jakbot.user.setUsername('JAK-BOT counting');
         admin.query(
             'SELECT * FROM `jakrecipes`.`allthecounts`;',
             function (err, result) {
@@ -104,44 +116,51 @@ const importantStuff = async (restart) => {
                     '\n Images: ' + result[5].count);
 
 
-
-                admin.query(
-                    'SELECT `Recipename` FROM `Recipes` group by Recipeid limit 3;',
-                    function (err, result) {
-                        if (err) throw err;
-                        if (restart === true) {
-                            jakbot.channels.cache.get(ChannelIDrecipes).send('Node.js restarted ' + new Date(Date.now()).toISOString());
-
-                        }
-                        jakbot.channels.cache.get(ChannelIDrecipes).send('Our newest 3 recipes as time now ' + new Date(Date.now()).toISOString());
-                        for (let i = 0; i < result.length; i++) {
-                            jakbot.channels.cache.get(ChannelIDrecipes).send('recipename: ' + result[i].Recipename);
-                        }
-                    });
-                admin.query(
-                    'SELECT Useremail  FROM `Users` group by Userid limit 1;',
-                    function (err, result) {
-                        if (err) throw err;
-                        if (restart === true) {
-                            jakbot.channels.cache.get(channelIDwelcome).send('Node.js restarted ' + new Date(Date.now()).toISOString());
-
-                        }
-                        jakbot.channels.cache.get(channelIDwelcome).send('Our newest user as time now ' + new Date(Date.now()).toISOString());
-                        for (let i = 0; i < result.length; i++) {
-                            jakbot.channels.cache.get(channelIDwelcome).send('Useremail: ' + result[i].Useremail);
-                        }
-                    });
-
             });
-        jakbot.user.setUsername('JAK-BOT on break');
-    })
-};
+        jakbot.user.setUsername('J A K B O T');
+
+    }, 450000);
+
+    setInterval(() => {
+        jakbot.user.setUsername('JAK-BOT new data');
+        admin.query(
+            'SELECT `Recipename` FROM `Recipes` group by Recipeid limit 6;',
+            function (err, result) {
+                if (err) throw err;
+                if (restart === true) {
+                    jakbot.channels.cache.get(ChannelIDrecipes).send('Node.js restarted ' + new Date(Date.now()).toISOString());
+
+                }
+                jakbot.channels.cache.get(ChannelIDrecipes).send('Our newest 3 recipes as time now ' + new Date(Date.now()).toISOString());
+                for (let i = 0; i < result.length; i++) {
+                    jakbot.channels.cache.get(ChannelIDrecipes).send('recipename: ' + result[i].Recipename);
+                }
+            });
+        jakbot.user.setUsername('J A K B O T');
+
+    }, 600000);
+    setInterval(() => {
+        jakbot.user.setUsername('JAK-BOT new usr');
+        admin.query(
+            'SELECT Useremail  FROM `Users` group by Userid limit 10;',
+            function (err, result) {
+                if (err) throw err;
+                if (restart === true) {
+                    jakbot.channels.cache.get(channelIDwelcome).send('Node.js restarted ' + new Date(Date.now()).toISOString());
+
+                }
+
+                jakbot.channels.cache.get(channelIDwelcome).send('Our newest users as time now ' + new Date(Date.now()).toISOString());
+                for (let i = 0; i < result.length; i++) {
+                    jakbot.channels.cache.get(channelIDwelcome).send('Useremail: ' + result[i].Useremail);
+                }
+            });
+        jakbot.user.setUsername('J A K B O T');
+    }, 120000);
 
 
-importantStuff(restart);
-websiteHealth();
-setInterval(() => {
-    // Your code here
-    websiteHealth
-    importantStuff
-}, 300000);
+
+})
+
+
+
