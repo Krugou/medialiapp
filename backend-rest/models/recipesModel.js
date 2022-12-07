@@ -20,8 +20,8 @@ const getRecipe = async (Recipeid, next) => {
 const getMealtypeById = async (Recipeid, next) => {
     try {
         const [rows] = await promisePoolUser.execute(`SELECT DISTINCT Mealtypes.Mealtype
-                                                      FROM Recipes INNER JOIN Recipemealtype
-                                                                   INNER JOIN Mealtypes
+                                                      FROM Recipes INNER JOIN Recipemealtype ON Recipes.Recipeid = Recipemealtype.Recipeid
+                                                                   INNER JOIN Mealtypes ON Mealtypes.Mealid = Recipemealtype.Mealid
                                                       WHERE Recipes.Recipeid = ${Recipeid};`);
         return rows;
     } catch (e) {
