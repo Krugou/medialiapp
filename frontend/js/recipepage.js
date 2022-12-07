@@ -26,12 +26,12 @@ const getRecipe = async (id) => {
     const response = await fetch(url + '/recipes/' + id, fetchOptions);
     const recipe = await response.json();
     console.log(recipe);
-    recipeName.innerHTML = recipe.Recipename;
-    instructions.innerText = recipe.Recipeguide;
-    if (recipe.Recipetime) {
+    recipeName.innerHTML = recipe.recipes.Recipename;
+    instructions.innerText = recipe.recipes.Recipeguide;
+    if (recipe.recipes.Recipetime) {
        const recipeTimePara = document.createElement('p');
-       recipeTimePara.innerText = "Valmistusaika: " +recipe.Recipetime+ " Minuuttia";
-       recipetime.appendChild(recipeTimePara);
+       recipeTimePara.innerText = "Valmistusaika: " +recipe.recipes.Recipetime+ " Minuuttia";
+       recipeTime.appendChild(recipeTimePara);
     }
     if (recipe.mealtypes[0]){
         for (let i=0; i<recipe.mealtypes.length; i++) {
