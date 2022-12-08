@@ -1,5 +1,6 @@
 const poolUser = require('../database/db');
 const promisePoolUser = poolUser.promise();
+const httpError = require('http-errors');
 
 
 // pääsivu  komento
@@ -29,11 +30,28 @@ FROM Recipes INNER JOIN Recipemealtype
         next(httpError('Database error', 500));
     }
 }
+const getRecipesByRecipeName = async (recipeName, next) => {
+    try {
+        console.log("Recipe name is: " + recipeName)
+    
+        const [rows] = await promisePoolUser.execute(`SELECT Recipes.Recipeid,Recipes.Recipename , Recipes.Recipetime, Recipes.Recipeguide, Recipes.Recipemaker
+                                                        FROM Recipes 
+                                                        WHERE Recipes.Recipename  like "%${recipeName}%" GROUP BY Recipeid DESC` );
+        return rows;
+    } catch (e) {
+        console.error('Filtering recipes by name', e.message);
+        next(httpError('Database error', 500));
+    }
+
+
+}
+
 
 module.exports = {
 
     getAllNewestRecipesMainPage,
     getAllOldestRecipesMainPage,
+    getRecipesByRecipeName,
 
 
 };

@@ -33,12 +33,13 @@ const upload = multer({
             return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
         }
     }
-    
- });
+
+});
 const {
     recipes_post,
     getAllNewestRecipesController,
     getAllOldestRecipesController,
+    filter_Recipes_By_Recipe_Name,
     recipes_mealtypes_get,
     recipe_get } = require("../controllers/recipesController");
 const { body } = require('express-validator');
@@ -46,6 +47,7 @@ router.get('/mealtypes', recipes_mealtypes_get);
 router.get('/allrecipes/newest', getAllNewestRecipesController);
 router.get('/allrecipes/oldest', getAllOldestRecipesController);
 router.get('/:id', recipe_get);
+router.get('/filterrecipes/:recipename', filter_Recipes_By_Recipe_Name);
 
 router.post('/',
     upload.single('recipeImage'),

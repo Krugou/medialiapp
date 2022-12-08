@@ -39,6 +39,8 @@ const getImageByRecipeId = async (Recipeid, next) => {
         next(httpError('Database error', 500));
     }
 };
+
+
 /*
 const getRecipe = async (Recipeid, next) => {
     try {
@@ -59,6 +61,9 @@ WHERE Recipes.Recipeid = ${Recipeid};`);
     }
 };
 */
+
+// tämän yläpuolelle valmiit funktiot
+
 
 // admin komento 
 const getAllRecipes = async (next) => {
