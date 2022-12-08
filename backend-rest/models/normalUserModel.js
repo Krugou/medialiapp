@@ -32,7 +32,7 @@ FROM Recipes INNER JOIN Recipemealtype
 }
 const getRecipesByRecipeName = async (recipeName, next) => {
     try {
-        console.log("Recipe name is: " + recipeName)
+        console.log("Searched recipe name is: " + recipeName)
     
         const [rows] = await promisePoolUser.execute(`SELECT Recipes.Recipeid,Recipes.Recipename , Recipes.Recipetime, Recipes.Recipeguide, Recipes.Recipemaker
                                                         FROM Recipes 
