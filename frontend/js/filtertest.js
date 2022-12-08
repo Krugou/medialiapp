@@ -61,7 +61,7 @@ window.onload = () => {
             const frontPageHeader = document.getElementById('frontPageHeader');
             FieldElement1.innerText = "";
             frontPageQuery(typeInputFieldElement.value);
-        }, 999);
+        },2500);
 
         FieldElement1.innerText = "Ladataan...";
     };
