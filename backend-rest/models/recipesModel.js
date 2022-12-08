@@ -245,7 +245,7 @@ const addRecipes = async (data, next) => {
                                                         INSERT INTO Recipes (Recipename, Recipeguide, Recipecourse, Recipetime, Recipeprice, Recipemaker)
                                                          VALUES ("${data[0]}", "${data[1]}", "${data[2]}", "${data[3]}", ${data[4]},  32);
                                                         `, data);
-        const tempArray = data[4].split(",")
+        const tempArray = data[5].split(",")
         try {
             for (let i = 0; i < tempArray.length; i++) {
                 [rows2] = await promisePoolRegUser.execute(`INSERT INTO Recipemealtype (Recipeid, Mealid)
@@ -257,7 +257,7 @@ const addRecipes = async (data, next) => {
         }
         try {
              [rows3] = await promisePoolRegUser.execute(`INSERT INTO Images (Images.Imagerecipe, Images.Imagefilepath)
-                                                              VALUES (LAST_INSERT_ID(), '${data[5]}');
+                                                              VALUES (LAST_INSERT_ID(), '${data[6]}');
             `, data)
 
         }
