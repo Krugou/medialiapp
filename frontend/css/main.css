@@ -432,6 +432,9 @@
   height: 3em;
   width: 7em;
 }
+#recipesImage {
+  width: 40%;
+}
 .filterStyle {
   width: 7em;
   height: 3em;
@@ -454,10 +457,7 @@
   width: 15em;
 }
 .recipePic {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 25em;
+ text-align: center;
 }
 #signupImage {
   display: block;
@@ -668,6 +668,9 @@ p {
     width: auto;
     margin-bottom: 5em;
   }
+  #recipeImage {
+    width: 80%;
+  }
 }
 
 @media screen and (max-width: 770px) {
@@ -735,10 +738,6 @@ p {
   }
   .userPosts figure {
     width: auto;
-  }
-
-  .recipePic {
-    width: 20em;
   }
 
   .modal-content {
