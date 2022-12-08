@@ -41,7 +41,8 @@ const {
     getAllOldestRecipesController,
     filter_Recipes_By_Recipe_Name,
     recipes_mealtypes_get,
-    recipe_get } = require("../controllers/recipesController");
+    recipe_get,
+    comment_post,} = require("../controllers/recipesController");
 const { body } = require('express-validator');
 router.get('/mealtypes', recipes_mealtypes_get);
 router.get('/allrecipes/newest', getAllNewestRecipesController);
@@ -57,5 +58,8 @@ router.post('/',
     body('time').escape(),
     //body('mealtypes').escape,
     recipes_post);
-
+router.post('/comment',
+    body("comment").isLength({ min: 1 }).escape(),
+    body("recipeid").escape(),
+        comment_post)
 module.exports = router;

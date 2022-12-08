@@ -26,8 +26,8 @@ const getRecipeCommentsByUserId = async (params, next) => {
 
 const addComment = async (data, next) => {
     try {
-        const [rows] = await promisePoolRegUser.execute(`INSERT INTO Comments (CommentText, Commentrecipe, Commentuserid) 
-                                                    VALUES (?, ?, ?);`,
+        const [rows] = await promisePoolRegUser.execute(`INSERT INTO Comments (Commenttext, Commentrecipe, Commentuserid) 
+                                                    VALUES (?, ?, 32);`, // Vaihda 32 pois, kun softa valmis
                                                         data);
         return rows;
     } catch (e) {

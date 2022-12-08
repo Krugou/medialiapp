@@ -15,6 +15,7 @@ const recipeName = document.querySelector('#recipeName');
 const instructions = document.querySelector('#instructionPara');
 const recipeTime = document.querySelector('#recipesTime');
 const recipeTags = document.querySelector('#recipesTags');
+const postComment = document.querySelector('#postACommentButton');
 
 // add existing cat data to form
 const getRecipe = async (id) => {
@@ -60,5 +61,29 @@ const getRecipe = async (id) => {
    // img.src = `${url}/${cat.filename}`;
     //addMarker(JSON.parse(cat.coords));
 };
+postComment.addEventListener('click', async evt => {
 
+    let commentField = document.querySelector('#commentField').value;
+    evt.preventDefault();
+    console.log("jepjep");
+    console.log(commentField);
+    const data = {
+        comment: commentField,
+        recipeid: recipe_id,
+    };
+    const fetchOptions = {
+        method: 'POST',
+        headers: {
+            // Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    };
+    const response = await fetch(url + '/recipes/comment', fetchOptions);
+    const json = await response.json();
+    alert(json.message);
+    document.querySelector('#commentField').value = "";
+    document.location.reload();
+
+});
 getRecipe(recipe_id);

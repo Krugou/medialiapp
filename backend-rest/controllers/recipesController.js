@@ -17,6 +17,7 @@ const {
 const { validationResult } = require('express-validator');
 const { httpError } = require('../utils/errors');
 const sharp = require('sharp');
+const {addComment} = require("../models/commentsModel");
 
 
 const recipe_get = async (req, res, next) => {
@@ -130,6 +131,43 @@ const filter_Recipes_By_Recipe_Name = async (req, res, next) => {
     }
 };
 
+const comment_post = async (req, res, next) => {
+    try {
+        // Extract the validation errors from a request.
+        const errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            // There are errors.
+            // Error messages can be returned in an array using `errors.array()`.
+            console.error('comment_post validation', errors.array());
+            next(httpError('Invalid data', 400));
+            res.json({
+                message: 'Virheellinen syöte',
+            });
+            return;
+        }
+        const data = [
+            req.body.comment,
+            req.body.recipeid,
+            //req.user.user_id,  // EI käytetä vielä, koska ei jaksa kirjautua sisään joka kerta ku demoaa
+        ]
+        const result = await addComment(data, next);
+        if (result.affectedRows < 1) {
+            next(httpError('Invalid data', 400));
+            return;
+        }
+        res.json({
+            message: 'Comment Added',
+        });
+    }
+    catch (e) {
+        console.error('comment_post', e.message);
+        next(httpError('Internal server error', 500));
+    }
+
+
+};
+
 const recipes_post = async (req, res, next) => {
     try {
         // Extract the validation errors from a request.
@@ -207,6 +245,7 @@ module.exports = {
     recipes_post,
     recipe_get,
     filter_Recipes_By_Recipe_Name,
+    comment_post,
 };
 
 
