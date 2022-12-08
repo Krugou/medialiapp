@@ -28,7 +28,7 @@ function createResults(json) {
         });
         p.innerText = json.recipesTable[i].Recipename;
         p2.innerText = json.recipesTable[i].Recipetime;
-        p3.innerText = json.recipesTable[i].Course[0]?.Coursetype;;
+        p3.innerText = json.recipesTable[i].Course[0]?.Coursetype;
         p4.innerText = json.recipesTable[i].Mealtypes[0]?.Mealtype;
         button.innerText = "Katso resepti";
         figure.appendChild(img);
