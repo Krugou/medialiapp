@@ -59,7 +59,7 @@ function createRecipes(json){
         const img = document.createElement('img');
 
         // jos kuvaa ei ole, laitetaan placeholder
-        if (json[i].Imagefilepath === 'null') {
+        if (json[i].Imagefilepath === 'undefined') {
             img.src="./media/logos/jakrecipeslogo.svg";
 
         } else {
