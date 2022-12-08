@@ -5,13 +5,13 @@ const {
     getRecipeById,
     getMealtypeByRecipeId,
     getImageByRecipeId,
+    getCoursetypeByRecipeId
 } = require('../models/recipesModel');
 
 const {
     getAllNewestRecipesMainPage,
     getAllOldestRecipesMainPage,
     getRecipesByRecipeName,
-    getImageByRecipeIdd,
 
 } = require('../models/normalUserModel');
 const { validationResult } = require('express-validator');
@@ -102,8 +102,10 @@ const filter_Recipes_By_Recipe_Name = async (req, res, next) => {
         
         let recipesTable = await getRecipesByRecipeName(req.params.recipename, next);
         for (let i = 0; i < recipesTable.length; i++) {
-        const imagesTable = await getImageByRecipeId(recipesTable[i].Recipeid, next);
+            const courseTable = await getCoursetypeByRecipeId(recipesTable[i].Recipecourse, next);
+            const imagesTable = await getImageByRecipeId(recipesTable[i].Recipeid, next);
             const mealtypesTable = await getMealtypeByRecipeId(recipesTable[i].Recipeid, next);
+            recipesTable[i].Course = courseTable;
             recipesTable[i].Images = imagesTable
             recipesTable[i].Mealtypes = mealtypesTable;
         }

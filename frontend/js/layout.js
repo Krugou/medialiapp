@@ -107,25 +107,7 @@ async function oldestPresentationData() {
 }
 
 
-let timeoutToken = 0;
-// window.onload = () => {
-const typeInputFieldElement = document.getElementById('typeInputField');
-// typeInputFieldElement.onkeyup = (event) => {
 
-//     clearTimeout(timeoutToken);
-//     if (typeInputFieldElement.value.trim().length === 0) {
-//         return;
-//     }
-//     timeoutToken = setTimeout(() => {
-//         const frontPageHeader = document.getElementById('frontPageHeader');
-
-//         frontPageHeader.innerHTML = "Löydettiin";
-//         frontPageQuery(typeInputFieldElement.value);
-//     }, 999);
-//     frontPageHeader.innerHTML = "Haetaan";
-
-//     };
-// }
 
 
 
@@ -175,7 +157,7 @@ RecipeNavLink.addEventListener('click', async (evt) => {
     recipePage();
 });
 
-'use strict';
+
 function openFunction() {
     document.getElementById("comments").style.display = "unset";
     document.getElementById("openCommentsButton").remove();
@@ -194,22 +176,22 @@ function openFunction() {
         document.getElementById("openComments").append(show);
     })
 }
-const editFilter = document.getElementById("filterModal");
-const filterButton = document.getElementById("filter");
-let close = document.getElementsByClassName("close")[0]
-filterButton.onclick = function () {
-    editFilter.style.display = "block";
-}
+// const editFilter = document.getElementById("filterModal");
 
-close.onclick = function () {
-    editFilter.style.display = "none";
-}
-window.onclick = function (event) {
-    if (event.target == editFilter) {
-        editFilter.style.display = "none";
-    }
-}
-'use strict';
+// const filterButton = document.getElementById("filter");
+// let close = document.getElementsByClassName("close")[0]
+// filterButton.onclick = function () {
+//     editFilter.style.display = "block";
+// }
+
+// close.onclick = function () {
+//     editFilter.style.display = "none";
+// }
+// window.onclick = function (event) {
+//     if (event.target == editFilter) {
+//         editFilter.style.display = "none";
+//     }
+// }
 
 async function addRecipes() {
 
@@ -265,6 +247,7 @@ async function addRecipes() {
         }
     });
 
+    }
     postButton.addEventListener('click', async (evt) => {
         evt.preventDefault();
         const recipenameInput = document.querySelector('#recipenameInput').value;
@@ -272,10 +255,6 @@ async function addRecipes() {
         const courseselect = document.querySelector('#courseselect').value;
         const recipetimeInput = document.querySelector('#recipetimeInput').value;
         const addForm = document.querySelector('#recipeAddimagebutton');
-
-
-
-
         const fd = new FormData(addForm);
         fd.append("name", recipenameInput);
         fd.append("guide", recipeguide);
@@ -299,7 +278,6 @@ async function addRecipes() {
         //  location.href = 'frontpage.html';
 
     });
-}
 
 async function SignIn() {
     pageGeneration.innerHTML = `  <img id="signupImage" src="media/logos/jakrecipeslogo.png" alt="jakrecipeslogo"> <H2 class="otsikko">Kirjaudu</H2> <div class="signup"> <ul class="tiedot"> <li> <p>Email</p></li><li><input id="emailInputSignIn"></li><li> <p>Password</p></li><li><input id="passwordInputSignIn"></li></ul> </div><div id="signinNappi" class="nappi"> <button>Sign In</button> </div>`
@@ -418,23 +396,20 @@ function aboutUs() {
 'use strict';
 
 'use strict';
-async function frontPageQuery(query) {
+function frontPageQuery(query) {
     try {
         const res = await fetch(url + `/recipes/filterrecipes/` + query);
         if (!res.ok) throw new Error(console.log(errormessage));
         const queryData = await res.json();
 
-        correction(queryData)
+        createRecipesMatch(queryData);
 
 
     } catch (error) {
         console.log(error);
     }
 }
-function correction(queryData) {
 
-    createRecipesMatch(queryData);
-}
 const addRecipeButton = document.querySelector('#addrecipesButton');
 
 addRecipeButton.addEventListener('click', async (evt) => {

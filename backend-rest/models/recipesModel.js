@@ -39,6 +39,18 @@ const getImageByRecipeId = async (Recipeid, next) => {
         next(httpError('Database error', 500));
     }
 };
+const getCoursetypeByRecipeId = async (recipecourse, next) => {
+    try {
+        const [rows] = await promisePoolUser.execute(`SELECT Courses.Coursetype FROM Courses
+                                                        where Courses.Courseid = ${recipecourse}`);
+       
+        return rows;
+      
+    } catch (e) {
+        console.error(' getCoursetypeByRecipeId ', e.message);
+        next(httpError('Database error', 500));
+    }
+};
 
 
 /*
@@ -276,6 +288,8 @@ module.exports = {
     getRecipeById,
     getMealtypeByRecipeId,
     getImageByRecipeId,
+    getCoursetypeByRecipeId
+
 
 
 };

@@ -34,7 +34,7 @@ const getRecipesByRecipeName = async (recipeName, next) => {
     try {
         console.log("Searched recipe name is: " + recipeName)
     
-        const [rows] = await promisePoolUser.execute(`SELECT Recipes.Recipeid,Recipes.Recipename , Recipes.Recipetime, Recipes.Recipeguide, Recipes.Recipemaker
+        const [rows] = await promisePoolUser.execute(`SELECT Recipes.Recipeid,Recipes.Recipename , Recipes.Recipetime, Recipes.Recipeguide, Recipes.Recipemaker, Recipes.Recipecourse
                                                         FROM Recipes 
                                                         WHERE Recipes.Recipename  like "%${recipeName}%" GROUP BY Recipeid DESC` );
         return rows;
