@@ -56,6 +56,8 @@ postButton.addEventListener('click', async (evt) => {
     const recipeguide = document.querySelector('#recipeguide').value;
     const courseselect = document.querySelector('#courseselect').value;
     const recipetimeInput = document.querySelector('#recipetimeInput').value;
+    const recipepriceInput = document.querySelector('#addrecipePrice').value;
+
     const addForm = document.querySelector('#recipeAddimagebutton');
 
 
@@ -67,6 +69,7 @@ postButton.addEventListener('click', async (evt) => {
     fd.append("course", courseselect);
     fd.append("time", recipetimeInput);
     fd.append("mealtypes", selectedTags);
+    fd.append("price",recipepriceInput);
 
     console.log("fd",fd);
     const fetchOptions = {

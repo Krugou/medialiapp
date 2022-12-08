@@ -56,6 +56,7 @@ router.post('/',
     body('guide').isLength({ min: 1 }).escape(),
     body('course').isLength({ min: 1 }).escape(),
     body('time').escape(),
+    body('price').isFloat(),
     //body('mealtypes').escape,
     recipes_post);
 router.post('/comment',

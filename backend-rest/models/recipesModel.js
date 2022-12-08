@@ -242,8 +242,8 @@ const addRecipes = async (data, next) => {
                 */
 
         const [rows] = await promisePoolRegUser.execute(` 
-                                                        INSERT INTO Recipes (Recipename, Recipeguide, Recipecourse, Recipetime, Recipemaker)
-                                                         VALUES ("${data[0]}", "${data[1]}", "${data[2]}", "${data[3]}", 32);
+                                                        INSERT INTO Recipes (Recipename, Recipeguide, Recipecourse, Recipetime, Recipeprice, Recipemaker)
+                                                         VALUES ("${data[0]}", "${data[1]}", "${data[2]}", "${data[3]}", ${data[4]},  32);
                                                         `, data);
         const tempArray = data[4].split(",")
         try {

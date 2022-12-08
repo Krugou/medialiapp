@@ -200,6 +200,7 @@ const recipes_post = async (req, res, next) => {
                 req.body.guide,
                 req.body.course,
                 req.body.time,
+                req.body.price,
                 // req.user.user_id,
                 req.body.mealtypes,
                 req.file.filename,
@@ -210,6 +211,7 @@ const recipes_post = async (req, res, next) => {
                 req.body.guide,
                 req.body.course,
                 req.body.time,
+                req.body.price,
                 // req.user.user_id,
                 req.body.mealtypes,
             ];
