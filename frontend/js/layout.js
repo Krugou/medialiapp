@@ -106,7 +106,6 @@ async function oldestPresentationData() {
     }
 }
 
-startUp();
 
 let timeoutToken = 0;
 // window.onload = () => {
