@@ -432,7 +432,7 @@
   height: 3em;
   width: 7em;
 }
-#filter {
+.filterStyle {
   width: 7em;
   height: 3em;
   background-color: #0d1e40;
@@ -440,6 +440,7 @@
   border-radius: 1em;
   color: white;
 }
+
 #profileArticle {
   display: flex;
   height: auto;
@@ -635,6 +636,9 @@ p {
 }
 .recipeSearch {
   padding: 2em;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
 @media screen and (max-width: 1024px) {
   .recipefigure {
