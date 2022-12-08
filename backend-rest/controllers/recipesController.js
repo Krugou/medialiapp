@@ -5,7 +5,7 @@ const {
     getRecipeById,
     getMealtypeByRecipeId,
     getImageByRecipeId,
-    getCoursetypeByRecipeId
+    getCoursetypeByCourseId
 } = require('../models/recipesModel');
 
 const {
@@ -20,11 +20,13 @@ const sharp = require('sharp');
 
 
 const recipe_get = async (req, res, next) => {
-    let rows1, rows2, rows3;
+    let rows1, rows2, rows3, rows4;
     try {
         rows1 = await getRecipeById(req.params.id, next);
+        const recipesCourse = rows1[0].Recipecourse;
         rows2 = await getMealtypeByRecipeId(req.params.id, next);
         rows3 = await getImageByRecipeId(req.params.id, next);
+        rows4 = await getCoursetypeByCourseId(recipesCourse, next);
         if (rows1.length < 1) {
             return next(httpError('No recipe found', 404));
         }
@@ -35,11 +37,15 @@ const recipe_get = async (req, res, next) => {
         if (rows3.length < 1) {
             rows3 = "";
         }
+        if (rows4.length < 1) {
+            rows4 = "";
+        }
 
         res.json({
-            recipes: rows1.pop(),
-            mealtypes: rows2,
-            Images: rows3,
+            recipes: rows1.pop(), //Ainoastaan yksi matchaava resepti, niin pop
+            mealtypes: rows2, //Voi olla monta, niin ei pop
+            images: rows3, //Voi olla tulevaisuudessa monta kuvaa, niin ei pop
+            course: rows4.pop(), // Ainoastaan yksi course, niin pop
         });
 
     } catch (e) {
@@ -102,7 +108,7 @@ const filter_Recipes_By_Recipe_Name = async (req, res, next) => {
         
         let recipesTable = await getRecipesByRecipeName(req.params.recipename, next);
         for (let i = 0; i < recipesTable.length; i++) {
-            const courseTable = await getCoursetypeByRecipeId(recipesTable[i].Recipecourse, next);
+            const courseTable = await getCoursetypeByCourseId(recipesTable[i].Recipecourse, next);
             const imagesTable = await getImageByRecipeId(recipesTable[i].Recipeid, next);
             const mealtypesTable = await getMealtypeByRecipeId(recipesTable[i].Recipeid, next);
             recipesTable[i].Course = courseTable;

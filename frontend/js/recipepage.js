@@ -30,11 +30,15 @@ const getRecipe = async (id) => {
     console.log(recipe);
     recipeName.innerHTML = recipe.recipes.Recipename;
     instructions.innerText = recipe.recipes.Recipeguide;
+
+    // Jos reseptille on asetettu valmistusaika, näytetään se sivulla.
     if (recipe.recipes.Recipetime) {
        const recipeTimePara = document.createElement('p');
        recipeTimePara.innerText = "Valmistusaika: " +recipe.recipes.Recipetime+ " Minuuttia";
        recipeTime.appendChild(recipeTimePara);
     }
+
+    // Jos reseptille on annettu tageja, näytettään ne sivulla.
     if (recipe.mealtypes){
         for (let i=0; i<recipe.mealtypes.length; i++) {
             const button = document.createElement('button');
@@ -43,9 +47,13 @@ const getRecipe = async (id) => {
             recipeTags.appendChild(button);
         }
     }
-    console.log(recipe.Images[0]);
-    img.src=url+'/'+recipe.Images[0].Imagefilepath;
-    if (recipe.Images[0].Imagefilepath === 'undefined') {
+    const button = document.createElement('button');
+    button.innerText = recipe.course.Coursetype;
+    button.classList.add('postRecipe');
+    recipeTags.appendChild(button);
+    console.log(recipe.images[0]);
+    img.src=url+'/'+recipe.images[0].Imagefilepath;
+    if (recipe.images[0].Imagefilepath === 'undefined') {
         img.src="./media/logos/jakrecipeslogo.svg";
 
     }
