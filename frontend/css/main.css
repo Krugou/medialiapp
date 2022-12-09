@@ -256,9 +256,11 @@
 }
 .recipefigure img {
   max-width: 100%;
-  height: auto;
+  height: 25em;
   border-top-left-radius: 1em;
   border-top-right-radius: 1em;
+  object-fit: cover;
+  width: 100%;
 }
 .recipename {
   text-align: center;
@@ -758,6 +760,9 @@ p {
   }
   #tag {
     margin: 2.5em;
+  }
+  .recipefigure img {
+    height: 15em;
   }
 }
 @media screen and (max-width: 375px) {
