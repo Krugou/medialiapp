@@ -113,6 +113,7 @@
 }
 .marginhalfrem {
   padding: 0.5rem;
+  height: 3em;
 }
 .marpad1rem {
 }
@@ -267,8 +268,28 @@
 }
 .recipename input {
   margin-bottom: 2em;
-  width: 20em;
   height: 3em;
+  padding:0.5em;
+}
+#recipetimeInput {
+  width:17.7em;
+}
+#addrecipePrice {
+  width: 13.8em;
+}
+#recipenameInput {
+  width:16em;
+}
+#courseselect {
+  height: 3em;
+}
+.selectedMealTypeButtons {
+  background-color: #0d1e40;
+  border: solid 1px #0d1e40;
+  border-radius: 1em;
+  color: white;
+  height: 3em;
+  width: 7em;
 }
 .Reseptikuva {
   display: flex;
@@ -635,13 +656,18 @@ p {
   margin-bottom: 4em;
 }
 #recipeAddimagebutton {
-  margin-right: 8em;
+  margin-right: 13.5em;
 }
 .recipeSearch {
   padding: 2em;
   display:flex;
   justify-content: center;
-  align-items: center;
+  gap: 2em;
+}
+.tiedot input {
+  width:20em;
+  height: 3em;
+  padding: 0.5em;
 }
 @media screen and (max-width: 1024px) {
   .recipefigure {
@@ -768,9 +794,6 @@ p {
 @media screen and (max-width: 375px) {
   p {
     font-size: 1.5vh;
-  }
-  #filter {
-    margin-top: 1em;
   }
 }
 @media screen and (max-width: 1120px) {
