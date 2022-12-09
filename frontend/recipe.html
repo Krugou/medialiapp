@@ -142,13 +142,13 @@
         document.getElementById("comments").style.display = "unset";
         document.getElementById("openCommentsButton").remove();
         const hide = document.createElement("button");
-        hide.setAttribute("id", "hideCommentsButton");
+        hide.setAttribute("id", "openCommentsButton");
         hide.innerText = "Hide Comments";
         document.getElementById("openComments").append(hide);
 
-        document.getElementById("hideCommentsButton").addEventListener("click", function() {
+        document.getElementById("openCommentsButton").addEventListener("click", function() {
           document.getElementById("comments").style.display = "none";
-          document.getElementById("hideCommentsButton").remove();
+          document.getElementById("openCommentsButton").remove();
           const show = document.createElement("button");
           show.setAttribute("id", "openCommentsButton");
           show.setAttribute("onclick", "openFunction()");
