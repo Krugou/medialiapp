@@ -10,13 +10,27 @@ async function newestPresentationData() {
 
     for (let i = 0; i < (json.length); i++) {
 
-    if (screen.width >= 1000) {
-        json[i].Imagefilepath = 'thumbnails/' + json[i].Imagefilepath + "_500px"
-    }
 
-    if (screen.width <= 780) {
-        json[i].Imagefilepath = 'thumbnails/' + json[i].Imagefilepath + "_300px"
-    };
+
+        if (screen.width >= 1000) {
+
+            thumbnail_imagefilepath = "thumbnails/" + json[i].Imagefilepath + "_500px.png"
+
+            json[i]["thumbnailImagefilepath"] = thumbnail_imagefilepath
+
+        }
+
+
+
+        if (screen.width <= 780) {
+
+            thumbnail_imagefilepath = "thumbnails/" + json[i].Imagefilepath + "_300px.png"
+
+            json[i]["thumbnailImagefilepath"] = thumbnail_imagefilepath
+
+        };
+
+
 
     };
 
