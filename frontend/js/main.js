@@ -7,6 +7,23 @@ async function newestPresentationData() {
     const response = await fetch(url + '/recipes/allrecipes/newest');
     const json = await response.json();
 
+
+
+    if (screen.width >= 1000) {
+        json[i].Imagefilepath = 'thumbnails/' + json[i].Imagefilepath + "_500px"
+    }
+
+
+
+    if (screen.width <= 780) {
+        json[i].Imagefilepath = 'thumbnails/' + json[i].Imagefilepath + "_300px"
+    };
+
+
+
+
+
+
      createRecipes(json);
 
 }
