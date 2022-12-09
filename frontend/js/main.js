@@ -8,15 +8,16 @@ async function newestPresentationData() {
     const json = await response.json();
 
 
+    for (let i = 0; i < (json.length); i++) {
 
     if (screen.width >= 1000) {
         json[i].Imagefilepath = 'thumbnails/' + json[i].Imagefilepath + "_500px"
     }
 
-
-
     if (screen.width <= 780) {
         json[i].Imagefilepath = 'thumbnails/' + json[i].Imagefilepath + "_300px"
+    };
+
     };
 
 
