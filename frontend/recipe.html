@@ -3,59 +3,60 @@
 
 
 <head>
-        <!-- basics of meta -->
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <!-- favicon stuff -->
-        <link rel="apple-touch-icon" sizes="180x180" href="media/icons/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="media/icons/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="media/icons/favicon-16x16.png">
-        <!-- Primary Meta Tags -->
-        
-        <meta name="title" content="Jakrecipes">
-        <meta name="author" content="Joonas Lamminmäki, Aleksi Nokelainen, Kaarle Häyhä">
-        <meta name="description" content="Jakrecipes is a recipe sharing website.">
-        <meta name="image" content="media/logos/jakrecipeswide.svg">
-        <meta name="application-name" content="Jakrecipes">
-        <meta name="copyright" content="JAK ltd">
-        <meta name="page-topic" content="Food">
-        <meta name="page-type" content="Recipes">
-        <meta name="audience" content="Everyone">
-        
-        
-        <!-- avainsanat -->
-        <!-- näitä voi viel säätää -->
-        <meta name="keywords" content="HTML, CSS, JavaScript,recipes,accessible, ">
-        
-        <!-- Open Graph / Facebook -->
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="10.114.34.72">
-        <meta property="og:title" content="Jakrecipes">
-        <meta property="og:description" content="Jakrecipes is a recipe sharing website">
-        <meta property="og:image" content="media/logos/jakrecipeswide.svg">
-        
-        
-        
-        <!-- Twitter -->
-        <meta property="twitter:card" content="summary_large_image">
-        <meta property="twitter:url" content="10.114.34.72">
-        <meta property="twitter:title" content="Jakrecipes">
-        <meta property="twitter:description" content="Jakrecipes is a recipe sharing website.">
-        <meta property="twitter:image" content="media/logos/jakrecipeswide.svg">
-        
-        
-        <!-- Google Analytics  -->
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PGLYY82MB9"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
-            gtag('js', new Date());
-            gtag('config', 'G-PGLYY82MB9');
-        </script>
+    <!-- basics of meta -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- favicon stuff -->
+    <link rel="apple-touch-icon" sizes="180x180" href="media/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="media/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="media/icons/favicon-16x16.png">
+    <!-- Primary Meta Tags -->
+
+    <meta name="title" content="Jakrecipes">
+    <meta name="author" content="Joonas Lamminmäki, Aleksi Nokelainen, Kaarle Häyhä">
+    <meta name="description" content="Jakrecipes is a recipe sharing website.">
+    <meta name="image" content="media/logos/jakrecipeswide.svg">
+    <meta name="application-name" content="Jakrecipes">
+    <meta name="copyright" content="JAK ltd">
+    <meta name="page-topic" content="Food">
+    <meta name="page-type" content="Recipes">
+    <meta name="audience" content="Everyone">
+
+
+    <!-- avainsanat -->
+    <!-- näitä voi viel säätää -->
+    <meta name="keywords" content="HTML, CSS, JavaScript,recipes,accessible, ">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="10.114.34.72">
+    <meta property="og:title" content="Jakrecipes">
+    <meta property="og:description" content="Jakrecipes is a recipe sharing website">
+    <meta property="og:image" content="media/logos/jakrecipeswide.svg">
+
+
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="10.114.34.72">
+    <meta property="twitter:title" content="Jakrecipes">
+    <meta property="twitter:description" content="Jakrecipes is a recipe sharing website.">
+    <meta property="twitter:image" content="media/logos/jakrecipeswide.svg">
+
+
+    <!-- Google Analytics  -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PGLYY82MB9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-PGLYY82MB9');
+    </script>
+    <script src="fontawesome/fontawesome.js" crossorigin="anonymous"></script>
+    <script src="fontawesome/solid.js" crossorigin="anonymous"></script>
     <title>JAK Reseptit</title>
 
     <link rel="stylesheet" href="./css/main.css" />
@@ -75,11 +76,11 @@
         <label class="logo"></label>
         <nav class="navbar">
             <ul class="nav-start">
-                <li><a href="frontpage.html">Etusivu</a></li>
+                <li><a id="frontpageLink" href="frontpage.html">Etusivu</a></li>
             </ul>
             <ul class="nav-end">
-                <li><a href="signIn.html">Kirjaudu</a></li>
-                <li><a href="registration.html">Rekisteröinti</a></li>
+                <li><a id="signInLink" href="signIn.html">Kirjaudu</a></li>
+                <li><a id="registrationLink" href="registration.html">Rekisteröinti</a></li>
             </ul>
         </nav>
     </header>
@@ -87,19 +88,20 @@
         <h2 id="recipeName">Recipe Name</h2>
         <div class="recipePic">
             <img id="recipesImage" src="media/logos/jakrecipeslogo.svg" alt="jakrecipeslogo">
-            </div>
-            <div id="Stats" class="recipeStats">
-                <p>50 Likes</p>
-                <div class="recipeTags" id="recipesTags"></div>
-                <div class="recipeTime" id="recipesTime"></div>
-                <div id="recipePrice"> </div>
+        </div>
+        <div id="Stats" class="recipeStats">
+            <p>50 Likes</p>
+            <div class="recipeTags" id="recipesTags"></div>
+            <div class="recipeTime" id="recipesTime"></div>
+            <div id="recipePrice"> </div>
 
-                    <i id="likeHeart" class="fa-solid fa-heart" ></i>
-            </div>
+            <i id="likeHeart" class="fa-solid fa-heart"></i>
+        </div>
         <div class="Recipe_desc">
             <div class="recipeInstruction">
                 <h2>Reseptin ohjeet</h2>
-                <p id="instructionPara">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque consequatur,
+                <p id="instructionPara">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium
+                    atque consequatur,
                     corporis culpa cupiditate, dolor, error eum minus natus nihil nulla officia porro quam quasi qui
                     sit? Consectetur odio perferendis porro sed! Ipsa non, tempora? Ab consequuntur culpa, debitis eius
                     error exercitationem impedit natus nemo possimus similique sunt veniam.
@@ -121,86 +123,89 @@
                 <button onclick="openFunction()" id="openCommentsButton">Show Comments</button>
             </div>
             <section id="comments">
-            <div class="addComment">
-                <form>
-                    <h2>Add Comment</h2>
-                    <textarea id="commentField"></textarea>
-                </form>
-                <div class="postCommentButton">
-                <button id="postACommentButton">Post Comment</button>
+                <div class="addComment">
+                    <form>
+                        <h2>Add Comment</h2>
+                        <textarea id="commentField"></textarea>
+                    </form>
+                    <div class="postCommentButton">
+                        <button id="postACommentButton">Post Comment</button>
+                    </div>
                 </div>
-            </div>
-            <ul class="recipeComments" id="recipeCommentsId">
-                <li class="recipeUserComment">
-                    <div>
-                        <div class="commentPicture">
-                            <img src="media/logos/jakrecipeslogo.svg">
+                <ul class="recipeComments" id="recipeCommentsId">
+                    <li class="recipeUserComment">
+                        <div>
+                            <div class="commentPicture">
+                                <img src="media/logos/jakrecipeslogo.svg">
+                            </div>
+                            <div class="commentUsername">
+                                <a href="profile.html">Username</a>
+                            </div>
+                            <div class="commentContent">
+                                <p>Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin. Tämä on
+                                    kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin.</p>
+                                <i class="fa-solid fa-thumbs-up"></i>
+                                <i class="fa-solid fa-thumbs-down"></i>
+                            </div>
                         </div>
-                        <div class="commentUsername">
-                            <a href="profile.html">Username</a>
+                    </li>
+                    <li class="recipeUserComment">
+                        <div>
+                            <div class="commentPicture">
+                                <img src="media/logos/jakrecipeslogo.svg">
+                            </div>
+                            <div class="commentUsername">
+                                <a href="profile.html">Username</a>
+                            </div>
+                            <div class="commentContent">
+                                <p>Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin. Tämä on
+                                    kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin.</p>
+                                <i class="fa-solid fa-thumbs-up"></i>
+                                <i class="fa-solid fa-thumbs-down"></i>
+                            </div>
                         </div>
-                        <div class="commentContent">
-                            <p>Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin.</p>
-                            <i class="fa-solid fa-thumbs-up"></i>
-                            <i class="fa-solid fa-thumbs-down"></i>
+                    </li>
+                    <li class="recipeUserComment">
+                        <div>
+                            <div class="commentPicture">
+                                <img src="media/logos/jakrecipeslogo.svg">
+                            </div>
+                            <div class="commentUsername">
+                                <a href="profile.html">Username</a>
+                            </div>
+                            <div class="commentContent">
+                                <p>Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin. Tämä on
+                                    kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin.</p>
+                                <i class="fa-solid fa-thumbs-up"></i>
+                                <i class="fa-solid fa-thumbs-down"></i>
+                            </div>
                         </div>
-                    </div>
-                </li>
-                <li class="recipeUserComment">
-                    <div>
-                        <div class="commentPicture">
-                            <img src="media/logos/jakrecipeslogo.svg">
-                        </div>
-                        <div class="commentUsername">
-                            <a href="profile.html">Username</a>
-                        </div>
-                        <div class="commentContent">
-                            <p>Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin.</p>
-                            <i class="fa-solid fa-thumbs-up"></i>
-                            <i class="fa-solid fa-thumbs-down"></i>
-                        </div>
-                    </div>
-                </li>
-                <li class="recipeUserComment">
-                    <div>
-                        <div class="commentPicture">
-                            <img src="media/logos/jakrecipeslogo.svg">
-                        </div>
-                        <div class="commentUsername">
-                            <a href="profile.html">Username</a>
-                        </div>
-                        <div class="commentContent">
-                            <p>Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin.</p>
-                            <i class="fa-solid fa-thumbs-up"></i>
-                            <i class="fa-solid fa-thumbs-down"></i>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+                    </li>
+                </ul>
             </section>
 
         </div>
     </main>
     <script>
 
-      function openFunction() {
-        document.getElementById("comments").style.display = "unset";
-        document.getElementById("openCommentsButton").remove();
-        const hide = document.createElement("button");
-        hide.setAttribute("id", "openCommentsButton");
-        hide.innerText = "Hide Comments";
-        document.getElementById("openComments").append(hide);
+        function openFunction() {
+            document.getElementById("comments").style.display = "unset";
+            document.getElementById("openCommentsButton").remove();
+            const hide = document.createElement("button");
+            hide.setAttribute("id", "openCommentsButton");
+            hide.innerText = "Hide Comments";
+            document.getElementById("openComments").append(hide);
 
-        document.getElementById("openCommentsButton").addEventListener("click", function() {
-          document.getElementById("comments").style.display = "none";
-          document.getElementById("openCommentsButton").remove();
-          const show = document.createElement("button");
-          show.setAttribute("id", "openCommentsButton");
-          show.setAttribute("onclick", "openFunction()");
-          show.innerText = "Show Comments";
-          document.getElementById("openComments").append(show);
-        })
-      }
+            document.getElementById("openCommentsButton").addEventListener("click", function () {
+                document.getElementById("comments").style.display = "none";
+                document.getElementById("openCommentsButton").remove();
+                const show = document.createElement("button");
+                show.setAttribute("id", "openCommentsButton");
+                show.setAttribute("onclick", "openFunction()");
+                show.innerText = "Show Comments";
+                document.getElementById("openComments").append(show);
+            })
+        }
 
 
     </script>

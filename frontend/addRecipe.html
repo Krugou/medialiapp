@@ -3,7 +3,7 @@
 
 
 <head>
- 
+
     <!-- basics of meta -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -58,7 +58,8 @@
         gtag('js', new Date());
         gtag('config', 'G-PGLYY82MB9');
     </script>
-
+<script src="fontawesome/fontawesome.js" crossorigin="anonymous"></script>
+<script src="fontawesome/solid.js" crossorigin="anonymous"></script>
     <script src="js/addrecipe.js" defer></script>
     <title>JAK Reseptit</title>
     <link rel="stylesheet" href="./css/main.css" />
@@ -74,11 +75,11 @@
         <label class="logo"></label>
         <nav class="navbar">
             <ul class="nav-start">
-                <li><a href="#">Etusivu</a></li>
+                <li><a id="frontpageLink" href="frontpage.html">Etusivu</a>
             </ul>
             <ul class="nav-end">
-                <li><a href="#">Kirjaudu</a></li>
-                <li><a href="#">Rekisteröinti</a></li>
+                <li><a id="signInLink" href="signIn.html">Kirjaudu</a></li>
+                <li><a id="registrationLink" href="registration.html">Rekisteröinti</a></li>
             </ul>
         </nav>
     </header>
