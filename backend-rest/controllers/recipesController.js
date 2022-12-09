@@ -193,10 +193,10 @@ const recipes_post = async (req, res, next) => {
             // There are errors.
             // Error messages can be returned in an array using `errors.array()`.
             console.error('user_post validation', errors.array());
-            next(httpError('Invalid data', 400));
             res.json({
                 message: 'Täytä vaaditut kentät',
             });
+            next(httpError('Invalid data', 400));
             return;
         }
         const thumbnailSizes = [160, 200, 300, 400, 500];

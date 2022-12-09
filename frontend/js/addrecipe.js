@@ -69,7 +69,7 @@ postButton.addEventListener('click', async (evt) => {
     fd.append("course", courseselect);
     fd.append("time", recipetimeInput);
     fd.append("mealtypes", selectedTags);
-    fd.append("price",recipepriceInput);
+    fd.append("price", recipepriceInput);
 
     console.log("fd",fd);
     const fetchOptions = {
