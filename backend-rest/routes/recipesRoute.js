@@ -42,14 +42,17 @@ const {
     filter_Recipes_By_Recipe_Name,
     recipes_mealtypes_get,
     recipe_get,
-    comment_post,} = require("../controllers/recipesController");
+    comment_post,
+    comment_get,} = require("../controllers/recipesController");
 const { body } = require('express-validator');
 router.get('/mealtypes', recipes_mealtypes_get);
 router.get('/allrecipes/newest', getAllNewestRecipesController);
 router.get('/allrecipes/oldest', getAllOldestRecipesController);
 router.get('/:id', recipe_get);
 router.get('/filterrecipes/:recipename', filter_Recipes_By_Recipe_Name);
-
+router.get('/comment/:id',
+    body("id").escape(),
+    comment_get);
 router.post('/',
     upload.single('recipeImage'),
     body('name').isLength({ min: 1 }).escape(),

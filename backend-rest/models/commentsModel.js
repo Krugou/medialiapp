@@ -4,7 +4,8 @@ const promisePoolRegUser = poolRegUser.promise();
 const getRecipeCommentsByRecipe = async (params, next) => {
     try {
         const [rows] = await promisePoolRegUser.execute(
-            `SELECT CommentText FROM Comments  WHERE CommentRecipe = "${params}";
+            `SELECT Commenttext, Users.Username FROM Comments
+                 INNER JOIN Users ON Comments.Commentuserid = Users.Userid WHERE CommentRecipe = "${params}";
                         `);
         return rows;
     } catch (e) {

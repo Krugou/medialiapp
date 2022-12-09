@@ -17,7 +17,8 @@ const {
 const { validationResult } = require('express-validator');
 const { httpError } = require('../utils/errors');
 const sharp = require('sharp');
-const {addComment} = require("../models/commentsModel");
+const {addComment, getRecipeCommentsByRecipe} = require("../models/commentsModel");
+const {findUsersByUseridRegUser} = require("../models/regUserModel");
 
 
 const recipe_get = async (req, res, next) => {
@@ -146,6 +147,37 @@ const filter_Recipes_By_Recipe_Name = async (req, res, next) => {
         next(httpError('Database error', 500));
     }
 };
+const comment_get = async  (req, res, next) => {
+  try {
+      const errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+          // There are errors.
+          // Error messages can be returned in an array using `errors.array()`.
+          console.error('comment_get validation', errors.array());
+          res.json({
+              message: 'Jokin meni pieleen',
+          });
+          next(httpError('Invalid data', 400));
+          return;
+      }
+
+      const findComments = await getRecipeCommentsByRecipe(req.params.id, next)
+      if (findComments.length < 1) {
+          return next(httpError('No comments found', 404));
+      }
+     // const getUserByUserId = await findUsersByUseridRegUser()
+
+
+
+      res.json(findComments);
+  } catch (e) {
+      console.error('comment_get', e.message);
+      next(httpError('Database error', 500));
+  }
+  };
+
+
 
 const comment_post = async (req, res, next) => {
     try {
@@ -264,6 +296,7 @@ module.exports = {
     recipe_get,
     filter_Recipes_By_Recipe_Name,
     comment_post,
+    comment_get,
 };
 
 

@@ -40,7 +40,18 @@ const findUsersByUsernameRegUser = async (name, next) => {
         next(httpError('Database error', 500));
     }
 }
+const findUsersByUseridRegUser = async (id, next) => {
 
+    try {
+        const [rows] = await promisePoolRegUser.execute(`SELECT *
+                                                FROM Users WHERE Userid = "${id}";
+                                                `); //VOI LISÄTÄ INDEXIN.
+        return rows;
+    } catch (e) {
+        console.error('findUsersByUsernameRegUser', e.message);
+        next(httpError('Database error', 500));
+    }
+}
 
 
 
@@ -50,5 +61,5 @@ module.exports = {
     addUsersRegUser,
     findUsersByEmailRegUser,
     findUsersByUsernameRegUser,
-
+    findUsersByUseridRegUser,
 };
