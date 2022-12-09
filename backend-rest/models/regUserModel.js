@@ -36,7 +36,7 @@ const findUsersByUsernameRegUser = async (name, next) => {
                                                 `); //VOI LISÄTÄ INDEXIN.
         return rows;
     } catch (e) {
-        console.error('findUsersByEmailRegUser', e.message);
+        console.error('findUsersByUsernameRegUser', e.message);
         next(httpError('Database error', 500));
     }
 }
