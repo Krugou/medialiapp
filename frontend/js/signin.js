@@ -1,5 +1,4 @@
 'use strict';
-const url = 'https://10.114.34.72/app'
 
 const signinButton = document.querySelector('#signinNappi');
 
@@ -21,6 +20,7 @@ signinButton.addEventListener('click', async (evt) => {
         body: JSON.stringify(data),
     };
     console.log(data);
+    console.log(url);
     const response = await fetch(url + '/auth/login', fetchOptions);
     const json = await response.json();
     console.log('login response', json);

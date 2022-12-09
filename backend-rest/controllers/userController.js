@@ -2,6 +2,7 @@
 const { addUsersRegUser, findUsersByEmailRegUser, findUsersByUsernameRegUser} = require('../models/regUserModel');
 const { validationResult } = require('express-validator');
 const { httpError } = require('../utils/errors');
+const bcrypt = require('bcryptjs');
 
 const user_post = async (req, res, next) => {
 
@@ -20,10 +21,12 @@ const user_post = async (req, res, next) => {
             return;
         }
 
+        const salt = bcrypt.genSaltSync(10);
+        const pwd = bcrypt.hashSync(req.body.password, salt);
 
         const data = [
             req.body.email,
-            req.body.password,
+            pwd,
             req.body.username,
         ];
 
