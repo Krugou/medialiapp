@@ -114,7 +114,7 @@ function createRecipes(json){
         p4.innerText=json[i].Mealtype;
         button.innerText = "Katso resepti";
         figure.appendChild(img);
-        figure.appendChild(p);
+        figure.appendChild(p)
         figure.appendChild(p2);
         figure.appendChild(p3);
         figure.appendChild(p4);

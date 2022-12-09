@@ -111,12 +111,8 @@
   font-size: 1.5em;
   resize: none;
 }
-.marginhalfrem {
-  padding: 0.5rem;
-  height: 3em;
-}
-.marpad1rem {
-}
+
+
 .modal {
   display: none;
   position: fixed;
