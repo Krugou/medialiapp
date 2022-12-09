@@ -4,16 +4,14 @@ function createResults(json) {
 
 
     for (let i = 0; i < (json.recipesTable.length); i++) {
-        console.log("wtf")
         const figure = document.createElement('figure');
         const img = document.createElement('img');
         // jos kuvaa ei ole, laitetaan placeholder
-        console.table(json.recipesTable[i].Images)
-        if (json.recipesTable[i].Images.Imagefilepath === 'null') {
+        if (json.recipesTable[i]?.Imagefilepath === 'null') {
             img.src = "./media/logos/jakrecipeslogo.svg";
 
         } else {
-            img.src = url + '/' + json.recipesTable[i].Images[0]?.Imagefilepath;
+            img.src = url + '/' + json.recipesTable[i]?.Imagefilepath;
             console.log(img.src)
             // loadout += '<figure class="recipefigure"><img src="' + url + '/' + json.recipesTable[i].Images.Imagefilepath + '"><p>' + json.recipesTable[i].Recipename + '</p><p>' + json.recipesTable[i].Recipetime + '</p><p>' + json.recipesTable[i].Coursetype + '</p><p>' + json.recipesTable[i].Mealtypes.Mealtype + '</p> <button class="recipesButtonFront"id="' + json.recipesTable[i].Recipeid + '"> Katso resepti</button ></figure >'
         }
@@ -28,8 +26,8 @@ function createResults(json) {
         });
         p.innerText = json.recipesTable[i].Recipename;
         p2.innerText = json.recipesTable[i].Recipetime;
-        p3.innerText = json.recipesTable[i].Course[0]?.Coursetype;
-        p4.innerText = json.recipesTable[i].Mealtypes[0]?.Mealtype;
+        p3.innerText = json.recipesTable[i]?.Coursetype;
+        p4.innerText = json.recipesTable[i]?.Mealtype;
         button.innerText = "Katso resepti";
         figure.appendChild(img);
         figure.appendChild(p);
