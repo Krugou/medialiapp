@@ -7,8 +7,8 @@ const addUsersRegUser = async (data, next) => {
 
     console.log("addUsersRegUser");
     try {
-        const [rows] = await promisePoolRegUser.execute(`INSERT INTO Users (Useremail, Userpassword) 
-                                                    VALUES (?, ?);`,
+        const [rows] = await promisePoolRegUser.execute(`INSERT INTO Users (Useremail, Userpassword, Username) 
+                                                    VALUES (?, ?, ?);`,
                                                         data);
         return rows;
     } catch (e) {
@@ -16,12 +16,24 @@ const addUsersRegUser = async (data, next) => {
         next(httpError('Database error', 500));
     }
 }
-const findUsersByEmailRegUser = async (name, next) => {
+const findUsersByEmailRegUser = async (email, next) => {
 
     try {
         const [rows] = await promisePoolRegUser.execute(`SELECT *
-                                                FROM Users WHERE Useremail = "${name}";
-                                                `);
+                                                FROM Users WHERE Useremail = "${email}"; 
+                                                `); //VOI LISÄTÄ INDEXIN.
+        return rows;
+    } catch (e) {
+        console.error('findUsersByEmailRegUser', e.message);
+        next(httpError('Database error', 500));
+    }
+}
+const findUsersByUsernameRegUser = async (name, next) => {
+
+    try {
+        const [rows] = await promisePoolRegUser.execute(`SELECT *
+                                                FROM Users WHERE Username = "${name}";
+                                                `); //VOI LISÄTÄ INDEXIN.
         return rows;
     } catch (e) {
         console.error('findUsersByEmailRegUser', e.message);
@@ -49,5 +61,6 @@ module.exports = {
     addUsersRegUser,
     findUsersByEmailRegUser,
     getUserLogin,
+    findUsersByUsernameRegUser,
 
 };
