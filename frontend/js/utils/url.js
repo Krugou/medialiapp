@@ -26,7 +26,7 @@
 
 // production
 var url = `https://10.114.34.72/jak`
-var urladmin = `https://10.114.34.72/jak-admin`
+var urladmin = `https://10.114.34.72/jakadmin`
 
 
 // development
