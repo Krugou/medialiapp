@@ -70,6 +70,17 @@
   border-radius: 1em;
   padding: 1em;
 }
+.admin-table-td {
+  
+}
+.admin-table-tr-even {
+  background-color: #0d1e40;
+  color: white;
+}
+.admin-table-tr-odd {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+}
 .admin-main__section {
   display: flex;
   flex-direction: column;
