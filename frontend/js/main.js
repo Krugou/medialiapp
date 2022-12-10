@@ -4,7 +4,7 @@ const presentationdata = document.getElementById('presentationdata');
 
 
 async function newestPresentationData() {
-    const response = await fetch(url + '/recipes/allrecipes/newest');
+    const response = await fetch(url + '/recipes/newest');
     const json = await response.json();
 
 
@@ -39,11 +39,11 @@ async function newestPresentationData() {
 
 
 
-     createRecipes(json);
+    createRecipes(json);
 
 }
 async function oldestPresentationData() {
-    const response = await fetch(url + '/recipes/allrecipes/oldest');
+    const response = await fetch(url + '/recipes/oldest');
     const json = await response.json();
 
     createRecipes(json);
@@ -84,7 +84,7 @@ window.onclick = function (event) {
 }
 newestPresentationData()
 
-function createRecipes(json){
+function createRecipes(json) {
     for (let i = 0; i < (json.length); i++) {
 
         const figure = document.createElement('figure');
@@ -92,13 +92,13 @@ function createRecipes(json){
 
         // jos kuvaa ei ole, laitetaan placeholder
         if (json[i].Imagefilepath === 'undefined') {
-            img.src="./media/logos/jakrecipeslogo.svg";
+            img.src = "./media/logos/jakrecipeslogo.svg";
 
         } else {
-            img.src=url+'/'+json[i].Imagefilepath;
+            img.src = url + '/' + json[i].Imagefilepath;
             //loadout += '<figure class="recipefigure"><img src="' + url + '/' + json[i].Imagefilepath + '"><p>' + json[i].Recipename + '</p><p>' + json[i].Recipetime + '</p><p>' + json[i].Coursetype + '</p><p>' + json[i].Mealtype + '</p> <button class="recipesButtonFront"id="'+json[i].Recipeid+'"> Katso resepti</button ></figure >'
         }
-        img.alt="Reseptin kuva";
+        img.alt = "Reseptin kuva";
         const p = document.createElement('p');
         const p2 = document.createElement('p');
         const p3 = document.createElement('p');
@@ -108,10 +108,10 @@ function createRecipes(json){
             console.log("täälä");
             location.href = 'recipe.html?id=' + json[i].Recipeid;
         });
-        p.innerText=json[i].Recipename;
-        p2.innerText=json[i].Recipetime;
-        p3.innerText=json[i].Coursetype;
-        p4.innerText=json[i].Mealtype;
+        p.innerText = json[i].Recipename;
+        p2.innerText = json[i].Recipetime;
+        p3.innerText = json[i].Coursetype;
+        p4.innerText = json[i].Mealtype;
         button.innerText = "Katso resepti";
         figure.appendChild(img);
         figure.appendChild(p)

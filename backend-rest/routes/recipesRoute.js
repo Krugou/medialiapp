@@ -46,8 +46,8 @@ const {
     comment_get,} = require("../controllers/recipesController");
 const { body } = require('express-validator');
 router.get('/mealtypes', recipes_mealtypes_get);
-router.get('/allrecipes/newest', getAllNewestRecipesController);
-router.get('/allrecipes/oldest', getAllOldestRecipesController);
+router.get('/newest', getAllNewestRecipesController);
+router.get('/oldest', getAllOldestRecipesController);
 router.get('/:id', recipe_get);
 router.get('/filterrecipes/:recipename', filter_Recipes_By_Recipe_Name);
 router.get('/comment/:id',

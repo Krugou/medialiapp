@@ -29,7 +29,7 @@ function startUp() {
 
 
 async function newestPresentationData() {
-    const response = await fetch(url + '/recipes/allrecipes/newest');
+    const response = await fetch(url + '/recipes/newest');
     const json = await response.json();
 
     createRecipes(json);
@@ -82,13 +82,13 @@ function removeChildren(element) {
     }
 }
 function frontPage() {
-    pageGeneration.innerHTML = ` <section id="frontUp" class="frontUp"> <div class="recipeSearch"> <input type="text" id="typeInputField" aria-label="Reseptien haku" placeholder="Hae Resepti" class="Haeresepti "> <button id="filter" class="filterStyle marpad1rem">Filter</button><button  id="hae" class="filterStyle marpad1rem">Hae</button></div> <div id="filterModal" class="modal"> <div class="modal-content"> <span class="close">&times;</span> <div class="modaladd"> <h3>Add Filters</h3> <div class="filters"> </div><div class="filtersave"> </div></div></div></div><div class="addRecipes"> <button href="addRecipe.html" id="addrecipesButton" class="marpad1rem">Tee resepti</a></button> </div></section> <h2 id="frontPageHeader" class="otsikko"> Uusimmat Reseptit</h2> <hr> <div class="reseptit" id="presentationdata"> </div>`
+    pageGeneration.innerHTML = ` <section id="frontUp" class="frontUp"> <div class="recipeSearch"> <input type="text" id="typeInputField" aria-label="Reseptien haku" placeholder="Hae Resepti" class="Haeresepti "> <button id="filter" class="filterStyle marpad1rem">Filter</button><button  id="hae" class="filterStyle marpad1rem">Hae</button></div> <div id="filterModal" class="modal"> <div class="modal-content"> <span class="close">&times;</span> <div class="modaladd"> <h3>Add Filters</h3> <div class="filters"> </div><div class="filtersave"> </div></div></div></div><div class="addRecipes"> <button href="addRecipe.html" id="addrecipesButton" >Tee resepti</a></button> </div></section> <h2 id="frontPageHeader" class="otsikko"> Uusimmat Reseptit</h2> <hr> <div class="reseptit" id="presentationdata"> </div>`
 }
 function clearPage() {
     pageGeneration.innerHTML = "";
 }
 async function oldestPresentationData() {
-    const response = await fetch(url + '/recipes/allrecipes/oldest');
+    const response = await fetch(url + '/recipes/oldest');
     const json = await response.json();
     let loadout = "";
 
