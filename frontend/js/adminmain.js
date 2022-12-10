@@ -159,7 +159,7 @@ function getRecipeData(amount) {
         })
         .then(function (data) {
             const section = document.getElementById('entryTables');
-            
+
             const table = document.createElement('table');
             table.setAttribute('id', 'admintable');
             table.setAttribute('class', 'admintable');
@@ -181,6 +181,15 @@ function getRecipeData(amount) {
             Coursetype.innerHTML = 'Coursetype';
             Mealtype.innerHTML = 'Mealtype';
             Imagefilepath.innerHTML = 'Imagefilepath';
+            tr.appendChild(Recipeid);
+            tr.appendChild(Recipename);
+            tr.appendChild(Recipetime);
+            tr.appendChild(Recipeguide);
+            tr.appendChild(Recipemaker);
+            tr.appendChild(Coursetype);
+            tr.appendChild(Mealtype);
+            tr.appendChild(Imagefilepath
+            );
             table.appendChild(tr);
             for (let i = 0; i < amount; i++) {
                 const tr = document.createElement('tr');
@@ -216,7 +225,27 @@ function getRecipeData(amount) {
             }
 
             section.appendChild(table);
+            const tableHeader = document.querySelectorAll('th');
+            for (let i = 0; i < tableHeader.length; i++) {
+                tableHeader[i].classList.add('admin-table-th');
 
+            }
+
+            const tableDataCell = document.querySelectorAll('td');
+            for (let i = 0; i < tableDataCell.length; i++) {
+                tableDataCell[i].classList.add('admin-table-td');
+
+            }
+
+            const tableRow = document.querySelectorAll('tr');
+            for (let i = 0; i < tableRow.length; i++) {
+
+                if (i % 2 == 0) {
+                    tableRow[i].classList.add('admin-table-tr-even');
+                } else {
+                    tableRow[i].classList.add('admin-table-tr-odd');
+                }
+            }
 
 
         });
