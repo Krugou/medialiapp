@@ -152,13 +152,73 @@ function getServeruptime() {
             }
         });
 }
-function getRecipeData() {
+function getRecipeData(amount) {
     fetch(urladmin + '/a/rd')
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
-            console.table(data)
+            const section = document.getElementById('entryTables');
+            
+            const table = document.createElement('table');
+            table.setAttribute('id', 'admintable');
+            table.setAttribute('class', 'admintable');
+            const tr = document.createElement('tr');
+            table.appendChild(tr);
+            const Recipeid = document.createElement('th');
+            const Recipename = document.createElement('th');
+            const Recipetime = document.createElement('th');
+            const Recipeguide = document.createElement('th');
+            const Recipemaker = document.createElement('th');
+            const Coursetype = document.createElement('th');
+            const Mealtype = document.createElement('th');
+            const Imagefilepath = document.createElement('th');
+            Recipeid.innerHTML = 'Recipeid';
+            Recipename.innerHTML = 'Recipename';
+            Recipetime.innerHTML = 'Recipetime';
+            Recipeguide.innerHTML = 'Recipeguide';
+            Recipemaker.innerHTML = 'recipemaker';
+            Coursetype.innerHTML = 'Coursetype';
+            Mealtype.innerHTML = 'Mealtype';
+            Imagefilepath.innerHTML = 'Imagefilepath';
+            table.appendChild(tr);
+            for (let i = 0; i < amount; i++) {
+                const tr = document.createElement('tr');
+                const Recipeid = document.createElement('td');
+                const Recipename = document.createElement('td');
+                const Recipetime = document.createElement('td');
+                const Recipeguide = document.createElement('td');
+                const Recipemaker = document.createElement('td');
+                const Coursetype = document.createElement('td');
+                const Mealtype = document.createElement('td');
+                const Imagefilepath = document.createElement('td');
+                Recipeid.innerHTML = data[i].Recipeid;
+                Recipename.innerHTML = data[i].Recipename;
+                Recipetime.innerHTML = data[i].Recipetime;
+                Recipeguide.innerHTML = data[i].Recipeguide;
+                Recipemaker.innerHTML = data[i].recipemaker;
+                Coursetype.innerHTML = data[i].Coursetype;
+                Mealtype.innerHTML = data[i].Mealtype;
+                Imagefilepath.innerHTML = data[i].Imagefilepath;
+                tr.appendChild(Recipeid);
+                tr.appendChild(Recipename);
+                tr.appendChild(Recipetime);
+                tr.appendChild(Recipeguide);
+                tr.appendChild(Recipemaker);
+                tr.appendChild(Coursetype);
+                tr.appendChild(Mealtype);
+                tr.appendChild(Imagefilepath);
+
+                table.appendChild(tr);
+
+
+
+            }
+
+            section.appendChild(table);
+
+
+
         });
 }
 
@@ -171,11 +231,11 @@ function quotes() {
             return response.json();
         })
         .then(function (data) {
-             theRandomNumber = Math.floor(Math.random() * (data.length - 1));
+            theRandomNumber = Math.floor(Math.random() * (data.length - 1));
             if (data[theRandomNumber].author == null) {
                 data[theRandomNumber].author = '>Unknown';
             }
-            
+
             quotesinput.innerHTML = '<h4 id="admin-quotes">' + data[theRandomNumber].text + ' <br>  -' + data[theRandomNumber].author + '</h4>';
         });
 
@@ -190,6 +250,7 @@ async function runDashboard() {
     await getmariadbuptime();
     await getServeruptime();
     await getCounts()
+    await getRecipeData(99)
     await quotes();
 
 }
