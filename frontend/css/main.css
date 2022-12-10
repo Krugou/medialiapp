@@ -675,6 +675,10 @@
   text-align: center;
   margin-bottom: 4em;
 }
+.recipeComments {
+  padding: 0;
+}
+
 @keyframes slide-left {
   from {
     transform: translateX(100%);
