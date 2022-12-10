@@ -205,7 +205,7 @@ function getRecipeData(amount) {
                 Recipename.innerHTML = data[i].Recipename;
                 Recipetime.innerHTML = data[i].Recipetime;
                 Recipeguide.innerHTML = data[i].Recipeguide;
-                Recipemaker.innerHTML = data[i].recipemaker;
+                Recipemaker.innerHTML = data[i].Recipemaker;
                 Coursetype.innerHTML = data[i].Coursetype;
                 Mealtype.innerHTML = data[i].Mealtype;
                 Imagefilepath.innerHTML = data[i].Imagefilepath;
