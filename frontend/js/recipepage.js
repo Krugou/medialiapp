@@ -18,7 +18,9 @@ const recipeTags = document.querySelector('#recipesTags');
 const postComment = document.querySelector('#postACommentButton');
 const openComments = document.querySelector('#openCommentsButton');
 const recipeComments = document.querySelector('#recipeCommentsId');
-// add existing cat data to form
+const favoriteIcon = document.querySelector('#favoriteHeart');
+
+//Tällä haetaan reseptin tiedot sivulle
 const getRecipe = async (id) => {
     const fetchOptions = {
         headers: {
@@ -49,6 +51,8 @@ const getRecipe = async (id) => {
             recipeTags.appendChild(button);
         }
     }
+
+    //Luodaan "course"- eli ruuan tarjoiluaika sivulle.
     const button = document.createElement('button');
     button.innerText = recipe.course.Coursetype;
     button.classList.add('postRecipe');
@@ -58,6 +62,12 @@ const getRecipe = async (id) => {
     if (recipe.images[0].Imagefilepath === 'undefined') {
         img.src="./media/logos/jakrecipeslogo.svg";
 
+    }
+    //Jos resepti on suosikeissa, vaihdetaan ikoni.
+    if (recipe.favorite === true) {
+        console.log("löytyy suosikeista");
+        const likeHeart = document.querySelector('#likeHeart'); // Pitää hakea tässä kohtaa, muuten ei saada selectattua fontawesomin dynaamista ikonia
+        likeHeart.classList.add('Favorited');
     }
 
     // Lisätään hinta näkyviin, jos se on määritetty
@@ -154,5 +164,27 @@ openComments.addEventListener('click', async evt => {
     console.log("asd");
     await getComments(recipe_id)
 });
+
+console.log(favoriteIcon);
+favoriteIcon.addEventListener('click', async evt => {
+    evt.preventDefault();
+    await addFavorite(recipe_id);
+   console.log("favorite");
+});
+const addFavorite = async (id) => {
+    const likeHeart = document.querySelector('#likeHeart'); // Pitää hakea tässä kohtaa, muuten ei saada selectattua fontawesomin dynaamista ikonia
+    const fetchOptions = {
+        method: 'POST',
+        headers: {
+             Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+        },
+    };
+    console.log(fetchOptions);
+    const response = await fetch(url + '/recipes/addfavorite/' + id, fetchOptions);
+    if (response.ok) {
+        likeHeart.classList.add('Favorited');
+    }
+};
+
 
 getRecipe(recipe_id);

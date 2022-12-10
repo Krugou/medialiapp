@@ -39,6 +39,17 @@ const getImageByRecipeId = async (Recipeid, next) => {
         next(httpError('Database error', 500));
     }
 };
+/*
+const getRecipeLikesByRecipeId = async (Recipeid, next) => {
+    try {
+        const [rows] = await promisePoolUser.execute(`SELECT * FROM Recipes WHERE Recipeid = ${Recipeid}`);
+        return rows;
+    } catch (e) {
+        console.error('getRecipe', e.message);
+        next(httpError('Database error', 500));
+    }
+};
+*/
 const getCoursetypeByCourseId = async (recipecourse, next) => {
     try {
         const [rows] = await promisePoolUser.execute(`SELECT Courses.Coursetype FROM Courses
@@ -115,7 +126,17 @@ const getRecipeMealTypes = async (next) => {
         next(httpError('Database error', 500));
     }
 }
-
+const getFavorite = async (data, next) => {
+    try {
+        const [rows] = await promisePoolRegUser.execute(`SELECT * FROM Recipefavorite
+                                                                WHERE Userid = ? AND Recipeid = ?;`,
+            data);
+        return rows;
+    } catch (e) {
+        console.error('getFavorite', e.message);
+        next(httpError('Database error', 500));
+    }
+}
 
 const findRecipesByName = async (name, next) => {
 
@@ -269,7 +290,18 @@ const addRecipes = async (data, next) => {
         console.error('addRecipes input', e.message);
         next(httpError('Database error', 500));
     }
-}
+};
+const addFavorite = async (data, next) => {
+    try {
+        const [rows] = await promisePoolRegUser.execute(`INSERT INTO Recipefavorite (Userid, Recipeid)
+                                                                VALUES (37,?);`,
+            data);
+        return rows;
+    } catch (e) {
+        console.error('addFavorite', e.message);
+        next(httpError('Database error', 500));
+    }
+};
 
 
 module.exports = {
@@ -288,8 +320,9 @@ module.exports = {
     getRecipeById,
     getMealtypeByRecipeId,
     getImageByRecipeId,
-    getCoursetypeByCourseId
-
+    getCoursetypeByCourseId,
+    addFavorite,
+    getFavorite,
 
 
 };

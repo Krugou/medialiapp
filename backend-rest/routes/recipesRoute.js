@@ -43,7 +43,7 @@ const {
     recipes_mealtypes_get,
     recipe_get,
     comment_post,
-    comment_get,} = require("../controllers/recipesController");
+    comment_get, recipe_favorite,} = require("../controllers/recipesController");
 const { body } = require('express-validator');
 router.get('/mealtypes', recipes_mealtypes_get);
 router.get('/newest', getAllNewestRecipesController);
@@ -66,4 +66,7 @@ router.post('/comment',
     body("comment").isLength({ min: 1 }).escape(),
     body("recipeid").escape(),
         comment_post)
+router.post('/addfavorite/:id',
+    body("id").escape(),
+    recipe_favorite)
 module.exports = router;
