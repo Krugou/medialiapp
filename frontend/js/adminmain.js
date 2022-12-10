@@ -177,7 +177,7 @@ function getRecipeData(amount) {
             Recipename.innerHTML = 'Recipename';
             Recipetime.innerHTML = 'Recipetime';
             Recipeguide.innerHTML = 'Recipeguide';
-            Recipemaker.innerHTML = 'recipemaker';
+            Recipemaker.innerHTML = 'Recipemaker';
             Coursetype.innerHTML = 'Coursetype';
             Mealtype.innerHTML = 'Mealtype';
             Imagefilepath.innerHTML = 'Imagefilepath';
