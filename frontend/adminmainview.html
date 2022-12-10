@@ -68,13 +68,7 @@
     <script src="./js/utils/url.js" defer></script>
     <script src="./js/adminmain.js" defer></script>
     <style>
-        .admin_body {
-
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 100vh;
-        }
+        .admin_body {display: flex;flex-direction: column;/* justify-content: space-evenly; *//* height: 100vh; */}
 
         .admin_main {
             display: flex;
@@ -89,17 +83,17 @@
             flex-direction: column;
             justify-content: space-between;
             flex-grow: 1;
-            border: solid 2px black;
-
+            /* border: solid 2px black; */
         }
-
+    
         .admin_main_aside_item {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             text-align: center;
-            flex-grow: 1;
             border: solid 2px black;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-wrap: nowrap;
         }
 
         .admin_main_section {
@@ -162,6 +156,7 @@
         </section>
 
     </main>
+    
     <footer>
         <h2 id="admin-quotes" class=""> Welcome, webmaster!</h2>
 
