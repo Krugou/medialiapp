@@ -71,7 +71,11 @@
   padding: 1em;
 }
 .admin-table-td {
-  
+  font-size: 1em;
+  border: 1px solid black;
+}
+.admin-table-th {
+  font-size:1.2em;
 }
 .admin-table-tr-even {
   background-color: #0d1e40;
