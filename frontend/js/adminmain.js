@@ -89,7 +89,6 @@ function getmariadbuptime() {
         })
         .then(function (data) {
             const uptime = (data[0].Value)
-            console.log(uptime)
             let newdate = (uptime);
             let seconds = Math.floor(newdate % 60);
             let minutes = Math.floor((newdate / 60) % 60);
@@ -164,20 +163,20 @@ function getRecipeData() {
 }
 
 // default quote if api is offline
-quotesinput.innerHTML = '<h4> id="admin-quotes">“The only thing that interferes with my learning is my education.” <br>  Albert Einstein</h4>';
-
+quotesinput.innerHTML = '<h4 id="admin-quotes">“The only thing that interferes with my learning is my education.” <br>  Albert Einstein</h4>';
+let theRandomNumber
 function quotes() {
     fetch("https://type.fit/api/quotes")
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
+             theRandomNumber = Math.floor(Math.random() * (data.length - 1));
             if (data[theRandomNumber].author == null) {
                 data[theRandomNumber].author = '>Unknown';
             }
-            const theRandomNumber = Math.floor(Math.random() * (data.length - 1));
-            quotesinput.innerHTML = '<h4 id="admin-quotes">' + data[theRandomNumber].text + '<br>  -' + data[theRandomNumber].author + '</h4>';
-            // console.table(data);
+            
+            quotesinput.innerHTML = '<h4 id="admin-quotes">' + data[theRandomNumber].text + ' <br>  -' + data[theRandomNumber].author + '</h4>';
         });
 
 
