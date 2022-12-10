@@ -1,3 +1,23 @@
+.addComment {
+  width: 100%;
+  background-color: #0d1e40;
+  height: auto;
+  margin-top: 1em;
+  border-radius: 5px;
+  color: white;
+}
+.addComment form {
+  padding-left: 2.5em;
+}
+.addComment form textarea {
+  width: 80%;
+  height: 200px;
+  border: 4px solid white;
+  border-radius: 4px;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  font-size: 1.5em;
+  resize: none;
+}
 .addRecipe_detail {
   display: flex;
   flex-direction: column;
@@ -7,6 +27,63 @@
 }
 .addRecipes {
   text-align: center;
+}
+.admin_marquee {
+  animation: slide-left 100s linear;
+  animation-iteration-count: infinite;
+}
+.admin_nav_bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 4em;
+}
+.admin_tall {
+  height: 100vh;
+}
+.admin_width {
+  width: 80vw;
+  margin: auto;
+}
+.admin-header__title {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+.admin-inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  margin: 1em;
+}
+.admin-main__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 50%;
+  border: 1px solid black;
+  border-radius: 1em;
+  padding: 1em;
+}
+.admin-main__section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+}
+.admin-quotes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  margin: 1em;
 }
 .checknappi {
   font-size: 30px;
@@ -42,9 +119,38 @@
   text-decoration: none;
   cursor: pointer;
 }
+.commentContent {
+  float: right;
+  padding-left: 1.5em;
+  padding-right: 0.5em;
+}
+.commentPicture {
+  height: auto;
+  float: left;
+}
+.commentPicture img {
+  height: 6em;
+  width: 6em;
+  margin: 1.5em 1em 1em 1em;
+}
 .comments {
   text-align: center;
   border: solid 1px black;
+}
+.commentUsername {
+  margin-top: 1.75em;
+  font-size: 2em;
+}
+.commentUsername a {
+  color: white;
+}
+.contactUs {
+  flex-direction: row;
+  flex-basis: content;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+  padding: 1rem;
 }
 .delete {
   justify-content: space-between;
@@ -54,14 +160,20 @@
   font-size: 30px;
   width: 15%;
 }
-.EtuylÃƒÂ¤ {
-  height: 30em;
-  background-color: #dfedf2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 1px solid;
-  gap: 10px;
+.fa-heart {
+  font-size: 3em;
+  color: white;
+}
+.fa-thumbs-down {
+  font-size: 2em;
+  margin-bottom: 1em;
+  border-color: white;
+}
+.fa-thumbs-up {
+  margin-right: 0.5em;
+  font-size: 2em;
+  margin-bottom: 1em;
+  border-color: white;
 }
 .filters {
   background-color: lightgray;
@@ -72,6 +184,17 @@
 }
 .filtersave {
   margin-top: 5%;
+}
+.filterStyle {
+  width: 7em;
+  height: 3em;
+  background-color: #0d1e40;
+  border-color: #0d1e40;
+  border-radius: 1em;
+  color: white;
+}
+.fontsize2point5vh {
+  font-size: 2.5vh;
 }
 .Haeresepti {
   width: 200px;
@@ -85,49 +208,6 @@
   margin-top: 2em;
   margin-bottom: 1.5em;
 }
-.recipeInstruction {
-  margin-bottom: 2em;
-  margin-top: 2em;
-  width: 100%;
-  background-color: lightgray;
-  height: auto;
-  border-radius: 5px;
-  color: black;
-}
-.admin_tall {
-  height: 100vh;
-}
-.admin_marquee {
-  animation: slide-left 100s linear;
-  animation-iteration-count: infinite;
-}
-@keyframes slide-left {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-}
-.admin_width {
-  width: 80vw;
-  margin: auto;
-}
-.admin_nav_bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 4em;
-}
-.recipeInstruction p {
-  margin: 1.5em;
-}
-.recipeInstruction h2 {
-  text-align: center;
-  margin: 1em;
-  font-size: 2em;
-}
 .instruction form textarea {
   width: 100%;
   height: 500px;
@@ -137,7 +217,6 @@
   font-size: 1.5em;
   resize: none;
 }
-
 .modal {
   display: none;
   position: fixed;
@@ -222,6 +301,21 @@
   margin: 0;
   height: auto;
 }
+.pageFooter {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  padding: 1em;
+}
+.pageFooterContainer {
+  flex-direction: column;
+  flex-grow: 4;
+  flex-basis: content;
+  border-width: thin;
+  border-right: black outset;
+  border-left: black outset;
+  border-top: black outset;
+}
 .pageheader {
   border-bottom: solid black 1px;
   background-color: #0d1e40;
@@ -235,6 +329,17 @@
 }
 .postButton {
   text-align: center;
+}
+.postCommentButton {
+  padding: 1em 1em 1em 2.5em;
+}
+.postCommentButton button {
+  background-color: white;
+  border: solid 1px white;
+  border-radius: 1em;
+  color: #0d1e40;
+  height: 3em;
+  width: 7em;
 }
 .postRecipe {
   height: 3em;
@@ -284,6 +389,23 @@
   object-fit: cover;
   width: 100%;
 }
+.recipeInstruction {
+  margin-bottom: 2em;
+  margin-top: 2em;
+  width: 100%;
+  background-color: lightgray;
+  height: auto;
+  border-radius: 5px;
+  color: black;
+}
+.recipeInstruction h2 {
+  text-align: center;
+  margin: 1em;
+  font-size: 2em;
+}
+.recipeInstruction p {
+  margin: 1.5em;
+}
 .recipename {
   text-align: center;
 }
@@ -292,25 +414,39 @@
   height: 3em;
   padding: 0.5em;
 }
-#recipetimeInput {
-  width: 17.7em;
+.recipePic {
+  text-align: center;
 }
-#addrecipePrice {
-  width: 13.8em;
+.recipeSearch {
+  padding: 2em;
+  display: flex;
+  justify-content: center;
+  gap: 2em;
 }
-#recipenameInput {
-  width: 16em;
-}
-#courseselect {
-  height: 3em;
-}
-.selectedMealTypeButtons {
-  background-color: #0d1e40;
-  border: solid 1px #0d1e40;
+.recipeStats {
+  align-items: center;
+  text-align: center;
   border-radius: 1em;
+  padding: 1em;
+  gap: 2em;
+  display: flex;
+  width: 60%;
+  background-color: lightgray;
+  height: auto;
+  margin: auto;
+}
+.recipeTags {
+  padding-top: 2em;
+}
+.recipeUserComment {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: #0d1e40;
+  height: auto;
+  margin-top: 1em;
+  border-radius: 5px;
   color: white;
-  height: 3em;
-  width: 7em;
 }
 .Reseptikuva {
   display: flex;
@@ -341,6 +477,14 @@
   height: 35px;
   width: 25%;
 }
+.selectedMealTypeButtons {
+  background-color: #0d1e40;
+  border: solid 1px #0d1e40;
+  border-radius: 1em;
+  color: white;
+  height: 3em;
+  width: 7em;
+}
 .signup {
   text-align: center;
 }
@@ -356,6 +500,14 @@
   margin: auto;
   border: solid 1px gray;
 }
+.test {
+  text-align: center;
+}
+.tiedot input {
+  width: 20em;
+  height: 3em;
+  padding: 0.5em;
+}
 .uploadimage {
   background-color: #0d1e40;
   border: solid 1px #0d1e40;
@@ -370,284 +522,6 @@
   width: 55.5vw;
   justify-content: center;
   box-shadow: 1px 2px 14px 5px rgba(0, 0, 0, 0.75);
-}
-.userProfile {
-  width: 50%;
-  text-align: center;
-}
-.userProfile p {
-  font-size: 30px;
-}
-.admin-main__section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 70vh;
-}
-.admin-main__form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
-  height: 50%;
-  border: 1px solid black;
-  border-radius: 1em;
-  padding: 1em;
-}
-.admin-inputs {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1em;
-  margin: 1em;
-}
-.admin-quotes {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1em;
-  margin: 1em;
-}
-.admin-header__title {
-  text-align: center;
-  font-size: 2em;
-  margin-bottom: 1em;
-}
-#admin-quotes {
-  text-align: center;
-}
-.pageFooter {
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-  padding: 1em;
-}
-.pageFooterContainer {
-  flex-direction: column;
-  flex-grow: 4;
-  flex-basis: content;
-  border-width: thin;
-  border-right: black outset;
-  border-left: black outset;
-  border-top: black outset;
-}
-.contactUs {
-  /* flex-direction: column; */
-  flex-direction: row;
-  /* flex-grow: 4; */
-  flex-basis: content;
-  justify-content: center;
-  align-items: center;
-  margin: 2rem;
-  padding: 1rem;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  text-decoration: none;
-  list-style: none;
-  font-family: monospace;
-}
-#addrecipesButton {
-  width: 7em;
-  height: 3em;
-  background-color: #0d1e40;
-  border-color: #0d1e40;
-  border-radius: 1em;
-  color: white;
-}
-
-#check {
-  display: none;
-}
-#checkLike {
-  display: none;
-}
-
-#editProfile {
-  background-color: #0d1e40;
-  border: solid 1px #0d1e40;
-  border-radius: 1em;
-  color: white;
-  height: 3em;
-  width: 7em;
-}
-#recipesImage {
-  width: 40%;
-}
-.filterStyle {
-  width: 7em;
-  height: 3em;
-  background-color: #0d1e40;
-  border-color: #0d1e40;
-  border-radius: 1em;
-  color: white;
-}
-
-#profileArticle {
-  display: flex;
-  height: auto;
-  justify-content: space-between;
-}
-#profileArticle section {
-  margin-bottom: 5vw;
-  margin-left: 7vw;
-}
-#profilepic {
-  width: 15em;
-}
-.recipePic {
-  text-align: center;
-}
-#signupImage {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 15em;
-}
-#tag {
-  background-color: #0d1e40;
-  border: solid 1px #0d1e40;
-  border-radius: 1em;
-  color: white;
-  height: 3em;
-  width: 7em;
-}
-p {
-  font-size: 2.5vh;
-}
-.addComment {
-  width: 100%;
-  background-color: #0d1e40;
-  height: auto;
-  margin-top: 1em;
-  border-radius: 5px;
-  color: white;
-}
-.test {
-  text-align: center;
-}
-.addComment form {
-  padding-left: 2.5em;
-}
-.addComment form textarea {
-  width: 80%;
-  height: 200px;
-  border: 4px solid white;
-  border-radius: 4px;
-  padding: 0.5em 0.5em 0.5em 0.5em;
-  font-size: 1.5em;
-  resize: none;
-}
-.postCommentButton {
-  padding: 1em 1em 1em 2.5em;
-}
-.postCommentButton button {
-  background-color: white;
-  border: solid 1px white;
-  border-radius: 1em;
-  color: #0d1e40;
-  height: 3em;
-  width: 7em;
-}
-
-.recipeUserComment {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  background-color: #0d1e40;
-  height: auto;
-  margin-top: 1em;
-  border-radius: 5px;
-  color: white;
-}
-
-.commentPicture {
-  height: auto;
-  float: left;
-}
-
-.commentPicture img {
-  height: 6em;
-  width: 6em;
-  margin: 1.5em 1em 1em 1em;
-}
-.commentUsername {
-  margin-top: 1.75em;
-  font-size: 2em;
-}
-
-.commentUsername a {
-  color: white;
-}
-.commentContent {
-  float: right;
-  padding-left: 1.5em;
-  padding-right: 0.5em;
-}
-
-.fa-thumbs-up {
-  margin-right: 0.5em;
-  font-size: 2em;
-  margin-bottom: 1em;
-  border-color: white;
-}
-.fa-thumbs-down {
-  font-size: 2em;
-  margin-bottom: 1em;
-  border-color: white;
-}
-.fa-heart {
-  font-size: 3em;
-  color: white;
-}
-.recipeStats {
-  align-items: center;
-  text-align: center;
-  border-radius: 1em;
-  padding: 1em;
-  gap: 2em;
-  display: flex;
-  width: 60%;
-  background-color: lightgray;
-  height: auto;
-  margin: auto;
-}
-.recipeTags {
-  padding-top: 2em;
-}
-#recipeName {
-  text-align: center;
-  font-size: 2em;
-}
-#comments {
-  display: none;
-}
-#openComments {
-  text-align: center;
-  margin-bottom: 3em;
-  margin-top: 2em;
-}
-#openCommentsButton {
-  background-color: #0d1e40;
-  border: solid 1px white;
-  border-radius: 1em;
-  color: white;
-  height: 4em;
-  width: 10em;
-}
-#hideCommentsButton {
-  background-color: #0d1e40;
-  border: solid 1px white;
-  border-radius: 1em;
-  color: white;
-  height: 4em;
-  width: 10em;
 }
 .userPosts figure {
   border: solid 1px black;
@@ -672,23 +546,127 @@ p {
   max-width: 100%;
   height: auto;
 }
-#userPostTitle {
+.userProfile {
+  width: 50%;
   text-align: center;
-  margin-bottom: 4em;
+}
+.userProfile p {
+  font-size: 30px;
+}
+* {
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: monospace;
+}
+#addrecipePrice {
+  width: 13.8em;
+}
+#addrecipesButton {
+  width: 7em;
+  height: 3em;
+  background-color: #0d1e40;
+  border-color: #0d1e40;
+  border-radius: 1em;
+  color: white;
+}
+#admin-quotes {
+  text-align: center;
+}
+#check {
+  display: none;
+}
+#checkLike {
+  display: none;
+}
+#comments {
+  display: none;
+}
+#courseselect {
+  height: 3em;
+}
+#editProfile {
+  background-color: #0d1e40;
+  border: solid 1px #0d1e40;
+  border-radius: 1em;
+  color: white;
+  height: 3em;
+  width: 7em;
+}
+#hideCommentsButton {
+  background-color: #0d1e40;
+  border: solid 1px white;
+  border-radius: 1em;
+  color: white;
+  height: 4em;
+  width: 10em;
+}
+#openComments {
+  text-align: center;
+  margin-bottom: 3em;
+  margin-top: 2em;
+}
+#openCommentsButton {
+  background-color: #0d1e40;
+  border: solid 1px white;
+  border-radius: 1em;
+  color: white;
+  height: 4em;
+  width: 10em;
+}
+#profileArticle {
+  display: flex;
+  height: auto;
+  justify-content: space-between;
+}
+#profileArticle section {
+  margin-bottom: 5vw;
+  margin-left: 7vw;
+}
+#profilepic {
+  width: 15em;
 }
 #recipeAddimagebutton {
   margin-right: 13.5em;
 }
-.recipeSearch {
-  padding: 2em;
-  display: flex;
-  justify-content: center;
-  gap: 2em;
+#recipeName {
+  text-align: center;
+  font-size: 2em;
 }
-.tiedot input {
-  width: 20em;
+#recipenameInput {
+  width: 16em;
+}
+#recipesImage {
+  width: 40%;
+}
+#recipetimeInput {
+  width: 17.7em;
+}
+#signupImage {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 15em;
+}
+#tag {
+  background-color: #0d1e40;
+  border: solid 1px #0d1e40;
+  border-radius: 1em;
+  color: white;
   height: 3em;
-  padding: 0.5em;
+  width: 7em;
+}
+#userPostTitle {
+  text-align: center;
+  margin-bottom: 4em;
+}
+@keyframes slide-left {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
 }
 @media screen and (max-width: 1024px) {
   .recipefigure {

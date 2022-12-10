@@ -13,7 +13,7 @@ function createResults(json) {
         } else {
             img.src = url + '/' + json.recipesTable[i]?.Imagefilepath;
             console.log(img.src)
-            // loadout += '<figure class="recipefigure"><img src="' + url + '/' + json.recipesTable[i].Images.Imagefilepath + '"><p>' + json.recipesTable[i].Recipename + '</p><p>' + json.recipesTable[i].Recipetime + '</p><p>' + json.recipesTable[i].Coursetype + '</p><p>' + json.recipesTable[i].Mealtypes.Mealtype + '</p> <button class="recipesButtonFront"id="' + json.recipesTable[i].Recipeid + '"> Katso resepti</button ></figure >'
+            // loadout += '<figure class="recipefigure"><img src="' + url + '/' + json.recipesTable[i].Images.Imagefilepath + '"><p class="fontsize2point5vh">' + json.recipesTable[i].Recipename + '</p><p class="fontsize2point5vh">' + json.recipesTable[i].Recipetime + '</p><p class="fontsize2point5vh">' + json.recipesTable[i].Coursetype + '</p><p class="fontsize2point5vh">' + json.recipesTable[i].Mealtypes.Mealtype + '</p> <button class="recipesButtonFront"id="' + json.recipesTable[i].Recipeid + '"> Katso resepti</button ></figure >'
         }
         img.alt = "Reseptin kuva";
         const p = document.createElement('p');
@@ -59,7 +59,7 @@ window.onload = () => {
             const frontPageHeader = document.getElementById('frontPageHeader');
             FieldElement1.innerText = "";
             frontPageQuery(typeInputFieldElement.value);
-        },2500);
+        }, 2500);
 
         FieldElement1.innerText = "Ladataan...";
     };
