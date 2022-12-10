@@ -13,7 +13,7 @@ function createResults(json) {
         } else {
             img.src = url + '/' + json.recipesTable[i]?.Imagefilepath;
             console.log(img.src)
-            // loadout += '<figure class="recipefigure"><img src="' + url + '/' + json.recipesTable[i].Images.Imagefilepath + '"><p class="fontsize2point5vh">' + json.recipesTable[i].Recipename + '</p><p class="fontsize2point5vh">' + json.recipesTable[i].Recipetime + '</p><p class="fontsize2point5vh">' + json.recipesTable[i].Coursetype + '</p><p class="fontsize2point5vh">' + json.recipesTable[i].Mealtypes.Mealtype + '</p> <button class="recipesButtonFront"id="' + json.recipesTable[i].Recipeid + '"> Katso resepti</button ></figure >'
+            // loadout += '<figure class="recipefigure"><img src="' + url + '/' + json.recipesTable[i].Images.Imagefilepath + '"><p class="fontsizeforp">' + json.recipesTable[i].Recipename + '</p><p class="fontsizeforp">' + json.recipesTable[i].Recipetime + '</p><p class="fontsizeforp">' + json.recipesTable[i].Coursetype + '</p><p class="fontsizeforp">' + json.recipesTable[i].Mealtypes.Mealtype + '</p> <button class="recipesButtonFront"id="' + json.recipesTable[i].Recipeid + '"> Katso resepti</button ></figure >'
         }
         img.alt = "Reseptin kuva";
         const p = document.createElement('p');

@@ -20,7 +20,7 @@ function wholePage() {
                 meta.httpEquiv = "refresh"
                 meta.content = "2; url=https://10.114.34.72/jak/status";
                 let body = getElementsById('link');
-                body.innerHTML = '<p class="fontsize2point5vh">Not redirected? Go to <a href=' + url + '"/status">status</a></p>';
+                body.innerHTML = '<p class="fontsizeforp">Not redirected? Go to <a href=' + url + '"/status">status</a></p>';
             } else { throw document.body.innerHTML = 'well lets try localhost then' }
         })
         .catch(error => {
@@ -33,7 +33,7 @@ function wholePage() {
                     meta.httpEquiv = "refresh"
                     meta.content = "2; url=http://localhost:3000";
                     let body = getElementsById('link');
-                    body.innerHTML = '<p class="fontsize2point5vh">Not redirected? Go to <a href="http://localhost:3000/status">status</a></p>';
+                    body.innerHTML = '<p class="fontsizeforp">Not redirected? Go to <a href="http://localhost:3000/status">status</a></p>';
                 })
                 .catch(error => {
                     document.body.innerHTML = '';
