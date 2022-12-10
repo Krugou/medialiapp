@@ -135,26 +135,25 @@
   cursor: pointer;
 }
 .commentContent {
-  float: right;
   padding-left: 1.5em;
   padding-right: 0.5em;
+  padding-top: 1em;
 }
-.commentPicture {
-  height: auto;
-  float: left;
-}
-.commentPicture img {
-  height: 6em;
-  width: 6em;
-  margin: 1.5em 1em 1em 1em;
-}
+
 .comments {
   text-align: center;
   border: solid 1px black;
 }
 .commentUsername {
   margin-top: 1.75em;
+  padding-left:0.8em;
   font-size: 2em;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+.commentUsername img {
+  width: 4em;
 }
 .commentUsername a {
   color: white;
@@ -463,6 +462,7 @@
   border-radius: 5px;
   color: white;
 }
+
 .Reseptikuva {
   display: flex;
   justify-content: center;
@@ -678,6 +678,19 @@
 .recipeComments {
   padding: 0;
 }
+.recipeRating {
+  font-size:2em;
+}
+
+.fa-star:hover {
+  color: grey;
+}
+.recipeUserComments div {
+  width:100%;
+}
+
+
+
 
 @keyframes slide-left {
   from {
