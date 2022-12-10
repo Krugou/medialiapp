@@ -29,7 +29,7 @@ const getAllusers = async () => {
 };
 const getAllrecipeData = async () => {
     try {
-        const [allrecipes] = await promisePoolAdmin.execute('SELECT distinct * FROM `jakrecipes`.`Recipes` INNER JOIN Recipemealtype   INNER JOIN Mealtypes  INNER JOIN Courses ON Recipes.Recipecourse = Courses.Courseid   INNER JOIN Images ON  Recipes.Recipeid = Images.ImageRecipe ;');
+        const [allrecipes] = await promisePoolAdmin.execute('SELECT Recipes.Recipeid,Recipes.Recipename , Recipes.Recipetime, Recipes.Recipeguide, Recipes.Recipemaker, Courses.Coursetype, Mealtypes.Mealtype, Images.Imagefilepath FROM Recipes INNER JOIN Recipemealtype  INNER JOIN Mealtypes  INNER JOIN Courses ON Recipes.Recipecourse = Courses.Courseid   INNER JOIN Images  ON  Recipes.Recipeid = Images.ImageRecipe GROUP BY Recipeid ;');
         return allrecipes;
     } catch (e) {
         console.error('error getAllrecipes', e.message);
