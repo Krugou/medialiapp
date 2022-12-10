@@ -56,9 +56,18 @@ jakbot.on('ready', async jakbot => {
             jakbot.channels.cache.get(ChannelIDMariadb).send('MariaDB status: ' + fetchDataJson2[0].status);
             const response3 = await fetch('https://10.114.34.72/jak/status/starttime')
             const fetchDataJson3 = await response3.json()
-            jakbot.channels.cache.get(ChannelIDwebsite).send('Server uptime: ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000 / (60 * 60) % 24) + ' hours ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000 / 60 % 60) + ' minutes ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000 % 60) + ' seconds')
-        } else {
+            const howlonghavewebeenthere = dateStarted - fetchDataJson3[0].datenow
+            if (howlonghavewebeenthere < 120000) { // what 2 minutes is in ms? 120000
+                jakbot.channels.cache.get(ChannelIDwebsite).send('Server restarted less than 2 minutes ago')
+            } else if (howlonghavewebeenthere < 0) {
+                jakbot.channels.cache.get(ChannelIDwebsite).send('Server down')
 
+            }
+            else {
+                jakbot.channels.cache.get(ChannelIDwebsite).send('Server uptime: ' + Math.floor((howlonghavewebeenthere) / 1000 / (60 * 60) % 24) + ' hours ' + Math.floor((howlonghavewebeenthere) / 1000 / 60 % 60) + ' minutes ' + Math.floor((howlonghavewebeenthere) / 1000 % 60) + ' seconds')
+            }
+        }
+        else {
             const response1 = await fetch('http://localhost:3000/status/apachestatus')
             const fetchDataJson1 = await response1.json()
             jakbot.channels.cache.get(ChannelIDApache).send(' Local Apache status: ' + fetchDataJson1[0].status)
@@ -67,8 +76,17 @@ jakbot.on('ready', async jakbot => {
             jakbot.channels.cache.get(ChannelIDMariadb).send(' Local MariaDB status: ' + fetchDataJson2[0].status)
             const response3 = await fetch('http://localhost:3000/status/starttime')
             const fetchDataJson3 = await response3.json()
-            jakbot.channels.cache.get(ChannelIDwebsite).send(' Local Server uptime: ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000 / (60 * 60) % 24) + ' hours ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000 / 60 % 60) + ' minutes ' + Math.floor((dateStarted - fetchDataJson3[0].datenow) / 1000 % 60) + ' seconds')
+            const howlonghavewebeenthere = dateStarted - fetchDataJson3[0].datenow
 
+            if (howlonghavewebeenthere < 120000) { // what 2 minutes is in ms? 120000
+                jakbot.channels.cache.get(ChannelIDwebsite).send('Server restarted less than 2 minutes ago')
+            } else if (howlonghavewebeenthere < 0) {
+                jakbot.channels.cache.get(ChannelIDwebsite).send('Server down')
+
+            }
+            else {
+                jakbot.channels.cache.get(ChannelIDwebsite).send('Server uptime: ' + Math.floor((howlonghavewebeenthere) / 1000 / (60 * 60) % 24) + ' hours ' + Math.floor((howlonghavewebeenthere) / 1000 / 60 % 60) + ' minutes ' + Math.floor((howlonghavewebeenthere) / 1000 % 60) + ' seconds')
+            }
 
         }
         jakbot.user.setUsername('J A K B O T');
@@ -103,10 +121,7 @@ jakbot.on('ready', jakbot => {
             'SELECT * FROM `jakrecipes`.`allthecounts`;',
             function (err, result) {
                 if (err) throw err;
-                if (restart === true) {
-                    jakbot.channels.cache.get(channelID).send('Node.js restarted ' + new Date(Date.now()).toISOString());
 
-                }
                 jakbot.channels.cache.get(channelID).send('Results:\n Allusers: ' + result[2].count +
                     '\n Users: ' + result[1].count +
                     '\n Recipes: ' + result[0].count +
@@ -127,11 +142,8 @@ jakbot.on('ready', jakbot => {
             'SELECT `Recipename` FROM `Recipes` group by Recipeid limit 6;',
             function (err, result) {
                 if (err) throw err;
-                if (restart === true) {
-                    jakbot.channels.cache.get(ChannelIDrecipes).send('Node.js restarted ' + new Date(Date.now()).toISOString());
 
-                }
-                jakbot.channels.cache.get(ChannelIDrecipes).send('Our newest 3 recipes as time now ' + new Date(Date.now()).toISOString());
+                jakbot.channels.cache.get(ChannelIDrecipes).send('Our newest 6 recipes as time now ' + new Date(Date.now()).toISOString());
                 for (let i = 0; i < result.length; i++) {
                     jakbot.channels.cache.get(ChannelIDrecipes).send('recipename: ' + result[i].Recipename);
                 }
@@ -145,10 +157,7 @@ jakbot.on('ready', jakbot => {
             'SELECT Useremail  FROM `Users` group by Userid limit 10;',
             function (err, result) {
                 if (err) throw err;
-                if (restart === true) {
-                    jakbot.channels.cache.get(channelIDwelcome).send('Node.js restarted ' + new Date(Date.now()).toISOString());
 
-                }
 
                 jakbot.channels.cache.get(channelIDwelcome).send('Our newest users as time now ' + new Date(Date.now()).toISOString());
                 for (let i = 0; i < result.length; i++) {
