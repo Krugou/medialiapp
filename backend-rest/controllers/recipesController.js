@@ -17,7 +17,7 @@ const {
 const { validationResult } = require('express-validator');
 const { httpError } = require('../utils/errors');
 const sharp = require('sharp');
-const {addComment, getRecipeCommentsByRecipe} = require("../models/commentsModel");
+const {addComment, getRecipeCommentsByRecipe, getRecipeCommentRatingsByCommentId} = require("../models/commentsModel");
 const {findUsersByUseridRegUser} = require("../models/regUserModel");
 
 
@@ -160,6 +160,7 @@ const filter_Recipes_By_Recipe_Name = async (req, res, next) => {
     }
 };
 const comment_get = async  (req, res, next) => {
+    let findCommentRatings = []; // Tähän syötetään kommenttien tykkäykset.
   try {
       const errors = validationResult(req);
 
@@ -178,12 +179,34 @@ const comment_get = async  (req, res, next) => {
       if (findComments.length < 1) {
           return next(httpError('No comments found', 404));
       }
+
+      for (let i=0; i<findComments.length; i++) {
+          const findCommentRatings2 = await getRecipeCommentRatingsByCommentId(findComments[i].Commentid, next); // Haetaan Kommenttien ideillä niiden arvostelut
+
+          findComments[i] = {
+              Commenttext:findComments[i].Commenttext,
+              Username:findComments[i].Username,
+              Commentrating:findCommentRatings2[0].Arvo,
+              Commentid:findComments[i].Commentid,
+          }
+      }
+      console.log(findComments);
+      //const findCommentRatings = await getRecipeCommentRatingsByCommentId()
      // const getUserByUserId = await findUsersByUseridRegUser()
-
-
-
       res.json(findComments);
-  } catch (e) {
+
+/*
+      res.json({
+          recipes: rows1.pop(), //Ainoastaan yksi matchaava resepti, niin pop
+          mealtypes: rows2, //Voi olla monta, niin ei pop
+          images: rows3, //Voi olla tulevaisuudessa monta kuvaa, niin ei pop
+          course: rows4.pop(), // Ainoastaan yksi course, niin pop
+          favorite:rows5,
+      });
+
+ */
+        } catch (e) {
+
       console.error('comment_get', e.message);
       next(httpError('Database error', 500));
   }

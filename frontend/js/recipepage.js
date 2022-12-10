@@ -123,7 +123,8 @@ const getComments = async (id) => {
     const comments = await response.json();
 
     console.log(comments);
-    console.log("asd");
+    console.log(comments.length);
+    console.log("asdawiojd");
     for (let i=0; i<comments.length; i++){
         const li = document.createElement('li');
         li.classList.add('recipeUserComment');

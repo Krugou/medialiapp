@@ -4,9 +4,19 @@ const promisePoolRegUser = poolRegUser.promise();
 const getRecipeCommentsByRecipe = async (params, next) => {
     try {
         const [rows] = await promisePoolRegUser.execute(
-            `SELECT Commenttext, Users.Username FROM Comments
+            `SELECT Commentid, Commenttext, Users.Username FROM Comments
                  INNER JOIN Users ON Comments.Commentuserid = Users.Userid WHERE CommentRecipe = "${params}";
                         `);
+        return rows;
+    } catch (e) {
+        console.error('getRecipeCommentsByRecipeid', e.message);
+        next(httpError('Database error', 500));
+    }
+}
+const getRecipeCommentRatingsByCommentId  = async (params, next) => {
+    try {
+        const [rows] = await promisePoolRegUser.execute(`SELECT SUM(Direction) AS Arvo FROM Commentrating
+                                                                   WHERE Commentid = ${params};`);
         return rows;
     } catch (e) {
         console.error('getRecipeComments', e.message);
@@ -56,5 +66,6 @@ module.exports = {
     deleteCommentById,
     getRecipeCommentsByRecipe,
     getRecipeCommentsByUserId,
+    getRecipeCommentRatingsByCommentId,
 
 };
