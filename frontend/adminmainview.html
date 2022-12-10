@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    - basics of meta -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,13 +63,58 @@
 
 
     <!-- title -->
-    <link rel="stylesheet" href="./css/extra.css" />
+    <!-- <link rel="stylesheet" href="./css/extra.css" /> -->
     <link rel="stylesheet" href="./css/main.css" />
-    <script src="./js/adminlogin.js" defer></script>
     <script src="./js/utils/url.js" defer></script>
+    <script src="./js/adminmain.js" defer></script>
+    <style>
+        .admin_body {
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh;
+        }
+
+        .admin_main {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+
+
+        .admin_main_aside {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+            border: solid 2px black;
+
+        }
+
+        .admin_main_aside_item {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+            flex-grow: 1;
+            border: solid 2px black;
+        }
+
+        .admin_main_section {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 5;
+            border: solid 2px black;
+        }
+    </style>
 </head>
 
-<body>
+<body class="admin_body">
+    <h1 class=""> Jakrecipes admin dashboard</h1>
+
     <header class="pageheader">
         <label for="check" class="checknappi">
             <i class="fas fa-bars"></i>
@@ -78,15 +122,51 @@
         <label class="logo"></label>
         <nav class="navbar">
             <ul class="nav-start">
-                <li class="marpad1rem"><a id="frontpageLink" href="frontpage.html">Etusivu</a>
+                <li><a id="frontpageLink" href="frontpage.html">Etusivu</a>
             </ul>
             <ul class="nav-end">
-                <li class="marpad1rem"><a id="signInLink" href="signIn.html">Kirjaudu</a></li>
-                <li class="marpad1rem"><a id="registrationLink" href="registration.html">Rekisteröinti</a></li>
-                <li class="marpad1rem"><a href="logout.html">Kirjaudu ulos</a></li>
+                <li><a id="adminLoginLink" href="adminlogin.html">Webmaster login</a></li>
+
             </ul>
         </nav>
     </header>
+    <main id="admin_main_content" class="admin_main admin_main_content">
+        <aside class="admin_main_aside">
+            <p class="admin_main_aside_item" id="mariadbstatus">mariadb no data</p>
+            <hr>
+            <p class="admin_main_aside_item" id="apachestatus">apache no data</p>
+            <hr>
+            <p class="admin_main_aside_item" id="nodejsstatus">nodejs no data</p>
+            <hr>
+            <p class="admin_main_aside_item" id="mariadbuptime">mariadbuptime no data</p>
+            <hr>
+            <p class="admin_main_aside_item" id="serveruptime">serveruptime no data</p>
+            <hr>
+            <p class="admin_main_aside_item" id="alluserscount">alluserscount no data </p>
+            <hr>
+            <p class="admin_main_aside_item" id="userscount">userscount no data </p>
+            <hr>
+            <p class="admin_main_aside_item" id="recipecount">recipecount no data</p>
+            <hr>
+            <p class="admin_main_aside_item" id="commentcount">commentcount no data</p>
+            <hr>
+            <p class="admin_main_aside_item" id="imagecount">imagecount no data</p>
+            <hr>
+            <p class="admin_main_aside_item" id="reciperatingcount"> reciperatingcount no data</p>
+            <hr>
+            <p class="admin_main_aside_item" id="commentratingcount">commentratingcount no data</p>
+
+        </aside>
+        <section class="admin_main_section">
+            <h2> Welcome, webmaster!</h2>
+        </section>
+
+    </main>
+    <footer>
+        <h2 id="admin-quotes" class=""> Welcome, webmaster!</h2>
+
+    </footer>
 </body>
+
 
 </html>
