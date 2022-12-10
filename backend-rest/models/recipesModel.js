@@ -302,7 +302,17 @@ const addFavorite = async (data, next) => {
         next(httpError('Database error', 500));
     }
 };
-
+const removeFavorite = async (data, next) => {
+    try {
+        const [rows] = await promisePoolRegUser.execute(`DELETE FROM Recipefavorite
+                                                        WHERE Userid = 37 AND Recipeid = ?;`,
+            data);
+        return rows;
+    } catch (e) {
+        console.error('addFavorite', e.message);
+        next(httpError('Database error', 500));
+    }
+};
 
 module.exports = {
     getAllRecipes,
@@ -323,6 +333,7 @@ module.exports = {
     getCoursetypeByCourseId,
     addFavorite,
     getFavorite,
+    removeFavorite,
 
 
 };

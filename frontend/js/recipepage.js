@@ -1,5 +1,7 @@
 'use strict';
 
+//Vaihetaan arvoa, jos resepti on suosikeissa.
+let favorited = false;
 const getQParam = (param) => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -19,7 +21,6 @@ const postComment = document.querySelector('#postACommentButton');
 const openComments = document.querySelector('#openCommentsButton');
 const recipeComments = document.querySelector('#recipeCommentsId');
 const favoriteIcon = document.querySelector('#favoriteHeart');
-
 //Tällä haetaan reseptin tiedot sivulle
 const getRecipe = async (id) => {
     const fetchOptions = {
@@ -68,10 +69,17 @@ const getRecipe = async (id) => {
         console.log("löytyy suosikeista");
         const likeHeart = document.querySelector('#likeHeart'); // Pitää hakea tässä kohtaa, muuten ei saada selectattua fontawesomin dynaamista ikonia
         likeHeart.classList.add('Favorited');
+        favorited = true;
     }
 
     // Lisätään hinta näkyviin, jos se on määritetty
-    
+    if (recipe.recipes.Recipeprice !== 0 ){
+        console.log("Reseptin hinta", recipe.recipes.Recipeprice.toFixed(2));
+        const p = document.createElement('p');
+        p.innerText = "Kokonaishinta: "+ recipe.recipes.Recipeprice.toFixed(2) +"€";
+        recipeTime.appendChild(p);
+
+    }
 
 
    // img.src = `${url}/${cat.filename}`;
@@ -165,25 +173,46 @@ openComments.addEventListener('click', async evt => {
     await getComments(recipe_id)
 });
 
-console.log(favoriteIcon);
 favoriteIcon.addEventListener('click', async evt => {
     evt.preventDefault();
-    await addFavorite(recipe_id);
-   console.log("favorite");
+    await addOrRemoveFavorite(recipe_id);
 });
-const addFavorite = async (id) => {
+
+const addOrRemoveFavorite = async (id) => {
     const likeHeart = document.querySelector('#likeHeart'); // Pitää hakea tässä kohtaa, muuten ei saada selectattua fontawesomin dynaamista ikonia
-    const fetchOptions = {
-        method: 'POST',
-        headers: {
-             Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-        },
-    };
-    console.log(fetchOptions);
-    const response = await fetch(url + '/recipes/addfavorite/' + id, fetchOptions);
-    if (response.ok) {
-        likeHeart.classList.add('Favorited');
+    if (favorited === false) {
+        const fetchOptions = {
+            method: 'POST',
+            headers: {
+                Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+            },
+        };
+        console.log(fetchOptions);
+        const response = await fetch(url + '/recipes/addfavorite/' + id, fetchOptions);
+        if (response.ok) {
+            likeHeart.classList.add('Favorited');
+            favorited = true;
+            return;
+        }
     }
+    if (favorited === true)
+    {
+        let confirmFav = confirm("Poistetaanko Suosikeista?");
+        if (confirmFav===true) {
+            const fetchOptions = {
+                method: 'POST',
+                headers: {
+                    Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+                },
+            };
+            const response = await fetch(url + '/recipes/removefavorite/' + id, fetchOptions);
+            if (response.ok) {
+                likeHeart.classList.remove('Favorited');
+                favorited = false;
+            }
+        }
+    }
+
 };
 
 

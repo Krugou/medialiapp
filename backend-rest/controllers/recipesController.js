@@ -5,7 +5,7 @@ const {
     getRecipeById,
     getMealtypeByRecipeId,
     getImageByRecipeId,
-    getCoursetypeByCourseId, addFavorite, getFavorite
+    getCoursetypeByCourseId, addFavorite, getFavorite, removeFavorite
 } = require('../models/recipesModel');
 
 const {
@@ -262,7 +262,41 @@ const recipe_favorite = async (req, res, next) => {
         next(httpError('Internal server error', 500));
     }
 };
+const recipe_removefavorite = async (req, res, next) => {
+    try {
+        // Extract the validation errors from a request.
+        const errors = validationResult(req);
 
+        if (!errors.isEmpty()) {
+            // There are errors.
+            // Error messages can be returned in an array using `errors.array()`.
+            console.error('recipe_removefavorite validation', errors.array());
+            res.json({
+                message: 'Jokin meni pieleen',
+            });
+            next(httpError('Invalid data', 400));
+            return;
+        }
+        console.log("req.user!",req.user);
+        const data = [
+            req.params.id,
+            // req.user.Userid,
+        ]
+        const result = await removeFavorite(data, next);
+        if (result.affectedRows < 1) {
+            next(httpError('Invalid data', 400));
+            return;
+        }
+        res.json({
+            message: 'Favorite removed',
+        });
+
+
+    } catch (e) {
+        console.error('recipe_favorite', e.message);
+        next(httpError('Internal server error', 500));
+    }
+};
 
 const recipes_post = async (req, res, next) => {
     try {
@@ -346,6 +380,7 @@ module.exports = {
     comment_post,
     comment_get,
     recipe_favorite,
+    recipe_removefavorite,
 };
 
 
