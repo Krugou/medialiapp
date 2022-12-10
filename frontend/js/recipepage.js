@@ -35,11 +35,13 @@ const getRecipe = async (id) => {
     console.log(recipe);
     recipeName.innerHTML = recipe.recipes.Recipename;
     instructions.innerText = recipe.recipes.Recipeguide;
+    instructions.classList.add('fontsizeforp');
 
     // Jos reseptille on asetettu valmistusaika, näytetään se sivulla.
     if (recipe.recipes.Recipetime) {
        const recipeTimePara = document.createElement('p');
        recipeTimePara.innerText = "Valmistusaika: " +recipe.recipes.Recipetime+ " Minuuttia";
+       recipeTimePara.classList.add('fontsizeforp');
        recipeTime.appendChild(recipeTimePara);
     }
 
@@ -77,6 +79,7 @@ const getRecipe = async (id) => {
         console.log("Reseptin hinta", recipe.recipes.Recipeprice.toFixed(2));
         const p = document.createElement('p');
         p.innerText = "Kokonaishinta: "+ recipe.recipes.Recipeprice.toFixed(2) +"€";
+        p.classList.add('fontsizeforp');
         recipeTime.appendChild(p);
 
     }
@@ -147,6 +150,7 @@ const getComments = async (id) => {
 
         const p = document.createElement('p');
         p.innerText=comments[i].Commenttext;
+        p.classList.add('fontsizeforp');
 
         divContent.appendChild(p);
 
