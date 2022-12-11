@@ -36,6 +36,11 @@ function createResults(json) {
     presentationdata.appendChild(figure);
   }
 }
+// random number generator 1 - 2000
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+
+}
 
 function clearPage() {
   presentationdata.innerHTML = '';
@@ -84,8 +89,9 @@ function frontPageQuery(query) {
     });
   } else if (selectedOption === '2') {
     console.log('2');
-    fetch(url + `/recipes/filtercoursetypes/` + query).then(response => {
+    fetch(url + `/recipes/filtermealtypes/` + query).then(response => {
       if (response.ok) {
+
         return response.json();
       } else {
         throw 'HTTP ERROR';
@@ -99,7 +105,7 @@ function frontPageQuery(query) {
     });
   } else if (selectedOption === '3') {
     console.log('3');
-    fetch(url + `/recipes/filtermealtypes/` + query).then(response => {
+    fetch(url + `/recipes/filtercoursetypes/` + query).then(response => {
       if (response.ok) {
         return response.json();
       } else {
