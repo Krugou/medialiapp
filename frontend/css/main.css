@@ -210,13 +210,13 @@
     color: white;
 }
 
-.fa-thumbs-down {
+.recipeCommentsThumbsUp {
     font-size: 2em;
     margin-bottom: 1em;
     border-color: white;
 }
 
-.fa-thumbs-up {
+.recipeCommentsThumbsDown{
     margin-right: 0.5em;
     font-size: 2em;
     margin-bottom: 1em;
@@ -229,6 +229,17 @@
     width: 70%;
     margin: auto;
     border: solid 1px gray;
+}
+.commentStats {
+    display:flex;
+    gap: 2em;
+}
+.recipeRating {
+    color:white;
+}
+
+.recipeRating span {
+    font-size: 1.5em;
 }
 
 .filtersave {
@@ -775,7 +786,7 @@
 }
 
 #recipesImage {
-    width: 40%;
+    width: 30em;
 }
 
 #recipetimeInput {

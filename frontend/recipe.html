@@ -100,11 +100,12 @@
             <i class="fa-solid fa-heart" id="likeHeart"></i>
                 </span>
         <div class="recipeRating">
-            <i class="fa-solid fa-star" id="star1"></i>
-            <i class="fa-solid fa-star" id="star2"></i>
-            <i class="fa-solid fa-star" id="star3"></i>
-            <i class="fa-solid fa-star" id="star4"></i>
-            <i class="fa-solid fa-star" id="star5"></i>
+            <span class="recipeThumbsUp">
+                <i class="fa-solid fa-thumbs-up"></i>
+            </span>
+            <span class="recipeThumbsDown">
+                <i class="fa-solid fa-thumbs-down"></i>
+            </span>
         </div>
     </div>
     <div class="Recipe_desc">
@@ -151,8 +152,41 @@
                         </div>
                         <div class="commentContent">
                             <p class="fontsizeforp">Tämä</p>
-                            <i class="fa-solid fa-thumbs-up"></i>
+                            <div class="commentStats">
+                            <span class="recipeCommentsThumbsUp">
+                                <i class="fa-solid fa-thumbs-up"></i>
+                            </span>
+                                <span class="recipeCommentsThumbsDown">
                             <i class="fa-solid fa-thumbs-down"></i>
+                            </span>
+                                <p>0</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="recipeUserComment">
+                    <div>
+                        <div class="commentUsername">
+                            <img src="media/logos/jakrecipeslogo.svg">
+                            <a href="profile.html">Username</a>
+                        </div>
+                        <div class="commentContent">
+                            <p class="fontsizeforp">Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän
+                                reseptiin. Tämä on
+                                kommentti tähän reseptiin.
+
+
+
+                                Tämä on kommentti tähän reseptiin.</p>
+                            <div class="commentStats">
+                            <span class="recipeCommentsThumbsUp">
+                                <i class="fa-solid fa-thumbs-up"></i>
+                            </span>
+                                <span class="recipeCommentsThumbsDown">
+                            <i class="fa-solid fa-thumbs-down"></i>
+                            </span>
+                                <p>0</p>
+                            </div>
                         </div>
                     </div>
                 </li>
@@ -166,23 +200,15 @@
                             <p class="fontsizeforp">Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän
                                 reseptiin. Tämä on
                                 kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin.</p>
-                            <i class="fa-solid fa-thumbs-up"></i>
+                            <div class="commentStats">
+                            <span class="recipeCommentsThumbsUp" id="commentThumbup">
+                                <i class="fa-solid fa-thumbs-up"></i>
+                            </span>
+                            <span class="recipeCommentsThumbsDown" id="commentThumbdown">
                             <i class="fa-solid fa-thumbs-down"></i>
-                        </div>
-                    </div>
-                </li>
-                <li class="recipeUserComment">
-                    <div>
-                        <div class="commentUsername">
-                            <img src="media/logos/jakrecipeslogo.svg">
-                            <a href="profile.html">Username</a>
-                        </div>
-                        <div class="commentContent">
-                            <p class="fontsizeforp">Tämä on kommentti tähän reseptiin. Tämä on kommentti tähän
-                                reseptiin. Tämä on
-                                kommentti tähän reseptiin. Tämä on kommentti tähän reseptiin.</p>
-                            <i class="fa-solid fa-thumbs-up"></i>
-                            <i class="fa-solid fa-thumbs-down"></i>
+                            </span>
+                            <p>0</p>
+                            </div>
                         </div>
                     </div>
                 </li>
