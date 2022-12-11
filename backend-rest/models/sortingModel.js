@@ -22,26 +22,17 @@ const getrecipeswiththismealtype = async (mealType, next) => {
 const getrecipeswiththislowrecipepriceto0 = async (recipePrice, next) => {
   try {
     console.log('recipePrice', recipePrice)
-    const [rows] = await promisePoolRegUser.execute(`SELECT Dataview.Recipename , Dataview.Recipeprice, Dataview.Recipetime, dataview.Recipeguide,dataview.Username,dataview.Imagefilepath,dataview.Coursetype,dataview.Mealtype FROM dataview  WHERE dataview.Recipeprice >= "${recipePrice}" and dataview.Recipeprice <= 0  GROUP BY dataview.Recipeprice`);
+    const [rows] = await promisePoolRegUser.execute(`SELECT Dataview.Recipename , Dataview.Recipeprice, Dataview.Recipetime, dataview.Recipeguide,dataview.Username,dataview.Imagefilepath,dataview.Coursetype,dataview.Mealtype FROM dataview  WHERE dataview.Recipeprice <= "${recipePrice}" and dataview.Recipeprice  >= 0  GROUP BY dataview.Recipeprice`);
     return rows;
   } catch (e) {
     return next(e);
   }
 };
 
-const getrecipeswiththishighrecipepriceto100 = async (recipePrice, next) => {
-  try {
-    console.log('recipePrice', recipePrice)
-    const [rows] = await promisePoolRegUser.execute(`SELECT Dataview.Recipename , Dataview.Recipeprice, Dataview.Recipetime, dataview.Recipeguide,dataview.Username,dataview.Imagefilepath,dataview.Coursetype,dataview.Mealtype FROM dataview WHERE dataview.Recipeprice >= "${recipePrice}" and dataview.Recipeprice <= 100  GROUP BY Recipeprice DESC`);
-    return rows;
-  } catch (e) {
-    return next(e);
-  }
-};
+
 
 module.exports = {
   getrecipeswiththiscoursetype,
   getrecipeswiththismealtype,
   getrecipeswiththislowrecipepriceto0,
-  getrecipeswiththishighrecipepriceto100,
 };

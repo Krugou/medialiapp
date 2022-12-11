@@ -16,19 +16,18 @@ const {
 } = require('../models/normalUserModel');
 const {
   getrecipeswiththiscoursetype,
-  getrecipeswiththishighrecipepriceto100,
   getrecipeswiththislowrecipepriceto0,
   getrecipeswiththismealtype,
 } = require('../models/sortingModel');
-const {validationResult} = require('express-validator');
-const {httpError} = require('../utils/errors');
+const { validationResult } = require('express-validator');
+const { httpError } = require('../utils/errors');
 const sharp = require('sharp');
 const {
   addComment,
   getRecipeCommentsByRecipe,
   getRecipeCommentRatingsByCommentId,
 } = require('../models/commentsModel');
-const {findUsersByUseridRegUser} = require('../models/regUserModel');
+const { findUsersByUseridRegUser } = require('../models/regUserModel');
 
 const get_recipes_with_this_coursetype = async (req, res, next) => {
   const courseType = req.params.coursetype;
@@ -173,14 +172,14 @@ const filter_Recipes_By_Recipe_Name = async (req, res, next) => {
   try {
 
     let recipesTable = await getRecipesByRecipeName(req.params.recipename,
-        next);
+      next);
     for (let i = 0; i < recipesTable.length; i++) {
       const courseTable = await getCoursetypeByCourseId(
-          recipesTable[i].Recipecourse, next);
+        recipesTable[i].Recipecourse, next);
       const imagesTable = await getImageByRecipeId(recipesTable[i].Recipeid,
-          next);
+        next);
       const mealtypesTable = await getMealtypeByRecipeId(
-          recipesTable[i].Recipeid, next);
+        recipesTable[i].Recipeid, next);
 
       if (courseTable.length < 1) {
         recipesTable[i].Coursetype = '';
@@ -206,7 +205,7 @@ const filter_Recipes_By_Recipe_Name = async (req, res, next) => {
       return next(httpError('No recipe found', 404));
     }
 
-    res.json({recipesTable});
+    res.json({ recipesTable });
 
   } catch (e) {
     console.error('filter recipes', e.message);
@@ -236,7 +235,7 @@ const comment_get = async (req, res, next) => {
 
     for (let i = 0; i < findComments.length; i++) {
       const findCommentRatings2 = await getRecipeCommentRatingsByCommentId(
-          findComments[i].Commentid, next); // Haetaan Kommenttien ideillä niiden arvostelut
+        findComments[i].Commentid, next); // Haetaan Kommenttien ideillä niiden arvostelut
 
       findComments[i] = {
         Commenttext: findComments[i].Commenttext,
@@ -391,9 +390,9 @@ const recipes_post = async (req, res, next) => {
 
       await thumbnailSizes.forEach(size => {
         sharp(req.file.path).
-            resize({width: size}).
-            png().
-            toFile('./thumbnails/' + req.file.filename + '_' + size + 'px.png');
+          resize({ width: size }).
+          png().
+          toFile('./thumbnails/' + req.file.filename + '_' + size + 'px.png');
 
       });
 
