@@ -14,13 +14,8 @@ FROM Recipes INNER JOIN Recipemealtype
 };
 const getrecipeswiththismealtype = async (mealType, next) => {
   try {
-    const [rows] = await promisePoolRegUser.execute(`SELECT m.'Mealid', m.'Mealtype', r.'Recipeid', r.'Mealid', r1.'Recipeid', r1.'Recipename', r1.'Recipetime', r1.'Recipeguide', r1.'Recipemaker', r1.'Recipecourse', i.'Imageid', i.'Imagefilepath', i.'Imagerecipe', u.'Useremail'
-FROM jakrecipes.mealtypes m 
-	INNER JOIN jakrecipes.recipemealtype r ON ( r.'Mealid' = m.'Mealid'  )  
-	INNER JOIN jakrecipes.recipes r1 ON ( r1.'Recipeid' = r.'Recipeid'  )  
-	INNER JOIN jakrecipes.courses c ON ( c.'Courseid' = r1.'Recipecourse'  )  
-	INNER JOIN jakrecipes.images i ON ( i.'Imagerecipe' = r1.'Recipeid' )  
-	INNER JOIN jakrecipes.users u ON ( u.'Userimg' = i.'Imageid'  )  WHERE Mealtypes.Mealtype LIKE "$mealType}%" GROUP BY Recipeid DESC`);
+    console.log(mealType)
+    const [rows] = await promisePoolRegUser.execute(`SELECT Dataview.Recipename , Dataview.Recipeprice, Dataview.Recipetime, dataview.Recipeguide,dataview.Username,dataview.Imagefilepath,dataview.Coursetype,dataview.Mealtype FROM dataview WHERE mealtype LIKE "${mealType}%" GROUP BY dataview.Recipename`);
     return rows;
   } catch (e) {
     return next(e);
