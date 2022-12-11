@@ -35,10 +35,10 @@ function generateRecipesFrontpage(json) {
     const figure = document.createElement('figure');
     const img = document.createElement('img');
     // jos kuvaa ei ole, laitetaan placeholder
-    if (json[i].thumbnailImagefilepath === 'undefined') {
+    if (json[i].Imagefilepath === 'undefined') {
       img.src = './media/logos/jakrecipeslogo.svg';
     } else {
-      img.src = url + '/' + json[i].thumbnailImagefilepath;
+      img.src = url + '/' + json[i].Imagefilepath;
       //loadout += '<figure class="recipefigure"><img src="' + url + '/' + json[i].Imagefilepath + '"><p class="fontsizeforp">' + json[i].Recipename + '</p><p class="fontsizeforp">' + json[i].Recipetime + '</p><p class="fontsizeforp">' + json[i].Coursetype + '</p><p class="fontsizeforp">' + json[i].Mealtype + '</p> <button class="recipesButtonFront"id="'+json[i].Recipeid+'"> Katso resepti</button ></figure >'
     }
     img.alt = 'Reseptin kuva';
