@@ -233,50 +233,6 @@
     });
   }
 
-  let recipelikes = document.getElementById("Likes")
-
-  let commentlikes = document.getElementById("commentLikes");
-
-  let maara = 0;
-
-  commentlikes.innerText = maara.toString();
-  recipelikes.innerText = maara.toString();
-
-
-  let recipethumbsup = document.getElementById("recipeThumbsup")
-  let recipethumbsdown = document.getElementById("recipeThumbsdown")
-
-
-
-  let commentsthumbsup = document.getElementById("thumbsUp");
-  let commentsthumbsDown = document.getElementById("thumbsDown");
-
-  commentsthumbsup.addEventListener("click",  function likeFunction () {
-    maara += 1;
-    commentlikes.innerText = maara.toString();
-
-
-  })
-
-  commentsthumbsDown.addEventListener("click",  function dislikeFunction () {
-    maara -= 1;
-    commentlikes.innerText = maara.toString();
-
-  })
-
-  recipethumbsup.addEventListener("click",  function likeFunction () {
-    maara += 1;
-    recipelikes.innerText = maara.toString();
-
-
-  })
-
-  recipethumbsdown.addEventListener("click",  function dislikeFunction () {
-    maara -= 1;
-    recipelikes.innerText = maara.toString();
-
-  })
-
 
 </script>
 
