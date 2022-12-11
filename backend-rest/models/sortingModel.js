@@ -1,7 +1,7 @@
 const poolRegUser = require('../database/db');
 const promisePoolRegUser = poolRegUser.promise();
 
-const getrecipesbycoursetype = async (courseType, next) => {
+const getrecipeswiththiscoursetype = async (courseType, next) => {
     try {
         const [rows] = await promisePoolRegUser.execute(`SELECT Recipes.Recipeid,Recipes.Recipename , Recipes.Recipetime, Recipes.Recipeguide, Recipes.Recipemaker, Courses.Coursetype, Mealtypes.Mealtype, Images.Imagefilepath
 FROM Recipes INNER JOIN Recipemealtype
@@ -12,7 +12,7 @@ FROM Recipes INNER JOIN Recipemealtype
         return next(e);
     }
 };
-const getrecipesbymealtype = async (mealType, next) => {
+const getrecipeswiththismealtype = async (mealType, next) => {
     try {
         const [rows] = await promisePoolRegUser.execute(`SELECT Recipes.Recipeid,Recipes.Recipename , Recipes.Recipetime, Recipes.Recipeguide, Recipes.Recipemaker, Courses.Coursetype, Mealtypes.Mealtype, Images.Imagefilepath
 FROM Recipes INNER JOIN Recipemealtype
@@ -23,7 +23,7 @@ FROM Recipes INNER JOIN Recipemealtype
         return next(e);
     }
 };
-const getrecipesbylowrecipepriceto0 = async (recipePrice, next) => {
+const getrecipeswiththislowrecipepriceto0 = async (recipePrice, next) => {
     try {
         const [rows] = await promisePoolRegUser.execute(`SELECT Recipes.Recipeid,Recipes.Recipename , Recipes.Recipetime, Recipes.Recipeguide, Recipes.Recipemaker, Courses.Coursetype, Mealtypes.Mealtype, Images.Imagefilepath
 FROM Recipes INNER JOIN Recipemealtype
@@ -35,8 +35,8 @@ FROM Recipes INNER JOIN Recipemealtype
     }
 };
 
-        
-const getrecipesbyhighrecipepriceto100 = async (recipePrice, next) => {
+
+const getrecipeswiththishighrecipepriceto100 = async (recipePrice, next) => {
     try {
         const [rows] = await promisePoolRegUser.execute(`SELECT Recipes.Recipeid,Recipes.Recipename , Recipes.Recipetime, Recipes.Recipeguide, Recipes.Recipemaker, Courses.Coursetype, Mealtypes.Mealtype, Images.Imagefilepath
 FROM Recipes INNER JOIN Recipemealtype
@@ -49,8 +49,8 @@ FROM Recipes INNER JOIN Recipemealtype
 };
 
 module.exports = {
-    getrecipesbycoursetype,
-    getrecipesbymealtype,
-    getrecipesbylowrecipepriceto0,
-    getrecipesbyhighrecipepriceto100
+    getrecipeswiththiscoursetype,
+    getrecipeswiththismealtype,
+    getrecipeswiththislowrecipepriceto0,
+    getrecipeswiththishighrecipepriceto100
 };
