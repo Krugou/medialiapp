@@ -5,7 +5,8 @@ const {
   getRecipeById,
   getMealtypeByRecipeId,
   getImageByRecipeId,
-  getCoursetypeByCourseId, addFavorite, getFavorite, removeFavorite,
+  getCoursetypeByCourseId, addFavorite, getFavorite, removeFavorite, addLike, addDislike, removePreviousRating,
+  getReciperatingByUser,
 } = require('../models/recipesModel');
 
 const {
@@ -67,7 +68,7 @@ const get_recipes_with_this_low_recipe_price_to_0 = async (req, res, next) => {
   }
 };
 const recipe_get = async (req, res, next) => {
-  let rows1, rows2, rows3, rows4, rows5;
+  let rows1, rows2, rows3, rows4, rows5, rows6;
   try {
 
     rows1 = await getRecipeById(req.params.id, next);
@@ -76,14 +77,20 @@ const recipe_get = async (req, res, next) => {
     rows3 = await getImageByRecipeId(req.params.id, next);
     rows4 = await getCoursetypeByCourseId(recipesCourse, next);
 
-    if (!req.user) { // JOS käyttäjä on kirjautunut, katsotaan onko hän favoritannut postauksen
+    if (!req.user) { // JOS käyttäjä on kirjautunut, katsotaan onko hän favoritannut tai arvostellut postauksen
       const favoriteData = [
         37,
         // req.user.Userid,
         req.params.id,
       ];
       rows5 = await getFavorite(favoriteData, next);
-      rows5 = rows5.length >= 1;
+      rows5 = rows5.length >= 1; // True tai False, jos käyttäjä on favoritannut ko.
+      rows6 = await getReciperatingByUser(favoriteData, next);
+      rows6 = {
+        value:rows6, //Onko reseptistä liketty vai disliketty
+        find:rows6.length >= 1, // Onko Käyttäjä tehnyt kumpaakaan reseptille
+      }
+      //rows6  +=rows6.length >= 1; // True tai False, jos löytyy niin true
     }
     if (rows1.length < 1) {
       return next(httpError('No recipe found', 404));
@@ -105,6 +112,7 @@ const recipe_get = async (req, res, next) => {
       images: rows3, //Voi olla tulevaisuudessa monta kuvaa, niin ei pop
       course: rows4.pop(), // Ainoastaan yksi course, niin pop
       favorite: rows5,
+      rating:rows6,
     });
 
   } catch (e) {
@@ -208,7 +216,7 @@ const comment_get = async (req, res, next) => {
       findComments[i] = {
         Commenttext: findComments[i].Commenttext,
         Username: findComments[i].Username,
-        Commentrating: findCommentRatings2[0].Arvo,
+        Commentrating: findCommentRatings2[0].dvalue,
         Commentid: findComments[i].Commentid,
       };
     }
@@ -410,6 +418,86 @@ const recipes_post = async (req, res, next) => {
   }
 
 };
+const recipe_like = async (req, res, next) => {
+  try {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      // There are errors.
+      // Error messages can be returned in an array using `errors.array()`.
+      console.error('recipe_like validation', errors.array());
+      res.json({
+        message: 'Jokin meni pieleen',
+      });
+      next(httpError('Invalid data', 400));
+      return;
+    }
+    const data = [
+        37,
+      // req.user.Userid,
+      req.params.id,
+
+    ];
+    try {
+      const removePrevious = await removePreviousRating(data, next);
+
+    }
+    catch (e) {
+
+    }
+
+    const result = await addLike(data, next);
+    res.json({
+      message: 'like Added',
+    });
+    if (result.affectedRows < 1) {
+      next(httpError('Invalid data', 400));
+    }
+  }
+  catch (e) {
+    console.error('recipe_like', e.message);
+    next(httpError('Internal server error', 500));
+  }
+}
+const recipe_dislike = async (req, res, next) => {
+  try {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      // There are errors.
+      // Error messages can be returned in an array using `errors.array()`.
+      console.error('recipe_like validation', errors.array());
+      res.json({
+        message: 'Jokin meni pieleen',
+      });
+      next(httpError('Invalid data', 400));
+      return;
+    }
+    const data = [
+      37,
+      // req.user.Userid,
+      req.params.id,
+
+    ];
+    try {
+      const removePrevious = await removePreviousRating(data, next);
+    }
+    catch (e) {
+
+    }
+    const result = await addDislike(data, next);
+    res.json({
+      message: 'dislike Added',
+    });
+    if (result.affectedRows < 1) {
+      next(httpError('Invalid data', 400));
+    }
+  }
+  catch (e) {
+    console.error('recipe_like', e.message);
+    next(httpError('Internal server error', 500));
+  }
+}
 
 module.exports = {
   getAllNewestRecipesController,
@@ -425,6 +513,8 @@ module.exports = {
   get_recipes_with_this_coursetype,
   get_recipes_with_this_mealtype,
   get_recipes_with_this_low_recipe_price_to_0,
+  recipe_like,
+  recipe_dislike
 };
 
 

@@ -49,7 +49,7 @@ const {
   recipe_removefavorite,
   get_recipes_with_this_coursetype,
   get_recipes_with_this_mealtype,
-  get_recipes_with_this_low_recipe_price_to_0,
+  get_recipes_with_this_low_recipe_price_to_0, recipe_like, recipe_dislike,
 } = require('../controllers/recipesController');
 const {body} = require('express-validator');
 router.get('/mealtypes', recipes_mealtypes_get);
@@ -84,4 +84,10 @@ router.post('/addfavorite/:id',
 router.post('/removefavorite/:id',
     body('id').escape(),
     recipe_removefavorite);
+router.post('/like/:id',
+    body('id').escape(),
+    recipe_like)
+router.post('/dislike/:id',
+    body('id').escape(),
+    recipe_dislike)
 module.exports = router;

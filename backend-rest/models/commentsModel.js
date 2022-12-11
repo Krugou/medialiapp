@@ -15,7 +15,7 @@ const getRecipeCommentsByRecipe = async (params, next) => {
 };
 const getRecipeCommentRatingsByCommentId = async (params, next) => {
   try {
-    const [rows] = await promisePoolRegUser.execute(`SELECT SUM(Direction) AS Arvo FROM Commentrating
+    const [rows] = await promisePoolRegUser.execute(`SELECT SUM(Direction) AS dvalue FROM Commentrating
                                                                    WHERE Commentid = ${params};`);
     return rows;
   } catch (e) {

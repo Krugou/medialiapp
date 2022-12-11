@@ -1038,6 +1038,12 @@
     }
 }
 
-.Favorited {
-    color: red;
+.favorited {
+    color: #d73030;
+}
+.liked{
+    color: #3f3fea;
+}
+.disliked{
+    color: #d73030;
 }

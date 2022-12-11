@@ -21,6 +21,9 @@ const postComment = document.querySelector('#postACommentButton');
 const openComments = document.querySelector('#openCommentsButton');
 const recipeComments = document.querySelector('#recipeCommentsId');
 const favoriteIcon = document.querySelector('#favoriteHeart');
+const recipeLike = document.getElementById("recipeThumbsup");
+const recipeDislike = document.getElementById("recipeThumbsdown");
+
 //Tällä haetaan reseptin tiedot sivulle
 const getRecipe = async (id) => {
   const fetchOptions = {
@@ -71,7 +74,7 @@ const getRecipe = async (id) => {
   if (recipe.favorite === true) {
     console.log('löytyy suosikeista');
     const likeHeart = document.querySelector('#likeHeart'); // Pitää hakea tässä kohtaa, muuten ei saada selectattua fontawesomin dynaamista ikonia
-    likeHeart.classList.add('Favorited');
+    likeHeart.classList.add('favorited');
     favorited = true;
   }
 
@@ -85,6 +88,17 @@ const getRecipe = async (id) => {
     recipeTime.appendChild(p);
 
   }
+    //Jos resepti on jo arvosteltu, näytetään se käyttäjälle
+    if (recipe.rating.find === true){
+      if (recipe.rating.value[0].Stars===1) {
+        recipeLike.classList.add('liked');
+      }
+      if (recipe.rating.value[0].Stars===-1) {
+        recipeDislike.classList.add('disliked');
+      }
+    }
+
+
 
   // img.src = `${url}/${cat.filename}`;
   //addMarker(JSON.parse(cat.coords));
@@ -207,7 +221,7 @@ const addOrRemoveFavorite = async (id) => {
     const response = await fetch(url + '/recipes/addfavorite/' + id,
         fetchOptions);
     if (response.ok) {
-      likeHeart.classList.add('Favorited');
+      likeHeart.classList.add('favorited');
       favorited = true;
       return;
     }
@@ -224,12 +238,42 @@ const addOrRemoveFavorite = async (id) => {
       const response = await fetch(url + '/recipes/removefavorite/' + id,
           fetchOptions);
       if (response.ok) {
-        likeHeart.classList.remove('Favorited');
+        likeHeart.classList.remove('favorited');
         favorited = false;
       }
     }
   }
 
 };
+recipeLike.addEventListener('click', evt => {
+  console.log("asd");
+  updateRecipeRating("like", recipe_id);
+
+});
+recipeDislike.addEventListener('click', async evt => {
+
+  await updateRecipeRating("dislike", recipe_id);
+
+});
+
+const updateRecipeRating = async (rating, id) => {
+  const fetchOptions = {
+    method: 'POST',
+    headers: {
+      Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+    },
+  };
+  const response = await fetch(url + '/recipes/'+rating+'/' + id, fetchOptions);
+  if (response.ok && rating==="like"){
+    recipeDislike.classList.remove('disliked')
+    recipeLike.classList.add('liked')
+  }
+  if (response.ok && rating==="dislike"){
+    recipeLike.classList.remove('liked')
+    recipeDislike.classList.add('disliked')
+  }
+  console.log("response");
+
+}
 
 getRecipe(recipe_id);
