@@ -13,7 +13,7 @@ const getrecipeswiththiscoursetype = async (courseType, next) => {
 const getrecipeswiththismealtype = async (mealType, next) => {
   try {
     console.log('mealtype', mealType)
-    const [rows] = await promisePoolRegUser.execute(`SELECT Normaluserview.Recipename , Normaluserview.Recipeprice, Normaluserview.Recipetime, Normaluserview.Recipeguide,Normaluserview.Username,Normaluserview.Imagefilepath,Normaluserview.Coursetype,Normaluserview.Mealtype FROM Normaluserview WHERE mealtype LIKE "${mealType}%" GROUP BY Normaluserview.Recipename`);
+    const [rows] = await promisePoolRegUser.execute(`SELECT Normaluserview.Recipename , Normaluserview.Recipeprice, Normaluserview.Recipetime, Normaluserview.Recipeguide,Normaluserview.Username,Normaluserview.Imagefilepath,Normaluserview.Coursetype,Normaluserview.Mealtype FROM Normaluserview WHERE Mealtype LIKE "${mealType}%" GROUP BY Normaluserview.Recipename`);
     return rows;
   } catch (e) {
     return next(e);
