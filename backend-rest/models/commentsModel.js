@@ -1,4 +1,5 @@
 const poolRegUser = require('../database/db');
+const {httpError} = require("../utils/errors");
 const promisePoolRegUser = poolRegUser.promise();
 
 const getRecipeCommentsByRecipe = async (params, next) => {
@@ -58,6 +59,38 @@ const deleteCommentById = async (params, next) => {
     next(httpError('Database error', 500));
   }
 };
+const addCommentLike = async (data, next) => {
+  try {
+    const [rows] = await promisePoolRegUser.execute(`INSERT INTO Commentrating (Userid, Commentid, Direction)
+                                                     VALUES ("${data[0]}", "${data[1]}", +1);`, // Vaihda 32 pois, kun softa valmis
+        data);
+    return rows;
+  } catch (e) {
+    console.error('addLike', e.message);
+    next(httpError('Database error', 500));
+  }
+};
+const addCommentDisLike = async (data, next) => {
+  try {
+    const [rows] = await promisePoolRegUser.execute(`INSERT INTO Commentrating (Userid, Commentid, Direction)
+                                                     VALUES ("${data[0]}", "${data[1]}", -1);`, // Vaihda 32 pois, kun softa valmis
+        data);
+    return rows;
+  } catch (e) {
+    console.error('addLike', e.message);
+    next(httpError('Database error', 500));
+  }
+};
+const removePreviousCommentrating = async (data, next) => {
+  try {
+    const [rows] = await promisePoolRegUser.execute(`DELETE FROM Commentrating WHERE Userid ="${data[0]}" AND Commentid = "${data[1]}";`, // Vaihda 32 pois, kun softa valmis
+        data);
+    return rows;
+  } catch (e) {
+    console.error('removePreviousRating', e.message);
+    next(httpError('Database error', 500));
+  }
+};
 
 module.exports = {
   addComment,
@@ -65,5 +98,8 @@ module.exports = {
   getRecipeCommentsByRecipe,
   getRecipeCommentsByUserId,
   getRecipeCommentRatingsByCommentId,
+  addCommentLike,
+  removePreviousCommentrating,
+  addCommentDisLike,
 
 };

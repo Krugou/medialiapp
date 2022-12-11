@@ -345,7 +345,7 @@ const addDislike = async (data, next) => {
     next(httpError('Database error', 500));
   }
 };
-const removePreviousRating = async (data, next) => {
+const removePreviousReciperating = async (data, next) => {
   try {
     const [rows] = await promisePoolRegUser.execute(`DELETE FROM Reciperating WHERE Userid ="${data[0]}" AND Recipeid = "${data[1]}";`, // Vaihda 32 pois, kun softa valmis
         data);
@@ -378,7 +378,7 @@ module.exports = {
   removeFavorite,
   addLike,
   addDislike,
-  removePreviousRating,
+  removePreviousReciperating,
   getReciperatingByUser,
 
 };

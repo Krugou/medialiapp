@@ -6,7 +6,7 @@ const {
   getMealtypeByRecipeId,
   getImageByRecipeId,
   getCoursetypeByCourseId, addFavorite, getFavorite, removeFavorite, addLike, addDislike, removePreviousRating,
-  getReciperatingByUser,
+  getReciperatingByUser, removePreviousReciperating,
 } = require('../models/recipesModel');
 
 const {
@@ -26,7 +26,7 @@ const sharp = require('sharp');
 const {
   addComment,
   getRecipeCommentsByRecipe,
-  getRecipeCommentRatingsByCommentId,
+  getRecipeCommentRatingsByCommentId, removePreviousCommentrating, addCommentLike, addCommentDisLike,
 } = require('../models/commentsModel');
 const { findUsersByUseridRegUser } = require('../models/regUserModel');
 const {getRecipeRatingByRecipe} = require("../models/ratingModel");
@@ -442,7 +442,7 @@ const recipe_like = async (req, res, next) => {
 
     ];
     try {
-      const removePrevious = await removePreviousRating(data, next);
+      const removePrevious = await removePreviousReciperating(data, next);
 
     }
     catch (e) {
@@ -469,7 +469,7 @@ const recipe_dislike = async (req, res, next) => {
     if (!errors.isEmpty()) {
       // There are errors.
       // Error messages can be returned in an array using `errors.array()`.
-      console.error('recipe_like validation', errors.array());
+      console.error('recipe_dislike validation', errors.array());
       res.json({
         message: 'Jokin meni pieleen',
       });
@@ -483,7 +483,7 @@ const recipe_dislike = async (req, res, next) => {
 
     ];
     try {
-      const removePrevious = await removePreviousRating(data, next);
+      const removePrevious = await removePreviousReciperating(data, next);
     }
     catch (e) {
 
@@ -497,11 +497,94 @@ const recipe_dislike = async (req, res, next) => {
     }
   }
   catch (e) {
-    console.error('recipe_like', e.message);
+    console.error('recipe_dislike', e.message);
     next(httpError('Internal server error', 500));
   }
 }
+const comment_like = async (req, res, next) => {
+  try {
+    const errors = validationResult(req);
 
+    if (!errors.isEmpty()) {
+      // There are errors.
+      // Error messages can be returned in an array using `errors.array()`.
+      console.error('comment_like validation', errors.array());
+      res.json({
+        message: 'Jokin meni pieleen',
+      });
+      next(httpError('Invalid data', 400));
+      return;
+    }
+
+    const data = [
+      37, // OTA POIS KUN VALMIS
+      // req.user.Userid,
+      req.params.id,
+
+    ];
+    try {
+      const removePrevious = await removePreviousCommentrating(data, next);
+    }
+    catch (e) {
+
+    }
+    const result = await addCommentLike(data, next);
+    res.json({
+      message: 'Like Added',
+    });
+    if (result.affectedRows < 1) {
+      next(httpError('Invalid data', 400));
+    }
+  }
+
+  catch (e) {
+      console.error('comment_like', e.message);
+      next(httpError('Internal server error', 500));
+  }
+
+}
+const comment_dislike = async (req, res, next) => {
+  try {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      // There are errors.
+      // Error messages can be returned in an array using `errors.array()`.
+      console.error('comment_dislike validation', errors.array());
+      res.json({
+        message: 'Jokin meni pieleen',
+      });
+      next(httpError('Invalid data', 400));
+      return;
+    }
+
+    const data = [
+      37, // OTA POIS KUN VALMIS
+      // req.user.Userid,
+      req.params.id,
+
+    ];
+    try {
+      const removePrevious = await removePreviousCommentrating(data, next);
+    }
+    catch (e) {
+
+    }
+    const result = await addCommentDisLike(data, next);
+    res.json({
+      message: 'Dislike Added',
+    });
+    if (result.affectedRows < 1) {
+      next(httpError('Invalid data', 400));
+    }
+  }
+
+  catch (e) {
+    console.error('comment_dislike', e.message);
+    next(httpError('Internal server error', 500));
+  }
+
+}
 module.exports = {
   getAllNewestRecipesController,
   getAllOldestRecipesController,
@@ -517,7 +600,9 @@ module.exports = {
   get_recipes_with_this_mealtype,
   get_recipes_with_this_low_recipe_price_to_0,
   recipe_like,
-  recipe_dislike
+  recipe_dislike,
+  comment_like,
+  comment_dislike,
 };
 
 
