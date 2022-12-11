@@ -20,7 +20,7 @@ const getRecipeCommentRatingsByCommentId = async (params, next) => {
                                                                    WHERE Commentid = ${params};`);
     return rows;
   } catch (e) {
-    console.error('getRecipeComments', e.message);
+    console.error('getRecipeCommentRatingsByCommentId', e.message);
     next(httpError('Database error', 500));
   }
 };
@@ -31,7 +31,17 @@ const getRecipeCommentsByUserId = async (params, next) => {
                         `);
     return rows;
   } catch (e) {
-    console.error('getRecipeComments', e.message);
+    console.error('getRecipeCommentsByUserId', e.message);
+    next(httpError('Database error', 500));
+  }
+};
+const getCommentratingByUserid = async (data, next) => {
+  try {
+    const [rows] = await promisePoolRegUser.execute(
+        `SELECT Direction FROM Commentrating WHERE Userid = "${data[0]}" AND Commentid ="${data[1]}";`,data);
+    return rows;
+  } catch (e) {
+    console.error('getCommentratingByUserid', e.message);
     next(httpError('Database error', 500));
   }
 };
@@ -66,7 +76,7 @@ const addCommentLike = async (data, next) => {
         data);
     return rows;
   } catch (e) {
-    console.error('addLike', e.message);
+    console.error('addCommentLike', e.message);
     next(httpError('Database error', 500));
   }
 };
@@ -77,7 +87,7 @@ const addCommentDisLike = async (data, next) => {
         data);
     return rows;
   } catch (e) {
-    console.error('addLike', e.message);
+    console.error('addCommentDisLike', e.message);
     next(httpError('Database error', 500));
   }
 };
@@ -87,7 +97,7 @@ const removePreviousCommentrating = async (data, next) => {
         data);
     return rows;
   } catch (e) {
-    console.error('removePreviousRating', e.message);
+    console.error('removePreviousCommentrating', e.message);
     next(httpError('Database error', 500));
   }
 };
@@ -101,5 +111,6 @@ module.exports = {
   addCommentLike,
   removePreviousCommentrating,
   addCommentDisLike,
+  getCommentratingByUserid,
 
 };

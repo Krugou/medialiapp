@@ -27,6 +27,7 @@ const {
   addComment,
   getRecipeCommentsByRecipe,
   getRecipeCommentRatingsByCommentId, removePreviousCommentrating, addCommentLike, addCommentDisLike,
+  getCommentratingByUserid,
 } = require('../models/commentsModel');
 const { findUsersByUseridRegUser } = require('../models/regUserModel');
 const {getRecipeRatingByRecipe} = require("../models/ratingModel");
@@ -78,7 +79,7 @@ const recipe_get = async (req, res, next) => {
     rows3 = await getImageByRecipeId(req.params.id, next);
     rows4 = await getCoursetypeByCourseId(recipesCourse, next);
 
-    if (!req.user) { // JOS käyttäjä on kirjautunut, katsotaan onko hän favoritannut tai arvostellut postauksen
+    if (!req.user) { // JOS käyttäjä on kirjautunut, katsotaan onko hän favoritannut tai arvostellut postauksen ota ! pois kun valmis
       const favoriteData = [
         37,
         // req.user.Userid,
@@ -192,7 +193,7 @@ const filter_Recipes_By_Recipe_Name = async (req, res, next) => {
   }
 };
 const comment_get = async (req, res, next) => {
-  let findCommentRatings = []; // Tähän syötetään kommenttien tykkäykset.
+  let rows;
   try {
     const errors = validationResult(req);
 
@@ -213,14 +214,28 @@ const comment_get = async (req, res, next) => {
     }
 
     for (let i = 0; i < findComments.length; i++) {
-      const findCommentRatings2 = await getRecipeCommentRatingsByCommentId(
+      const findCommentRatings = await getRecipeCommentRatingsByCommentId(
         findComments[i].Commentid, next); // Haetaan Kommenttien ideillä niiden arvostelut
 
+      if (!req.user) { // JOS käyttäjä on kirjautunut, katsotaan onko hän arvostellut ko. kommentin
+        const ratingData = [
+          37,
+          // req.user.Userid,
+          findComments[i].Commentid
+        ];
+        rows = await getCommentratingByUserid(ratingData, next);
+        rows = {
+          value:rows,
+          find:rows.length >= 1,
+        }
+
+      }
       findComments[i] = {
         Commenttext: findComments[i].Commenttext,
         Username: findComments[i].Username,
-        Commentrating: findCommentRatings2[0].dvalue,
+        Commentrating: findCommentRatings[0].dvalue,
         Commentid: findComments[i].Commentid,
+        rating:rows,
       };
     }
     console.log(findComments);
