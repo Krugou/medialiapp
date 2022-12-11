@@ -4,7 +4,7 @@ const httpError = require('http-errors');
 const getrecipeswiththiscoursetype = async (courseType, next) => {
   try {
     console.log('courseType', courseType)
-    const [rows] = await promisePoolRegUser.execute(`SELECT Normaluserview.Recipeid, Normaluserview.Recipename , Normaluserview.Recipeprice, Normaluserview.Recipetime, Normaluserview.Recipeguide,Normaluserview.Username,Normaluserview.Imagefilepath,Normaluserview.Coursetype,Normaluserview.Mealtype FROM Normaluserview WHERE Coursetype LIKE "${courseType}%" GROUP BY Normaluserview.Recipeid order by Normaluserview.Recipeid desc`);
+    const [rows] = await promisePoolRegUser.execute(`SELECT normaluserview.Recipeid, normaluserview.Recipename , normaluserview.Recipeprice, normaluserview.Recipetime, normaluserview.Recipeguide,normaluserview.Username,normaluserview.Imagefilepath,normaluserview.Coursetype,normaluserview.Mealtype FROM normaluserview WHERE Coursetype LIKE "${courseType}%" GROUP BY normaluserview.Recipeid order by normaluserview.Recipeid desc`);
     return rows;
   } catch (e) {
     next(httpError('Database error', 500));
@@ -13,7 +13,7 @@ const getrecipeswiththiscoursetype = async (courseType, next) => {
 const getrecipeswiththismealtype = async (mealType, next) => {
   try {
     console.log('mealtype', mealType)
-    const [rows] = await promisePoolRegUser.execute(`SELECT Normaluserview.Recipeid,  Normaluserview.Recipename , Normaluserview.Recipeprice, Normaluserview.Recipetime, Normaluserview.Recipeguide,Normaluserview.Username,Normaluserview.Imagefilepath,Normaluserview.Coursetype,Normaluserview.Mealtype FROM Normaluserview WHERE Mealtype LIKE "${mealType}%" GROUP BY Normaluserview.Recipeid order by Normaluserview.Recipeid desc`);
+    const [rows] = await promisePoolRegUser.execute(`SELECT normaluserview.Recipeid,  normaluserview.Recipename , normaluserview.Recipeprice, normaluserview.Recipetime, normaluserview.Recipeguide,normaluserview.Username,normaluserview.Imagefilepath,normaluserview.Coursetype,normaluserview.Mealtype FROM normaluserview WHERE Mealtype LIKE "${mealType}%" GROUP BY normaluserview.Recipeid order by normaluserview.Recipeid desc`);
     return rows;
   } catch (e) {
     next(httpError('Database error', 500));
@@ -22,7 +22,7 @@ const getrecipeswiththismealtype = async (mealType, next) => {
 const getrecipeswiththislowrecipepriceto0 = async (recipePrice, next) => {
   try {
     console.log('recipePrice', recipePrice)
-    const [rows] = await promisePoolRegUser.execute(`SELECT Normaluserview.Recipeid, Normaluserview.Recipename , Normaluserview.Recipeprice, Normaluserview.Recipetime, Normaluserview.Recipeguide,Normaluserview.Username,Normaluserview.Imagefilepath,Normaluserview.Coursetype,Normaluserview.Mealtype FROM Normaluserview  WHERE Normaluserview.Recipeprice <= "${recipePrice}" and Normaluserview.Recipeprice  >= 0  GROUP BY Normaluserview.Recipeprice order by Normaluserview.Recipeprice desc`);
+    const [rows] = await promisePoolRegUser.execute(`SELECT normaluserview.Recipeid, normaluserview.Recipename , normaluserview.Recipeprice, normaluserview.Recipetime, normaluserview.Recipeguide,normaluserview.Username,normaluserview.Imagefilepath,normaluserview.Coursetype,normaluserview.Mealtype FROM normaluserview  WHERE normaluserview.Recipeprice <= "${recipePrice}" and normaluserview.Recipeprice  >= 0  GROUP BY normaluserview.Recipeprice order by normaluserview.Recipeprice desc`);
     return rows;
   } catch (e) {
     next(httpError('Database error', 500));;
