@@ -538,6 +538,12 @@
   justify-content: center;
   box-shadow: 1px 2px 14px 5px rgba(0, 0, 0, 0.75);
 }
+.hakuvalikko {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .userPosts figure {
   border: solid 1px black;
   width: 10vw;

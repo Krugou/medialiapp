@@ -92,6 +92,19 @@
         <div class="recipeSearch">
             <input type="text" id="typeInputField" aria-label="Reseptien haku" placeholder="Hae Resepti"
                 class="Haeresepti ">
+            <select class="hakuvalikko" id="my-selector">
+                <!-- The first option -->
+                <option value="1">resepti nimen mukaan</option>
+
+                <!-- The second option -->
+                <option value="2">ruokalajin mukaan</option>
+
+                <!-- The third option -->
+                <option value="3">Aterianmukaan </option>
+
+                <!-- The fourth option -->
+                <option value="4">reseptin hinnan mukaan</option>
+            </select>
             <button id="filter" class="filterStyle">Filter</button>
         </div>
         <div id="filterModal" class="modal">
@@ -105,7 +118,13 @@
                     </div>
                 </div>
             </div>
+            <!-- The select element -->
+            <h4>valitse valikosta tapa millä hakea</h4>
+
         </div>
+
+
+
         <p id="loading" class="test"></p>
         <div class="addRecipes">
             <button href="addRecipe.html" id="addrecipesButton">Tee resepti</a></button>

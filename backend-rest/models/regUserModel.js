@@ -9,7 +9,7 @@ const addUsersRegUser = async (data, next) => {
     try {
         const [rows] = await promisePoolRegUser.execute(`INSERT INTO Users (Useremail, Userpassword, Username) 
                                                     VALUES (?, ?, ?);`,
-                                                        data);
+            data);
         return rows;
     } catch (e) {
         console.error('addUsersAdmin', e.message);
@@ -57,7 +57,7 @@ const findUsersByUseridRegUser = async (id, next) => {
 
 
 module.exports = {
-    
+
     addUsersRegUser,
     findUsersByEmailRegUser,
     findUsersByUsernameRegUser,

@@ -65,21 +65,85 @@ window.onload = () => {
     };
 };
 function frontPageQuery(query) {
-    fetch(url + `/recipes/filterrecipes/` + query).then(response => {
-        if (response.ok) {
-            return response.json();
-        } else {
-            throw 'HTTP ERROR';
+    // The select element
+    let selector = document.getElementById("my-selector");
+
+    // Get the selected option
+    let selectedOption = selector.value;
+    if (selectedOption === "1") {
+        console.log("1")
+        fetch(url + `/recipes/filterrecipes/` + query).then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw 'HTTP ERROR';
+            }
+        }).then((queryData) => {
+
+            clearPage()
+            createResults(queryData);
+
+
+
+
+        }).catch((error) => {
+        });
+    }
+    else if (selectedOption === "2") {
+        console.log("2")
+        fetch(url + `/recipes/filtercoursetypes/` + query).then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw 'HTTP ERROR';
+            }
+        }).then((queryData) => {
+
+            clearPage()
+            createResults(queryData);
+
+
+
+
+        }).catch((error) => {
+        });
+    }
+    else if (selectedOption === "3") {
+        console.log("3")
+        fetch(url + `/recipes/filtermealtypes/` + query).then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw 'HTTP ERROR';
+            }
+        }).then((queryData) => {
+
+            clearPage()
+            createResults(queryData);
+
+
+
+
+        }).catch((error) => {
+        });
+    } else if (selectedOption === "4") {
+        console.log("4")
+        // if query contains letters, do nothing
+        if (query.match(/[a-z]/i)) {
+            return;
         }
-    }).then((queryData) => {
 
-        clearPage()
-        createResults(queryData);
+        fetch(url + `/recipes/filterbyprice/` + query).then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw 'HTTP ERROR';
+            }
+        }).then((queryData) => {
 
-
-
-
-    }).catch((error) => {
-    });
+            clearPage()
+            createResults(queryData);
+        }).catch((error) => {
+        });
+    }
 }
-

@@ -6,7 +6,7 @@ const getrecipeswiththiscoursetype = async (courseType, next) => {
         const [rows] = await promisePoolRegUser.execute(`SELECT Recipes.Recipeid,Recipes.Recipename , Recipes.Recipetime, Recipes.Recipeguide, Recipes.Recipemaker, Courses.Coursetype, Mealtypes.Mealtype, Images.Imagefilepath
 FROM Recipes INNER JOIN Recipemealtype
     INNER JOIN Mealtypes  INNER JOIN Courses ON Recipes.Recipecourse = Courses.Courseid   INNER JOIN Images
-    ON  Recipes.Recipeid = Images.ImageRecipe WHERE Courses.Coursetype = "${courseType}" GROUP BY Recipeid DESC`);
+    ON  Recipes.Recipeid = Images.ImageRecipe WHERE Courses.Coursetype LIKE "${courseType}%" GROUP BY Recipeid DESC`);
         return rows;
     } catch (e) {
         return next(e);
@@ -17,7 +17,7 @@ const getrecipeswiththismealtype = async (mealType, next) => {
         const [rows] = await promisePoolRegUser.execute(`SELECT Recipes.Recipeid,Recipes.Recipename , Recipes.Recipetime, Recipes.Recipeguide, Recipes.Recipemaker, Courses.Coursetype, Mealtypes.Mealtype, Images.Imagefilepath
 FROM Recipes INNER JOIN Recipemealtype
     INNER JOIN Mealtypes  INNER JOIN Courses ON Recipes.Recipecourse = Courses.Courseid   INNER JOIN Images
-    ON  Recipes.Recipeid = Images.ImageRecipe WHERE Mealtypes.Mealtype = "${mealType}" GROUP BY Recipeid DESC`);
+    ON  Recipes.Recipeid = Images.ImageRecipe WHERE Mealtypes.Mealtype LIKE "${mealType}%" GROUP BY Recipeid DESC`);
         return rows;
     } catch (e) {
         return next(e);
