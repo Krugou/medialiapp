@@ -32,4 +32,3 @@ var urladmin = `https://10.114.34.72/jakadmin`
 // development
 // var url = `http://localhost:3000`
 // var urladmin = `http://localhost:3000`
-
