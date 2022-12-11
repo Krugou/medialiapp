@@ -173,33 +173,8 @@ const filter_Recipes_By_Recipe_Name = async (req, res, next) => {
 
     let recipesTable = await getRecipesByRecipeName(req.params.recipename,
       next);
-    for (let i = 0; i < recipesTable.length; i++) {
-      const courseTable = await getCoursetypeByCourseId(
-        recipesTable[i].Recipecourse, next);
-      const imagesTable = await getImageByRecipeId(recipesTable[i].Recipeid,
-        next);
-      const mealtypesTable = await getMealtypeByRecipeId(
-        recipesTable[i].Recipeid, next);
 
-      if (courseTable.length < 1) {
-        recipesTable[i].Coursetype = '';
-      } else {
-        recipesTable[i].Coursetype = courseTable[0]['Coursetype'];
 
-      }
-      if (imagesTable.length < 1) {
-        recipesTable[i].Imagefilepath = '';
-      } else {
-        recipesTable[i].Imagefilepath = imagesTable[0]['Imagefilepath'];
-      }
-
-      if (mealtypesTable.length < 1) {
-        recipesTable[i].Mealtype = '';
-      } else {
-        recipesTable[i].Mealtype = mealtypesTable[0]['Mealtype'];
-      }
-
-    }
 
     if (recipesTable.length < 1) {
       return next(httpError('No recipe found', 404));

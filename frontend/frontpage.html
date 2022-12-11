@@ -49,17 +49,17 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PGLYY82MB9"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-      function gtag() { dataLayer.push(arguments); }
+        function gtag() { dataLayer.push(arguments); }
 
-      gtag('js', new Date());
-      gtag('config', 'G-PGLYY82MB9');
+        gtag('js', new Date());
+        gtag('config', 'G-PGLYY82MB9');
     </script>
     <script crossorigin="anonymous" src="fontawesome/fontawesome.js"></script>
     <script crossorigin="anonymous" src="fontawesome/solid.js"></script>
     <title>JAK Reseptit</title>
-    <link href="./css/main.css" rel="stylesheet"/>
+    <link href="./css/main.css" rel="stylesheet" />
     <script defer src="./js/utils/url.js"></script>
     <script defer src="./js/main.js "></script>
     <script defer src="./js/filtertest.js"></script>
@@ -68,70 +68,70 @@
 </head>
 
 <body class="pagebody">
-<header class="pageheader">
-    <input id="check" type="checkbox">
-    <label class="checknappi" for="check">
-        <i class="fas fa-bars"></i>
-    </label>
-    <label class="logo"></label>
-    <nav class="navbar">
-        <ul class="nav-start">
-            <li><a href="frontpage.html" id="frontpageLink">Etusivu</a></li>
-            <li><a href="profile.html" id="profileLink">Profiili</a></li>
-        </ul>
-        <ul class="nav-end">
-            <li><a href="signIn.html" id="signInLink">Kirjaudu</a></li>
-            <li><a href="registration.html" id="registrationLink">Rekisteröinti</a></li>
-            <li><a href="logout.html">Kirjaudu ulos</a></li>
-        </ul>
-    </nav>
-</header>
-<section class="frontUp">
-    <div class="recipeSearch">
-        <input aria-label="Reseptien haku" class="Haeresepti " id="typeInputField" placeholder="Hae Resepti"
-               type="text">
-        <select class="hakuvalikko" id="my-selector">
-            <!-- The first option -->
-            <option value="1">resepti nimen mukaan</option>
+    <header class="pageheader">
+        <input id="check" type="checkbox">
+        <label class="checknappi" for="check">
+            <i class="fas fa-bars"></i>
+        </label>
+        <label class="logo"></label>
+        <nav class="navbar">
+            <ul class="nav-start">
+                <li><a href="frontpage.html" id="frontpageLink">Etusivu</a></li>
+                <li><a href="profile.html" id="profileLink">Profiili</a></li>
+            </ul>
+            <ul class="nav-end">
+                <li><a href="signIn.html" id="signInLink">Kirjaudu</a></li>
+                <li><a href="registration.html" id="registrationLink">Rekisteröinti</a></li>
+                <li><a href="logout.html">Kirjaudu ulos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="frontUp">
+        <div class="recipeSearch">
+            <input aria-label="Reseptien haku" class="Haeresepti " id="typeInputField" placeholder="Hae Resepti"
+                type="text">
+            <select class="hakuvalikko" id="my-selector">
+                <!-- The first option -->
+                <option value="1">reseptin nimen mukaan</option>
 
-            <!-- The second option -->
-            <option value="2">ruokalajin mukaan</option>
+                <!-- The second option -->
+                <option value="2">Ruokalajin mukaan</option>
 
-            <!-- The third option -->
-            <option value="3">Aterianmukaan</option>
+                <!-- The third option -->
+                <option value="3">Aterianmukaan</option>
 
-            <!-- The fourth option -->
-            <option value="4">reseptin hinnan mukaan</option>
-        </select>
-        <button class="filterStyle" id="filter">Filter</button>
-    </div>
-    <div class="modal" id="filterModal">
-        <div class="modal-content">
-            <span class="close" id="close">&times;</span>
-            <div class="modaladd">
-                <H3>Add Filters</H3>
-                <div class="filters">
-                </div>
-                <div class="filtersave">
+                <!-- The fourth option -->
+                <option value="4">Reseptin hinnan mukaan</option>
+            </select>
+            <button class="filterStyle" id="filter">Filter</button>
+        </div>
+        <div class="modal" id="filterModal">
+            <div class="modal-content">
+                <span class="close" id="close">&times;</span>
+                <div class="modaladd">
+                    <H3>Add Filters</H3>
+                    <div class="filters">
+                    </div>
+                    <div class="filtersave">
+                    </div>
                 </div>
             </div>
+            <!-- The select element -->
+            <h4>valitse valikosta tapa millä hakea</h4>
+
         </div>
-        <!-- The select element -->
-        <h4>valitse valikosta tapa millä hakea</h4>
-
-    </div>
 
 
-    <p class="test" id="loading"></p>
-    <div class="addRecipes">
-        <button href="addRecipe.html" id="addrecipesButton">Tee resepti</a></button>
-    </div>
-</section>
-<main class="pagemain">
-    <h2 class="otsikko" id="frontPageHeader"> Uusimmat Reseptit</h2>
-    <hr>
-    <div class="reseptit " id="presentationdata">
-        <!-- <figure class="recipefigure" >
+        <p class="test" id="loading"></p>
+        <div class="addRecipes">
+            <button href="addRecipe.html" id="addrecipesButton">Tee resepti</a></button>
+        </div>
+    </section>
+    <main class="pagemain">
+        <h2 class="otsikko" id="frontPageHeader"> Uusimmat Reseptit</h2>
+        <hr>
+        <div class="reseptit " id="presentationdata">
+            <!-- <figure class="recipefigure" >
             <img src="media/logos/jakrecipeslogo.svg">
             <p class="fontsizeforp">Nimi</p>
             <p class="fontsizeforp">Aika</p>
@@ -192,11 +192,11 @@
             <button>Katso resepti</button>
         </figure> -->
 
-    </div>
-</main>
+        </div>
+    </main>
 
 
-<script src="js/frontpage.js"></script>
+    <script src="js/frontpage.js"></script>
 
 
 </body>
