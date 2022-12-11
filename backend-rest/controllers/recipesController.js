@@ -29,6 +29,7 @@ const {
   getRecipeCommentRatingsByCommentId,
 } = require('../models/commentsModel');
 const { findUsersByUseridRegUser } = require('../models/regUserModel');
+const {getRecipeRatingByRecipe} = require("../models/ratingModel");
 
 const get_recipes_with_this_coursetype = async (req, res, next) => {
   try {
@@ -68,7 +69,7 @@ const get_recipes_with_this_low_recipe_price_to_0 = async (req, res, next) => {
   }
 };
 const recipe_get = async (req, res, next) => {
-  let rows1, rows2, rows3, rows4, rows5, rows6;
+  let rows1, rows2, rows3, rows4, rows5, rows6, rows7;
   try {
 
     rows1 = await getRecipeById(req.params.id, next);
@@ -92,6 +93,7 @@ const recipe_get = async (req, res, next) => {
       }
       //rows6  +=rows6.length >= 1; // True tai False, jos löytyy niin true
     }
+    rows7 = await getRecipeRatingByRecipe(req.params.id, next);
     if (rows1.length < 1) {
       return next(httpError('No recipe found', 404));
     }
@@ -113,6 +115,7 @@ const recipe_get = async (req, res, next) => {
       course: rows4.pop(), // Ainoastaan yksi course, niin pop
       favorite: rows5,
       rating:rows6,
+      ratingsum:rows7.pop(),
     });
 
   } catch (e) {

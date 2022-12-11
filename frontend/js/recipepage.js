@@ -23,6 +23,7 @@ const recipeComments = document.querySelector('#recipeCommentsId');
 const favoriteIcon = document.querySelector('#favoriteHeart');
 const recipeLike = document.getElementById("recipeThumbsup");
 const recipeDislike = document.getElementById("recipeThumbsdown");
+const likes = document.getElementById('Likes');
 
 //Tällä haetaan reseptin tiedot sivulle
 const getRecipe = async (id) => {
@@ -89,7 +90,7 @@ const getRecipe = async (id) => {
 
   }
     //Jos resepti on jo arvosteltu, näytetään se käyttäjälle
-    if (recipe.rating.find === true){
+    if (recipe.rating?.find === true){
       if (recipe.rating.value[0].Stars===1) {
         recipeLike.classList.add('liked');
       }
@@ -97,7 +98,17 @@ const getRecipe = async (id) => {
         recipeDislike.classList.add('disliked');
       }
     }
-
+    //Laitetaan arvostelu näkyviin, jos reseptiä on arvosteltu
+    if (recipe.ratingsum.likes !== null) {
+      const likeCount = recipe.ratingsum.likes
+      likes.innerText = likeCount;
+      if (likeCount>=0){
+        likes.classList.add('positive');
+      }
+      else {
+        likes.classList.add('negative');
+      }
+    }
 
 
   // img.src = `${url}/${cat.filename}`;
@@ -273,7 +284,7 @@ const updateRecipeRating = async (rating, id) => {
     recipeDislike.classList.add('disliked')
   }
   console.log("response");
-
+  
 }
 
 getRecipe(recipe_id);

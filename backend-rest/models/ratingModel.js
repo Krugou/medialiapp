@@ -41,7 +41,7 @@ const getCommentRatingByRecipe = async (params, next) => {
 const getRecipeRatingByRecipe = async (params, next) => {
   try {
     const [rows] = await promisePoolRegUser.execute(
-        `SELECT stars FROM RecipeRating  WHERE Recipeid = "${params}";
+        `SELECT SUM(stars) AS likes FROM Reciperating WHERE Recipeid = "${params}";
                         `);
     return rows;
   } catch (e) {

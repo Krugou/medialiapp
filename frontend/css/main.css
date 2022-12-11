@@ -1047,3 +1047,9 @@
 .disliked{
     color: #d73030;
 }
+.positive{
+    color: #2bf52b
+}
+.negative{
+    color: #d73030;
+}
