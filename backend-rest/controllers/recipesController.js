@@ -23,7 +23,7 @@ const { findUsersByUseridRegUser } = require("../models/regUserModel");
 
 
 const get_recipes_with_this_coursetype = async (req, res, next) => {
-    const courseType = req.params.courseType;
+    const courseType = req.params.coursetype;
     let rows;
     try {
         rows = await getrecipeswiththiscoursetype(courseType, next);
@@ -39,7 +39,7 @@ const get_recipes_with_this_coursetype = async (req, res, next) => {
     }
 }
 const get_recipes_with_this_mealtype = async (req, res, next) => {
-    const mealType = req.params.mealType;
+    const mealType = req.params.mealtype;
     let rows;
     try {
         rows = await getrecipeswiththismealtype(mealType, next);
