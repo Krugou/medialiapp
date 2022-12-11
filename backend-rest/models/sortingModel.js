@@ -20,7 +20,7 @@ FROM jakrecipes.mealtypes m
 	INNER JOIN jakrecipes.recipes r1 ON ( r1.'Recipeid' = r.'Recipeid'  )  
 	INNER JOIN jakrecipes.courses c ON ( c.'Courseid' = r1.'Recipecourse'  )  
 	INNER JOIN jakrecipes.images i ON ( i.'Imagerecipe' = r1.'Recipeid' )  
-	INNER JOIN jakrecipes.users u ON ( u.'Userimg' = i.'Imageid'  )  WHERE Mealtypes.Mealtype LIKE "${mealType}%" GROUP BY Recipeid DESC`);
+	INNER JOIN jakrecipes.users u ON ( u.'Userimg' = i.'Imageid'  )  WHERE Mealtypes.Mealtype LIKE "$mealType}%" GROUP BY Recipeid DESC`);
     return rows;
   } catch (e) {
     return next(e);
