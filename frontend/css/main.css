@@ -218,14 +218,12 @@
 
 .recipeCommentsThumbsUp {
     font-size: 2em;
-    margin-bottom: 1em;
     border-color: white;
 }
 
 .recipeCommentsThumbsDown{
     margin-right: 0.5em;
     font-size: 2em;
-    margin-bottom: 1em;
     border-color: white;
 }
 
@@ -239,6 +237,7 @@
 .commentStats {
     display:flex;
     gap: 2em;
+    align-items: center;
 }
 .recipeRating {
     color:white;
@@ -533,13 +532,13 @@
 }
 
 .recipeStats {
-    width:80%;
+    width:100em;
     justify-content: center;
     align-items: center;
     text-align: center;
     border-radius: 1em;
     padding: 1em;
-    gap: 4em;
+    gap: 2em;
     display: flex;
     background-color: lightgray;
     height: auto;
@@ -787,7 +786,7 @@
 }
 
 #recipesImage {
-    width: 30em;
+    width: 50em;
 }
 
 #recipetimeInput {
@@ -829,6 +828,9 @@
 
 .recipeUserComments div {
     width: 100%;
+}
+.commentStats p {
+    font-size: 2em;
 }
 
 
@@ -975,6 +977,9 @@
 
     .recipefigure img {
         height: 15em;
+    }
+    svg {
+        font-size: 3vh;
     }
 }
 
