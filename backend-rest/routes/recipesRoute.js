@@ -58,7 +58,7 @@ router.get('/oldest', getAllOldestRecipesController);
 router.get('/:id', recipe_get);
 router.get('/filterrecipes/:recipename', filter_Recipes_By_Recipe_Name);
 router.get('/filtercoursetypes/:coursetype', get_recipes_with_this_coursetype);
-router.get('/filtermealtypes/:mealtypes', get_recipes_with_this_mealtype);
+router.get('/filtermealtypes/:mealtype', get_recipes_with_this_mealtype);
 router.get('/filterbyprice/:lowRecipePrice',
     get_recipes_with_this_low_recipe_price_to_0);
 
