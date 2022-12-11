@@ -6,7 +6,4 @@ const {body} = require('express-validator');
 
 router.post('/login', login);
 
-
-
-
 module.exports = router;

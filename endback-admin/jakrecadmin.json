@@ -1,7 +1,9 @@
 {
   "name": "jak-admin",
   "script": "/home/allseeyingeye/medialiapp/endback-admin/jak-admin.js",
-  "watch": ["/home/allseeyingeye/medialiapp/endback-admin/"],
+  "watch": [
+    "/home/allseeyingeye/medialiapp/endback-admin/"
+  ],
   "ignore_watch": [
     "/home/allseeyingeye/medialiapp/endback-admin/node_modules",
     "/home/allseeyingeye/medialiapp/endback-admin/uploads",

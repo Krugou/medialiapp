@@ -14,10 +14,12 @@
     sessionStorage.removeItem('user');
     // alert('You have logged out');
     document.write('Redirecting to  Homepage...');
+
     function redirect() {
-      
-      location.href = 'frontpage.html'
+
+      location.href = 'frontpage.html';
     }
+
     // little bit of delay
     setTimeout(redirect, 500); // ms
 

@@ -105,22 +105,22 @@
 
 <script src="./js/frontpage.js"></script>
 <script>
-    const editFilter = document.getElementById("filterModal");
+  const editFilter = document.getElementById('filterModal');
 
-    const filterButton = document.getElementById("filter");
+  const filterButton = document.getElementById('filter');
 
-    let close = document.getElementsByClassName("close")[0];
+  let close = document.getElementsByClassName('close')[0];
 
-    filterButton.onclick = function () {
-        editFilter.style.display = "block";
+  filterButton.onclick = function() {
+    editFilter.style.display = 'block';
+  };
+
+  close.onclick = function() {
+    editFilter.style.display = 'none';
+  };
+  window.onclick = function(event) {
+    if (event.target == editFilter) {
+      editFilter.style.display = 'none';
     }
-
-    close.onclick = function () {
-        editFilter.style.display = "none";
-    }
-    window.onclick = function (event) {
-        if (event.target == editFilter) {
-            editFilter.style.display = "none";
-        }
-    }
+  };
 </script>

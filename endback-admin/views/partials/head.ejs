@@ -36,17 +36,19 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PGLYY82MB9"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-PGLYY82MB9');
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() { dataLayer.push(arguments); }
+
+      gtag('js', new Date());
+      gtag('config', 'G-PGLYY82MB9');
     </script>
     <!-- fontawesome stuff -->
     <script src="./fontawesome/fontawesome.js" crossorigin="anonymous" defer></script>
     <script src="./fontawesome/solid.js" crossorigin="anonymous" defer></script>
     <!-- basic css and js link -->
-    <link rel="stylesheet" href="./css/whatever.css" />
-    <link rel="stylesheet" href="./css/changefont.css" />
+    <link rel="stylesheet" href="./css/whatever.css"/>
+    <link rel="stylesheet" href="./css/changefont.css"/>
     <script src="./js/whatever.js" defer></script>
     <!-- title -->
     <title>Jak Reseptit</title>
@@ -218,9 +220,6 @@
         }
 
 
-
-
-
         @media screen and (max-width: 750px) {
 
             .reseptit {
@@ -243,7 +242,7 @@
                 display: none;
             }
 
-            #check:checked~nav {
+            #check:checked ~ nav {
                 height: 17vh;
                 display: flex;
                 flex-direction: column;

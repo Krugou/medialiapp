@@ -6,162 +6,157 @@
 
     <!-- basics of meta -->
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <!-- favicon stuff -->
-    <link rel="apple-touch-icon" sizes="180x180" href="media/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="media/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="media/icons/favicon-16x16.png">
+    <link href="media/icons/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+    <link href="media/icons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+    <link href="media/icons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
     <!-- Primary Meta Tags -->
 
-    <meta name="title" content="Jakrecipes">
-    <meta name="author" content="Joonas Lamminmäki, Aleksi Nokelainen, Kaarle Häyhä">
-    <meta name="description" content="Jakrecipes is a recipe sharing website.">
-    <meta name="image" content="media/logos/jakrecipeswide.svg">
-    <meta name="application-name" content="Jakrecipes">
-    <meta name="copyright" content="JAK ltd">
-    <meta name="page-topic" content="Food">
-    <meta name="page-type" content="Recipes">
-    <meta name="audience" content="Everyone">
+    <meta content="Jakrecipes" name="title">
+    <meta content="Joonas Lamminmäki, Aleksi Nokelainen, Kaarle Häyhä" name="author">
+    <meta content="Jakrecipes is a recipe sharing website." name="description">
+    <meta content="media/logos/jakrecipeswide.svg" name="image">
+    <meta content="Jakrecipes" name="application-name">
+    <meta content="JAK ltd" name="copyright">
+    <meta content="Food" name="page-topic">
+    <meta content="Recipes" name="page-type">
+    <meta content="Everyone" name="audience">
 
 
     <!-- avainsanat -->
     <!-- näitä voi viel säätää -->
-    <meta name="keywords" content="HTML, CSS, JavaScript,recipes,accessible, ">
-
+    <meta content="HTML, CSS, JavaScript,recipes,accessible, " name="keywords">
 
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="10.114.34.72">
-    <meta property="og:title" content="Jakrecipes">
-    <meta property="og:description" content="Jakrecipes is a recipe sharing website">
-    <meta property="og:image" content="media/logos/jakrecipeswide.svg">
-
+    <meta content="website" property="og:type">
+    <meta content="10.114.34.72" property="og:url">
+    <meta content="Jakrecipes" property="og:title">
+    <meta content="Jakrecipes is a recipe sharing website" property="og:description">
+    <meta content="media/logos/jakrecipeswide.svg" property="og:image">
 
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="10.114.34.72">
-    <meta property="twitter:title" content="Jakrecipes">
-    <meta property="twitter:description" content="Jakrecipes is a recipe sharing website.">
-    <meta property="twitter:image" content="media/logos/jakrecipeswide.svg">
+    <meta content="summary_large_image" property="twitter:card">
+    <meta content="10.114.34.72" property="twitter:url">
+    <meta content="Jakrecipes" property="twitter:title">
+    <meta content="Jakrecipes is a recipe sharing website." property="twitter:description">
+    <meta content="media/logos/jakrecipeswide.svg" property="twitter:image">
 
 
     <!-- Google Analytics  -->
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PGLYY82MB9"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-PGLYY82MB9');
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() { dataLayer.push(arguments); }
+
+      gtag('js', new Date());
+      gtag('config', 'G-PGLYY82MB9');
     </script>
 
 
     <!-- fontawesome stuff -->
-    <script src="fontawesome/fontawesome.js" crossorigin="anonymous" defer></script>
-    <script src="fontawesome/solid.js" crossorigin="anonymous" defer></script>
+    <script crossorigin="anonymous" defer src="fontawesome/fontawesome.js"></script>
+    <script crossorigin="anonymous" defer src="fontawesome/solid.js"></script>
 
 
     <!-- title -->
-    <link rel="stylesheet" href="../css/main.css" />
-    <script src="../js/utils/url.js" defer></script>
-    <script src="./js/layout.js " defer></script>
-
-
-
+    <link href="../css/main.css" rel="stylesheet"/>
+    <script defer src="../js/utils/url.js"></script>
+    <script defer src="./js/layout.js "></script>
 
 
 </head>
 
-<body onload="startUp()" class="pagebody">
-    <header class="pageheader">
-        <input type="checkbox" id="check">
-        <label for="check" class="checknappi">
-            <i class="fas fa-bars"></i>
-        </label>
-        <label class="logo"></label>
-        <nav class="navbar">
-            <ul class="nav-start">
-                <li><a id="frontpage" href="">Etusivu</a></li>
-                <li><a id="recipes" href="">ReseptiTesti</a></li>
-                <li><a id="profile" href="">Profile</a></li>
-            </ul>
-            <ul class="nav-end">
-                <li id="signIn"><a href="">Kirjaudu</a></li>
-                <li id="signUp"><a href="">Rekisteröinti</a></li>
-                <li id="logOut"><a href="">Kirjaudu ulos</a></li>
-            </ul>
-        </nav>
-    </header>
+<body class="pagebody" onload="startUp()">
+<header class="pageheader">
+    <input id="check" type="checkbox">
+    <label class="checknappi" for="check">
+        <i class="fas fa-bars"></i>
+    </label>
+    <label class="logo"></label>
+    <nav class="navbar">
+        <ul class="nav-start">
+            <li><a href="" id="frontpage">Etusivu</a></li>
+            <li><a href="" id="recipes">ReseptiTesti</a></li>
+            <li><a href="" id="profile">Profile</a></li>
+        </ul>
+        <ul class="nav-end">
+            <li id="signIn"><a href="">Kirjaudu</a></li>
+            <li id="signUp"><a href="">Rekisteröinti</a></li>
+            <li id="logOut"><a href="">Kirjaudu ulos</a></li>
+        </ul>
+    </nav>
+</header>
 
 
+<main class="pagemain" id="pageGeneration">
+    <section class="frontUp" id="frontUp">
+        <input aria-label="Reseptien haku" class="Haeresepti " id="typeInputField" placeholder="Hae Resepti"
+               type="text">
+        <button class="filterStyle" id="filter">Filter</button>
+        <button class="filterStyle marpad1rem" id="hae">Hae</button>
 
-    <main id="pageGeneration" class="pagemain">
-        <section id="frontUp" class="frontUp">
-            <input type="text" id="typeInputField" aria-label="Reseptien haku" placeholder="Hae Resepti"
-                class="Haeresepti ">
-            <button id="filter" class="filterStyle">Filter</button>
-            <button id="hae" class="filterStyle marpad1rem">Hae</button>
-
-            <div id="filterModal" class="modal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <div class="modaladd">
-                        <H3>Add Filters</H3>
-                        <div class="filters">
-                        </div>
-                        <div class="filtersave">
-                        </div>
+        <div class="modal" id="filterModal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modaladd">
+                    <H3>Add Filters</H3>
+                    <div class="filters">
+                    </div>
+                    <div class="filtersave">
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="addRecipes">
-                <button href="addRecipe.html" id="addrecipesButton">Tee resepti</a></button>
-            </div>
-        </section>
-        <h2 class="otsikko"> Uusimmat Reseptit</h2>
+        <div class="addRecipes">
+            <button href="addRecipe.html" id="addrecipesButton">Tee resepti</a></button>
+        </div>
+    </section>
+    <h2 class="otsikko"> Uusimmat Reseptit</h2>
+    <hr>
+    <div class="reseptit " id="presentationdata">
+
+
+    </div>
+</main>
+
+<footer class="pageFooter">
+    <div aria-label="Info" class="pageFooterContainer">
+        <h3 class="pageFooterContainerListTitle">Info</h3>
         <hr>
-        <div class="reseptit " id="presentationdata">
+        <ul class="pageFooterContainerList">
+            <li class="pageFooterContainerListItem"><a id="aboutUs">About Us</a></li>
+            <li class="pageFooterContainerListItem"><a id="supportSite">Support </a></li>
+            <li class="pageFooterContainerListItem"><a id="contact">Contact us</a></li>
+        </ul>
+    </div>
+    <div aria-label="Socialmediat" class="pageFooterContainer">
+        <h3 class="pageFooterContainerListTitle">Socialmedia</h3>
+        <hr>
+        <ul class="pageFooterContainerList">
+            <li class="pageFooterContainerListItem"><a>instagram</a></li>
+            <li class="pageFooterContainerListItem"><a>twitter</a></li>
+            <li class="pageFooterContainerListItem"><a>facebook</a></li>
+        </ul>
+    </div>
+    <div aria-label="Tekijät" class="pageFooterContainer">
+        <h3 class="pageFooterContainerListTitle">Tekijät</h3>
+        <hr>
+        <ul class="pageFooterContainerList">
+            <li class="pageFooterContainerListItem"><a>Kaarle</a></li>
+            <li class="pageFooterContainerListItem"><a>Joonas</a></li>
+            <li class="pageFooterContainerListItem"><a>Aleksi</a></li>
+        </ul>
+    </div>
 
-
-
-        </div>
-    </main>
-
-    <footer class="pageFooter">
-        <div class="pageFooterContainer" aria-label="Info">
-            <h3 class="pageFooterContainerListTitle">Info</h3>
-            <hr>
-            <ul class="pageFooterContainerList">
-                <li class="pageFooterContainerListItem"><a id="aboutUs">About Us</a></li>
-                <li class="pageFooterContainerListItem"><a id="supportSite">Support </a></li>
-                <li class="pageFooterContainerListItem"><a id="contact">Contact us</a></li>
-            </ul>
-        </div>
-        <div class="pageFooterContainer" aria-label="Socialmediat">
-            <h3 class="pageFooterContainerListTitle">Socialmedia</h3>
-            <hr>
-            <ul class="pageFooterContainerList">
-                <li class="pageFooterContainerListItem"><a>instagram</a></li>
-                <li class="pageFooterContainerListItem"><a>twitter</a></li>
-                <li class="pageFooterContainerListItem"><a>facebook</a></li>
-            </ul>
-        </div>
-        <div class="pageFooterContainer" aria-label="Tekijät">
-            <h3 class="pageFooterContainerListTitle">Tekijät</h3>
-            <hr>
-            <ul class="pageFooterContainerList">
-                <li class="pageFooterContainerListItem"><a>Kaarle</a></li>
-                <li class="pageFooterContainerListItem"><a>Joonas</a></li>
-                <li class="pageFooterContainerListItem"><a>Aleksi</a></li>
-            </ul>
-        </div>
-
-    </footer>
+</footer>
 </body>
 
 </html>

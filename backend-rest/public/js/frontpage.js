@@ -2,8 +2,7 @@
 const addRecipeButton = document.querySelector('#addrecipesButton');
 
 addRecipeButton.addEventListener('click', async (evt) => {
-evt.preventDefault();
-    location.href='addRecipe';
-
+  evt.preventDefault();
+  location.href = 'addRecipe';
 
 });

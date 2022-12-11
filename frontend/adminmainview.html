@@ -3,70 +3,70 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <!-- favicon stuff -->
-    <link rel="apple-touch-icon" sizes="180x180" href="media/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="media/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="media/icons/favicon-16x16.png">
+    <link href="media/icons/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+    <link href="media/icons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+    <link href="media/icons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
     <!-- Primary Meta Tags -->
 
-    <meta name="title" content="Jakrecipes">
-    <meta name="author" content="Joonas Lamminmäki, Aleksi Nokelainen, Kaarle Häyhä">
-    <meta name="description" content="Jakrecipes is a recipe sharing website.">
-    <meta name="image" content="media/logos/jakrecipeswide.svg">
-    <meta name="application-name" content="Jakrecipes">
-    <meta name="copyright" content="JAK ltd">
-    <meta name="page-topic" content="Food">
-    <meta name="page-type" content="Recipes">
-    <meta name="audience" content="Everyone">
+    <meta content="Jakrecipes" name="title">
+    <meta content="Joonas Lamminmäki, Aleksi Nokelainen, Kaarle Häyhä" name="author">
+    <meta content="Jakrecipes is a recipe sharing website." name="description">
+    <meta content="media/logos/jakrecipeswide.svg" name="image">
+    <meta content="Jakrecipes" name="application-name">
+    <meta content="JAK ltd" name="copyright">
+    <meta content="Food" name="page-topic">
+    <meta content="Recipes" name="page-type">
+    <meta content="Everyone" name="audience">
 
 
     <!-- avainsanat -->
     <!-- näitä voi viel säätää -->
-    <meta name="keywords" content="HTML, CSS, JavaScript,recipes,accessible, ">
-
+    <meta content="HTML, CSS, JavaScript,recipes,accessible, " name="keywords">
 
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="10.114.34.72">
-    <meta property="og:title" content="Jakrecipes">
-    <meta property="og:description" content="Jakrecipes is a recipe sharing website">
-    <meta property="og:image" content="media/logos/jakrecipeswide.svg">
-
+    <meta content="website" property="og:type">
+    <meta content="10.114.34.72" property="og:url">
+    <meta content="Jakrecipes" property="og:title">
+    <meta content="Jakrecipes is a recipe sharing website" property="og:description">
+    <meta content="media/logos/jakrecipeswide.svg" property="og:image">
 
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="10.114.34.72">
-    <meta property="twitter:title" content="Jakrecipes">
-    <meta property="twitter:description" content="Jakrecipes is a recipe sharing website.">
-    <meta property="twitter:image" content="media/logos/jakrecipeswide.svg">
+    <meta content="summary_large_image" property="twitter:card">
+    <meta content="10.114.34.72" property="twitter:url">
+    <meta content="Jakrecipes" property="twitter:title">
+    <meta content="Jakrecipes is a recipe sharing website." property="twitter:description">
+    <meta content="media/logos/jakrecipeswide.svg" property="twitter:image">
 
 
     <!-- Google Analytics  -->
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PGLYY82MB9"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-PGLYY82MB9');
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() { dataLayer.push(arguments); }
+
+      gtag('js', new Date());
+      gtag('config', 'G-PGLYY82MB9');
     </script>
 
 
     <!-- fontawesome stuff -->
-    <script src="fontawesome/fontawesome.js" crossorigin="anonymous" defer></script>
-    <script src="fontawesome/solid.js" crossorigin="anonymous" defer></script>
+    <script crossorigin="anonymous" defer src="fontawesome/fontawesome.js"></script>
+    <script crossorigin="anonymous" defer src="fontawesome/solid.js"></script>
 
 
     <!-- title -->
     <!-- <link rel="stylesheet" href="./css/extra.css" /> -->
-    <link rel="stylesheet" href="./css/main.css" />
-    <script src="./js/utils/url.js" defer></script>
-    <script src="./js/adminmain.js" defer></script>
+    <link href="./css/main.css" rel="stylesheet"/>
+    <script defer src="./js/utils/url.js"></script>
+    <script defer src="./js/adminmain.js"></script>
     <style>
         .admin_body {
             display: flex;
@@ -88,7 +88,7 @@
             flex-direction: column;
             justify-content: space-between;
             flex-grow: 1;
-            
+
             /* border: solid 2px black; */
         }
 
@@ -111,66 +111,66 @@
             justify-content: space-between;
             flex-grow: 5;
             border: solid 2px black;
-            overflow-x:auto;
+            overflow-x: auto;
         }
     </style>
 </head>
 
 <body class="admin_body">
-    <h1 class=""> Jakrecipes admin dashboard</h1>
+<h1 class=""> Jakrecipes admin dashboard</h1>
 
-    <header class="pageheader">
-        <label for="check" class="checknappi">
-            <i class="fas fa-bars"></i>
-        </label>
-        <label class="logo"></label>
-        <nav class="navbar">
-            <ul class="nav-start">
-                <li><a id="frontpageLink" href="frontpage.html">Etusivu</a>
-            </ul>
-            <ul class="nav-end">
-                <li><a id="adminLoginLink" href="adminlogin.html">Webmaster login</a></li>
+<header class="pageheader">
+    <label class="checknappi" for="check">
+        <i class="fas fa-bars"></i>
+    </label>
+    <label class="logo"></label>
+    <nav class="navbar">
+        <ul class="nav-start">
+            <li><a href="frontpage.html" id="frontpageLink">Etusivu</a>
+        </ul>
+        <ul class="nav-end">
+            <li><a href="adminlogin.html" id="adminLoginLink">Webmaster login</a></li>
 
-            </ul>
-        </nav>
-    </header>
-    <main id="admin_main_content" class="admin_main admin_main_content">
-        <aside class="admin_main_aside">
-            <p class="admin_main_aside_item" id="mariadbstatus">mariadb</p>
-            <hr>
-            <p class="admin_main_aside_item" id="apachestatus">apache</p>
-            <hr>
-            <p class="admin_main_aside_item" id="nodejsstatus">nodejs</p>
-            <hr>
-            <p class="admin_main_aside_item" id="mariadbuptime">mariadbuptime</p>
-            <hr>
-            <p class="admin_main_aside_item" id="serveruptime">serveruptime</p>
-            <hr>
-            <p class="admin_main_aside_item" id="alluserscount">alluserscount </p>
-            <hr>
-            <p class="admin_main_aside_item" id="userscount">userscount </p>
-            <hr>
-            <p class="admin_main_aside_item" id="recipecount">recipecount</p>
-            <hr>
-            <p class="admin_main_aside_item" id="commentcount">commentcount</p>
-            <hr>
-            <p class="admin_main_aside_item" id="imagecount">imagecount</p>
-            <hr>
-            <p class="admin_main_aside_item" id="reciperatingcount"> reciperatingcount</p>
-            <hr>
-            <p class="admin_main_aside_item" id="commentratingcount">commentratingcount</p>
+        </ul>
+    </nav>
+</header>
+<main class="admin_main admin_main_content" id="admin_main_content">
+    <aside class="admin_main_aside">
+        <p class="admin_main_aside_item" id="mariadbstatus">mariadb</p>
+        <hr>
+        <p class="admin_main_aside_item" id="apachestatus">apache</p>
+        <hr>
+        <p class="admin_main_aside_item" id="nodejsstatus">nodejs</p>
+        <hr>
+        <p class="admin_main_aside_item" id="mariadbuptime">mariadbuptime</p>
+        <hr>
+        <p class="admin_main_aside_item" id="serveruptime">serveruptime</p>
+        <hr>
+        <p class="admin_main_aside_item" id="alluserscount">alluserscount </p>
+        <hr>
+        <p class="admin_main_aside_item" id="userscount">userscount </p>
+        <hr>
+        <p class="admin_main_aside_item" id="recipecount">recipecount</p>
+        <hr>
+        <p class="admin_main_aside_item" id="commentcount">commentcount</p>
+        <hr>
+        <p class="admin_main_aside_item" id="imagecount">imagecount</p>
+        <hr>
+        <p class="admin_main_aside_item" id="reciperatingcount"> reciperatingcount</p>
+        <hr>
+        <p class="admin_main_aside_item" id="commentratingcount">commentratingcount</p>
 
-        </aside>
-        <section id="entryTables" class="admin_main_section">
-            <h2> Welcome, webmaster!</h2>
-        </section>
+    </aside>
+    <section class="admin_main_section" id="entryTables">
+        <h2> Welcome, webmaster!</h2>
+    </section>
 
-    </main>
+</main>
 
-    <footer>
-        <h2 id="admin-quotes" class=""> Welcome, webmaster!</h2>
+<footer>
+    <h2 class="" id="admin-quotes"> Welcome, webmaster!</h2>
 
-    </footer>
+</footer>
 </body>
 
 

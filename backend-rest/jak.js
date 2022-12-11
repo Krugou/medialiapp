@@ -9,12 +9,12 @@ const userRoute = require('./routes/userRoute');
 const frontRoute = require('./routes/frontRoute');
 const statusRoute = require('./routes/statusRoute');
 const recipesRoute = require('./routes/recipesRoute');
-const { httpError } = require('./utils/errors');
+const {httpError} = require('./utils/errors');
 const passport = require('./utils/pass');
 app.use(cors());
 app.set('view engine', 'ejs');
-app.use(express.json()) // for parsing application/json
-app.use(express.urlencoded({ extended: true }))
+app.use(express.json()); // for parsing application/json
+app.use(express.urlencoded({extended: true}));
 
 app.use(passport.initialize());
 
@@ -26,10 +26,12 @@ app.use('/thumbnails', express.static('thumbnails'));
 // valitse ympäristö
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 if (process.env.NODE_ENV === 'production') {
-    require('./utils/production')(app, process.env.HTTP_PORT || 3000, process.env.HTTPS_PORT || 8000);
+  require('./utils/production')(app, process.env.HTTP_PORT || 3000,
+      process.env.HTTPS_PORT || 8000);
 } else {
-    require('./utils/localhost')(app, process.env.HTTP_PORT || 3000);
-};
+  require('./utils/localhost')(app, process.env.HTTP_PORT || 3000);
+}
+
 // käytettävät polut
 app.use('/front', frontRoute);
 app.use('/auth', authRoute);
