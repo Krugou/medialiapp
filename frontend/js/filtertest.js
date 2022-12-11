@@ -1,5 +1,5 @@
 function createResults(json) {
-
+console.table(json)
   for (let i = 0; i < (json.recipesTable.length); i++) {
     const figure = document.createElement('figure');
     const img = document.createElement('img');
@@ -9,7 +9,6 @@ function createResults(json) {
 
     } else {
       img.src = url + '/' + json.recipesTable[i]?.Imagefilepath;
-      console.log(img.src);
       // loadout += '<figure class="recipefigure"><img src="' + url + '/' + json.recipesTable[i].Images.Imagefilepath + '"><p class="fontsizeforp">' + json.recipesTable[i].Recipename + '</p><p class="fontsizeforp">' + json.recipesTable[i].Recipetime + '</p><p class="fontsizeforp">' + json.recipesTable[i].Coursetype + '</p><p class="fontsizeforp">' + json.recipesTable[i].Mealtypes.Mealtype + '</p> <button class="recipesButtonFront"id="' + json.recipesTable[i].Recipeid + '"> Katso resepti</button ></figure >'
     }
     img.alt = 'Reseptin kuva';
@@ -81,7 +80,6 @@ function frontPageQuery(query) {
         throw 'HTTP ERROR';
       }
     }).then((queryData) => {
-
       clearPage();
       createResults(queryData);
 
@@ -97,7 +95,6 @@ function frontPageQuery(query) {
         throw 'HTTP ERROR';
       }
     }).then((queryData) => {
-
       clearPage();
       createResults(queryData);
 
@@ -112,7 +109,6 @@ function frontPageQuery(query) {
         throw 'HTTP ERROR';
       }
     }).then((queryData) => {
-
       clearPage();
       createResults(queryData);
 
@@ -132,7 +128,6 @@ function frontPageQuery(query) {
         throw 'HTTP ERROR';
       }
     }).then((queryData) => {
-
       clearPage();
       createResults(queryData);
     }).catch((error) => {

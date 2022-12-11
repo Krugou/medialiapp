@@ -30,14 +30,12 @@ const {
 const { findUsersByUseridRegUser } = require('../models/regUserModel');
 
 const get_recipes_with_this_coursetype = async (req, res, next) => {
-  const courseType = req.params.coursetype;
-  let rows;
   try {
-    rows = await getrecipeswiththiscoursetype(courseType, next);
-    if (rows.length < 1) {
+    const recipesTable = await getrecipeswiththiscoursetype(req.params.coursetype, next);
+    if (recipesTable.length < 1) {
       return next(httpError('No recipes found', 404));
     }
-    res.json(rows);
+    res.json({ recipesTable });
   } catch (e) {
     console.error('get_recipes_with_this_coursetype', e.message);
     next(httpError('Database error', 500));
@@ -45,28 +43,24 @@ const get_recipes_with_this_coursetype = async (req, res, next) => {
   }
 };
 const get_recipes_with_this_mealtype = async (req, res, next) => {
-  const mealType = req.params.mealtype;
-  let rows;
   try {
-    rows = await getrecipeswiththismealtype(mealType, next);
-    if (rows.length < 1) {
+    const recipesTable = await getrecipeswiththismealtype(req.params.mealtype, next);
+    if (recipesTable.length < 1) {
       return next(httpError('No recipes found', 404));
     }
-    res.json(rows);
+    res.json({ recipesTable });
   } catch (e) {
     console.error('get_recipes_with_this_mealtype', e.message);
     next(httpError('Database error', 500));
   }
 };
 const get_recipes_with_this_low_recipe_price_to_0 = async (req, res, next) => {
-  const lowRecipePrice = req.params.lowRecipePrice;
-  let rows;
   try {
-    rows = await getrecipeswiththislowrecipepriceto0(lowRecipePrice, next);
-    if (rows.length < 1) {
+    const recipesTable = await getrecipeswiththislowrecipepriceto0(req.params.lowRecipePrice, next);
+    if (recipesTable.length < 1) {
       return next(httpError('No recipes found', 404));
     }
-    res.json(rows);
+    res.json({ recipesTable });
   } catch (e) {
     console.error('get_recipes_with_this_low_recipe_price_to_0', e.message);
     next(httpError('Database error', 500));
@@ -132,18 +126,17 @@ const recipe_get = async (req, res, next) => {
 const recipes_mealtypes_get = async (req, res, next) => {
 
   try {
-    const result = await getRecipeMealTypes(next);
-    if (result.length < 1) {
+    const recipesTable = await getRecipeMealTypes(next);
+    if (recipesTable.length < 1) {
       next(httpError('No Mealtypes Found', 500));
     }
-    res.json(result);
+    res.json( recipesTable );
   } catch (e) {
     console.error('recipes_mealtypes_get', e.message);
     next(httpError('Internal server error', 500));
   }
 
 };
-let combinedTable = [];
 const getAllNewestRecipesController = async (req, res, next) => {
   try {
     const rows = await getAllNewestRecipesMainPage(next);
@@ -171,7 +164,7 @@ const getAllOldestRecipesController = async (req, res, next) => {
 const filter_Recipes_By_Recipe_Name = async (req, res, next) => {
   try {
 
-    let recipesTable = await getRecipesByRecipeName(req.params.recipename,
+    const recipesTable = await getRecipesByRecipeName(req.params.recipename,
       next);
 
 
