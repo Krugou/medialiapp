@@ -1,3 +1,9 @@
+* {
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: monospace;
+}
 .addComment {
     width: 100%;
     background-color: #0d1e40;
@@ -527,13 +533,14 @@
 }
 
 .recipeStats {
+    width:80%;
+    justify-content: center;
     align-items: center;
     text-align: center;
     border-radius: 1em;
     padding: 1em;
-    gap: 2em;
+    gap: 4em;
     display: flex;
-    width: 60%;
     background-color: lightgray;
     height: auto;
     margin: auto;
@@ -684,12 +691,6 @@
     font-size: 30px;
 }
 
-* {
-    box-sizing: border-box;
-    text-decoration: none;
-    list-style: none;
-    font-family: monospace;
-}
 
 #addrecipePrice {
     width: 13.8em;
@@ -846,7 +847,7 @@
     }
 
     .recipeStats {
-        width: 80%;
+
     }
 
     .Recipe_desc {
@@ -911,7 +912,6 @@
 
 @media screen and (min-width: 1600px) {
     .recipeStats {
-        width: 39.5%;
     }
 }
 
