@@ -60,10 +60,10 @@
     </script>
     <script crossorigin="anonymous" src="fontawesome/fontawesome.js"></script>
     <script crossorigin="anonymous" src="fontawesome/solid.js"></script>
-    <script defer src="js/addrecipe.js"></script>
     <title>JAK Reseptit</title>
     <link href="./css/main.css" rel="stylesheet"/>
     <script defer src="./js/utils/url.js"></script>
+    <script defer src="js/modifyrecipe.js"></script>
 </head>
 
 <body class="pagebody">
@@ -85,7 +85,7 @@
     </nav>
 </header>
 <main class="pagemain">
-    <H2 class="otsikko">Tee Uusi Resepti</H2>
+    <H2 class="otsikko" id="editRecipeh2">Muokkaa reseptiä</H2>
     <div class="addRecipe_detail">
         <div class="recipename">
             <input id="recipenameInput" placeholder="Reseptin nimi (pakollinen).">
@@ -122,7 +122,7 @@
             </form>
         </div>
         <div class="postButton">
-            <button class="postRecipe" id="postRecipe">Tee Lisäys!</button>
+            <button class="postRecipe" id="postRecipe">Tee muokkaus!</button>
         </div>
     </div>
 </main>

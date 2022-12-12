@@ -2,6 +2,7 @@
 
 //Vaihetaan arvoa, jos resepti on suosikeissa.
 let favorited = false;
+
 const getQParam = (param) => {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -32,7 +33,6 @@ const getRecipe = async (id) => {
       //  Authorization: 'Bearer ' + sessionStorage.getItem('token'),
     },
   };
-  let recipes;
   const response = await fetch(url + '/recipes/' + id, fetchOptions);
   const recipe = await response.json();
 
