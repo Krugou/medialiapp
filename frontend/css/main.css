@@ -735,6 +735,7 @@ margin: auto;
   color: white;
   height: 3em;
   width: 7em;
+  margin: 0.5em;
 }
 
 .userPosts figure img {
