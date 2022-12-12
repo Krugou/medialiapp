@@ -30,7 +30,7 @@ const {
   getCommentratingByUserid,
 } = require('../models/commentsModel');
 const { getReguserOwnedRecipes, } = require('../models/regUserModel');
-const {getRecipeRatingByRecipe} = require("../models/ratingModel");
+const { getRecipeRatingByRecipe } = require("../models/ratingModel");
 
 const get_recipes_with_this_coursetype = async (req, res, next) => {
   try {

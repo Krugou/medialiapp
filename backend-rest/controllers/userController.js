@@ -3,12 +3,30 @@ const {
   addUsersRegUser,
   findUsersByEmailRegUser,
   findUsersByUsernameRegUser,
+  getRegUserProfileImage,
   
 } = require('../models/regUserModel');
 const {validationResult} = require('express-validator');
 const {httpError} = require('../utils/errors');
 const bcrypt = require('bcryptjs');
 
+const getReg_UserProfileImage = async (req, res, next) => {
+  try { 
+    const result = await getRegUserProfileImage(req.params.userid, next);
+    if (result.length < 1) {
+      res.json({
+        Imagefilepath: 'undefined',
+      });
+      next(httpError('No image found', 404));
+      return;
+    }
+    res.json(result);
+  } catch (e) {
+    res.json({
+      Imagefilepath: 'undefined',
+    });
+  }
+};
 const user_post = async (req, res, next) => {
 
   try {
@@ -74,4 +92,5 @@ const user_post = async (req, res, next) => {
 
 module.exports = {
   user_post,
+  getReg_UserProfileImage
 };

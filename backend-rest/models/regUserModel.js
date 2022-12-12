@@ -1,5 +1,6 @@
 const poolRegUser = require('../database/db');
 const promisePoolRegUser = poolRegUser.promise();
+const httpError = require('http-errors');
 const getReguserOwnedRecipes = async (userid,next) => {
   try {
     const [rows] = await promisePoolRegUser.execute(`SELECT * FROM reguserprofileview where Userid = 32 group by Recipeid order by Recipeid desc`);
@@ -9,7 +10,19 @@ const getReguserOwnedRecipes = async (userid,next) => {
     next(httpError('Database error', 500));
   }
 };
+// ei toimi viel oikein
+const getRegUserProfileImage = async (userid, next) => {
+  try {
     
+    // const [rows] = await promisePoolRegUser.execute(`SELECT Imagefilepath FROM usersandimages where Userid = 32 group by Recipeid order by Recipeid desc`);
+    // // "${userid}"
+    // return rows;
+  } catch (e) {
+    next(httpError('Database error', 500));
+  }
+};
+
+
 const addUsersRegUser = async (data, next) => {
 
   console.log('addUsersRegUser');
@@ -67,4 +80,5 @@ module.exports = {
   findUsersByUsernameRegUser,
   findUsersByUseridRegUser,
   getReguserOwnedRecipes,
+  getRegUserProfileImage,
 };
