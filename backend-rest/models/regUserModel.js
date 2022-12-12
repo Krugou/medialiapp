@@ -1,7 +1,7 @@
 const poolRegUser = require('../database/db');
 const promisePoolRegUser = poolRegUser.promise();
 const httpError = require('http-errors');
-const getReguserOwnedRecipes = async (userid,next) => {
+const getReguserOwnedRecipes = async (userid, next) => {
   try {
     const [rows] = await promisePoolRegUser.execute(`SELECT * FROM reguserprofileview where Userid = 32 group by Recipeid order by Recipeid desc`);
     // "${userid}"
@@ -13,14 +13,24 @@ const getReguserOwnedRecipes = async (userid,next) => {
 // ei toimi viel oikein
 const getRegUserProfileImage = async (userid, next) => {
   try {
-    
-    // const [rows] = await promisePoolRegUser.execute(`SELECT Imagefilepath FROM usersandimages where Userid = 32 group by Recipeid order by Recipeid desc`);
-    // // "${userid}"
-    // return rows;
+
+    const [rows] = await promisePoolRegUser.execute(`SELECT Imagefilepath FROM usersandimages where Userid = 32  `);
+    // "${userid}"
+    return rows;
   } catch (e) {
     next(httpError('Database error', 500));
   }
 };
+const getRegUserProfileUsername = async (userid, next) => {
+  try {
+    const [rows] = await promisePoolRegUser.execute(`SELECT Username FROM usersandimages where Userid = 32  desc`);
+    // "${userid}"
+    return rows;
+  } catch (e) {
+    next(httpError('Database error', 500));
+  }
+};
+
 
 
 const addUsersRegUser = async (data, next) => {
@@ -29,7 +39,7 @@ const addUsersRegUser = async (data, next) => {
   try {
     const [rows] = await promisePoolRegUser.execute(`INSERT INTO Users (Useremail, Userpassword, Username) 
                                                     VALUES (?, ?, ?);`,
-        data);
+      data);
     return rows;
   } catch (e) {
     console.error('addUsersAdmin', e.message);
@@ -81,4 +91,5 @@ module.exports = {
   findUsersByUseridRegUser,
   getReguserOwnedRecipes,
   getRegUserProfileImage,
+  getRegUserProfileUsername,
 };

@@ -4,14 +4,15 @@ const {
   findUsersByEmailRegUser,
   findUsersByUsernameRegUser,
   getRegUserProfileImage,
-  
+  getRegUserProfileUsername,
+
 } = require('../models/regUserModel');
-const {validationResult} = require('express-validator');
-const {httpError} = require('../utils/errors');
+const { validationResult } = require('express-validator');
+const { httpError } = require('../utils/errors');
 const bcrypt = require('bcryptjs');
 
-const getReg_UserProfileImage = async (req, res, next) => {
-  try { 
+const getReg_UserDetailImage = async (req, res, next) => {
+  try {
     const result = await getRegUserProfileImage(req.params.userid, next);
     if (result.length < 1) {
       res.json({
@@ -24,6 +25,23 @@ const getReg_UserProfileImage = async (req, res, next) => {
   } catch (e) {
     res.json({
       Imagefilepath: 'undefined',
+    });
+  }
+};
+const getReg_UserDetailUsername = async (req, res, next) => {
+  try {
+    const result = await getRegUserProfileUsername(req.params.userid, next);
+    if (result.length < 1) {
+      res.json({
+        Username: 'undefined',
+      });
+      next(httpError('No username found', 404));
+      return;
+    }
+    res.json(result);
+  } catch (e) {
+    res.json({
+      Username: 'undefined',
     });
   }
 };
@@ -92,5 +110,6 @@ const user_post = async (req, res, next) => {
 
 module.exports = {
   user_post,
-  getReg_UserProfileImage
+  getReg_UserDetailImage,
+  getReg_UserDetailUsername,
 };
