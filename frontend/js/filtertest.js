@@ -42,7 +42,7 @@ function createResults(json, target, length) {
     figure.appendChild(button);
     figure.classList.add('recipefigure');
     target.appendChild(figure);
-  }
+  });
 }
 // random number generator 1 - 2000
 function getRandomInt(max) {
