@@ -9,10 +9,10 @@ const getQParam = (param) => {
   return urlParams.get(param);
 };
 
-// get id from address
+// Haetaan id osoitekentästä
 const recipe_id = getQParam('id');
 
-// select existing html elements
+// Haetaan elementtejä
 const img = document.querySelector('#recipesImage');
 const recipeName = document.querySelector('#recipeName');
 const instructions = document.querySelector('#instructionPara');
@@ -147,6 +147,7 @@ postComment.addEventListener('click', async evt => {
     document.querySelector('#commentField').value = '';
     // document.location.reload();
 });
+//Haetaan kommentit
 const getComments = async (id) => {
   const fetchOptions = {
     headers: {
@@ -159,6 +160,8 @@ const getComments = async (id) => {
   console.log(comments);
   console.log(comments.length);
   console.log('asdawiojd');
+
+  // Luodaan kommentit sivulle
   for (let i = 0; i < comments.length; i++) {
     const li = document.createElement('li');
     li.classList.add('recipeUserComment');
@@ -190,6 +193,7 @@ const getComments = async (id) => {
 
     divContent.appendChild(p);
 
+    // Luodaan like/dislike ikonit
     const spanUp = document.createElement('span');
     const spanDown = document.createElement('span');
     spanUp.classList.add('recipeCommentsThumbsUp');
@@ -228,6 +232,7 @@ const getComments = async (id) => {
 
     const pLikes = document.createElement('p');
 
+    // Jos kommenttia on valmiiksi arvostelut, vaihdetaan like/dislike ikoneiden väri
     pLikes.innerText = comments[i].Commentrating;
     if (comments[i].Commentrating>0){
       pLikes.classList.add('positive');
@@ -285,6 +290,7 @@ favoriteIcon.addEventListener('click', async evt => {
   await addOrRemoveFavorite(recipe_id);
 });
 
+//Lisätään tai poistetaan suosikki riippuen favorited arvosta
 const addOrRemoveFavorite = async (id) => {
   const likeHeart = document.querySelector('#likeHeart'); // Pitää hakea tässä kohtaa, muuten ei saada selectattua fontawesomin dynaamista ikonia
   if (favorited === false) {
@@ -303,9 +309,9 @@ const addOrRemoveFavorite = async (id) => {
       return;
     }
   }
-  if (favorited === true) {
-    let confirmFav = confirm('Poistetaanko Suosikeista?');
-    if (confirmFav === true) {
+   if (favorited === true) {
+    let confirmFav = confirm('Poistetaanko Suosikeista?');   //Varmistetaan käyttäjältä haluaako hän poistaa suosikin, ennen poistamista
+     if (confirmFav === true) {
       const fetchOptions = {
         method: 'POST',
         headers: {
@@ -322,9 +328,9 @@ const addOrRemoveFavorite = async (id) => {
   }
 
 };
-recipeLike.addEventListener('click', evt => {
+recipeLike.addEventListener('click', async evt => {
   console.log("asd");
-  updateRecipeRating("like", recipe_id);
+ await updateRecipeRating("like", recipe_id);
 
 });
 recipeDislike.addEventListener('click', async evt => {
@@ -333,6 +339,7 @@ recipeDislike.addEventListener('click', async evt => {
 
 });
 
+// Arvostellaan resepti
 const updateRecipeRating = async (rating, id) => {
   const fetchOptions = {
     method: 'POST',
@@ -340,12 +347,12 @@ const updateRecipeRating = async (rating, id) => {
       Authorization: 'Bearer ' + sessionStorage.getItem('token'),
     },
   };
-  const response = await fetch(url + '/recipes/'+rating+'/' + id, fetchOptions);
-  if (response.ok && rating==="like"){
+  const response = await fetch(url + '/recipes/'+rating+'/' + id, fetchOptions); // Haetaan reitti arvostelun mukaan ja id:llä
+  if (response.ok && rating==="like"){ // Vaihdetaan värejä ikoneille
     recipeDislike.classList.remove('disliked')
     recipeLike.classList.add('liked')
   }
-  if (response.ok && rating==="dislike"){
+  if (response.ok && rating==="dislike"){ // Vaihdetaan värejä ikoneille
     recipeLike.classList.remove('liked')
     recipeDislike.classList.add('disliked')
   }
