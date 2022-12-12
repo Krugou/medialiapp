@@ -24,7 +24,7 @@ const favoriteIcon = document.querySelector('#favoriteHeart');
 const recipeLike = document.getElementById("recipeThumbsup");
 const recipeDislike = document.getElementById("recipeThumbsdown");
 const likes = document.getElementById('Likes');
-
+const editButtonDiv = document.getElementById('ediRecipeDiv');
 //Tällä haetaan reseptin tiedot sivulle
 const getRecipe = async (id) => {
   const fetchOptions = {
@@ -110,34 +110,42 @@ const getRecipe = async (id) => {
       }
     }
 
+    // Luodaan sivulle edit nappi
+    const editButton = document.createElement('button');
+    editButton.id = "editRecipe";
+    editButton.classList.add('postRecipe');
+    editButton.innerHTML = "Edit recipe";
+    editButton.addEventListener('click', evt => {
+      location.href = 'modifyrecipe.html?id=' + recipe_id;
+    });
+    editButtonDiv.appendChild(editButton);
 
   // img.src = `${url}/${cat.filename}`;
   //addMarker(JSON.parse(cat.coords));
 };
 postComment.addEventListener('click', async evt => {
 
-  let commentField = document.querySelector('#commentField').value;
-  evt.preventDefault();
-  console.log('jepjep');
-  console.log(commentField);
-  const data = {
-    comment: commentField,
-    recipeid: recipe_id,
-  };
-  const fetchOptions = {
-    method: 'POST',
-    headers: {
-      // Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  };
-  const response = await fetch(url + '/recipes/comment', fetchOptions);
-  const json = await response.json();
-  alert(json.message);
-  document.querySelector('#commentField').value = '';
-  // document.location.reload();
-
+    let commentField = document.querySelector('#commentField').value;
+    evt.preventDefault();
+    console.log('jepjep');
+    console.log(commentField);
+    const data = {
+      comment: commentField,
+      recipeid: recipe_id,
+    };
+    const fetchOptions = {
+      method: 'POST',
+      headers: {
+        // Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    };
+    const response = await fetch(url + '/recipes/comment', fetchOptions);
+    const json = await response.json();
+    alert(json.message);
+    document.querySelector('#commentField').value = '';
+    // document.location.reload();
 });
 const getComments = async (id) => {
   const fetchOptions = {
@@ -347,6 +355,9 @@ const updateRecipeRating = async (rating, id) => {
 
 getRecipe(recipe_id);
 
+
+
+/*
 const editRecipe = document.getElementById('editRecipeModal');
 
 const closeModal = document.getElementsByClassName('closeEditRecipe')[0];
@@ -357,7 +368,9 @@ const tags = document.getElementById("tag");
 
 
 
+
 editButton.onclick = function () {
+
   editRecipe.style.display = 'block';
 };
 
@@ -367,7 +380,8 @@ closeModal.onclick = function () {
 
 window.onclick = function (event) {
   if (event.target == editRecipe) {
+    location.href = 'modifyrecipe.html?id=' + json[i].Recipeid;
     editRecipe.style.display = 'none';
   }
 };
-
+*/
