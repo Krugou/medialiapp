@@ -1,5 +1,4 @@
 function createResults(json) {
-console.table(json)
   for (let i = 0; i < (json.recipesTable.length); i++) {
     const figure = document.createElement('figure');
     const img = document.createElement('img');
@@ -56,23 +55,42 @@ window.onload = () => {
       return;
     }
     timeoutToken = setTimeout(() => {
-      const frontPageHeader = document.getElementById('frontPageHeader');
+
       FieldElement1.innerText = '';
       frontPageQuery(typeInputFieldElement.value);
     }, 2500);
 
-    FieldElement1.innerText = 'Ladataan...';
   };
 };
 
-function frontPageQuery(query) {
-  // The select element
-  let selector = document.getElementById('my-selector');
+let selector = "";
+const radioButtons = document.querySelectorAll('.radio-btn');
+const radioitems = document.querySelectorAll('.radio_button_item');
+for (const button of radioButtons) {
+  button.addEventListener('click', (event) => {
 
-  // Get the selected option
+    // Check if the clicked button is checked
+    if (event.target.checked) {
+      selector = button;
+
+    }
+
+
+  });
+}
+for (let i = 0; i < radioitems.length; i++) {
+  radioitems[i].addEventListener("click", function () {
+    const current = document.getElementsByClassName("radio_btn_active");
+    current[0].className = current[0].className.replace(" radio_btn_active", "");
+    this.className += " radio_btn_active";
+  });
+}
+
+function frontPageQuery(query) {
+  const FieldElement1 = document.getElementById('loading');
   let selectedOption = selector.value;
   if (selectedOption === '1') {
-    console.log('1');
+    FieldElement1.innerText = 'Haetaan reseptejä nimen mukaan...';
     fetch(url + `/recipes/filterrecipes/` + query).then(response => {
       if (response.ok) {
         return response.json();
@@ -86,7 +104,8 @@ function frontPageQuery(query) {
     }).catch((error) => {
     });
   } else if (selectedOption === '2') {
-    console.log('2');
+    FieldElement1.innerText = 'Haetaan reseptejä ruokalajin mukaan...';
+
     fetch(url + `/recipes/filtermealtypes/` + query).then(response => {
       if (response.ok) {
 
@@ -97,11 +116,12 @@ function frontPageQuery(query) {
     }).then((queryData) => {
       clearPage();
       createResults(queryData);
-
+      FieldElement1.innerText = '';
     }).catch((error) => {
     });
   } else if (selectedOption === '3') {
-    console.log('3');
+    FieldElement1.innerText = 'Haetaan reseptejä aterialajin mukaan...';
+
     fetch(url + `/recipes/filtercoursetypes/` + query).then(response => {
       if (response.ok) {
         return response.json();
@@ -111,11 +131,11 @@ function frontPageQuery(query) {
     }).then((queryData) => {
       clearPage();
       createResults(queryData);
-
+      FieldElement1.innerText = '';
     }).catch((error) => {
     });
   } else if (selectedOption === '4') {
-    console.log('4');
+    FieldElement1.innerText = 'Haetaan reseptejä hinnan mukaan...';
     // if query contains letters, do nothing
     if (query.match(/[a-z]/i)) {
       return;
@@ -130,6 +150,7 @@ function frontPageQuery(query) {
     }).then((queryData) => {
       clearPage();
       createResults(queryData);
+      FieldElement1.innerText = '';
     }).catch((error) => {
     });
   }

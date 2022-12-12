@@ -41,7 +41,6 @@ function generateRecipesFrontpage(json) {
       img.src = url + '/' + json[i].thumbnailImagefilepath;
       //loadout += '<figure class="recipefigure"><img src="' + url + '/' + json[i].Imagefilepath + '"><p class="fontsizeforp">' + json[i].Recipename + '</p><p class="fontsizeforp">' + json[i].Recipetime + '</p><p class="fontsizeforp">' + json[i].Coursetype + '</p><p class="fontsizeforp">' + json[i].Mealtype + '</p> <button class="recipesButtonFront"id="'+json[i].Recipeid+'"> Katso resepti</button ></figure >'
     }
-    console.log(json[i]);
     img.alt = 'Reseptin kuva';
     const p = document.createElement('p');
     const p2 = document.createElement('p');
@@ -68,19 +67,19 @@ function generateRecipesFrontpage(json) {
   }
 }
 
-const editFilter = document.getElementById('filterModal');
-const filterButton = document.getElementById('filter');
-let close = document.getElementsByClassName('close')[0];
-filterButton.onclick = function() {
-  editFilter.style.display = 'block';
-};
-close.onclick = function() {
-  editFilter.style.display = 'none';
-};
-window.onclick = function(event) {
-  if (event.target == editFilter) {
-    editFilter.style.display = 'none';
-  }
-};
+// const editFilter = document.getElementById('filterModal');
+// const filterButton = document.getElementById('filter');
+// let close = document.getElementsByClassName('close')[0];
+// filterButton.onclick = function() {
+//   editFilter.style.display = 'block';
+// };
+// close.onclick = function() {
+//   editFilter.style.display = 'none';
+// };
+// window.onclick = function(event) {
+//   if (event.target == editFilter) {
+//     editFilter.style.display = 'none';
+//   }
+// };
 
 fetchNewestPresentationData();

@@ -67,6 +67,7 @@
 
 </head>
 
+
 <body class="pagebody">
     <header class="pageheader">
         <input id="check" type="checkbox">
@@ -88,24 +89,31 @@
     </header>
     <section class="frontUp">
         <div class="recipeSearch">
-            <input aria-label="Reseptien haku" class="Haeresepti " id="typeInputField" placeholder="Hae Resepti"
-                type="text">
-            <select class="hakuvalikko" id="my-selector">
-                <!-- The first option -->
+            <input aria-label="Reseptien haku" class="recipeSearchInput" id="typeInputField"
+                placeholder="Hae Resepti valitun kriteerin mukaan" type="text">
+            <!-- <select class="hakuvalikko" id="my-selector">
                 <option value="1">reseptin nimen mukaan</option>
 
-                <!-- The second option -->
                 <option value="2">Ruokalajin mukaan</option>
 
-                <!-- The third option -->
                 <option value="3">Aterianmukaan</option>
 
-                <!-- The fourth option -->
                 <option value="4">Reseptin hinnan mukaan</option>
-            </select>
-            <button class="filterStyle" id="filter">Filter</button>
+            </select> -->
+            <!-- radio group with 4 options -->
+            <div class="radio-group">
+                    
+                    <label class="radio_button_item radio_btn_active" for="radio-1"><input type="radio" id="radio-1" name="radio" class="radio-btn" value="1" checked>Reseptinimi</label>
+                    
+                    <label class="radio_button_item" for="radio-2"><input type="radio" id="radio-2" name="radio" class="radio-btn" value="2">Ruokalaji</label>
+                    
+                    <label class="radio_button_item" for="radio-3"><input type="radio" id="radio-3" name="radio" class="radio-btn" value="3">Ateria</label>
+                    
+                    <label class="radio_button_item" for="radio-4"><input type="radio" id="radio-4" name="radio" class="radio-btn" value="4"> Reseptikustannus</label>
+            </div>
+            <!-- <button class="filterStyle" id="filter">Filter</button> -->
         </div>
-        <div class="modal" id="filterModal">
+        <!-- <div class="modal" id="filterModal">
             <div class="modal-content">
                 <span class="close" id="close">&times;</span>
                 <div class="modaladd">
@@ -116,13 +124,12 @@
                     </div>
                 </div>
             </div>
-            <!-- The select element -->
             <h4>valitse valikosta tapa millä hakea</h4>
 
-        </div>
+        </div>  -->
 
 
-        <p class="test" id="loading"></p>
+        <p class="loadingState"  id="loading"></p>
         <div class="addRecipes">
             <button href="addRecipe.html" id="addrecipesButton">Tee resepti</a></button>
         </div>
