@@ -29,6 +29,7 @@ function createResults(json, target, length) {
     const button = document.createElement('button');
     button.addEventListener('click', () => {
       location.href = 'recipe.html?id=' + json.recipesTable[i].Recipeid;
+    });
       p.innerText = json.recipesTable[i].Recipename;
       p2.innerText = json.recipesTable[i].Recipetime;
       p3.innerText = json.recipesTable[i]?.Coursetype;
@@ -42,8 +43,7 @@ function createResults(json, target, length) {
       figure.appendChild(button);
       figure.classList.add('recipefigure');
       target.appendChild(figure);
-    });
-  }
+    };
 
 // random number generator 1 - 2000
   function getRandomInt(max) {
