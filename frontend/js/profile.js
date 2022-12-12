@@ -16,6 +16,24 @@ fetch(url + '/recipes/reguserprofile/3'/* + userid*/)
         createResults(queryData, userposts);
     }).catch((error) => {
     }
+);
+function getProfileImage(userid) {
+    fetch(url + '/users/profileimage/3'/* + userid*/)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw 'HTTP ERROR';
+            }
+        }
+        ).then((Imagefilepath) => {
+            console.log(Imagefilepath)
+        }
+        ).catch((error) => {
+        }
+
     );
+}
+
 
 
