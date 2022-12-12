@@ -1,15 +1,16 @@
 const presentationdata = document.getElementById('presentationdata');
 
+
 function loopThumbnails(json) {
   for (let i = 0; i < (json.length); i++) {
     if (screen.width >= 1000) {
       thumbnail_imagefilepath = 'thumbnails/' + json[i].Imagefilepath +
-          '_500px.png';
+        '_500px.png';
       json[i]['thumbnailImagefilepath'] = thumbnail_imagefilepath;
     }
     if (screen.width <= 780) {
       thumbnail_imagefilepath = 'thumbnails/' + json[i].Imagefilepath +
-          '_300px.png';
+        '_300px.png';
       json[i]['thumbnailImagefilepath'] = thumbnail_imagefilepath;
     }
 
@@ -41,7 +42,7 @@ function generateRecipesFrontpage(json) {
       img.src = url + '/' + json[i].thumbnailImagefilepath;
       //loadout += '<figure class="recipefigure"><img src="' + url + '/' + json[i].Imagefilepath + '"><p class="fontsizeforp">' + json[i].Recipename + '</p><p class="fontsizeforp">' + json[i].Recipetime + '</p><p class="fontsizeforp">' + json[i].Coursetype + '</p><p class="fontsizeforp">' + json[i].Mealtype + '</p> <button class="recipesButtonFront"id="'+json[i].Recipeid+'"> Katso resepti</button ></figure >'
     }
-    img.alt = 'Reseptin kuva';
+    img.alt = json[i].Recipename;
     const p = document.createElement('p');
     const p2 = document.createElement('p');
     const p3 = document.createElement('p');

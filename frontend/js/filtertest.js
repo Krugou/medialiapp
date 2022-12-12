@@ -1,5 +1,16 @@
-function createResults(json) {
-  for (let i = 0; i < (json.recipesTable.length); i++) {
+const presentationdata = document.getElementById('presentationdata');
+
+function createResults(json, target, length) {
+  if (length === undefined) {
+    length = json.recipesTable.length;
+    console.log('length was undefined')
+  }
+  if (target === undefined) {
+    console.log('target was undefined');
+    target = presentationdata;
+  }
+
+  for (let i = 0; i < (length); i++) {
     const figure = document.createElement('figure');
     const img = document.createElement('img');
     // jos kuvaa ei ole, laitetaan placeholder
@@ -8,9 +19,9 @@ function createResults(json) {
 
     } else {
       img.src = url + '/' + json.recipesTable[i]?.Imagefilepath;
-      // loadout += '<figure class="recipefigure"><img src="' + url + '/' + json.recipesTable[i].Images.Imagefilepath + '"><p class="fontsizeforp">' + json.recipesTable[i].Recipename + '</p><p class="fontsizeforp">' + json.recipesTable[i].Recipetime + '</p><p class="fontsizeforp">' + json.recipesTable[i].Coursetype + '</p><p class="fontsizeforp">' + json.recipesTable[i].Mealtypes.Mealtype + '</p> <button class="recipesButtonFront"id="' + json.recipesTable[i].Recipeid + '"> Katso resepti</button ></figure >'
+   
     }
-    img.alt = 'Reseptin kuva';
+    img.alt = json.recipesTable[i].Recipename;
     const p = document.createElement('p');
     const p2 = document.createElement('p');
     const p3 = document.createElement('p');
@@ -31,7 +42,7 @@ function createResults(json) {
     figure.appendChild(p4);
     figure.appendChild(button);
     figure.classList.add('recipefigure');
-    presentationdata.appendChild(figure);
+    target.appendChild(figure);
   }
 }
 // random number generator 1 - 2000
@@ -99,7 +110,7 @@ function frontPageQuery(query) {
       }
     }).then((queryData) => {
       clearPage();
-      createResults(queryData);
+      createResults(queryData, presentationdata);
 
     }).catch((error) => {
     });
@@ -115,7 +126,7 @@ function frontPageQuery(query) {
       }
     }).then((queryData) => {
       clearPage();
-      createResults(queryData);
+      createResults(queryData, presentationdata);
       FieldElement1.innerText = '';
     }).catch((error) => {
     });
@@ -130,7 +141,7 @@ function frontPageQuery(query) {
       }
     }).then((queryData) => {
       clearPage();
-      createResults(queryData);
+      createResults(queryData, presentationdata);
       FieldElement1.innerText = '';
     }).catch((error) => {
     });
@@ -149,7 +160,7 @@ function frontPageQuery(query) {
       }
     }).then((queryData) => {
       clearPage();
-      createResults(queryData);
+      createResults(queryData, presentationdata);
       FieldElement1.innerText = '';
     }).catch((error) => {
     });
