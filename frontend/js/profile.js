@@ -14,6 +14,7 @@ fetch(url + '/recipes/reguserprofile/3'/* + userid*/)
             throw 'HTTP ERROR';
         }
     }
+
     ).then((queryData) => {
 
         createResults(queryData, userposts);
@@ -66,6 +67,8 @@ function profiledetails(Imagefilepath, username) {
     if (Imagefilepath === 'undefined' || Imagefilepath === undefined) {
         Imagefilepath = './media/logos/jakrecipeslogo.svg';
     }
+
+
     userProfile = document.getElementById('userProfile');
     const profilePic = document.createElement('IMG');
     profilePic.setAttribute('alt', 'jakrecipeslogo');

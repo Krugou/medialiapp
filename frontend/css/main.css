@@ -177,7 +177,17 @@
   text-decoration: none;
   cursor: pointer;
 }
-
+.closeEditRecipe {
+  color: #aaaaaa;
+  font-size: 28px;
+  font-weight: bold;
+}
+.closeEditRecipe:hover,
+.closeEditRecipe:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
 .commentContent {
   padding-left: 1.5em;
   padding-right: 0.5em;
@@ -849,6 +859,10 @@ margin: auto;
 }
 
 #recipesImage {
+  max-width: 100%;
+  height: 50em;
+  border-radius: 1em;
+  object-fit: cover;
   width: 50em;
 }
 
@@ -871,10 +885,19 @@ margin: auto;
   height: 3em;
   width: 7em;
 }
+#editRecipeDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+}
 
 #userPostTitle {
   text-align: center;
   margin-bottom: 4em;
+}
+#editRecipeModal {
+  flex-direction: column;
 }
 
 .recipeComments {
@@ -932,7 +955,7 @@ margin: auto;
   }
 
   .userPosts figure {
-    width: auto;
+    width: 20em;
   }
 
   .userProfile {
@@ -959,7 +982,8 @@ margin: auto;
   }
 
   .recipeStats {
-    width: 90%;
+
+    flex-direction: column;
   }
 
   .recipeSearch {
@@ -979,6 +1003,10 @@ margin: auto;
 }
 
 @media screen and (max-width: 525px) {
+
+  #recipesImage {
+    height: auto;
+  }
   .recipefigure {
     width: 60vw;
   }
@@ -1011,7 +1039,7 @@ margin: auto;
   }
 
   .userPosts figure {
-    width: auto;
+    width: 20em;
   }
 
   .modal-content {

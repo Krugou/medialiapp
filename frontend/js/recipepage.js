@@ -346,3 +346,28 @@ const updateRecipeRating = async (rating, id) => {
 }
 
 getRecipe(recipe_id);
+
+const editRecipe = document.getElementById('editRecipeModal');
+
+const closeModal = document.getElementsByClassName('closeEditRecipe')[0];
+
+const editButton = document.getElementById("editRecipe");
+
+const tags = document.getElementById("tag");
+
+
+
+editButton.onclick = function () {
+  editRecipe.style.display = 'block';
+};
+
+closeModal.onclick = function () {
+  editRecipe.style.display = 'none';
+};
+
+window.onclick = function (event) {
+  if (event.target == editRecipe) {
+    editRecipe.style.display = 'none';
+  }
+};
+

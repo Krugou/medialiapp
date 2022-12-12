@@ -29,14 +29,11 @@ function createResults(json, target, length) {
     const button = document.createElement('button');
     button.addEventListener('click', () => {
       location.href = 'recipe.html?id=' + json.recipesTable[i].Recipeid;
-    });
     p.innerText = json.recipesTable[i].Recipename;
     p2.innerText = json.recipesTable[i].Recipetime;
     p3.innerText = json.recipesTable[i]?.Coursetype;
     p4.innerText = json.recipesTable[i]?.Mealtype;
     button.innerText = 'Katso resepti';
-
-
     figure.appendChild(img);
     figure.appendChild(p);
     figure.appendChild(p2);
