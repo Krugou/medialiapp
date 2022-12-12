@@ -3,17 +3,18 @@
 const postButton = document.querySelector('#postRecipe');
 const tagModal = document.querySelector('#tags');
 const tagButton = document.querySelector('#tag');
-let selectedTags = []; // Tähän syötetään valittujen mealtyypien id:t
+let selectedTags = []; // Tähän syötetään valittujen ruokalajien id:t
 const instructionDiv = document.querySelector('.instruction');
 
-const addTags = (tags) => { // Syötetään objekti jossa mealtype infot
+const addTags = (tags) => { // Syötetään objekti jossa ruokalajien infot
 
   tagModal.innerHTML = '';
   tags.forEach((tag) => {
     const button = document.createElement('button');
     button.innerHTML = tag.Mealtype;
     button.classList.add('mealtypeButtons');
-    if (!selectedTags.includes(tag.Mealid)) {
+
+    if (!selectedTags.includes(tag.Mealid)) { // Jos tagia ei ole jo valittu, luodaan se valikkoon
       tagModal.appendChild(button);
       button.addEventListener('click', () => {
         selectedTags.push(tag.Mealid); // Laitetaan Valittuihin tageihin ainoastaan ID:t
@@ -36,12 +37,13 @@ const addTags = (tags) => { // Syötetään objekti jossa mealtype infot
 
 };
 
+// Haetaan tietokannasta dynaamisesti ruokalaji vaihtoehdot, kun "lisää tageja"-nappia painetaan.
 tagButton.addEventListener('click', async (evt) => {
   evt.preventDefault();
   try {
     const response = await fetch(url + '/recipes/mealtypes');
     const tags2 = await response.json();
-    addTags(tags2);
+    addTags(tags2); //Luodaan tagit modaliin kutsumalla sen funktiota
   } catch (e) {
     console.log(e.message);
   }
