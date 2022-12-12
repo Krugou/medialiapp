@@ -23,7 +23,7 @@ const getRegUserProfileImage = async (userid, next) => {
 };
 const getRegUserProfileUsername = async (userid, next) => {
   try {
-    const [rows] = await promisePoolRegUser.execute(`SELECT Username FROM usersandimages where Userid = 32  desc`);
+    const [rows] = await promisePoolRegUser.execute(`SELECT Username FROM Users where Userid = 32  `);
     // "${userid}"
     return rows;
   } catch (e) {
