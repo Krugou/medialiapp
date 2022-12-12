@@ -54,7 +54,7 @@ const {
   recipe_dislike,
   comment_like,
   comment_dislike,
-  get_reguser_owned_recipes,
+  get_reguser_owned_recipes, recipes_put,
 } = require('../controllers/recipesController');
 const { body } = require('express-validator');
 
@@ -84,6 +84,18 @@ router.post('/',
   body('price').optional({ checkFalsy: true }).isNumeric(),
   body('mealtypes').optional({ checkFalsy: true }).escape(),
   recipes_post);
+router.put('/',
+    upload.single('recipeImage'),
+    body('name').isLength({ min: 1 }).escape(),
+    body('guide').isLength({ min: 1 }).escape(),
+    body('course').isLength({ min: 1 }).escape(),
+    body('time').escape(),
+    body('recipeid').isNumeric(),
+    body('price').optional({ checkFalsy: true }).isNumeric(),
+    body('mealtypes').optional({ checkFalsy: true }).escape(),
+
+    recipes_put);
+
 router.post('/comment',
   body('comment').isLength({ min: 1 }).escape(),
   body('recipeid').escape(),

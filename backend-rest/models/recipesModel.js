@@ -301,6 +301,66 @@ const addRecipes = async (data, next) => {
     next(httpError('Database error', 500));
   }
 };
+const modifyRecipes = async (data, next) => {
+  let rows2;
+  let rows3;
+  try {
+    /*
+            const [rows] = await promisePoolRegUser.execute(`INSERT INTO Recipes (Recipename, Recipeguide, Recipecourse, Recipetime, Recipemaker)
+                                                                VALUES ("asd", "jep", 1, "232", 32);`, data
+
+
+            );
+            */
+
+    const [rows] = await promisePoolRegUser.execute(`
+                                                        UPDATE Recipes SET Recipename = "${data[0]}", Recipeguide = "${data[1]}", Recipecourse = "${data[2]}", Recipetime = "${data[3]}", Recipeprice = "${data[4]}"
+                                                 WHERE Recipeid = ${data[7]} AND Recipemaker = ${data[5]}; 
+                                                       `, data);
+    const tempArray = data[6].split(',');
+    try {
+      const deletePreviousMealtypes = promisePoolRegUser.execute(`DELETE FROM Recipemealtype WHERE Recipeid = ${data[7]};`, data);
+      for (let i = 0; i < tempArray.length; i++) {
+        [rows2] = await promisePoolRegUser.execute(`INSERT INTO Recipemealtype (Recipeid, Mealid)
+                                                    VALUES (${data[7]}, ${tempArray[i]});`, data);
+      }
+    } catch (e) {
+
+    }
+    console.log('data8',data[8]);
+    if (data[8]) {       // Jos on uusi kuva, niin päivitetään se, muuten ei päivitetä, jotta ei tulisi luotua placeholder kuvaa
+      try {
+        console.log("asdasdasdads");
+        [rows3] = await promisePoolRegUser.execute(`UPDATE Images
+                                                    SET Images.Imagefilepath = '${data[8]}'
+                                                    WHERE Images.Imagerecipe = ${data[7]};
+        `, data);
+
+      } catch (e) {
+
+      }
+    } else {
+      rows3="";
+    }
+    return rows, rows2, rows3;
+  } catch (e) {
+    console.error('modifyRecipes input', e.message);
+    next(httpError('Database error', 500));
+  }
+};
+
+const verifyRecipeOwnership = async (data, next) => {
+  try {
+    const [rows] = await promisePoolUser.execute(`SELECT * FROM Recipes
+                                                      WHERE Recipeid = ${data[7]} AND Recipemaker = ${data[5]};`);
+    return rows;
+  }
+  catch (e) {
+    console.error('verifyRecipeOwnership', e.message);
+    next(httpError('Database error', 500));
+  }
+
+}
 const addFavorite = async (data, next) => {
   try {
     const [rows] = await promisePoolRegUser.execute(`INSERT INTO Recipefavorite (Userid, Recipeid)
@@ -380,5 +440,7 @@ module.exports = {
   addDislike,
   removePreviousReciperating,
   getReciperatingByUser,
+  modifyRecipes,
+  verifyRecipeOwnership,
 
 };

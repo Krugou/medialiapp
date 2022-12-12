@@ -19,7 +19,6 @@ const addTags = (tags) => { // Syötetään objekti jossa mealtype infot
         selectedTags.push(tag.Mealid); // Laitetaan Valittuihin tageihin ainoastaan ID:t
         tagModal.removeChild(button);
 
-        // TODO NÄYTÄ SELECTEDTAGS SIVULLA, MISTÄ VOI MYÖS POISTAA KO. TAGIN
         const button2 = document.createElement('button');
         button2.innerHTML = tag.Mealtype;
         button2.classList.add('selectedMealTypeButtons');
@@ -39,7 +38,6 @@ const addTags = (tags) => { // Syötetään objekti jossa mealtype infot
 
 tagButton.addEventListener('click', async (evt) => {
   evt.preventDefault();
-  //TODO HAE TAGIT DYNAAMISESTI TIETOKANNASTA
   try {
     const response = await fetch(url + '/recipes/mealtypes');
     const tags2 = await response.json();
@@ -59,6 +57,7 @@ postButton.addEventListener('click', async (evt) => {
 
   const addForm = document.querySelector('#recipeAddimagebutton');
 
+  console.log(selectedTags);
   const fd = new FormData(addForm);
   fd.append('name', recipenameInput);
   fd.append('guide', recipeguide);
@@ -68,6 +67,7 @@ postButton.addEventListener('click', async (evt) => {
   fd.append('price', recipepriceInput);
 
   console.log('fd', fd);
+
   const fetchOptions = {
     method: 'POST',
     headers: {
