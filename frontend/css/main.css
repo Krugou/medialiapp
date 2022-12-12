@@ -39,7 +39,7 @@
   text-align: center;
 }
 
-.admin_marquee {
+.stupid_marquee {
   animation: slide-left 100s linear;
   animation-iteration-count: infinite;
 }
