@@ -547,7 +547,7 @@
   user-select: none; /* Standard */
 }
 .radio-btn {
-  /* appearance: none; */
+  appearance: none;
 margin: auto;
 }
 .radio_button_item_label{
