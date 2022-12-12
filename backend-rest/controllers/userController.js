@@ -3,6 +3,7 @@ const {
   addUsersRegUser,
   findUsersByEmailRegUser,
   findUsersByUsernameRegUser,
+  
 } = require('../models/regUserModel');
 const {validationResult} = require('express-validator');
 const {httpError} = require('../utils/errors');

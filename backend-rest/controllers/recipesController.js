@@ -29,7 +29,7 @@ const {
   getRecipeCommentRatingsByCommentId, removePreviousCommentrating, addCommentLike, addCommentDisLike,
   getCommentratingByUserid,
 } = require('../models/commentsModel');
-const { findUsersByUseridRegUser } = require('../models/regUserModel');
+const { getReguserOwnedRecipes, } = require('../models/regUserModel');
 const {getRecipeRatingByRecipe} = require("../models/ratingModel");
 
 const get_recipes_with_this_coursetype = async (req, res, next) => {
@@ -43,6 +43,18 @@ const get_recipes_with_this_coursetype = async (req, res, next) => {
     console.error('get_recipes_with_this_coursetype', e.message);
     next(httpError('Database error', 500));
 
+  }
+};
+const get_reguser_owned_recipes = async (req, res, next) => {
+  try {
+    const recipesTable = await getReguserOwnedRecipes(req.params.userid, next);
+    if (recipesTable.length < 1) {
+      return next(httpError('No recipes found', 404));
+    }
+    res.json({ recipesTable });
+  } catch (e) {
+    console.error('get_reguser_owned_recipes', e.message);
+    next(httpError('Database error', 500));
   }
 };
 const get_recipes_with_this_mealtype = async (req, res, next) => {
@@ -618,6 +630,7 @@ module.exports = {
   recipe_dislike,
   comment_like,
   comment_dislike,
+  get_reguser_owned_recipes,
 };
 
 
