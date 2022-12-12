@@ -83,44 +83,46 @@ function profiledetails(Imagefilepath, username) {
     profileButton.setAttribute('id', 'editProfile');
     userProfile.appendChild(profileButton);
     profileButton.innerText = 'Muokkaa profiilia';
+
+
+    const noButton = document.getElementById('noButton');
+
+    const editProfile = document.getElementById('editModal');
+
+    const closeModal = document.getElementsByClassName('close')[0];
+
+    const closeDelete = document.getElementsByClassName('closeDelete')[0];
+
+    const deleteProfile = document.getElementById('deleteModal');
+
+    const deleteButton = document.getElementById('delete');
+
+    profileButton.onclick = function () {
+        editProfile.style.display = 'block';
+    };
+
+    closeModal.onclick = function () {
+        editProfile.style.display = 'none';
+    };
+
+    window.onclick = function (event) {
+        if (event.target == editProfile) {
+            editProfile.style.display = 'none';
+        }
+    };
+    deleteButton.onclick = function () {
+        deleteProfile.style.display = 'block';
+    };
+    closeDelete.onclick = function () {
+        deleteProfile.style.display = 'none';
+    };
+
+    noButton.onclick = function () {
+        deleteProfile.style.display = 'none';
+    };
+
 }
 
 
-// const noButton = document.getElementById('noButton');
 
-// const editProfile = document.getElementById('editModal');
-
-// const button = document.getElementById('editProfile');
-
-// let closeModal = document.getElementsByClassName('close')[0];
-
-// let closeDelete = document.getElementsByClassName('closeDelete')[0];
-
-// const deleteProfile = document.getElementById('deleteModal');
-
-// const deleteButton = document.getElementById('delete');
-
-// button.onclick = function () {
-//     editProfile.style.display = 'block';
-// };
-
-// closeModal.onclick = function () {
-//     editProfile.style.display = 'none';
-// };
-
-// window.onclick = function (event) {
-//     if (event.target == editProfile) {
-//         editProfile.style.display = 'none';
-//     }
-// };
-// deleteButton.onclick = function () {
-//     deleteProfile.style.display = 'block';
-// };
-// closeDelete.onclick = function () {
-//     deleteProfile.style.display = 'none';
-// };
-
-// noButton.onclick = function () {
-//     deleteProfile.style.display = 'none';
-// };
 
