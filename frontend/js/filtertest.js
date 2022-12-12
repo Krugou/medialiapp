@@ -30,41 +30,12 @@ function createResults(json, target, length) {
     button.addEventListener('click', () => {
       location.href = 'recipe.html?id=' + json.recipesTable[i].Recipeid;
     });
-    const modaldiv = document.createElement("div");
-    modaldiv.setAttribute("class", "modal");
-    const modalcontent = document.createElement("div");
-    modalcontent.setAttribute("class", "modal-content");
-    const confirmationtext = document.createElement("p");
-    const deletebutton = document.createElement('button');
-    deletebutton.addEventListener('click', () => {
-      modaldiv.style.display = "block";
-    });
-    const closemodal = document.createElement("span");
-    closemodal.setAttribute("class", "closeRecipeDelete");
-    closemodal.addEventListener('click', () => {
-      modaldiv.style.display = "none";
-    });
-    const yesbutton = document.createElement("button");
-    const nobutton = document.createElement("button");
-    nobutton.addEventListener('click', () => {
-      modaldiv.style.display = "none";
-    });
     p.innerText = json.recipesTable[i].Recipename;
     p2.innerText = json.recipesTable[i].Recipetime;
     p3.innerText = json.recipesTable[i]?.Coursetype;
     p4.innerText = json.recipesTable[i]?.Mealtype;
     button.innerText = 'Katso resepti';
-    deletebutton.innerText = 'Poista Resepti'
-    confirmationtext.innerText = 'Haluatko varmasti poistaa reseptin?';
-    closemodal.innerText = "X";
-    yesbutton.innerText = 'Yes';
-    nobutton.innerText = 'No';
 
-    modaldiv.appendChild(modalcontent);
-    modalcontent.appendChild(closemodal);
-    modalcontent.appendChild(confirmationtext);
-    modalcontent.appendChild(yesbutton);
-    modalcontent.appendChild(nobutton);
 
     figure.appendChild(img);
     figure.appendChild(p);
@@ -72,8 +43,6 @@ function createResults(json, target, length) {
     figure.appendChild(p3);
     figure.appendChild(p4);
     figure.appendChild(button);
-    figure.appendChild(deletebutton)
-    figure.appendChild(modaldiv)
     figure.classList.add('recipefigure');
     target.appendChild(figure);
   }
