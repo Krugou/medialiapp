@@ -1,4 +1,3 @@
-const presentationdata = document.getElementById('presentationdata');
 
 
 function loopThumbnails(json) {
