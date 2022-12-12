@@ -420,7 +420,7 @@ const recipes_put = async (req, res, next) => {
                 req.body.course,
                 req.body.time,
                 req.body.price,
-                37, //req.user.Userid,
+                33, //req.user.Userid,
                 req.body.mealtypes,
                 req.body.recipeid,
                 false,
@@ -429,6 +429,9 @@ const recipes_put = async (req, res, next) => {
         try {
             const findIfUserOwnsRecipe = await verifyRecipeOwnership(data, next);
             if (findIfUserOwnsRecipe.length < 1) {
+                res.json({
+                    message:"Et omista tätä reseptiä",
+                })
               next(httpError('Invalid data', 400));
             return;
             }
