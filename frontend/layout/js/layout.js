@@ -79,7 +79,7 @@ function removeChildren(element) {
 }
 
 function frontPage() {
-  pageGeneration.innerHTML = ` <section id="frontUp" class="frontUp"> <div class="recipeSearch"> <input type="text" id="typeInputField" aria-label="Reseptien haku" placeholder="Hae Resepti" class="Haeresepti "> <button id="filter" class="filterStyle marpad1rem">Filter</button><button  id="hae" class="filterStyle marpad1rem">Hae</button></div> <div id="filterModal" class="modal"> <div class="modal-content"> <span class="close">&times;</span> <div class="modaladd"> <h3>Add Filters</h3> <div class="filters"> </div><div class="filtersave"> </div></div></div></div><div class="addRecipes"> <button href="addRecipe.html" id="addrecipesButton" >Tee resepti</a></button> </div></section> <h2 id="frontPageHeader" class="otsikko"> Uusimmat Reseptit</h2> <hr> <div class="reseptit" id="presentationdata"> </div>`;
+  pageGeneration.innerHTML = ` <section id="frontUp" class="frontUp"> <div class="recipeSearch"> <input type="text" id="typeInputField" aria-label="Reseptien haku" placeholder="Hae Resepti" class="recipeSearchInput "> <button id="filter" class="filterStyle marpad1rem">Filter</button><button  id="hae" class="filterStyle marpad1rem">Hae</button></div> <div id="filterModal" class="modal"> <div class="modal-content"> <span class="close">&times;</span> <div class="modaladd"> <h3>Add Filters</h3> <div class="filters"> </div><div class="filtersave"> </div></div></div></div><div class="addRecipes"> <button href="addRecipe.html" id="addrecipesButton" >Tee resepti</a></button> </div></section> <h2 id="frontPageHeader" class="otsikko"> Uusimmat Reseptit</h2> <hr> <div class="reseptit" id="presentationdata"> </div>`;
 }
 
 function clearPage() {
@@ -97,18 +97,18 @@ async function oldestPresentationData() {
     if (json[0].Imagefilepath === 'null') {
       const replaceimage = './media/logos/jakrecipeslogo.svg';
       loadout += '<figure class="recipefigure"><img src="' + replaceimage +
-          '"><p class="fontsizeforp">' + json[0].Recipename +
-          '</p><p class="fontsizeforp">' + json[0].Recipetime +
-          '</p><p class="fontsizeforp">' + json[0].Coursetype +
-          '</p><p class="fontsizeforp">' + json[0].Mealtype +
-          '</p> <button > Katso resepti</button ></figure >';
+        '"><p class="fontsizeforp">' + json[0].Recipename +
+        '</p><p class="fontsizeforp">' + json[0].Recipetime +
+        '</p><p class="fontsizeforp">' + json[0].Coursetype +
+        '</p><p class="fontsizeforp">' + json[0].Mealtype +
+        '</p> <button > Katso resepti</button ></figure >';
     } else {
       loadout += '<figure class="recipefigure"><img src="' + url + '/' +
-          json[0].Imagefilepath + '"><p class="fontsizeforp">' +
-          json[0].Recipename + '</p><p class="fontsizeforp">' +
-          json[0].Recipetime + '</p><p class="fontsizeforp">' +
-          json[0].Coursetype + '</p><p class="fontsizeforp">' +
-          json[0].Mealtype + '</p> <button > Katso resepti</button ></figure >';
+        json[0].Imagefilepath + '"><p class="fontsizeforp">' +
+        json[0].Recipename + '</p><p class="fontsizeforp">' +
+        json[0].Recipetime + '</p><p class="fontsizeforp">' +
+        json[0].Coursetype + '</p><p class="fontsizeforp">' +
+        json[0].Mealtype + '</p> <button > Katso resepti</button ></figure >';
     }
     presentationdata.innerHTML = loadout;
   }
@@ -167,15 +167,15 @@ function openFunction() {
   document.getElementById('openComments').append(hide);
 
   document.getElementById('hideCommentsButton').
-      addEventListener('click', function() {
-        document.getElementById('comments').style.display = 'none';
-        document.getElementById('hideCommentsButton').remove();
-        const show = document.createElement('button');
-        show.setAttribute('id', 'openCommentsButton');
-        show.setAttribute('onclick', 'openFunction()');
-        show.innerText = 'Show Comments';
-        document.getElementById('openComments').append(show);
-      });
+    addEventListener('click', function () {
+      document.getElementById('comments').style.display = 'none';
+      document.getElementById('hideCommentsButton').remove();
+      const show = document.createElement('button');
+      show.setAttribute('id', 'openCommentsButton');
+      show.setAttribute('onclick', 'openFunction()');
+      show.innerText = 'Show Comments';
+      document.getElementById('openComments').append(show);
+    });
 }
 
 // const editFilter = document.getElementById("filterModal");

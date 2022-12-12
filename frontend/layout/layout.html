@@ -51,12 +51,12 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PGLYY82MB9"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-      function gtag() { dataLayer.push(arguments); }
+        function gtag() { dataLayer.push(arguments); }
 
-      gtag('js', new Date());
-      gtag('config', 'G-PGLYY82MB9');
+        gtag('js', new Date());
+        gtag('config', 'G-PGLYY82MB9');
     </script>
 
 
@@ -66,7 +66,7 @@
 
 
     <!-- title -->
-    <link href="../css/main.css" rel="stylesheet"/>
+    <link href="../css/main.css" rel="stylesheet" />
     <script defer src="../js/utils/url.js"></script>
     <script defer src="./js/layout.js "></script>
 
@@ -74,89 +74,89 @@
 </head>
 
 <body class="pagebody" onload="startUp()">
-<header class="pageheader">
-    <input id="check" type="checkbox">
-    <label class="checknappi" for="check">
-        <i class="fas fa-bars"></i>
-    </label>
-    <label class="logo"></label>
-    <nav class="navbar">
-        <ul class="nav-start">
-            <li><a href="" id="frontpage">Etusivu</a></li>
-            <li><a href="" id="recipes">ReseptiTesti</a></li>
-            <li><a href="" id="profile">Profile</a></li>
-        </ul>
-        <ul class="nav-end">
-            <li id="signIn"><a href="">Kirjaudu</a></li>
-            <li id="signUp"><a href="">Rekisteröinti</a></li>
-            <li id="logOut"><a href="">Kirjaudu ulos</a></li>
-        </ul>
-    </nav>
-</header>
+    <header class="pageheader">
+        <input id="check" type="checkbox">
+        <label class="checknappi" for="check">
+            <i class="fas fa-bars"></i>
+        </label>
+        <label class="logo"></label>
+        <nav class="navbar">
+            <ul class="nav-start">
+                <li><a href="" id="frontpage">Etusivu</a></li>
+                <li><a href="" id="recipes">ReseptiTesti</a></li>
+                <li><a href="" id="profile">Profile</a></li>
+            </ul>
+            <ul class="nav-end">
+                <li id="signIn"><a href="">Kirjaudu</a></li>
+                <li id="signUp"><a href="">Rekisteröinti</a></li>
+                <li id="logOut"><a href="">Kirjaudu ulos</a></li>
+            </ul>
+        </nav>
+    </header>
 
 
-<main class="pagemain" id="pageGeneration">
-    <section class="frontUp" id="frontUp">
-        <input aria-label="Reseptien haku" class="Haeresepti " id="typeInputField" placeholder="Hae Resepti"
-               type="text">
-        <button class="filterStyle" id="filter">Filter</button>
-        <button class="filterStyle marpad1rem" id="hae">Hae</button>
+    <main class="pagemain" id="pageGeneration">
+        <section class="frontUp" id="frontUp">
+            <input aria-label="Reseptien haku" class="recipeSearchInput " id="typeInputField" placeholder="Hae Resepti"
+                type="text">
+            <button class="filterStyle" id="filter">Filter</button>
+            <button class="filterStyle marpad1rem" id="hae">Hae</button>
 
-        <div class="modal" id="filterModal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <div class="modaladd">
-                    <H3>Add Filters</H3>
-                    <div class="filters">
-                    </div>
-                    <div class="filtersave">
+            <div class="modal" id="filterModal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="modaladd">
+                        <H3>Add Filters</H3>
+                        <div class="filters">
+                        </div>
+                        <div class="filtersave">
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <div class="addRecipes">
+                <button href="addRecipe.html" id="addrecipesButton">Tee resepti</a></button>
+            </div>
+        </section>
+        <h2 class="otsikko"> Uusimmat Reseptit</h2>
+        <hr>
+        <div class="reseptit " id="presentationdata">
+
+
+        </div>
+    </main>
+
+    <footer class="pageFooter">
+        <div aria-label="Info" class="pageFooterContainer">
+            <h3 class="pageFooterContainerListTitle">Info</h3>
+            <hr>
+            <ul class="pageFooterContainerList">
+                <li class="pageFooterContainerListItem"><a id="aboutUs">About Us</a></li>
+                <li class="pageFooterContainerListItem"><a id="supportSite">Support </a></li>
+                <li class="pageFooterContainerListItem"><a id="contact">Contact us</a></li>
+            </ul>
+        </div>
+        <div aria-label="Socialmediat" class="pageFooterContainer">
+            <h3 class="pageFooterContainerListTitle">Socialmedia</h3>
+            <hr>
+            <ul class="pageFooterContainerList">
+                <li class="pageFooterContainerListItem"><a>instagram</a></li>
+                <li class="pageFooterContainerListItem"><a>twitter</a></li>
+                <li class="pageFooterContainerListItem"><a>facebook</a></li>
+            </ul>
+        </div>
+        <div aria-label="Tekijät" class="pageFooterContainer">
+            <h3 class="pageFooterContainerListTitle">Tekijät</h3>
+            <hr>
+            <ul class="pageFooterContainerList">
+                <li class="pageFooterContainerListItem"><a>Kaarle</a></li>
+                <li class="pageFooterContainerListItem"><a>Joonas</a></li>
+                <li class="pageFooterContainerListItem"><a>Aleksi</a></li>
+            </ul>
         </div>
 
-        <div class="addRecipes">
-            <button href="addRecipe.html" id="addrecipesButton">Tee resepti</a></button>
-        </div>
-    </section>
-    <h2 class="otsikko"> Uusimmat Reseptit</h2>
-    <hr>
-    <div class="reseptit " id="presentationdata">
-
-
-    </div>
-</main>
-
-<footer class="pageFooter">
-    <div aria-label="Info" class="pageFooterContainer">
-        <h3 class="pageFooterContainerListTitle">Info</h3>
-        <hr>
-        <ul class="pageFooterContainerList">
-            <li class="pageFooterContainerListItem"><a id="aboutUs">About Us</a></li>
-            <li class="pageFooterContainerListItem"><a id="supportSite">Support </a></li>
-            <li class="pageFooterContainerListItem"><a id="contact">Contact us</a></li>
-        </ul>
-    </div>
-    <div aria-label="Socialmediat" class="pageFooterContainer">
-        <h3 class="pageFooterContainerListTitle">Socialmedia</h3>
-        <hr>
-        <ul class="pageFooterContainerList">
-            <li class="pageFooterContainerListItem"><a>instagram</a></li>
-            <li class="pageFooterContainerListItem"><a>twitter</a></li>
-            <li class="pageFooterContainerListItem"><a>facebook</a></li>
-        </ul>
-    </div>
-    <div aria-label="Tekijät" class="pageFooterContainer">
-        <h3 class="pageFooterContainerListTitle">Tekijät</h3>
-        <hr>
-        <ul class="pageFooterContainerList">
-            <li class="pageFooterContainerListItem"><a>Kaarle</a></li>
-            <li class="pageFooterContainerListItem"><a>Joonas</a></li>
-            <li class="pageFooterContainerListItem"><a>Aleksi</a></li>
-        </ul>
-    </div>
-
-</footer>
+    </footer>
 </body>
 
 </html>
