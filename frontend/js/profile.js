@@ -5,12 +5,16 @@ const sessionStorageDetails = sessionStorage.getItem('userid');
 // haetaan urlista id
 
 const urlParams = new URLSearchParams(window.location.search);
-if (urlParams !== "null" && urlParams !== null && urlParams !== undefined && urlParams !== "undefined") {
-    userid = urlParams.get('id');
-} else {
+if (sessionStorageDetails === urlParams.get('id')) {
     userid = sessionStorageDetails;
 
 }
+else {
+    userid = urlParams.get('id');
+
+}
+
+
 const userposts = document.getElementById('userPosts');
 
 fetch(url + '/recipes/reguserprofile/3'/* + userid*/)
@@ -88,7 +92,7 @@ function profiledetails(Imagefilepath, username) {
     userProfile.appendChild(profileP);
     profileP.innerText = username;
 
-    if (sessionStorageDetails !== "null" && sessionStorageDetails !== null && sessionStorageDetails !== undefined && sessionStorageDetails !== "undefined") {
+    if (sessionStorageDetails === urlParams.get('id')) {
         const profileButton = document.createElement('BUTTON');
         profileButton.setAttribute('id', 'editProfile');
         userProfile.appendChild(profileButton);
@@ -130,7 +134,7 @@ function profiledetails(Imagefilepath, username) {
         noButton.onclick = function () {
             deleteProfile.style.display = 'none';
         };
-    } 
+    }
 }
 
 
