@@ -61,92 +61,122 @@
     <script crossorigin="anonymous" src="fontawesome/fontawesome.js"></script>
     <script crossorigin="anonymous" src="fontawesome/solid.js"></script>
     <title>JAK Reseptit</title>
-    <link href="./css/main.css" rel="stylesheet"/>
+    <link href="./css/main.css" rel="stylesheet" />
     <script defer src="./js/utils/url.js"></script>
     <script defer src="js/modifyrecipe.js"></script>
 </head>
 
 <body class="pagebody">
-<header class="pageheader">
-    <input id="check" type="checkbox">
-    <label class="checknappi" for="check">
-        <i class="fas fa-bars"></i>
-    </label>
-    <label class="logo"></label>
-    <nav class="navbar">
-        <ul class="nav-start">
-            <li><a href="frontpage.html" id="frontpageLink">Etusivu</a>
-            <li><a href="profile.html" id="profileLink">Profiili</a>
-        </ul>
-        <ul class="nav-end">
-            <li><a href="signIn.html" id="signInLink">Kirjaudu</a></li>
-            <li><a href="registration.html" id="registrationLink">Rekisteröinti</a></li>
-        </ul>
-    </nav>
-</header>
-<main class="pagemain">
-    <H2 class="otsikko" id="editRecipeh2">Muokkaa reseptiä</H2>
-    <div class="addRecipe_detail">
-        <div class="recipename">
-            <input id="recipenameInput" placeholder="Reseptin nimi (pakollinen).">
-            <input id="recipetimeInput" placeholder="Reseptin valmistusaika (min)." type="number">
-            <input id="addrecipePrice" placeholder="Reseptin hinta (eur)." type="number">
-            <button id="tag">Lisää tagi</button>
-            <select id="courseselect" name="course" title="ruoka">
-                <option value="1">Aamiainen</option>
-                <option value="2">Lounas</option>
-                <option value="3">Päivällinen</option>
-                <option value="4">Illallinen</option>
-            </select>
+    <header class="pageheader">
+        <input id="check" type="checkbox">
+        <label class="checknappi" for="check">
+            <i class="fas fa-bars"></i>
+        </label>
+        <label class="logo"></label>
+        <nav class="navbar">
+            <ul class="nav-start">
+                <li><a href="frontpage.html" id="frontpageLink">Etusivu</a>
+                <li><a href="profile.html" id="profileLink">Profiili</a>
+            </ul>
+            <ul class="nav-end">
+                <li><a href="signIn.html" id="signInLink">Kirjaudu</a></li>
+                <li><a href="registration.html" id="registrationLink">Rekisteröinti</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="pagemain">
+        <H2 class="otsikko" id="editRecipeh2">Muokkaa reseptiä</H2>
+        <div class="addRecipe_detail">
+            <div class="recipename">
+                <input id="recipenameInput" placeholder="Reseptin nimi (pakollinen).">
+                <input id="recipetimeInput" placeholder="Reseptin valmistusaika (min)." type="number">
+                <input id="addrecipePrice" placeholder="Reseptin hinta (eur)." type="number">
+                <button id="tag">Lisää tagi</button>
+                <select id="courseselect" name="course" title="ruoka">
+                    <option value="1">Aamiainen</option>
+                    <option value="2">Lounas</option>
+                    <option value="3">Päivällinen</option>
+                    <option value="4">Illallinen</option>
+                </select>
 
-        </div>
-        <div class="modal" id="editModal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <div class="modaladd">
-                    <H3>Lisää tageja</H3>
-                    <div class="tags" id="tags">
+            </div>
+            <div class="modal" id="editModal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="modaladd">
+                        <H3>Lisää tageja</H3>
+                        <div class="tags" id="tags">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <form class="imagebutton" enctype="multipart/form-data" id="recipeAddimagebutton">
-            <input accept="image/*" id="file" multiple='multiple' name="recipeImage" type="file">
-        </form>
-    </div>
-    </div>
-    <div class="Recipe_desc">
-        <div class="instruction">
-            <form>
-                <textarea maxlength="3000" id="recipeguide" placeholder="Reseptin ohje (pakollinen)."></textarea>
+            <form class="imagebutton" enctype="multipart/form-data" id="recipeAddimagebutton">
+                <input accept="image/*" id="file" multiple='multiple' name="recipeImage" type="file">
             </form>
         </div>
-        <div class="postButton">
-            <button class="postRecipe" id="postRecipe">Tee muokkaus!</button>
         </div>
-    </div>
-</main>
-<script>
+        <div class="Recipe_desc">
+            <div class="instruction">
+                <form>
+                    <textarea maxlength="3000" id="recipeguide" placeholder="Reseptin ohje (pakollinen)."></textarea>
+                </form>
+            </div>
+            <div class="postButton">
+                <button class="postRecipe" id="postRecipe">Tee muokkaus!</button>
+            </div>
+        </div>
+    </main>
+    <footer class="pageFooter">
+        <div aria-label="Info" class="pageFooterContainer">
+            <h3 class="pageFooterContainerListTitle">Info</h3>
+            <hr>
+            <ul class="pageFooterContainerList">
+                <li class="pageFooterContainerListItem"><a id="aboutUs">About Us</a></li>
+                <li class="pageFooterContainerListItem"><a id="supportSite">Support </a></li>
+                <li class="pageFooterContainerListItem"><a id="contact">Contact us</a></li>
+            </ul>
+        </div>
+        <div aria-label="Socialmediat" class="pageFooterContainer">
+            <h3 class="pageFooterContainerListTitle">Socialmedia</h3>
+            <hr>
+            <ul class="pageFooterContainerList">
+                <li class="pageFooterContainerListItem"><a>instagram</a></li>
+                <li class="pageFooterContainerListItem"><a>twitter</a></li>
+                <li class="pageFooterContainerListItem"><a>facebook</a></li>
+            </ul>
+        </div>
+        <div aria-label="Tekijät" class="pageFooterContainer">
+            <h3 class="pageFooterContainerListTitle">Tekijät</h3>
+            <hr>
+            <ul class="pageFooterContainerList">
+                <li class="pageFooterContainerListItem"><a>Kaarle</a></li>
+                <li class="pageFooterContainerListItem"><a>Joonas</a></li>
+                <li class="pageFooterContainerListItem"><a>Aleksi</a></li>
+            </ul>
+        </div>
 
-    const editProfile = document.getElementById('editModal');
+    </footer>
+    <script>
 
-    const button = document.getElementById('tag');
+        const editProfile = document.getElementById('editModal');
 
-    let span = document.getElementsByClassName('close')[0];
+        const button = document.getElementById('tag');
 
-    button.onclick = function() {
-        editProfile.style.display = 'block';
-    };
+        let span = document.getElementsByClassName('close')[0];
 
-    span.onclick = function() {
-        editProfile.style.display = 'none';
-    };
-    window.onclick = function(event) {
-        if (event.target == editProfile) {
+        button.onclick = function () {
+            editProfile.style.display = 'block';
+        };
+
+        span.onclick = function () {
             editProfile.style.display = 'none';
-        }
-    };
-</script>
+        };
+        window.onclick = function (event) {
+            if (event.target == editProfile) {
+                editProfile.style.display = 'none';
+            }
+        };
+    </script>
 </body>
 
 </html>

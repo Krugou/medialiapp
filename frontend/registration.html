@@ -49,17 +49,17 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PGLYY82MB9"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-      function gtag() { dataLayer.push(arguments); }
+        function gtag() { dataLayer.push(arguments); }
 
-      gtag('js', new Date());
-      gtag('config', 'G-PGLYY82MB9');
+        gtag('js', new Date());
+        gtag('config', 'G-PGLYY82MB9');
     </script>
     <script crossorigin="anonymous" src="fontawesome/fontawesome.js"></script>
     <script crossorigin="anonymous" src="fontawesome/solid.js"></script>
     <title>JAK Reseptit</title>
-    <link href="./css/main.css" rel="stylesheet"/>
+    <link href="./css/main.css" rel="stylesheet" />
     <script defer src="./js/utils/url.js"></script>
     <script defer src="./js/main.js "></script>
     <script defer src="js/registration.js"></script>
@@ -69,47 +69,77 @@
 
 
 <body class="pagebody">
-<header class="pageheader">
-    <input id="check" type="checkbox">
-    <label class="checknappi" for="check">
-        <i class="fas fa-bars"></i>
-    </label>
-    <label class="logo"></label>
-    <nav class="navbar">
-        <ul class="nav-start">
-            <li><a href="frontpage.html" id="frontpage">Etusivu</a></li>
-            <li><a href="profile.html" id="profileLink">Profiili</a></li>
-        </ul>
-        <ul class="nav-end">
-            <li><a href="signIn.html" id="signInLink">Kirjaudu</a></li>
-            <li><a href="registration.html" id="registrationLink">Rekisteröinti</a></li>
-        </ul>
-    </nav>
-</header>
-<main>
-    <img alt="jakrecipeslogo" id="signupImage" src="media/logos/jakrecipeslogo.svg">
-    <H2 class="otsikko">Rekisteröidy</H2>
-    <div class="signup">
-        <ul class="tiedot">
-            <li>
-                <p class="fontsizeforp">Username</p>
-            </li>
-            <li><input id="userNameInput" placeholder="Add Username (Atleast 3 Letters)" required type="text"></li>
-            <li>
-                <p class="fontsizeforp">Email</p>
-            </li>
-            <li><input id="emailInput" placeholder="(Eg. John@gmail.com)" required type="email"></li>
-            <li>
-                <p class="fontsizeforp">Password</p>
-            </li>
-            <li><input id="passwordInput" pattern="(?=.*[\p{Lu}]).{8,}" placeholder="(Atleast 8 letters & 1 capital)" required
-                       type="password"></li>
-        </ul>
-    </div>
-    <div class="nappi">
-        <button id="signupNappi">Sign Up</button>
-    </div>
-</main>
+    <header class="pageheader">
+        <input id="check" type="checkbox">
+        <label class="checknappi" for="check">
+            <i class="fas fa-bars"></i>
+        </label>
+        <label class="logo"></label>
+        <nav class="navbar">
+            <ul class="nav-start">
+                <li><a href="frontpage.html" id="frontpage">Etusivu</a></li>
+                <li><a href="profile.html" id="profileLink">Profiili</a></li>
+            </ul>
+            <ul class="nav-end">
+                <li><a href="signIn.html" id="signInLink">Kirjaudu</a></li>
+                <li><a href="registration.html" id="registrationLink">Rekisteröinti</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <img alt="jakrecipeslogo" id="signupImage" src="media/logos/jakrecipeslogo.svg">
+        <H2 class="otsikko">Rekisteröidy</H2>
+        <div class="signup">
+            <ul class="tiedot">
+                <li>
+                    <p class="fontsizeforp">Username</p>
+                </li>
+                <li><input id="userNameInput" placeholder="Add Username (Atleast 3 Letters)" required type="text"></li>
+                <li>
+                    <p class="fontsizeforp">Email</p>
+                </li>
+                <li><input id="emailInput" placeholder="(Eg. John@gmail.com)" required type="email"></li>
+                <li>
+                    <p class="fontsizeforp">Password</p>
+                </li>
+                <li><input id="passwordInput" pattern="(?=.*[\p{Lu}]).{8,}"
+                        placeholder="(Atleast 8 letters & 1 capital)" required type="password"></li>
+            </ul>
+        </div>
+        <div class="nappi">
+            <button id="signupNappi">Sign Up</button>
+        </div>
+    </main>
+    <footer class="pageFooter">
+        <div aria-label="Info" class="pageFooterContainer">
+            <h3 class="pageFooterContainerListTitle">Info</h3>
+            <hr>
+            <ul class="pageFooterContainerList">
+                <li class="pageFooterContainerListItem"><a id="aboutUs">About Us</a></li>
+                <li class="pageFooterContainerListItem"><a id="supportSite">Support </a></li>
+                <li class="pageFooterContainerListItem"><a id="contact">Contact us</a></li>
+            </ul>
+        </div>
+        <div aria-label="Socialmediat" class="pageFooterContainer">
+            <h3 class="pageFooterContainerListTitle">Socialmedia</h3>
+            <hr>
+            <ul class="pageFooterContainerList">
+                <li class="pageFooterContainerListItem"><a>instagram</a></li>
+                <li class="pageFooterContainerListItem"><a>twitter</a></li>
+                <li class="pageFooterContainerListItem"><a>facebook</a></li>
+            </ul>
+        </div>
+        <div aria-label="Tekijät" class="pageFooterContainer">
+            <h3 class="pageFooterContainerListTitle">Tekijät</h3>
+            <hr>
+            <ul class="pageFooterContainerList">
+                <li class="pageFooterContainerListItem"><a>Kaarle</a></li>
+                <li class="pageFooterContainerListItem"><a>Joonas</a></li>
+                <li class="pageFooterContainerListItem"><a>Aleksi</a></li>
+            </ul>
+        </div>
+
+    </footer>
 </body>
 
 </html>
