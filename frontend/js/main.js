@@ -82,4 +82,6 @@ function generateRecipesFrontpage(json) {
 //   }
 // };
 
+const profileLink = document.getElementById('profileLink');
+profileLink.href = 'profile.html?username='+ JSON.parse(sessionStorage.getItem('user')).Username;
 fetchNewestPresentationData();

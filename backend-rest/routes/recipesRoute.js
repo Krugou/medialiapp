@@ -54,7 +54,7 @@ const {
   recipe_dislike,
   comment_like,
   comment_dislike,
-  get_reguser_owned_recipes, recipes_put,
+  get_reguser_owned_recipes, recipes_put, get_user_owned_recipes,
 } = require('../controllers/recipesController');
 const { body } = require('express-validator');
 
@@ -68,13 +68,19 @@ router.get('/filtercoursetypes/:coursetype', get_recipes_with_this_coursetype);
 router.get('/filtermealtypes/:mealtype', get_recipes_with_this_mealtype);
 router.get('/filterbyprice/:lowRecipePrice',
   get_recipes_with_this_low_recipe_price_to_0);
+router.get('/comment/:id',
+    body('id').escape(),
+    comment_get);
+
 
 // authentikoidun käyttäjän kanssa
 router.get('/reguserprofile/:userid', get_reguser_owned_recipes);
 
-router.get('/comment/:id',
-  body('id').escape(),
-  comment_get);
+router.get('/profile/:username',
+    body('username').escape(),
+    get_user_owned_recipes);
+
+
 router.post('/',
   upload.single('recipeImage'),
   body('name').isLength({ min: 1 }).escape(),

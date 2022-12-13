@@ -3,18 +3,29 @@ const promisePoolRegUser = poolRegUser.promise();
 const httpError = require('http-errors');
 const getReguserOwnedRecipes = async (userid, next) => {
   try {
-    const [rows] = await promisePoolRegUser.execute(`SELECT * FROM reguserprofileview where Userid = 32 group by Recipeid order by Recipeid desc`);
+    const [rows] = await promisePoolRegUser.execute(`SELECT * FROM reguserprofileview where Userid = 32 group by Recipeid order by Recipeid desc;`);
     // "${userid}"
     return rows;
   } catch (e) {
     next(httpError('Database error', 500));
   }
 };
+const getReguserOwnedRecipesNew = async (username, next) => {
+  try {
+    console.log("data", username);
+    const [rows] = await promisePoolRegUser.execute(`SELECT * FROM reguserprofileview WHERE Username = "${username}" group by Recipeid ORDER BY Recipeid DESC;`);
+    // "${userid}"
+    return rows;
+  } catch (e) {
+    next(httpError('Database error', 500));
+  }
+};
+
 // ei toimi viel oikein
 const getRegUserProfileImage = async (userid, next) => {
   try {
 
-    const [rows] = await promisePoolRegUser.execute(`SELECT Imagefilepath FROM usersandimages where Userid = 32  `);
+    const [rows] = await promisePoolRegUser.execute(`SELECT Imagefilepath FROM usersandimages where Userid = 32;  `);
     // "${userid}"
     return rows;
   } catch (e) {
@@ -23,7 +34,7 @@ const getRegUserProfileImage = async (userid, next) => {
 };
 const getRegUserProfileUsername = async (userid, next) => {
   try {
-    const [rows] = await promisePoolRegUser.execute(`SELECT Username FROM Users where Userid = 32  `);
+    const [rows] = await promisePoolRegUser.execute(`SELECT Username FROM Users where Userid = 32; `);
     // "${userid}"
     return rows;
   } catch (e) {
@@ -31,6 +42,15 @@ const getRegUserProfileUsername = async (userid, next) => {
   }
 };
 
+const getAllUserInfo = async (username, next) => {
+  try {
+    const [rows] = await promisePoolRegUser.execute(`SELECT Userid, Useremail, Userrole, Username FROM Users WHERE Username = "${username}"; `);
+  return rows.pop();
+
+  } catch (e) {
+    next(httpError('Database error', 500));
+  }
+};
 
 
 const addUsersRegUser = async (data, next) => {
@@ -92,4 +112,6 @@ module.exports = {
   getReguserOwnedRecipes,
   getRegUserProfileImage,
   getRegUserProfileUsername,
+  getReguserOwnedRecipesNew,
+  getAllUserInfo,
 };

@@ -36,11 +36,26 @@ const getRecipesByRecipeName = async (recipeName, next) => {
   }
 
 };
+const getLimitedUserInfo = async (username, next) => {
+  console.log("username limited", username);
+  try {
+    let [rows] = await promisePoolUser.execute(` SELECT Images.Imagefilepath FROM Users INNER JOIN Images ON Users.Userimg = Images.Imageid WHERE Username = "${username}"; `);
+    if (rows.length<1) {
+      rows="";
+    }
+    rows.push(username);
+    return rows;
+  } catch (e) {
+    next(httpError('Database error', 500));
+  }
+};
+
 
 module.exports = {
 
   getAllNewestRecipesMainPage,
   getAllOldestRecipesMainPage,
   getRecipesByRecipeName,
+  getLimitedUserInfo,
 
 };

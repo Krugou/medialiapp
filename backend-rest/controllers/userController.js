@@ -4,9 +4,12 @@ const {
   findUsersByEmailRegUser,
   findUsersByUsernameRegUser,
   getRegUserProfileImage,
-  getRegUserProfileUsername,
+  getRegUserProfileUsername, getAllUserInfo,
 
 } = require('../models/regUserModel');
+const {
+  getLimitedUserInfo,
+} = require('../models/normalUserModel');
 const { validationResult } = require('express-validator');
 const { httpError } = require('../utils/errors');
 const bcrypt = require('bcryptjs');
@@ -40,6 +43,103 @@ const getReg_UserDetailUsername = async (req, res, next) => {
     }
     res.json(result);
   } catch (e) {
+    res.json({
+      Username: 'undefined',
+    });
+  }
+};
+
+const get_UserProfileLimited = async (req, res, next) => {
+
+  try {
+    // Extract the validation errors from a request.
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      // There are errors.
+      // Error messages can be returned in an array using `errors.array()`.
+      console.error('get_UserProfileLimited validation', errors.array());
+      res.json({
+        message: 'Check email, password & username again',
+      });
+      next(httpError('Invalid data', 400));
+      return;
+    }
+
+    const result = await getLimitedUserInfo(req.params.username, next);
+
+    if (result.length < 1) {
+      res.json({
+        Username: 'undefined',
+      });
+      next(httpError('No username found', 404));
+      return;
+    }
+    res.json(result);
+  } catch (e) {
+    next(httpError('get_UserProfileLimited', 404));
+    return;
+    res.json({
+      Username: 'undefined',
+    });
+  }
+};
+const get_UserProfile = async (req, res, next) => {
+  let result, result2;
+  try {
+    // Extract the validation errors from a request.
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      // There are errors.
+      // Error messages can be returned in an array using `errors.array()`.
+      console.error('get_UserProfile validation', errors.array());
+      res.json({
+        message: 'Check email, password & username again',
+      });
+      next(httpError('Invalid data', 400));
+      return;
+    }
+    /* // OTA KÄYTTÖÖN KUN AUTH VALMIS
+console.log("req.user",req.user);
+    console.log("req.user.Username",req.user.Username);
+    console.log("req.params.Username",req.params.username);
+
+
+    if (req.user.Username === req.params.username){
+      console.log("ASDASDADSD");
+      result = await getAllUserInfo(req.params.username, next);
+      result2 = await getLimitedUserInfo(req.params.username, next);
+      result = {
+        info:result,
+        image:result2,
+      }
+      console.log("Result", result);
+    } else {
+       result = await getLimitedUserInfo(req.params.username, next);
+
+    }
+
+     */
+
+    result = await getAllUserInfo(req.params.username, next);
+    result2 = await getLimitedUserInfo(req.params.username, next);
+    result = {
+      info:result,
+      image:result2,
+    }
+
+    if (result.length < 1) {
+      res.json({
+        Username: 'undefined',
+      });
+      next(httpError('No username found', 404));
+      return;
+    }
+    res.json(result);
+  } catch (e) {
+    next(httpError('get_UserProfile', 404));
+    return;
     res.json({
       Username: 'undefined',
     });
@@ -107,9 +207,19 @@ const user_post = async (req, res, next) => {
     next(httpError('Internal server error', 500));
   }
 };
+const check_token = (req, res, next) => {
+  if (!req.user) {
+    next(httpError('token not valid', 403));
+  } else {
+    res.json({ user: req.user });
+  }
+};
 
 module.exports = {
   user_post,
   getReg_UserDetailImage,
   getReg_UserDetailUsername,
+  get_UserProfile,
+  check_token,
+  get_UserProfileLimited,
 };

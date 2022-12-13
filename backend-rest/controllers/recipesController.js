@@ -29,7 +29,7 @@ const {
     getRecipeCommentRatingsByCommentId, removePreviousCommentrating, addCommentLike, addCommentDisLike,
     getCommentratingByUserid,
 } = require('../models/commentsModel');
-const {getReguserOwnedRecipes,} = require('../models/regUserModel');
+const {getReguserOwnedRecipes, getReguserOwnedRecipes2, getReguserOwnedRecipess, getReguserOwnedRecipesNew,} = require('../models/regUserModel');
 const {getRecipeRatingByRecipe} = require("../models/ratingModel");
 
 const get_recipes_with_this_coursetype = async (req, res, next) => {
@@ -54,6 +54,38 @@ const get_reguser_owned_recipes = async (req, res, next) => {
         res.json({recipesTable});
     } catch (e) {
         console.error('get_reguser_owned_recipes', e.message);
+        next(httpError('Database error', 500));
+    }
+};
+const get_user_owned_recipes = async (req, res, next) => {
+    console.log(req.params.username);
+    const data = [
+       // req.user.Userid,
+        req.params.username
+    ]
+    try {
+
+        const errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            // There are errors.
+            // Error messages can be returned in an array using `errors.array()`.
+            console.error('comment_get validation', errors.array());
+            res.json({
+                message: 'Jokin meni pieleen',
+            });
+            next(httpError('Invalid data', 400));
+            return;
+        }
+
+        const recipesTable = await getReguserOwnedRecipesNew(req.params.username, next);
+        console.log("recipestable", recipesTable);
+        if (recipesTable.length < 1) {
+            return next(httpError('No recipes found', 404));
+        }
+        res.json(recipesTable);
+    } catch (e) {
+        console.error('get_user_owned_recipes', e.message);
         next(httpError('Database error', 500));
     }
 };
@@ -708,6 +740,7 @@ module.exports = {
     comment_dislike,
     get_reguser_owned_recipes,
     recipes_put,
+    get_user_owned_recipes,
 };
 
 
