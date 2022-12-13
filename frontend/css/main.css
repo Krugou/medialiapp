@@ -8,9 +8,10 @@
 #aboutus {}
 
 .pageFooterContainerList {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
 }
 
 .pageFooterContainerListTitle {
@@ -29,6 +30,9 @@
 
 .addComment form {
   padding-left: 2.5em;
+}
+.addComment h2 {
+  padding-top: 1em;
 }
 
 .addComment form textarea {
@@ -136,6 +140,10 @@
   justify-content: center;
   padding: 1em;
   margin: 1em;
+}
+
+body {
+  margin: 0;
 }
 
 .checknappi {
@@ -484,6 +492,7 @@
 
 .postCommentButton {
   padding: 1em 1em 1em 2.5em;
+
 }
 
 .postCommentButton button {
@@ -491,8 +500,9 @@
   border: solid 1px white;
   border-radius: 1em;
   color: #0d1e40;
-  height: 3em;
+  height: 4em;
   width: 7em;
+  font-size: 1.2em;
 }
 
 .postRecipe {
@@ -1111,6 +1121,23 @@
   svg {
     font-size: 3vh;
   }
+  .recipeCommentsThumbsUp {
+    font-size: 2.5vh;
+
+  }
+  .recipeCommentsThumbsDown {
+    font-size: 2.5vh;
+  }
+  .radio-group {
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 2em;
+  }
+  #typeInputField {
+    width: 90vw;
+    height: 13vw;
+    max-width: 90vw;
+  }
 }
 
 @media screen and (max-width: 375px) {
@@ -1160,7 +1187,7 @@
     justify-content: unset;
   }
 
-  svg {
+   .fa-bars {
     font-size: 5vh;
     padding: 10px 10px 0px 10px;
     color: white;
