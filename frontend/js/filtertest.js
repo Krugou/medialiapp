@@ -3,10 +3,8 @@ const presentationdata = document.getElementById('presentationdata');
 function createResults(json, target, length) {
   if (length === undefined) {
     length = json.recipesTable.length;
-    console.log('length was undefined')
   }
   if (target === undefined) {
-    console.log('target was undefined');
     target = presentationdata;
   }
 
