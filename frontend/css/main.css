@@ -408,15 +408,19 @@
 }
 
 .pagebody {
-  margin: 0;
-  height: auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .pageFooter {
   display: flex;
   flex-direction: row;
+  align-items: flex-end;
   text-align: center;
   padding: 1em;
+  bottom: 0;
+  width: 100%;
 }
 
 .pageFooterContainer {
@@ -435,7 +439,7 @@
 }
 
 .pagemain {
-  height: auto;
+  flex:1;
 }
 
 .pic {
