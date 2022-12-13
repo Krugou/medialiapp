@@ -83,7 +83,7 @@ const get_user_owned_recipes = async (req, res, next) => {
         if (recipesTable.length < 1) {
             return next(httpError('No recipes found', 404));
         }
-        res.json(recipesTable);
+        res.json({ recipesTable });
     } catch (e) {
         console.error('get_user_owned_recipes', e.message);
         next(httpError('Database error', 500));
