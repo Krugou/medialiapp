@@ -92,7 +92,8 @@ function profiledetails(Imagefilepath, username) {
     userProfile.appendChild(profileP);
     profileP.innerText = username;
 
-    if (sessionStorageDetails === urlParams.get('id')) {
+    if (sessionStorageDetails === urlParams.get('id') && sessionStorageDetails !== null ) {
+        console.log(sessionStorageDetails)
         const profileButton = document.createElement('BUTTON');
         profileButton.setAttribute('id', 'editProfile');
         userProfile.appendChild(profileButton);
