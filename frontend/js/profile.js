@@ -5,10 +5,11 @@ const sessionStorageDetails = sessionStorage.getItem('userid');
 // haetaan urlista id
 
 const urlParams = new URLSearchParams(window.location.search);
-if (sessionStorageDetails !== "null" && sessionStorageDetails !== null && sessionStorageDetails !== undefined && sessionStorageDetails !== "undefined") {
-userid = sessionStorageDetails;
+if (urlParams !== "null" && urlParams !== null && urlParams !== undefined && urlParams !== "undefined") {
+    userid = urlParams.get('id');
 } else {
-    userid = urlParams.get('id');    
+    userid = sessionStorageDetails;
+
 }
 const userposts = document.getElementById('userPosts');
 
