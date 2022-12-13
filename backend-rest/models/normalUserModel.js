@@ -39,14 +39,11 @@ const getRecipesByRecipeName = async (recipeName, next) => {
 const getLimitedUserInfo = async (username, next) => {
   console.log("username limited", username);
   try {
-    let [rows] = await promisePoolUser.execute(` SELECT Images.Imagefilepath FROM Users INNER JOIN Images ON Users.Userimg = Images.Imageid WHERE Username = "${username}"; `);
+    let [rows] = await promisePoolUser.execute(` SELECT Images.Imagefilepath,Users.Username FROM Users INNER JOIN Images ON Users.Userimg = Images.Imageid WHERE Username = "${username}"; `);
 
     if (rows.length<1) {
-      console.log("rows")
       rows=[];
     }
-    rows.push(username);
-    console.log(rows);
     return rows;
   } catch (e) {
     next(httpError('Database error', 500));
