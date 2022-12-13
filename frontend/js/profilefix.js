@@ -47,8 +47,8 @@ const createProfileUser = async (username) => {
         const response = await fetch(url + '/users/limited/' + username);
         const json = await response.json();
         console.log("tietoa KIRJAUTUMATON", json);
-        Imagefilepath = json.Imagefilepath;
-        username = json.Username;
+        Imagefilepath = json[0].Imagefilepath;
+        username = json[0].Username;
         profiledetails(Imagefilepath, username);
     } else { // KIRJAUTUNUT KÄYTTÄJÄ
         const fetchOptions = {
