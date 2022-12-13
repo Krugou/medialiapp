@@ -4,6 +4,20 @@
   list-style: none;
   font-family: monospace;
 }
+
+#aboutus {}
+
+.pageFooterContainerList {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.pageFooterContainerListTitle {
+    display: flex;
+    /* text-align: center; */
+    justify-content: center;
+}
 .addComment {
   width: 100%;
   background-color: #0d1e40;
@@ -416,23 +430,25 @@
 .pageFooter {
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
-  text-align: center;
+  /* align-items: flex-end; */
+  /* justify-content: center; */
   padding: 1em;
   bottom: 0;
   width: 100%;
 }
 
 .pageFooterContainer {
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
   flex-grow: 4;
-  flex-basis: content;
+  flex-basis: fit-content;
   border-width: thin;
   border-right: black outset;
   border-left: black outset;
   border-top: black outset;
+  /* align-items: center; */
 }
-
+.pageFooterContainerListItem {display: flex;justify-content: space-evenly;flex-wrap: wrap;}
 .pageheader {
   border-bottom: solid black 1px;
   background-color: #0d1e40;
