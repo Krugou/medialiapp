@@ -28,7 +28,7 @@ const {
     addComment,
     getRecipeCommentsByRecipe,
     getRecipeCommentRatingsByCommentId, removePreviousCommentrating, addCommentLike, addCommentDisLike,
-    getCommentratingByUserid,
+    getCommentratingByUserid, deleteCommentAdmin, verifyCommentOwnership, deleteComment,
 } = require('../models/commentsModel');
 const {getReguserOwnedRecipes, getReguserOwnedRecipes2, getReguserOwnedRecipess, getReguserOwnedRecipesNew,} = require('../models/regUserModel');
 const {getRecipeRatingByRecipe} = require("../models/ratingModel");
@@ -322,7 +322,7 @@ const comment_post = async (req, res, next) => {
         const data = [
             req.body.comment,
             req.body.recipeid,
-            //req.user.user_id,  // EI käytetä vielä, koska ei jaksa kirjautua sisään joka kerta ku demoaa
+            37, //req.user.user_id,  // EI käytetä vielä, koska ei jaksa kirjautua sisään joka kerta ku demoaa
         ];
         const result = await addComment(data, next);
         if (result.affectedRows < 1) {
@@ -749,7 +749,7 @@ const recipe_delete = async (req, res, next) => {
 
         ];
 
-/*
+/* TÄTÄ TARVITAAN ÄLÄ DELETEE
         if (req.user.Userrole === 0){
             try {
                 const result = await deleteRecipeAdmin(data, next);
@@ -791,6 +791,67 @@ const recipe_delete = async (req, res, next) => {
         next(httpError('Internal server error', 500));
     }
 }
+const comment_delete = async (req, res, next) => {
+    try {
+        const errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            // There are errors.
+            // Error messages can be returned in an array using `errors.array()`.
+            console.error('comment_delete validation', errors.array());
+            res.json({
+                message: 'Jokin meni pieleen',
+            });
+            next(httpError('Invalid data', 400));
+            return;
+        }
+        const data = [
+            37, // req.user.Userid,
+            req.params.id,
+
+        ];
+        // TÄTÄ TARVITAAN ÄLÄ DELETEE
+        /*
+                if (req.user.Userrole === 0){ // Jos user on admin niin ajetaan suoraan delete
+                    try {
+                        const result = await deleteCommentAdmin(data, next);
+                        if (result.affectedRows < 1) {
+                            next(httpError('Invalid data', 400));
+                        }
+                        res.json({
+                            message: 'Recipe Deleted',
+                        });
+
+                    }
+                    catch (e) {
+                        console.error('recipe_delete', e.message);
+                        next(httpError('Internal server error', 500));
+                    }
+
+                }
+
+
+         */
+        const findIfUserOwnsComment = await verifyCommentOwnership(data, next); // jos user ei ole admin, katsotaan omistaako hän kommentin
+        if (findIfUserOwnsComment.length < 1) {
+            res.json({
+                message:"Et omista tätä kommenttia",
+            })
+            next(httpError('Invalid data', 400));
+            return;
+        }
+        const result = await deleteComment(data, next);
+        res.json({
+            message: 'Comment Deleted',
+        });
+        if (result.affectedRows < 1) {
+            next(httpError('Invalid data', 400));
+        }
+    } catch (e) {
+        console.error('comment_delete', e.message);
+        next(httpError('Internal server error', 500));
+    }
+}
 module.exports = {
     getAllNewestRecipesController,
     getAllOldestRecipesController,
@@ -813,6 +874,7 @@ module.exports = {
     recipes_put,
     get_user_owned_recipes,
     recipe_delete,
+    comment_delete,
 };
 
 

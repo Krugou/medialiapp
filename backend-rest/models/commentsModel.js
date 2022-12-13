@@ -49,7 +49,7 @@ const getCommentratingByUserid = async (data, next) => {
 const addComment = async (data, next) => {
   try {
     const [rows] = await promisePoolRegUser.execute(`INSERT INTO Comments (Commenttext, Commentrecipe, Commentuserid) 
-                                                    VALUES (?, ?, 32);`, // Vaihda 32 pois, kun softa valmis
+                                                    VALUES (?, ?, ?);`, // Vaihda 32 pois, kun softa valmis
         data);
     return rows;
   } catch (e) {
@@ -101,7 +101,43 @@ const removePreviousCommentrating = async (data, next) => {
     next(httpError('Database error', 500));
   }
 };
-
+const deleteCommentAdmin = async (data, next) => {
+  try {
+    const  [rows] = await promisePoolRegUser.execute(`DELETE
+                                                        FROM Comments
+                                                        WHERE Commentid = ${data[1]};`,
+        data);
+    return rows;
+  }catch (e) {
+    console.error('deleteCommentAdmin', e.message);
+    next(httpError('Database error', 500));
+  }
+};
+const verifyCommentOwnership = async (data, next) => {
+  try {
+    const [rows] = await promisePoolRegUser.execute(`SELECT *
+                                                  FROM Comments
+                                                  WHERE Commentid = ${data[1]}
+                                                    AND Commentuserid = ${data[0]};`);
+    return rows;
+  } catch (e) {
+    console.error('verifyRecipeOwnership', e.message);
+    next(httpError('Database error', 500));
+  }
+}
+const deleteComment = async (data, next) => {
+  try {
+    const  [rows] = await promisePoolRegUser.execute(`DELETE
+                                                        FROM Comments
+                                                        WHERE Commentid = ${data[1]}
+                                                        AND Commentuserid = ${data[0]};`,
+        data);
+    return rows;
+  }catch (e) {
+    console.error('deleteComment', e.message);
+    next(httpError('Database error', 500));
+  }
+};
 module.exports = {
   addComment,
   deleteCommentById,
@@ -112,5 +148,7 @@ module.exports = {
   removePreviousCommentrating,
   addCommentDisLike,
   getCommentratingByUserid,
-
+  deleteCommentAdmin,
+  verifyCommentOwnership,
+  deleteComment,
 };

@@ -228,7 +228,7 @@ const deleteRecipesById = async (id, next) => {
         id);
     return rows;
   } catch (e) {
-    console.error('deleteRecipes', e.message);
+    console.error('deleteRecipesById', e.message);
     next(httpError('Database error', 500));
   }
 };
@@ -239,7 +239,7 @@ const deleteRecipeByAuthorId = async (id, next) => {
         id);
     return rows;
   } catch (e) {
-    console.error('deleteRecipes', e.message);
+    console.error('deleteRecipeByAuthorId', e.message);
     next(httpError('Database error', 500));
   }
 };
@@ -379,7 +379,7 @@ const removeFavorite = async (data, next) => {
         data);
     return rows;
   } catch (e) {
-    console.error('addFavorite', e.message);
+    console.error('removeFavorite', e.message);
     next(httpError('Database error', 500));
   }
 };
@@ -450,7 +450,7 @@ const deleteRecipe = async (data, next) => {
     }
     return rows;
   } catch (e) {
-    console.error('removePreviousRating', e.message);
+    console.error('deleteRecipe', e.message);
     next(httpError('Database error', 500));
   }
 };
@@ -488,10 +488,12 @@ const deleteRecipeAdmin = async (data, next) => {
     }
     return rows;
   } catch (e) {
-    console.error('removePreviousRating', e.message);
+    console.error('deleteRecipeAdmin', e.message);
     next(httpError('Database error', 500));
   }
 };
+
+
 module.exports = {
   getAllRecipes,
   getRecipesCount,
@@ -520,5 +522,4 @@ module.exports = {
   verifyRecipeOwnership,
   deleteRecipe,
   deleteRecipeAdmin,
-
 };

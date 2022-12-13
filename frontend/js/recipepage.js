@@ -178,7 +178,7 @@ postComment.addEventListener('click', async evt => {
     const json = await response.json();
     alert(json.message);
     document.querySelector('#commentField').value = '';
-    // document.location.reload();
+     document.location.reload();
 });
 //Haetaan kommentit
 const getComments = async (id) => {
@@ -266,6 +266,7 @@ const getComments = async (id) => {
 
 
     const pLikes = document.createElement('p');
+    pLikes.classList.add('commentLikes');
 
     // Jos kommenttia on valmiiksi arvostelut, vaihdetaan like/dislike ikoneiden väri
     pLikes.innerText = comments[i].Commentrating;
@@ -286,6 +287,16 @@ const getComments = async (id) => {
 
     recipeComments.appendChild(li);
 
+    // Luodaan poista-nappi kommentteille.
+    const deleteCommentButton = document.createElement('button');
+    deleteCommentButton.classList.add('deleteCommentButton');
+    deleteCommentButton.innerHTML="Poista";
+    divStats.appendChild(deleteCommentButton);
+    deleteCommentButton.addEventListener('click', async evt => {
+      evt.preventDefault();
+      await deleteThisComment(comments[i].Commentid);
+
+    });
   }
   // Päivitetään kommenttien liket/disliket
   const updateCommentRating = async (rating, id) => {
@@ -308,10 +319,24 @@ const getComments = async (id) => {
     }
     console.log("response");
 
+  }
+};
 
+const deleteThisComment = async (commentid) => {
+  const fetchOptions = {
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+      'Content-Type': 'application/json',
+    },
+  };
+  const response = await fetch(url + '/recipes/comment/'+commentid, fetchOptions)
+  const json = await response.json();
+  alert(json.message);
+  if (json.message === "Comment Deleted") {
+    document.location.reload();
   }
 
-  //const
 
 };
 
