@@ -576,7 +576,7 @@
   width: auto;
 }
 .radio_btn_active {
-  color: #ffffff;
+  color: #a1b4fc;
 }
 .radio_button_item:hover {
   background: linear-gradient(to bottom, #378de5 5%, #79bbff 100%);

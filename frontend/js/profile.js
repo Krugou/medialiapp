@@ -9,7 +9,6 @@ userid = sessionStorageDetails;
 } else {
     userid = urlParams.get('id');    
 }
-console.log("userid: " + userid)
 const userposts = document.getElementById('userPosts');
 
 fetch(url + '/recipes/reguserprofile/3'/* + userid*/)
@@ -87,49 +86,49 @@ function profiledetails(Imagefilepath, username) {
     userProfile.appendChild(profileP);
     profileP.innerText = username;
 
+    if (sessionStorageDetails !== "null" && sessionStorageDetails !== null && sessionStorageDetails !== undefined && sessionStorageDetails !== "undefined") {
+        const profileButton = document.createElement('BUTTON');
+        profileButton.setAttribute('id', 'editProfile');
+        userProfile.appendChild(profileButton);
+        profileButton.innerText = 'Muokkaa profiilia';
 
-    const profileButton = document.createElement('BUTTON');
-    profileButton.setAttribute('id', 'editProfile');
-    userProfile.appendChild(profileButton);
-    profileButton.innerText = 'Muokkaa profiilia';
 
+        const noButton = document.getElementById('noButton');
 
-    const noButton = document.getElementById('noButton');
+        const editProfile = document.getElementById('editModal');
 
-    const editProfile = document.getElementById('editModal');
+        const closeModal = document.getElementsByClassName('close')[0];
 
-    const closeModal = document.getElementsByClassName('close')[0];
+        const closeDelete = document.getElementsByClassName('closeDelete')[0];
 
-    const closeDelete = document.getElementsByClassName('closeDelete')[0];
+        const deleteProfile = document.getElementById('deleteModal');
 
-    const deleteProfile = document.getElementById('deleteModal');
+        const deleteButton = document.getElementById('delete');
 
-    const deleteButton = document.getElementById('delete');
+        profileButton.onclick = function () {
+            editProfile.style.display = 'block';
+        };
 
-    profileButton.onclick = function () {
-        editProfile.style.display = 'block';
-    };
-
-    closeModal.onclick = function () {
-        editProfile.style.display = 'none';
-    };
-
-    window.onclick = function (event) {
-        if (event.target == editProfile) {
+        closeModal.onclick = function () {
             editProfile.style.display = 'none';
-        }
-    };
-    deleteButton.onclick = function () {
-        deleteProfile.style.display = 'block';
-    };
-    closeDelete.onclick = function () {
-        deleteProfile.style.display = 'none';
-    };
+        };
 
-    noButton.onclick = function () {
-        deleteProfile.style.display = 'none';
-    };
+        window.onclick = function (event) {
+            if (event.target == editProfile) {
+                editProfile.style.display = 'none';
+            }
+        };
+        deleteButton.onclick = function () {
+            deleteProfile.style.display = 'block';
+        };
+        closeDelete.onclick = function () {
+            deleteProfile.style.display = 'none';
+        };
 
+        noButton.onclick = function () {
+            deleteProfile.style.display = 'none';
+        };
+    } 
 }
 
 
