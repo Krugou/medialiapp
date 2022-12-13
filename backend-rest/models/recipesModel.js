@@ -454,6 +454,44 @@ const deleteRecipe = async (data, next) => {
     next(httpError('Database error', 500));
   }
 };
+const deleteRecipeAdmin = async (data, next) => {
+  let rows, rows2, rows3;
+  try {
+    try {
+      [rows] = await promisePoolRegUser.execute(`DELETE
+                                                       FROM Images
+                                                       WHERE Imagerecipe = ${data[1]};`,
+          data);
+    }
+    catch (e) {
+
+    }
+    try {
+      [rows2] = await promisePoolRegUser.execute(`DELETE
+                                                        FROM Recipemealtype
+                                                        WHERE Recipeid = ${data[1]};`,
+          data);
+    }
+    catch (e) {
+
+    }
+    try {
+
+
+      [rows3] = await promisePoolRegUser.execute(`DELETE
+                                                        FROM Recipes
+                                                        WHERE Recipeid = ${data[1]};`,
+          data);
+    }
+    catch (e) {
+
+    }
+    return rows;
+  } catch (e) {
+    console.error('removePreviousRating', e.message);
+    next(httpError('Database error', 500));
+  }
+};
 module.exports = {
   getAllRecipes,
   getRecipesCount,
@@ -481,5 +519,6 @@ module.exports = {
   modifyRecipes,
   verifyRecipeOwnership,
   deleteRecipe,
+  deleteRecipeAdmin,
 
 };

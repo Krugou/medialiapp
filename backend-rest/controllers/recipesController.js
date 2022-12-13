@@ -7,7 +7,7 @@ const {
     getImageByRecipeId,
     getCoursetypeByCourseId, addFavorite, getFavorite, removeFavorite, addLike, addDislike, removePreviousRating,
     getReciperatingByUser, removePreviousReciperating, modifyRecipes, findRecipesByAuthorId, verifyRecipeOwnership,
-    deleteRecipe,
+    deleteRecipe, deleteRecipeAdmin,
 } = require('../models/recipesModel');
 
 const {
@@ -739,11 +739,38 @@ const recipe_delete = async (req, res, next) => {
             next(httpError('Invalid data', 400));
             return;
         }
+
+
+
+
         const data = [
             37, // req.user.Userid,
             req.params.id,
 
         ];
+
+/*
+        if (req.user.Userrole === 0){
+            try {
+                const result = await deleteRecipeAdmin(data, next);
+                if (result.affectedRows < 1) {
+                    next(httpError('Invalid data', 400));
+                }
+                res.json({
+                    message: 'Recipe Deleted',
+                });
+
+
+
+            }
+            catch (e) {
+                console.error('recipe_delete', e.message);
+                next(httpError('Internal server error', 500));
+            }
+
+        }
+
+ */
         const findIfUserOwnsRecipe = await verifyRecipeOwnership(data, next);
         if (findIfUserOwnsRecipe.length < 1) {
             res.json({
