@@ -595,8 +595,16 @@ body {
 }
 
 .recipePic {
+  width: 50em;
+  margin: auto;
   text-align: center;
 }
+.recipeAuthor {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid;
+}
+
 .radio_button_item {
   display: flex;
   flex-direction: column;
@@ -901,6 +909,9 @@ body {
 #profilepic {
   width: 15em;
 }
+#recipesProfilePic {
+  width: 10em;
+}
 
 #recipeAddimagebutton {
   margin-right: 13.5em;
@@ -1040,6 +1051,9 @@ body {
 
   .recipeSearch {
     text-align: center;
+  }
+  .recipePic {
+    width: 88%;
   }
 }
 
