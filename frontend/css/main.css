@@ -155,14 +155,12 @@
   float: left;
   font-size: 28px;
   font-weight: bold;
-
 }
 .closeRecipeDelete {
   color: #aaaaaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
-
 }
 .closeRecipeDelete:hover,
 .closeRecipeDelete:focus {
@@ -556,10 +554,10 @@
   justify-content: center;
   align-items: center;
   box-shadow: 3px 4px 0px 0px #1564ad;
-  background: linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
-  background-color: #79bbff;
-  border: 1px solid #337bc4;
-  color: #070612;
+  background-color: #0d1e40;
+  border: solid 1px #0d1e40;
+  border-radius: 1em;
+  color: white;
   font-size: 17px;
   font-weight: bold;
   padding: 1.2rem;
@@ -572,10 +570,10 @@
 }
 .radio-btn {
   appearance: none;
-margin: auto;
+  margin: auto;
 }
-.radio_button_item_label{
-    width: auto;
+.radio_button_item_label {
+  width: auto;
 }
 .radio_btn_active {
   color: #ffffff;
@@ -752,7 +750,6 @@ margin: auto;
   width: 100%;
   max-width: 100%;
   height: 13em;
-
 }
 
 .userProfile {
@@ -982,7 +979,6 @@ margin: auto;
   }
 
   .recipeStats {
-
     flex-direction: column;
   }
 
@@ -1003,7 +999,6 @@ margin: auto;
 }
 
 @media screen and (max-width: 525px) {
-
   #recipesImage {
     height: auto;
   }
