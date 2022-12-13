@@ -690,6 +690,19 @@ body {
   border-radius: 5px;
   color: white;
 }
+.recipeUserComment div{
+  width: 100%;
+}
+.deleteCommentButton {
+  width: 6em;
+  height: 3em;
+  font-size: 1.5em;
+  padding: 0.5em;
+  background-color: white;
+  border-color: #0d1e40;
+  border-radius: 1em;
+  color: #0d1e40;
+}
 
 .Reseptikuva {
   display: flex;
