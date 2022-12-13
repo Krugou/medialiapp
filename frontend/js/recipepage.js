@@ -113,7 +113,7 @@ const getRecipe = async (id) => {
     // Luodaan sivulle edit nappi, ensin katsotaan että käyttäjä on kirjautunut jotta ei tuu erroria
   if (sessionStorage.getItem('token') || sessionStorage.getItem('user')) {
     //Laitetaan näkyviin jos käyttäjä on omistaja
-    if (JSON.parse(sessionStorage.getItem('user')).Userid === recipe.recipes.Recipemaker) {
+    if (JSON.parse(sessionStorage.getItem('user')).Userid === recipe.recipes.Recipemaker || JSON.parse(sessionStorage.getItem('user')).Userrole === 0) {
       const editButton = document.createElement('button');
     editButton.id = "editRecipe";
     editButton.classList.add('postRecipe');
