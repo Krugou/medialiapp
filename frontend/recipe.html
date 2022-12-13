@@ -111,24 +111,7 @@
         </div>
         <div class="Recipe_desc">
             <div class="editRecipe" id="ediRecipeDiv">
-                <div id="editRecipeModal" class="modal">
-                    <div id="editRecipeDetails" class="modal-content">
-                        <span class="closeEditRecipe">&times;</span>
-                        <input id="recipenameInput" placeholder="Reseptin nimi (pakollinen).">
-                        <input id="recipetimeInput" placeholder="Reseptin valmistusaika (min)." type="number">
-                        <input id="addrecipePrice" placeholder="Reseptin hinta (eur)." type="number">
-                        <button id="tag">Lisää tagi</button>
-                        <select id="courseselect" name="course" title="ruoka">
-                            <option value="1">Aamiainen</option>
-                            <option value="2">Lounas</option>
-                            <option value="3">Päivällinen</option>
-                            <option value="4">Illallinen</option>
-                            <form class="imagebutton" enctype="multipart/form-data" id="recipeAddimagebutton">
-                                <input accept="image/*" id="file" multiple='multiple' name="recipeImage" type="file">
-                            </form>
-                            <button class="postRecipe" id="saveEditchanges">Tallenna</button>
-                        </select>
-                    </div>
+                    <button class="postRecipe" id="deleteRecipe">Poista Resepti</button>
                 </div>
             </div>
             <div class="recipeInstruction">
