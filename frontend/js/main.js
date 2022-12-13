@@ -81,7 +81,8 @@ function generateRecipesFrontpage(json) {
 //     editFilter.style.display = 'none';
 //   }
 // };
-
-const profileLink = document.getElementById('profileLink');
-profileLink.href = 'profile.html?username='+ JSON.parse(sessionStorage.getItem('user')).Username;
+if (sessionStorage.getItem('token') || sessionStorage.getItem('user')) {
+  const profileLink = document.getElementById('profileLink');
+  profileLink.href = 'profile.html?username=' + JSON?.parse(sessionStorage.getItem('user')).Username;
+}
 fetchNewestPresentationData();
