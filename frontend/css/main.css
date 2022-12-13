@@ -247,6 +247,17 @@
   width: 15%;
 }
 
+.editRecipe {
+  text-align: center;
+  margin-top: 4em;
+
+}
+.editRecipe button {
+  width: 8em;
+  height: 4em;
+  font-size: 1.5em;
+}
+
 .fa-heart {
   font-size: 3em;
   color: white;
@@ -375,12 +386,16 @@
 }
 
 .nappi button {
-  width: 7em;
-  height: 3em;
+  width: 9em;
+  height: 4em;
+  font-size: 1.5em;
+  padding: 0.5em;
   background-color: #0d1e40;
   border-color: #0d1e40;
   border-radius: 1em;
   color: white;
+  box-shadow: 3px 4px 0px 0px #1564ad;
+  text-shadow: 0px 1px 0px #528ecc;
 }
 
 .nav-end {
@@ -481,13 +496,17 @@
 }
 
 .postRecipe {
-  height: 3em;
-  width: 7em;
+  height: 4em;
+  width: 8em;
+  font-size: 1.5em;
   background-color: #0d1e40;
   border: solid 1px #0d1e40;
   border-radius: 1em;
   color: white;
   margin-bottom: 2em;
+  padding: 0.5em;
+  box-shadow: 3px 4px 0px 0px #1564ad;
+  text-shadow: 0px 1px 0px #528ecc;
 }
 
 .profile p {
@@ -622,7 +641,7 @@
 }
 
 .recipeStats {
-  width: 100em;
+  width: 100%;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -637,6 +656,7 @@
 
 .recipeTags {
   padding-top: 2em;
+  gap: 1em;
 }
 
 .recipeUserComment {
@@ -714,6 +734,9 @@
 .test {
   text-align: center;
 }
+.tiedot {
+  padding: 0;
+}
 
 .tiedot input {
   width: 20em;
@@ -786,12 +809,16 @@
 }
 
 #addrecipesButton {
-  width: 7em;
-  height: 3em;
+  width: 9em;
+  height: 4em;
+  font-size: 1.5em;
+  padding: 0.5em;
   background-color: #0d1e40;
   border-color: #0d1e40;
   border-radius: 1em;
   color: white;
+  box-shadow: 3px 4px 0px 0px #1564ad;
+  text-shadow: 0px 1px 0px #528ecc;
 }
 
 #admin-quotes {
@@ -840,11 +867,14 @@
 
 #openCommentsButton {
   background-color: #0d1e40;
-  border: solid 1px white;
+  padding: 0.5em;
   border-radius: 1em;
+  font-size: 1.5em;
   color: white;
   height: 4em;
-  width: 10em;
+  width: 8em;
+  box-shadow: 3px 4px 0px 0px #1564ad;
+  text-shadow: 0px 1px 0px #528ecc;
 }
 
 #profileArticle {
@@ -998,10 +1028,6 @@
     width: 90%;
   }
 
-  .recipeStats {
-    flex-direction: column;
-  }
-
   .recipeSearch {
     text-align: center;
   }
@@ -1138,6 +1164,9 @@
     font-size: 5vh;
     padding: 10px 10px 0px 10px;
     color: white;
+  }
+  .recipeStats {
+    flex-direction: column;
   }
 }
 
