@@ -54,7 +54,7 @@ const {
   recipe_dislike,
   comment_like,
   comment_dislike,
-  get_reguser_owned_recipes, recipes_put, get_user_owned_recipes,
+  get_reguser_owned_recipes, recipes_put, get_user_owned_recipes, recipe_delete,
 } = require('../controllers/recipesController');
 const { body } = require('express-validator');
 
@@ -124,4 +124,7 @@ router.post('/like/:id',
 router.post('/dislike/:id',
   body('id').escape(),
   recipe_dislike)
+router.delete('/:id',
+    body('id').escape(),
+    recipe_delete)
 module.exports = router;

@@ -30,7 +30,7 @@ const editButtonDiv = document.getElementById('ediRecipeDiv');
 const getRecipe = async (id) => {
   const fetchOptions = {
     headers: {
-      //  Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+        Authorization: 'Bearer ' + sessionStorage.getItem('token'),
     },
   };
   const response = await fetch(url + '/recipes/' + id, fetchOptions);
@@ -110,8 +110,11 @@ const getRecipe = async (id) => {
       }
     }
 
-    // Luodaan sivulle edit nappi
-    const editButton = document.createElement('button');
+    // Luodaan sivulle edit nappi, ensin katsotaan että käyttäjä on kirjautunut jotta ei tuu erroria
+  if (sessionStorage.getItem('token') || sessionStorage.getItem('user')) {
+    //Laitetaan näkyviin jos käyttäjä on omistaja
+    if (JSON.parse(sessionStorage.getItem('user')).Userid === recipe.recipes.Recipemaker) {
+      const editButton = document.createElement('button');
     editButton.id = "editRecipe";
     editButton.classList.add('postRecipe');
     editButton.innerHTML = "Edit recipe";
@@ -120,9 +123,39 @@ const getRecipe = async (id) => {
     });
     editButtonDiv.appendChild(editButton);
 
-  // img.src = `${url}/${cat.filename}`;
-  //addMarker(JSON.parse(cat.coords));
+    //Luodaaan sivulle delete nappi
+
+    const deleteButton = document.createElement('button');
+    deleteButton.id = "deleteRecipe";
+    deleteButton.innerHTML = "Poista Resepti";
+    deleteButton.classList.add('postRecipe');
+    deleteButton.addEventListener('click', evt => {
+      let confirmDelete = confirm("Haluatko poistaa reseptin?")
+      if (confirmDelete) {
+        deleteThisRecipe(recipe_id);
+      }
+    });
+      editButtonDiv.appendChild(deleteButton);
+    }
+  }
 };
+const deleteThisRecipe = async (id) => {
+
+  const fetchOptions = {
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+      'Content-Type': 'application/json',
+    },
+  };
+  const response = await fetch(url + '/recipes/'+id, fetchOptions)
+  const json = await response.json();
+  alert(json.message);
+  if (json.message === "Recipe Deleted") {
+    location.href = "frontpage.html";
+  }
+
+}
 postComment.addEventListener('click', async evt => {
 
     let commentField = document.querySelector('#commentField').value;
@@ -136,7 +169,7 @@ postComment.addEventListener('click', async evt => {
     const fetchOptions = {
       method: 'POST',
       headers: {
-        // Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+         Authorization: 'Bearer ' + sessionStorage.getItem('token'),
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
@@ -149,13 +182,15 @@ postComment.addEventListener('click', async evt => {
 });
 //Haetaan kommentit
 const getComments = async (id) => {
+  let comments;
+
   const fetchOptions = {
     headers: {
-      // Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+       Authorization: 'Bearer ' + sessionStorage.getItem('token'),
     },
   };
   const response = await fetch(url + '/recipes/comment/' + id, fetchOptions);
-  const comments = await response.json();
+   comments = await response.json();
 
   console.log(comments);
   console.log(comments.length);
@@ -279,6 +314,7 @@ const getComments = async (id) => {
   //const
 
 };
+
 openComments.addEventListener('click', async evt => {
   //  evt.preventDefault();
   console.log('asd');

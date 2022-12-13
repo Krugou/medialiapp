@@ -7,6 +7,7 @@ const {
     getImageByRecipeId,
     getCoursetypeByCourseId, addFavorite, getFavorite, removeFavorite, addLike, addDislike, removePreviousRating,
     getReciperatingByUser, removePreviousReciperating, modifyRecipes, findRecipesByAuthorId, verifyRecipeOwnership,
+    deleteRecipe,
 } = require('../models/recipesModel');
 
 const {
@@ -459,7 +460,11 @@ const recipes_put = async (req, res, next) => {
             ];
         }
         try {
-            const findIfUserOwnsRecipe = await verifyRecipeOwnership(data, next);
+            const verifyData=[
+                data[5],
+                data[7],
+            ]
+            const findIfUserOwnsRecipe = await verifyRecipeOwnership(verifyData, next);
             if (findIfUserOwnsRecipe.length < 1) {
                 res.json({
                     message:"Et omista tätä reseptiä",
@@ -718,7 +723,46 @@ const comment_dislike = async (req, res, next) => {
         console.error('comment_dislike', e.message);
         next(httpError('Internal server error', 500));
     }
+}
 
+const recipe_delete = async (req, res, next) => {
+    try {
+        const errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            // There are errors.
+            // Error messages can be returned in an array using `errors.array()`.
+            console.error('recipe_delete validation', errors.array());
+            res.json({
+                message: 'Jokin meni pieleen',
+            });
+            next(httpError('Invalid data', 400));
+            return;
+        }
+        const data = [
+            37, // req.user.Userid,
+            req.params.id,
+
+        ];
+        const findIfUserOwnsRecipe = await verifyRecipeOwnership(data, next);
+        if (findIfUserOwnsRecipe.length < 1) {
+            res.json({
+                message:"Et omista tätä reseptiä",
+            })
+            next(httpError('Invalid data', 400));
+            return;
+        }
+        const result = await deleteRecipe(data, next);
+        res.json({
+            message: 'Recipe Deleted',
+        });
+        if (result.affectedRows < 1) {
+            next(httpError('Invalid data', 400));
+        }
+    } catch (e) {
+        console.error('recipe_delete', e.message);
+        next(httpError('Internal server error', 500));
+    }
 }
 module.exports = {
     getAllNewestRecipesController,
@@ -741,6 +785,7 @@ module.exports = {
     get_reguser_owned_recipes,
     recipes_put,
     get_user_owned_recipes,
+    recipe_delete,
 };
 
 

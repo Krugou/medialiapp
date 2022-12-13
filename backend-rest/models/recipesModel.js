@@ -352,7 +352,7 @@ const modifyRecipes = async (data, next) => {
 const verifyRecipeOwnership = async (data, next) => {
   try {
     const [rows] = await promisePoolUser.execute(`SELECT * FROM Recipes
-                                                      WHERE Recipeid = ${data[7]} AND Recipemaker = ${data[5]};`);
+                                                      WHERE Recipeid = ${data[1]} AND Recipemaker = ${data[0]};`);
     return rows;
   }
   catch (e) {
@@ -415,7 +415,45 @@ const removePreviousReciperating = async (data, next) => {
     next(httpError('Database error', 500));
   }
 };
+const deleteRecipe = async (data, next) => {
+  let rows, rows2, rows3;
+  try {
+    try {
+       [rows] = await promisePoolRegUser.execute(`DELETE
+                                                       FROM Images
+                                                       WHERE Imagerecipe = ${data[1]};`,
+          data);
+    }
+    catch (e) {
 
+    }
+    try {
+       [rows2] = await promisePoolRegUser.execute(`DELETE
+                                                        FROM Recipemealtype
+                                                        WHERE Recipeid = ${data[1]};`,
+          data);
+    }
+    catch (e) {
+
+    }
+    try {
+
+
+       [rows3] = await promisePoolRegUser.execute(`DELETE
+                                                        FROM Recipes
+                                                        WHERE Recipeid = ${data[1]}
+                                                          AND Recipemaker = ${data[0]};`,
+          data);
+    }
+    catch (e) {
+
+    }
+    return rows;
+  } catch (e) {
+    console.error('removePreviousRating', e.message);
+    next(httpError('Database error', 500));
+  }
+};
 module.exports = {
   getAllRecipes,
   getRecipesCount,
@@ -442,5 +480,6 @@ module.exports = {
   getReciperatingByUser,
   modifyRecipes,
   verifyRecipeOwnership,
+  deleteRecipe,
 
 };
