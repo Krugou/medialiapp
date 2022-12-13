@@ -1,11 +1,17 @@
-
+let userid = ""
 // hae käyttäjän id session storagesta
-// const userid = sessionStorage.getItem('userid');
-// hae käyttäjän id:n perusteella reseptit
-const userposts = document.getElementById('userPosts');
-// get urlparams
+const sessionStorageDetails = sessionStorage.getItem('userid');
+// haetaan urlista id
+
 const urlParams = new URLSearchParams(window.location.search);
-const userid = urlParams.get('userid');
+if (sessionStorageDetails !== "null" && sessionStorageDetails !== null && sessionStorageDetails !== undefined && sessionStorageDetails !== "undefined") {
+userid = sessionStorageDetails;
+} else {
+    userid = urlParams.get('id');    
+}
+console.log("userid: " + userid)
+const userposts = document.getElementById('userPosts');
+
 fetch(url + '/recipes/reguserprofile/3'/* + userid*/)
     .then(response => {
         if (response.ok) {
@@ -18,7 +24,7 @@ fetch(url + '/recipes/reguserprofile/3'/* + userid*/)
     ).then((queryData) => {
 
         createResults(queryData, userposts);
-        getProfileDetails();
+        getProfileDetails(userid);
     }).catch((error) => {
     }
     );
