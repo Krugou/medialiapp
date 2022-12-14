@@ -492,6 +492,8 @@ body {
 
 .pagemain {
   flex:1;
+  margin: auto;
+  max-width: 1440px;
 }
 
 .pic {
