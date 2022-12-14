@@ -166,9 +166,9 @@ function profiledetails(Imagefilepath, username) {
                     throw 'HTTP ERROR';
                 }
             }).then((data) => {
-                console.log('data', data);
-                // sessionStorage.setItem('user', JSON.stringify(data));
-                // window.location.reload();
+                // console.log('data', data);
+                sessionStorage.setItem('user', JSON.stringify(data));
+                window.location.reload();
             }).catch((error) => {
                 console.log('error', error);
             });
