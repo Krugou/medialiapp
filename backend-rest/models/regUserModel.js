@@ -102,10 +102,10 @@ const findUsersByUseridRegUser = async (id, next) => {
     next(httpError('Database error', 500));
   }
 };
-const deleteUsersRegUser = async (userid, next) => {
+const deleteUsersRegUser = async (username, next) => {
 
   try {
-    const [rows] = await promisePoolRegUser.execute(`DELETE FROM Users WHERE Userid = "${userid}";
+    const [rows] = await promisePoolRegUser.execute(`DELETE FROM Users WHERE Username = "${username}";
                                                 `); //VOI LISÄTÄ INDEXIN.           
     return rows;
   } catch (e) {
