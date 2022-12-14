@@ -104,38 +104,40 @@
             <div id="userProfile" class="userProfile">
             </div>
             <div class="modal" id="editModal">
-            <!-- <div class="modal-content">
-                <span class="close">&times;</span>
-                <div class="username">
-                    <p class="fontsizeforp">Käyttäjänimi</p>
-                    <p class="fontsizeforp" id="usernameset"></p>
-                    <p class="fontsizeforp">vaihda uuteen</p>
-                    <input id="newusername" name="username" type="text" placeholder="nimimerkki">
-                </div>
-                <div class="pic">
-                    <p class="fontsizeforp">Profile Picture</p>
-                    <img id="currentuserimage" alt="currentuserimage">
-                    <p class="fontsizeforp">vaihda uuteen</p>
-            
-                    <input accept="image/*" id="file" multiple='multiple' name="userProfileImage" type="file" placeholder="kuva">
-                </div>
-                <div class="save">
-                    <button id="saveButton">Save</button>
-                    <button id="delete">Delete Profile</button>
-                </div>
-                <div class="modal" id="deleteModal">
-                    <div class="modal-content">
-                        <span class="closeDelete">&times;</span>
-                        <div>
-                            <p class="fontsizeforp">Haluatko varmasti poistaa käyttäjän?</p>
-                        </div>
-                        <div class="deleteProfile">
-                            <button id="noButton">Ei</button>
-                            <button id="yesButton">Kyllä</button>
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="username">
+                        <p class="fontsizeforp">Käyttäjänimi</p>
+                        <p class="fontsizeforp" id="usernameset"></p>
+                        <p class="fontsizeforp">vaihda uuteen</p>
+                        <input id="newusername" name="username" type="text" placeholder="nimimerkki">
+                    </div>
+                    <div class="pic">
+                        <p class="fontsizeforp">Profile Picture</p>
+                        <img id="currentuserimage" alt="currentuserimage">
+                        <p class="fontsizeforp">vaihda uuteen</p>
+
+                        <form  enctype="multipart/form-data" id="userProfileImage">
+                            <input accept="image/*" id="file" multiple='multiple' name="recipeImage" type="file">
+                        </form>
+                    </div>
+                    <div class="save">
+                        <button id="saveButton">Save</button>
+                        <button id="delete">Delete Profile</button>
+                    </div>
+                    <div class="modal" id="deleteModal">
+                        <div class="modal-content">
+                            <span class="closeDelete">&times;</span>
+                            <div>
+                                <p class="fontsizeforp">Haluatko varmasti poistaa käyttäjän?</p>
+                            </div>
+                            <div class="deleteProfile">
+                                <button id="noButton">Ei</button>
+                                <button id="yesButton">Kyllä</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div> -->
 
                 <p id="typeInputField"></p>
             </div>
