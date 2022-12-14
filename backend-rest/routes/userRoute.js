@@ -1,7 +1,7 @@
 'use strict';
 const express = require('express');
 const { user_post, getReg_UserDetails, getReg_UserDetailUsername, getReg_UserDetailImage, get_UserProfile, check_token,
-    get_UserProfileLimited, deleteUsersReg_User
+    get_UserProfileLimited, deleteUsersReg_User, putNewProfileDetails
 } = require('../controllers/userController');
 const { body } = require('express-validator');
 const multer = require('multer');
@@ -49,10 +49,10 @@ router.route('/count');
 // delete route for user
 router.route('/profiledetails/:username').delete(deleteUsersReg_User);
 // update route for user
-// router.route('/profiledetails/:username').put(upload.single('userImage'), body('username').isLength({ min: 3 }).escape(),  getReg_UserDetails);
-    router.get('/limited/:username',
-        body('username').escape(),
-        get_UserProfileLimited)
+router.route('/profiledetails/:username').put(upload.single('userImage'), body('newusername').isLength({ min: 3 }).escape(), putNewProfileDetails);
+router.get('/limited/:username',
+    body('username').escape(),
+    get_UserProfileLimited)
 
 //AUTHENTIKOINNILLA
 router.get('/:username',
