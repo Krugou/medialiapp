@@ -53,8 +53,8 @@ const getAllUserInfo = async (username, next) => {
 };
 const putNewwProfileDetails = async (data, next) => {
   try {
-    console.log(data)
-    const [rows] = await promisePoolRegUser.execute(`INSERT INTO Users (Username) VALUES ( ?);`, data);
+    
+    const [rows] = await promisePoolRegUser.execute(`UPDATE Users SET username = "${data[0]}" WHERE username = "${data[1]}"; `, );
     return rows;
   } catch (e) {
     console.error('putNewwProfileDetails', e.message);

@@ -49,7 +49,7 @@ router.route('/count');
 // delete route for user
 router.route('/profiledetails/:username').delete(deleteUsersReg_User);
 // update route for user
-router.route('/profiledetails/:username').put(upload.single('userImage'), body('newusername').isLength({ min: 3 }).escape(), putNewProfileDetails);
+router.route('/profiledetails/:username').put(upload.single('userImage'), body('Username').isLength({ min: 3 }).escape(), body('oldUsername').isLength({ min: 3 }).escape(), putNewProfileDetails);
 router.get('/limited/:username',
     body('username').escape(),
     get_UserProfileLimited)

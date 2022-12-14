@@ -146,14 +146,18 @@ function profiledetails(Imagefilepath, username) {
             const addForm = document.querySelector('#userProfileImage');
 
             const formData = new FormData(addForm);
-            
-            formData.append('Username', JSON.parse(sessionStorage.getItem('user')).Username);
-            formData.append('Newusername', newusername);
+
+            formData.append('Username', newusername);
+            formData.append('oldUsername', profileUser);
+
+            // put new username into sessionstorage
+
 
             fetch(url + '/users/profiledetails/' + JSON.parse(sessionStorage.getItem('user')).Username, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json',
+                    // 'Content-Type': 'application/json',
+                    // Authorization: 'Bearer ' + sessionStorage.getItem('token'),
 
 
                 },
@@ -165,13 +169,14 @@ function profiledetails(Imagefilepath, username) {
                     throw 'HTTP ERROR';
                 }
             }).then((data) => {
-                console.log('data', data);
-                sessionStorage.setItem('user', JSON.stringify(data));
-                window.location.reload();
+                const user = JSON.parse(sessionStorage.getItem('user'));
+                user.Username = newusername;
+                sessionStorage.setItem('user', JSON.stringify(user));
+                window.location.href = 'profile.html?username=' + newusername;
             }).catch((error) => {
                 console.log('error', error);
             });
-            console.log("🚀 ~ file: profilefix.js:156 ~ fetch ~ headers", headers)
+
             editProfile.style.display = 'none';
         };
 
