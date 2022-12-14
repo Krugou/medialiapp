@@ -606,6 +606,7 @@ body {
   display: flex;
   align-items: center;
   border-bottom: 1px solid;
+  gap: 1em;
 }
 
 .radio_button_item {
@@ -927,6 +928,9 @@ body {
 }
 #recipesProfilePic {
   width: 10em;
+  border: solid 1px #0d1e40;
+  border-radius: 1em;
+  margin-bottom: 1.5em;
 }
 
 #recipeAddimagebutton {
