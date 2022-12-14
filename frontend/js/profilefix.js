@@ -242,6 +242,7 @@ function profiledetails(Imagefilepath, username) {
 
         const noButton = document.getElementById('noButton');
 
+        const editProfile = document.getElementById('editModal');
         editProfile.style.display = 'none';
 
         const closeModal = document.getElementsByClassName('close')[0];
