@@ -138,6 +138,8 @@ function profiledetails(Imagefilepath, username) {
             }
         };
         deleteButton.onclick = function () {
+
+
             deleteProfile.style.display = 'block';
         };
         closeDelete.onclick = function () {
@@ -147,6 +149,28 @@ function profiledetails(Imagefilepath, username) {
         noButton.onclick = function () {
             deleteProfile.style.display = 'none';
         };
+        yesButton.onclick = function () {
+            fetch(url + '/users/profiledetails/' + JSON.parse(sessionStorage.getItem('user')).Username, {
+                method: 'DELETE',
+                headers: {
+
+                    Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+                },
+            }).then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw 'HTTP ERROR';
+                }
+            }).then((queryData) => {
+                console.log("delete onnistui", queryData);
+                sessionStorage.clear();
+                window.location.href = 'frontpage.html';
+            }).catch((error) => {
+                console.log(error);
+            });
+            deleteProfile.style.display = 'none';
+        }
     }
 }
 createProfileRecipes(profileUser)
