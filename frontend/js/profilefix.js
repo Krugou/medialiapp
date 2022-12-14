@@ -123,9 +123,37 @@ function profiledetails(Imagefilepath, username) {
         const deleteProfile = document.getElementById('deleteModal');
 
         const deleteButton = document.getElementById('delete');
+        const  saveButton = document.getElementById('saveButton');
 
         profileButton.onclick = function () {
             editProfile.style.display = 'block';
+        };
+        saveButton.onclick = function () {
+          // modify profile
+            fetch(url + '/users/profiledetails/' + JSON.parse(sessionStorage.getItem('user')).Username, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+
+                },
+                body: JSON.stringify({
+                    Username: JSON.parse(sessionStorage.getItem('user')).Username,
+                    Imagefilepath: document.getElementById('profilepic').src,
+                }),
+            }).then((response) => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw 'HTTP ERROR';
+                }
+            }).then((data) => {
+                console.log('data', data);
+                sessionStorage.setItem('user', JSON.stringify(data));
+                window.location.reload();
+            }).catch((error) => {
+                console.log('error', error);
+            });
+            editProfile.style.display = 'none';
         };
 
         closeModal.onclick = function () {
@@ -171,6 +199,7 @@ function profiledetails(Imagefilepath, username) {
             });
             deleteProfile.style.display = 'none';
         }
+
     }
 }
 createProfileRecipes(profileUser)
