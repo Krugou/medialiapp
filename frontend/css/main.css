@@ -531,6 +531,11 @@ body {
   padding: 50px;
   text-align: center;
 }
+.recipeLikes {
+  display:flex;
+  gap: 2em;
+  margin-right: 2em;
+}
 
 .Recipe_desc {
   display: flex;
@@ -1088,6 +1093,11 @@ body {
     padding-right: 1.5em;
   }
 }
+@media screen and (max-width: 1500px) {
+  .recipeStats {
+    flex-direction: column;
+  }
+}
 
 @media screen and (min-width: 1600px) {
   .recipeStats {
@@ -1192,7 +1202,7 @@ body {
 
 @media screen and (max-width: 375px) {
   .fontsizeforp {
-    font-size: 1.5vh;
+    font-size: 2vh;
   }
 }
 
@@ -1242,9 +1252,6 @@ body {
     font-size: 5vh;
     padding: 10px 10px 0px 10px;
     color: white;
-  }
-  .recipeStats {
-    flex-direction: column;
   }
   .recipeInstruction {
     width: 90%;
