@@ -16,6 +16,7 @@ const { httpError } = require('../utils/errors');
 const bcrypt = require('bcryptjs');
 const putNewProfileDetails = async (req, res, next) => {
   // check if username exists
+
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
 
@@ -27,7 +28,8 @@ const putNewProfileDetails = async (req, res, next) => {
     return;
   }
   try {
-    const result = await findUsersByUsernameRegUser(req.body.newusername, next);
+
+    const result = await findUsersByUsernameRegUser(req.body.Username, next);
     if (result.length > 0) {
       res.json({
         message: 'Username already exists',
@@ -35,18 +37,17 @@ const putNewProfileDetails = async (req, res, next) => {
       next(httpError('Username already exists', 400));
       return;
     }
-    let data = [];
-    data[
-      req.newusername,
-      req.Imagefilepath
+    let data = [req.body.Username, req.body.oldUsername]
 
-    ]
-    const result2 = await putNewProfileDetails(data, next);
+    // console.log("🚀 ~ file: userController.js:56 ~ putNewProfileDetails ~ data", data)
+    const result2 = await putNewwProfileDetails(data, next);
+    // console.log("🚀 ~ file: userController.js:48 ~ putNewProfileDetails ~ result2", result2)
     res.json(result2);
   } catch (e) {
     console.error('putNewProfileDetails', e.message);
     next(httpError('Internal server error', 500));
   }
+
 };
 
 const getReg_UserDetailImage = async (req, res, next) => {
