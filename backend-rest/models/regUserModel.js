@@ -105,7 +105,8 @@ const findUsersByUseridRegUser = async (id, next) => {
 const deleteUsersRegUser = async (username, next) => {
 
   try {
-    const [rows] = await promisePoolRegUser.execute(`DELETE FROM Users inner join Images ON Userimg = Imageid inner join Recipes ON Userid = Recipemaker  WHERE Username = "${username}";
+    const [rows] = await promisePoolRegUser.execute(`DELETE u, i, r FROM Users u INNER JOIN Images i ON u.Userimg = i.Imageid INNER JOIN Recipes r ON u.Userid = r.Recipemaker
+WHERE u.Username = "${username}";
                                                 `);
     return rows;
   } catch (e) {
