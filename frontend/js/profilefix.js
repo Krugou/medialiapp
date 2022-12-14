@@ -112,72 +112,72 @@ function profiledetails(Imagefilepath, username) {
         userProfile.appendChild(profileButton);
         profileButton.innerText = 'Muokkaa profiilia';
         const editModal = document.getElementById('editModal');
-        
 
-        
 
-        var modal2_2 = document.createElement('DIV');
+
+
+        const modal2_2 = document.createElement('DIV');
         modal2_2.setAttribute('class', 'modal-content');
         editModal.appendChild(modal2_2);
 
-        var modal2_3 = document.createElement('SPAN');
+        const modal2_3 = document.createElement('SPAN');
         modal2_3.setAttribute('class', 'close');
         modal2_2.appendChild(modal2_3);
 
-        var modal2_4 = document.createElement('DIV');
+        const modal2_4 = document.createElement('DIV');
         modal2_4.setAttribute('class', 'username');
         modal2_2.appendChild(modal2_4);
 
-        var modal2_5 = document.createElement('P');
+        const modal2_5 = document.createElement('P');
         modal2_5.setAttribute('class', 'fontsizeforp');
         modal2_4.appendChild(modal2_5);
 
-        var modal2_6 = document.createTextNode((new String("Käyttäjänimi")));
+        const modal2_6 = document.createTextNode((new String("Käyttäjänimi")));
         modal2_5.appendChild(modal2_6);
 
-        var modal2_7 = document.createElement('P');
+        const modal2_7 = document.createElement('P');
         modal2_7.setAttribute('class', 'fontsizeforp');
         modal2_7.setAttribute('id', 'usernameset');
         modal2_4.appendChild(modal2_7);
 
-        var modal2_8 = document.createElement('P');
+        const modal2_8 = document.createElement('P');
         modal2_8.setAttribute('class', 'fontsizeforp');
         modal2_4.appendChild(modal2_8);
 
-        var modal2_9 = document.createTextNode((new String("vaihda uuteen")));
+        const modal2_9 = document.createTextNode((new String("vaihda uuteen")));
         modal2_8.appendChild(modal2_9);
 
-        var modal2_10 = document.createElement('INPUT');
+        const modal2_10 = document.createElement('INPUT');
         modal2_10.setAttribute('id', 'newusername');
         modal2_10.setAttribute('name', 'username');
         modal2_10.setAttribute('type', 'text');
         modal2_10.setAttribute('placeholder', 'nimimerkki');
         modal2_4.appendChild(modal2_10);
 
-        var modal2_11 = document.createElement('DIV');
+        const modal2_11 = document.createElement('DIV');
         modal2_11.setAttribute('class', 'pic');
         modal2_2.appendChild(modal2_11);
 
-        var modal2_12 = document.createElement('P');
+        const modal2_12 = document.createElement('P');
         modal2_12.setAttribute('class', 'fontsizeforp');
         modal2_11.appendChild(modal2_12);
 
-        var modal2_13 = document.createTextNode((new String("Profile Picture")));
+        const modal2_13 = document.createTextNode((new String("Profile Picture")));
         modal2_12.appendChild(modal2_13);
 
-        var modal2_14 = document.createElement('IMG');
+        const modal2_14 = document.createElement('IMG');
         modal2_14.setAttribute('id', 'currentuserimage');
         modal2_14.setAttribute('alt', 'currentuserimage');
         modal2_11.appendChild(modal2_14);
 
-        var modal2_15 = document.createElement('P');
+        const modal2_15 = document.createElement('P');
         modal2_15.setAttribute('class', 'fontsizeforp');
         modal2_11.appendChild(modal2_15);
 
-        var modal2_16 = document.createTextNode((new String("vaihda uuteen")));
+        const modal2_16 = document.createTextNode((new String("vaihda uuteen")));
         modal2_15.appendChild(modal2_16);
 
-        var modal2_17 = document.createElement('INPUT');
+        const modal2_17 = document.createElement('INPUT');
         modal2_17.setAttribute('accept', 'image/*');
         modal2_17.setAttribute('id', 'file');
         modal2_17.setAttribute('multiple', 'multiple');
@@ -186,69 +186,68 @@ function profiledetails(Imagefilepath, username) {
         modal2_17.setAttribute('placeholder', 'kuva');
         modal2_11.appendChild(modal2_17);
 
-        var modal2_18 = document.createElement('DIV');
+        const modal2_18 = document.createElement('DIV');
         modal2_18.setAttribute('class', 'save');
         modal2_2.appendChild(modal2_18);
 
-        var modal2_19 = document.createElement('BUTTON');
+        const modal2_19 = document.createElement('BUTTON');
         modal2_19.setAttribute('id', 'saveButton');
         modal2_18.appendChild(modal2_19);
 
-        var modal2_20 = document.createTextNode((new String("Save")));
+        const modal2_20 = document.createTextNode((new String("Save")));
         modal2_19.appendChild(modal2_20);
 
-        var modal2_21 = document.createElement('BUTTON');
+        const modal2_21 = document.createElement('BUTTON');
         modal2_21.setAttribute('id', 'delete');
         modal2_18.appendChild(modal2_21);
 
-        var modal2_22 = document.createTextNode((new String("Delete Profile")));
+        const modal2_22 = document.createTextNode((new String("Delete Profile")));
         modal2_21.appendChild(modal2_22);
 
-        var modal2_23 = document.createElement('DIV');
+        const modal2_23 = document.createElement('DIV');
         modal2_23.setAttribute('class', 'modal');
         modal2_23.setAttribute('id', 'deleteModal');
         modal2_2.appendChild(modal2_23);
 
-        var modal2_24 = document.createElement('DIV');
+        const modal2_24 = document.createElement('DIV');
         modal2_24.setAttribute('class', 'modal-content');
         modal2_23.appendChild(modal2_24);
 
-        var modal2_25 = document.createElement('SPAN');
+        const modal2_25 = document.createElement('SPAN');
         modal2_25.setAttribute('class', 'closeDelete');
         modal2_24.appendChild(modal2_25);
 
-        var modal2_26 = document.createElement('DIV');
+        const modal2_26 = document.createElement('DIV');
         modal2_24.appendChild(modal2_26);
 
-        var modal2_27 = document.createElement('P');
+        const modal2_27 = document.createElement('P');
         modal2_27.setAttribute('class', 'fontsizeforp');
         modal2_26.appendChild(modal2_27);
 
-        var modal2_28 = document.createElement('DIV');
+        const modal2_28 = document.createElement('DIV');
         modal2_28.setAttribute('class', 'deleteProfile');
         modal2_24.appendChild(modal2_28);
 
-        var modal2_29 = document.createElement('BUTTON');
+        const modal2_29 = document.createElement('BUTTON');
         modal2_29.setAttribute('id', 'noButton');
         modal2_28.appendChild(modal2_29);
 
-        var modal2_30 = document.createTextNode((new String("Ei")));
+        const modal2_30 = document.createTextNode((new String("Ei")));
         modal2_29.appendChild(modal2_30);
 
-        var modal2_31 = document.createElement('BUTTON');
+        const modal2_31 = document.createElement('BUTTON');
         modal2_31.setAttribute('id', 'yesButton');
         modal2_28.appendChild(modal2_31);
 
 
         const noButton = document.getElementById('noButton');
 
-        const editProfile = document.getElementById('editModal');
         editProfile.style.display = 'none';
 
         const closeModal = document.getElementsByClassName('close')[0];
 
         const closeDelete = document.getElementsByClassName('closeDelete')[0];
-    
+
         const deleteProfile = document.getElementById('deleteModal');
 
         const deleteButton = document.getElementById('delete');
@@ -265,9 +264,9 @@ function profiledetails(Imagefilepath, username) {
             const newusername = document.getElementById('newusername').value;
             // validate newusername from sql
 
-            
 
-           
+
+
             fetch(url + '/users/profiledetails/' + JSON.parse(sessionStorage.getItem('user')).Username, {
                 method: 'PUT',
                 headers: {
@@ -277,7 +276,7 @@ function profiledetails(Imagefilepath, username) {
                 body: JSON.stringify({
                     Username: JSON.parse(sessionStorage.getItem('user')).Username,
                     Newusername: document.getElementById('newusername').value,
-                    
+
                     Imagefilepath: document.getElementById('userProfileImage').src,
                 }),
             }).then((response) => {
@@ -293,7 +292,7 @@ function profiledetails(Imagefilepath, username) {
             }).catch((error) => {
                 console.log('error', error);
             });
-                console.log("🚀 ~ file: profilefix.js:156 ~ fetch ~ headers", headers)
+            console.log("🚀 ~ file: profilefix.js:156 ~ fetch ~ headers", headers)
             editProfile.style.display = 'none';
         };
 
@@ -301,7 +300,7 @@ function profiledetails(Imagefilepath, username) {
             editProfile.style.display = 'none';
         };
 
-       
+
         deleteButton.onclick = function () {
 
 
