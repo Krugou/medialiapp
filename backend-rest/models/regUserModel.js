@@ -51,7 +51,16 @@ const getAllUserInfo = async (username, next) => {
     next(httpError('Database error', 500));
   }
 };
-
+const putNewwProfileDetails = async (data, next) => {
+  try {
+    console.log(data)
+    const [rows] = await promisePoolRegUser.execute(`INSERT INTO Users (Username) VALUES ( ?);`, data);
+    return rows;
+  } catch (e) {
+    console.error('putNewwProfileDetails', e.message);
+    next(httpError('Database error', 500));
+  }
+};
 
 const addUsersRegUser = async (data, next) => {
 
@@ -129,5 +138,6 @@ module.exports = {
   getRegUserProfileUsername,
   getReguserOwnedRecipesNew,
   getAllUserInfo,
-  deleteUsersRegUser
+  deleteUsersRegUser,
+  putNewwProfileDetails,
 };

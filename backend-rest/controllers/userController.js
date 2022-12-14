@@ -5,7 +5,7 @@ const {
   findUsersByUsernameRegUser,
   getRegUserProfileImage,
   getRegUserProfileUsername, getAllUserInfo,
-  deleteUsersRegUser,
+  deleteUsersRegUser, putNewwProfileDetails
 
 } = require('../models/regUserModel');
 const {
@@ -14,6 +14,40 @@ const {
 const { validationResult } = require('express-validator');
 const { httpError } = require('../utils/errors');
 const bcrypt = require('bcryptjs');
+const putNewProfileDetails = async (req, res, next) => {
+  // check if username exists
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+
+    console.error('putNewProfileDetails validation', errors.array());
+    res.json({
+      message: 'Check email, password & username again',
+    });
+    next(httpError('Invalid data', 400));
+    return;
+  }
+  try {
+    const result = await findUsersByUsernameRegUser(req.body.newusername, next);
+    if (result.length > 0) {
+      res.json({
+        message: 'Username already exists',
+      });
+      next(httpError('Username already exists', 400));
+      return;
+    }
+    let data = [];
+    data[
+      req.newusername,
+      req.Imagefilepath
+
+    ]
+    const result2 = await putNewProfileDetails(data, next);
+    res.json(result2);
+  } catch (e) {
+    console.error('putNewProfileDetails', e.message);
+    next(httpError('Internal server error', 500));
+  }
+};
 
 const getReg_UserDetailImage = async (req, res, next) => {
   try {
@@ -254,4 +288,5 @@ module.exports = {
   check_token,
   get_UserProfileLimited,
   deleteUsersReg_User,
+  putNewProfileDetails,
 };
