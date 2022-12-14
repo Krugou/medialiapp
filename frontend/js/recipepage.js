@@ -26,6 +26,8 @@ const recipeLike = document.getElementById("recipeThumbsup");
 const recipeDislike = document.getElementById("recipeThumbsdown");
 const likes = document.getElementById('Likes');
 const editButtonDiv = document.getElementById('ediRecipeDiv');
+const authorUsername = document.getElementById('authorUsername');
+const authorImage = document.getElementById('recipesProfilePic');
 //Tällä haetaan reseptin tiedot sivulle
 const getRecipe = async (id) => {
   const fetchOptions = {
@@ -60,17 +62,25 @@ const getRecipe = async (id) => {
     }
   }
 
+  authorUsername.innerHTML = recipe.author.Username;
+  if (recipe.authorimg) {
+    authorImage.src = recipe.authorimg.Imagefilepath;
+  }
+
+
   //Luodaan "course"- eli ruuan tarjoiluaika sivulle.
   const button = document.createElement('button');
   button.innerText = recipe.course.Coursetype;
   button.classList.add('postRecipe');
   recipeTags.appendChild(button);
-  console.log(recipe.images[0]);
-  img.src = url + '/' + recipe.images[0].Imagefilepath;
-  if (recipe.images[0].Imagefilepath === 'undefined') {
-    img.src = './media/logos/jakrecipeslogo.svg';
 
+  if (recipe.images === false || recipe.images[0].Imagefilepath === "undefined")
+  {
+    img.src = './media/logos/jakrecipeslogo.svg';
+  } else {
+    img.src = url + '/' + recipe.images[0].Imagefilepath;
   }
+
   //Jos resepti on suosikeissa, vaihdetaan ikoni.
   if (recipe.favorite === true) {
     console.log('löytyy suosikeista');
@@ -79,8 +89,10 @@ const getRecipe = async (id) => {
     favorited = true;
   }
 
+
+
   // Lisätään hinta näkyviin, jos se on määritetty
-  if (recipe.recipes.Recipeprice !== 0) {
+  if (recipe.recipes?.Recipeprice !== null) {
     console.log('Reseptin hinta', recipe.recipes.Recipeprice.toFixed(2));
     const p = document.createElement('p');
     p.innerText = 'Kokonaishinta: ' + recipe.recipes.Recipeprice.toFixed(2) +
