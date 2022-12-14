@@ -150,6 +150,9 @@ function profiledetails(Imagefilepath, username) {
             formData.append('Username', newusername);
             formData.append('oldUsername', profileUser);
 
+            // put new username into sessionstorage
+
+
             fetch(url + '/users/profiledetails/' + JSON.parse(sessionStorage.getItem('user')).Username, {
                 method: 'PUT',
                 headers: {
@@ -166,9 +169,10 @@ function profiledetails(Imagefilepath, username) {
                     throw 'HTTP ERROR';
                 }
             }).then((data) => {
-                // console.log('data', data);
-                sessionStorage.setItem('user', JSON.stringify(data));
-                window.location.reload();
+                const user = JSON.parse(sessionStorage.getItem('user'));
+                user.Username = newusername;
+                sessionStorage.setItem('user', JSON.stringify(user));
+                window.location.href = 'profile.html?username=' + newusername;
             }).catch((error) => {
                 console.log('error', error);
             });
