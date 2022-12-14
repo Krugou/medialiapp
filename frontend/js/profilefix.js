@@ -28,15 +28,35 @@ const createProfileRecipes = async (username) => {
         },
     };
     console.log('username', username);
-    const response = await fetch(url + '/recipes/profile/' + username, fetchOptions);
-    const json = await response.json();
-
-    console.log("reseptien tiedot", json);
-
-
-    // Rakenna reseptit sivulle
-    const userposts = document.getElementById('userPosts');
-    createResults(json, userposts);
+    fetch(url + '/recipes/profile/' + username, fetchOptions)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw 'HTTP ERROR';
+            }
+        }
+        ).then((queryData) => {
+            console.log("reseptien tiedot", queryData);
+            if (queryData.length === 0) {
+                const userposts = document.getElementById('userPosts');
+                const noRecipes = document.createElement('P');
+                noRecipes.setAttribute('class', 'fontsizeforp');
+                userposts.appendChild(noRecipes);
+                noRecipes.innerText = 'Ei reseptejä';
+            } else {
+                // Rakenna reseptit sivulle
+                const userposts = document.getElementById('userPosts');
+                createResults(queryData, userposts);
+            }
+        }).catch((error) => {
+            const userposts = document.getElementById('userPosts');
+            const noRecipes = document.createElement('P');
+            noRecipes.setAttribute('class', 'fontsizeforp');
+            userposts.appendChild(noRecipes);
+            noRecipes.innerText = 'Ei reseptejä';
+        }
+        );
 };
 
 const createProfileUser = async (username) => {
@@ -47,8 +67,8 @@ const createProfileUser = async (username) => {
         const response = await fetch(url + '/users/limited/' + username);
         const json = await response.json();
         console.log("tietoa KIRJAUTUMATON", json);
-        Imagefilepath = json[0].Imagefilepath;
-        username = json[0].Username;
+        Imagefilepath = json[0]?.Imagefilepath;
+        username = json[0]?.Username;
         profiledetails(Imagefilepath, username);
     } else { // KIRJAUTUNUT KÄYTTÄJÄ
         const fetchOptions = {
@@ -59,7 +79,7 @@ const createProfileUser = async (username) => {
         const response = await fetch(url + '/users/' + username, fetchOptions);
         const json = await response.json();
         console.log("tietoa KIRJAUTUNUT EI AUTHENTIKOI KÄYTTÄJÄÄ VIELÄ", json);
-        Imagefilepath = json.image[0].Imagefilepath;
+        Imagefilepath = json.image[0]?.Imagefilepath;
         username = json.info.Username;
         profiledetails(Imagefilepath, username);
     }
@@ -129,9 +149,9 @@ function profiledetails(Imagefilepath, username) {
         };
     }
 }
-
 createProfileRecipes(profileUser)
-
 createProfileUser(profileUser)
+
+
 
 
