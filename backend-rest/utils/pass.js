@@ -27,7 +27,6 @@ passport.use(new Strategy(
       }
     }));
 
-// TODO: JWT strategy for handling bearer token
 passport.use(new JWTStrategy(
     {
       jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),

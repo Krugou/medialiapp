@@ -62,7 +62,27 @@ const getCoursetypeByCourseId = async (recipecourse, next) => {
     next(httpError('Database error', 500));
   }
 };
-
+const getRecipemaker = async (Recipeid, next) => {
+  try {
+    const [rows] = await promisePoolUser.execute(`SELECT Users.Username, Users.Userimg  FROM Users
+                                                     INNER JOIN Recipes ON
+                                                    Recipes.Recipemaker = Users.Userid
+                                                     WHERE Recipeid = ${Recipeid}`);
+    return rows;
+  } catch (e) {
+    console.error('getRecipe', e.message);
+    next(httpError('Database error', 500));
+  }
+};const getRecipemakerImage = async (Imageid, next) => {
+  try {
+    const [rows] = await promisePoolUser.execute(`SELECT Imagefilepath  FROM Images
+                                                      WHERE Imageid = ${Imageid}`);
+    return rows;
+  } catch (e) {
+    console.error('getRecipe', e.message);
+    next(httpError('Database error', 500));
+  }
+};
 /*
 const getRecipe = async (Recipeid, next) => {
     try {
@@ -522,4 +542,6 @@ module.exports = {
   verifyRecipeOwnership,
   deleteRecipe,
   deleteRecipeAdmin,
+  getRecipemaker,
+  getRecipemakerImage,
 };

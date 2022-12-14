@@ -7,7 +7,7 @@ const {
     getImageByRecipeId,
     getCoursetypeByCourseId, addFavorite, getFavorite, removeFavorite, addLike, addDislike, removePreviousRating,
     getReciperatingByUser, removePreviousReciperating, modifyRecipes, findRecipesByAuthorId, verifyRecipeOwnership,
-    deleteRecipe, deleteRecipeAdmin,
+    deleteRecipe, deleteRecipeAdmin, getRecipemaker, getRecipemakerImage,
 } = require('../models/recipesModel');
 
 const {
@@ -115,7 +115,7 @@ const get_recipes_with_this_low_recipe_price_to_0 = async (req, res, next) => {
     }
 };
 const recipe_get = async (req, res, next) => {
-    let rows1, rows2, rows3, rows4, rows5, rows6, rows7;
+    let rows1, rows2, rows3, rows4, rows5, rows6, rows7, rows8, rows9;
     try {
 
         rows1 = await getRecipeById(req.params.id, next);
@@ -140,6 +140,16 @@ const recipe_get = async (req, res, next) => {
             //rows6  +=rows6.length >= 1; // True tai False, jos löytyy niin true
         }
         rows7 = await getRecipeRatingByRecipe(req.params.id, next);
+        rows8 = await getRecipemaker(req.params.id, next);
+        // Haetaan kuva erikseen, koska sitä välttämättä ei ole, sen takia tarvitaan myös try catch
+        try {
+            console.log("rows8", rows8[0].Userimg);
+            rows9 = await getRecipemakerImage(rows8[0].Userimg, next);
+
+        }
+         catch (e) {
+             next(httpError('No Image found', 404));
+         }
         if (rows1.length < 1) {
             return next(httpError('No recipe found', 404));
         }
@@ -148,20 +158,22 @@ const recipe_get = async (req, res, next) => {
             rows2 = '';
         }
         if (rows3.length < 1) {
-            rows3 = '';
+            rows3 = false;
         }
         if (rows4.length < 1) {
             rows4 = '';
         }
-
+        console.log("rows8", rows8);
         res.json({
             recipes: rows1.pop(), //Ainoastaan yksi matchaava resepti, niin pop
             mealtypes: rows2, //Voi olla monta, niin ei pop
-            images: rows3, //Voi olla tulevaisuudessa monta kuvaa, niin ei pop
+            images: rows3,
             course: rows4.pop(), // Ainoastaan yksi course, niin pop
             favorite: rows5,
             rating: rows6,
             ratingsum: rows7.pop(),
+            author:rows8.pop(),
+            authorimg:rows9.pop(),
         });
 
     } catch (e) {
