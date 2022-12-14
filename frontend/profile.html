@@ -108,14 +108,14 @@
                     <span class="close">&times;</span>
                     <div class="username">
                         <p class="fontsizeforp">Username</p>
-                        <input>
+                        <input id="username" name="username" type="text" placeholder="nimimerkki">
                     </div>
                     <div class="pic">
                         <p class="fontsizeforp">Profile Picture</p>
-                        <button>Upload Image</button>
+                        <input accept="image/*" id="file" multiple='multiple' name="userProfileImage" type="file" placeholder="kuva">
                     </div>
                     <div class="save">
-                        <button>Save</button>
+                        <button id="saveButton">Save</button>
                         <button id="delete">Delete Profile</button>
                     </div>
                     <div class="modal" id="deleteModal">
