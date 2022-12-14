@@ -104,7 +104,7 @@
             <div id="userProfile" class="userProfile">
             </div>
             <div class="modal" id="editModal">
-            <div class="modal-content">
+            <!-- <div class="modal-content">
                 <span class="close">&times;</span>
                 <div class="username">
                     <p class="fontsizeforp">Käyttäjänimi</p>
@@ -135,7 +135,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
                 <p id="typeInputField"></p>
             </div>
@@ -172,32 +172,32 @@
 
     </footer>
     <script>
-      const modaldiv = document.createElement("div");
-      modaldiv.setAttribute("class", "modal");
-      const modalcontent = document.createElement("div");
-      modalcontent.setAttribute("class", "modal-content");
-      const confirmationtext = document.createElement("p");
-      const deletebutton = document.createElement('button');
-      deletebutton.addEventListener('click', () => {
-        modaldiv.style.display = "block";
-      });
-      const closemodal = document.createElement("span");
-      closemodal.setAttribute("class", "closeRecipeDelete");
-      closemodal.addEventListener('click', () => {
-        modaldiv.style.display = "none";
-      });
-      const yesbutton = document.createElement("button");
-      const nobutton = document.createElement("button");
-      nobutton.addEventListener('click', () => {
-        modaldiv.style.display = "none";
-      });
+    //   const modaldiv = document.createElement("div");
+    //   modaldiv.setAttribute("class", "modal");
+    //   const modalcontent = document.createElement("div");
+    //   modalcontent.setAttribute("class", "modal-content");
+    //   const confirmationtext = document.createElement("p");
+    //   const deletebutton = document.createElement('button');
+    //   deletebutton.addEventListener('click', () => {
+    //     modaldiv.style.display = "block";
+    //   });
+    //   const closemodal = document.createElement("span");
+    //   closemodal.setAttribute("class", "closeRecipeDelete");
+    //   closemodal.addEventListener('click', () => {
+    //     modaldiv.style.display = "none";
+    //   });
+    //   const yesbutton = document.createElement("button");
+    //   const nobutton = document.createElement("button");
+    //   nobutton.addEventListener('click', () => {
+    //     modaldiv.style.display = "none";
+    //   });
 
 
-      modaldiv.appendChild(modalcontent);
-      modalcontent.appendChild(closemodal);
-      modalcontent.appendChild(confirmationtext);
-      modalcontent.appendChild(yesbutton);
-      modalcontent.appendChild(nobutton);
+    //   modaldiv.appendChild(modalcontent);
+    //   modalcontent.appendChild(closemodal);
+    //   modalcontent.appendChild(confirmationtext);
+    //   modalcontent.appendChild(yesbutton);
+    //   modalcontent.appendChild(nobutton);
     </script>
 
 </body>
