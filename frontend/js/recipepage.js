@@ -217,7 +217,7 @@ const getComments = async (id) => {
     divUsername.appendChild(img);
 
     const a = document.createElement('a');
-    a.href = 'profile.html'; // + id
+    a.href = 'profile.html?username='+ comments[i].Username; // + id
     a.innerText = comments[i].Username;
 
     divUsername.appendChild(a);
