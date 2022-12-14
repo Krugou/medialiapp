@@ -569,8 +569,9 @@ body {
   border-radius: 1em;
   color: white;
   height: 3em;
-  width: 7em;
+  width: 6em;
   cursor: pointer;
+  font-size: 2vh;
 }
 
 .recipefigure img {
@@ -580,6 +581,9 @@ body {
   border-top-right-radius: 1em;
   object-fit: cover;
   width: 100%;
+}
+.recipefigure p {
+  font-size: 2vh;
 }
 
 .recipeInstruction {
