@@ -213,13 +213,12 @@ const getComments = async (id) => {
     const img = document.createElement('img');
     img.src = 'media/logos/jakrecipeslogo.svg';
     img.alt = 'Käyttäjän profiilikuva';
-
     divUsername.appendChild(img);
 
     const a = document.createElement('a');
     a.href = 'profile.html?username='+ comments[i].Username; // + id
     a.innerText = comments[i].Username;
-
+    a.style.textDecoration = "underline";
     divUsername.appendChild(a);
 
     const p = document.createElement('p');
@@ -236,7 +235,8 @@ const getComments = async (id) => {
 
     spanUp.innerHTML += '<svg class="svg-inline--fa fa-thumbs-up" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="thumbs-up" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M313.4 32.9c26 5.2 42.9 30.5 37.7 56.5l-2.3 11.4c-5.3 26.7-15.1 52.1-28.8 75.2H464c26.5 0 48 21.5 48 48c0 25.3-19.5 46-44.3 47.9c7.7 8.5 12.3 19.8 12.3 32.1c0 23.4-16.8 42.9-38.9 47.1c4.4 7.2 6.9 15.8 6.9 24.9c0 21.3-13.9 39.4-33.1 45.6c.7 3.3 1.1 6.8 1.1 10.4c0 26.5-21.5 48-48 48H294.5c-19 0-37.5-5.6-53.3-16.1l-38.5-25.7C176 420.4 160 390.4 160 358.3V320 272 247.1c0-29.2 13.3-56.7 36-75l7.4-5.9c26.5-21.2 44.6-51 51.2-84.2l2.3-11.4c5.2-26 30.5-42.9 56.5-37.7zM32 192H96c17.7 0 32 14.3 32 32V448c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V224c0-17.7 14.3-32 32-32z"></path></svg>';
     spanDown.innerHTML += '<svg class="svg-inline--fa fa-thumbs-down" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="thumbs-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M313.4 479.1c26-5.2 42.9-30.5 37.7-56.5l-2.3-11.4c-5.3-26.7-15.1-52.1-28.8-75.2H464c26.5 0 48-21.5 48-48c0-25.3-19.5-46-44.3-47.9c7.7-8.5 12.3-19.8 12.3-32.1c0-23.4-16.8-42.9-38.9-47.1c4.4-7.3 6.9-15.8 6.9-24.9c0-21.3-13.9-39.4-33.1-45.6c.7-3.3 1.1-6.8 1.1-10.4c0-26.5-21.5-48-48-48H294.5c-19 0-37.5 5.6-53.3 16.1L202.7 73.8C176 91.6 160 121.6 160 153.7V192v48 24.9c0 29.2 13.3 56.7 36 75l7.4 5.9c26.5 21.2 44.6 51 51.2 84.2l2.3 11.4c5.2 26 30.5 42.9 56.5 37.7zM32 320H96c17.7 0 32-14.3 32-32V64c0-17.7-14.3-32-32-32H32C14.3 32 0 46.3 0 64V288c0 17.7 14.3 32 32 32z"></path></svg>';
-
+    spanUp.style.cursor = "pointer";
+    spanDown.style.cursor = "pointer";
 
     // Jos käyttäjä on tykännyt kommentista ennen, vaihetaan sen ikonin väri
     if (comments[i].rating?.find === true){
@@ -291,6 +291,7 @@ const getComments = async (id) => {
     const deleteCommentButton = document.createElement('button');
     deleteCommentButton.classList.add('deleteCommentButton');
     deleteCommentButton.innerHTML="Poista";
+    deleteCommentButton.style.cursor = "pointer";
     divStats.appendChild(deleteCommentButton);
     deleteCommentButton.addEventListener('click', async evt => {
       evt.preventDefault();
