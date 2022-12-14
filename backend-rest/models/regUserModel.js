@@ -102,6 +102,17 @@ const findUsersByUseridRegUser = async (id, next) => {
     next(httpError('Database error', 500));
   }
 };
+const deleteUsersRegUser = async (userid, next) => {
+
+  try {
+    const [rows] = await promisePoolRegUser.execute(`DELETE FROM Users WHERE Userid = "${userid}";
+                                                `); //VOI LISÄTÄ INDEXIN.           
+    return rows;
+  } catch (e) {
+    console.error('deleteUsersRegUser', e.message);
+    next(httpError('Database error', 500));
+  }
+};
 
 module.exports = {
 
@@ -114,4 +125,5 @@ module.exports = {
   getRegUserProfileUsername,
   getReguserOwnedRecipesNew,
   getAllUserInfo,
+  deleteUsersRegUser
 };

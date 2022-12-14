@@ -5,6 +5,7 @@ const {
   findUsersByUsernameRegUser,
   getRegUserProfileImage,
   getRegUserProfileUsername, getAllUserInfo,
+  deleteUsersRegUser,
 
 } = require('../models/regUserModel');
 const {
@@ -125,8 +126,8 @@ console.log("req.user",req.user);
     result = await getAllUserInfo(req.params.username, next);
     result2 = await getLimitedUserInfo(req.params.username, next);
     result = {
-      info:result,
-      image:result2,
+      info: result,
+      image: result2,
     }
 
     if (result.length < 1) {
@@ -214,6 +215,36 @@ const check_token = (req, res, next) => {
     res.json({ user: req.user });
   }
 };
+const deleteUsersReg_User = async (req, res, next) => {
+  try {
+    // Extract the validation errors from a request.
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      // There are errors.
+      // Error messages can be returned in an array using `errors.array()`.
+      console.error('deleteUsersReg_User validation', errors.array());
+      res.json({
+        message: 'Check email, password & username again',
+      });
+      next(httpError('Invalid data', 400));
+      return;
+    }
+    const result = await deleteUsersRegUser(req.params.username, next);
+    if (result.affectedRows < 1) {
+      res.json({
+        message: 'Invalid data',
+      });
+      next(httpError('Invalid data', 400));
+    }
+    res.json({
+      message: 'User Deleted',
+    });
+  } catch (e) {
+    console.error('deleteUsersReg_User', e.message);
+    next(httpError('Internal server error', 500));
+  }
+};
 
 module.exports = {
   user_post,
@@ -222,4 +253,5 @@ module.exports = {
   get_UserProfile,
   check_token,
   get_UserProfileLimited,
+  deleteUsersReg_User,
 };
