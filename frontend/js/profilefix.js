@@ -129,7 +129,12 @@ function profiledetails(Imagefilepath, username) {
             editProfile.style.display = 'block';
         };
         saveButton.onclick = function () {
-            // modify profile
+            const newusername = document.getElementById('newusername').value;
+            // validate newusername from sql
+
+            
+
+           
             fetch(url + '/users/profiledetails/' + JSON.parse(sessionStorage.getItem('user')).Username, {
                 method: 'PUT',
                 headers: {
@@ -138,6 +143,8 @@ function profiledetails(Imagefilepath, username) {
                 },
                 body: JSON.stringify({
                     Username: JSON.parse(sessionStorage.getItem('user')).Username,
+                    Newusername: document.getElementById('newusername').value,
+                    
                     Imagefilepath: document.getElementById('userProfileImage').src,
                 }),
             }).then((response) => {
@@ -153,6 +160,7 @@ function profiledetails(Imagefilepath, username) {
             }).catch((error) => {
                 console.log('error', error);
             });
+                console.log("🚀 ~ file: profilefix.js:156 ~ fetch ~ headers", headers)
             editProfile.style.display = 'none';
         };
 
