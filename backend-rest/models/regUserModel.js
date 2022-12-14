@@ -52,7 +52,6 @@ const getAllUserInfo = async (username, next) => {
   }
 };
 const putNewwProfileDetails = async (data, next) => {
-  console.log("🚀 ~ file: regUserModel.js:55 ~ putNewwProfileDetails ~ data", data)
   try {
     
     const [rows] = await promisePoolRegUser.execute(`UPDATE Users SET username = "${data[0]}" WHERE username = "${data[1]}"; `, );
