@@ -380,8 +380,10 @@ body {
   border: solid 1px #0d1e40;
   border-radius: 1em;
   color: white;
-  height: 3em;
-  width: 7em;
+  height: 4em;
+  width: 8em;
+  cursor:pointer;
+  margin:1em;
 }
 
 .modaladd {
@@ -409,6 +411,7 @@ body {
   color: white;
   box-shadow: 3px 4px 0px 0px #1564ad;
   text-shadow: 0px 1px 0px #528ecc;
+  cursor: pointer;
 }
 
 .nav-end {
@@ -522,6 +525,7 @@ body {
   padding: 0.5em;
   box-shadow: 3px 4px 0px 0px #1564ad;
   text-shadow: 0px 1px 0px #528ecc;
+  cursor: pointer;
 }
 
 .profile p {
@@ -563,6 +567,7 @@ body {
   color: white;
   height: 3em;
   width: 7em;
+  cursor: pointer;
 }
 
 .recipefigure img {
@@ -630,6 +635,7 @@ body {
   font-weight: bold;
   padding: 1.2rem;
   text-decoration: none;
+  cursor:pointer;
   text-shadow: 0px 1px 0px #528ecc;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
@@ -744,7 +750,8 @@ body {
 
 .save button {
   height: 35px;
-  width: 25%;
+  width: 10em;
+  cursor:pointer;
 }
 
 .selectedMealTypeButtons {
@@ -764,11 +771,12 @@ body {
   width: 25%;
   margin-top: 5%;
   height: 40px;
+  cursor: pointer
 }
 
 .tags {
   background-color: lightgray;
-  height: 300px;
+  height: auto;
   width: 70%;
   margin: auto;
   border: solid 1px gray;
@@ -785,6 +793,7 @@ body {
   width: 20em;
   height: 3em;
   padding: 0.5em;
+  font-size: 1.5em;
 }
 
 .uploadimage {
@@ -862,6 +871,7 @@ body {
   color: white;
   box-shadow: 3px 4px 0px 0px #1564ad;
   text-shadow: 0px 1px 0px #528ecc;
+  cursor: pointer;
 }
 
 #admin-quotes {
@@ -900,6 +910,7 @@ body {
   color: white;
   height: 4em;
   width: 10em;
+  cursor: pointer;
 }
 
 #openComments {
@@ -918,6 +929,7 @@ body {
   width: 8em;
   box-shadow: 3px 4px 0px 0px #1564ad;
   text-shadow: 0px 1px 0px #528ecc;
+  cursor: pointer;
 }
 
 #profileArticle {
@@ -943,6 +955,7 @@ body {
 
 #recipeAddimagebutton {
   margin-right: 13.5em;
+  cursor:pointer
 }
 
 #recipeName {
@@ -982,6 +995,7 @@ body {
   color: white;
   height: 3em;
   width: 7em;
+  cursor:pointer;
 }
 #editRecipeDetails {
   display: flex;
@@ -1206,6 +1220,9 @@ body {
   }
   .addComment form textarea {
     width:90%;
+  }
+  .tiedot input {
+    font-size: 1em;
   }
 }
 
