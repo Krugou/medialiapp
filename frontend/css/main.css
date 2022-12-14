@@ -329,6 +329,7 @@ body {
   height: 2vw;
   max-width: 80vw;
   text-align: center;
+  margin-bottom: 2em;
 }
 
 .imagebutton {
@@ -1064,6 +1065,9 @@ body {
   #recipesImage {
     width: 40em;
   }
+  .recipeSearchInput {
+    height: 4vw;
+  }
 }
 
 @media screen and (max-width: 770px) {
@@ -1084,6 +1088,10 @@ body {
   }
   .recipePic {
     width: 88%;
+  }
+  .recipeSearchInput {
+    width: 40vw;
+    height: 5vw;
   }
 }
 
