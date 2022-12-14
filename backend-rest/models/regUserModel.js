@@ -45,7 +45,7 @@ const getRegUserProfileUsername = async (userid, next) => {
 const getAllUserInfo = async (username, next) => {
   try {
     const [rows] = await promisePoolRegUser.execute(`SELECT Userid, Useremail, Userrole, Username FROM Users WHERE Username = "${username}"; `);
-  return rows.pop();
+    return rows.pop();
 
   } catch (e) {
     next(httpError('Database error', 500));
@@ -105,8 +105,8 @@ const findUsersByUseridRegUser = async (id, next) => {
 const deleteUsersRegUser = async (username, next) => {
 
   try {
-    const [rows] = await promisePoolRegUser.execute(`DELETE FROM Users WHERE Username = "${username}";
-                                                `); //VOI LISÄTÄ INDEXIN.           
+    const [rows] = await promisePoolRegUser.execute(`DELETE FROM Users inner join Images ON Userimg = Imageid  WHERE Username = "${username}";
+                                                `);
     return rows;
   } catch (e) {
     console.error('deleteUsersRegUser', e.message);
