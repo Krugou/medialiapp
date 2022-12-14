@@ -351,7 +351,10 @@ body {
   font-size: 1.5em;
   resize: none;
 }
-
+.loadingState {
+  text-align: center;
+  font-size: 2em;
+}
 .modal {
   display: none;
   position: fixed;
@@ -683,7 +686,7 @@ body {
   text-align: center;
   border-radius: 1em;
   padding: 1em;
-  gap: 2em;
+  gap: 3em;
   display: flex;
   background-color: lightgray;
   height: auto;
@@ -975,6 +978,8 @@ body {
   border-radius: 1em;
   object-fit: cover;
   width: 50em;
+  margin-top: 2em;
+  margin-bottom:2em;
 }
 
 #recipetimeInput {
@@ -1223,6 +1228,10 @@ body {
   }
   .tiedot input {
     font-size: 1em;
+  }
+  .fa-heart {
+    margin-top: 1em;
+    margin-bottom: 1em;
   }
 }
 
