@@ -578,13 +578,14 @@ body {
 }
 
 .recipeInstruction h2 {
+  padding: 1em;
   text-align: center;
-  margin: 1em;
   font-size: 2em;
 }
 
 .recipeInstruction p {
   margin: 1.5em;
+  padding-bottom: 1.5em;
 }
 
 .recipename {
@@ -663,7 +664,7 @@ body {
 }
 
 .recipeStats {
-  width: 100%;
+  width: 70%;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -1084,6 +1085,7 @@ body {
 @media screen and (max-width: 850px) {
   .commentContent {
     margin: 0.25em 0.25em 0.25em 0.25em;
+    padding-right: 1.5em;
   }
 }
 
@@ -1142,6 +1144,7 @@ body {
   .commentUsername {
     margin-top: 2.5em;
     font-size: 1.5em;
+    padding-left: 1.2em;
   }
 
   .recipeStats {
@@ -1182,6 +1185,9 @@ body {
   .deleteCommentButton {
     margin-right: 1em;
   }
+  .addComment form textarea {
+    width:90%;
+  }
 }
 
 @media screen and (max-width: 375px) {
@@ -1208,6 +1214,7 @@ body {
     display: flex;
     flex-direction: column;
     padding-left: 1em;
+    margin-top: 2em;
   }
 
   .navbar a {
@@ -1245,7 +1252,10 @@ body {
   .addComment {
     width: 90%;
   }
-  .recipeUserComment {
+  .recipeComments {
+    width: 90%;
+  }
+  .recipeStats {
     width: 90%;
   }
 }
