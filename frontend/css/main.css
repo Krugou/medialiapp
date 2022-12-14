@@ -383,10 +383,10 @@ body {
   border: solid 1px #0d1e40;
   border-radius: 1em;
   color: white;
-  height: 4em;
-  width: 8em;
-  cursor:pointer;
-  margin:1em;
+  margin: 1em;
+  width: 7em;
+  height: 3em;
+  font-size: 1.5vh;
 }
 
 .modaladd {
@@ -756,9 +756,10 @@ body {
 }
 
 .save button {
-  height: 35px;
-  width: 10em;
-  cursor:pointer;
+  height: 3em;
+  width: 8em;
+  cursor: pointer;
+  font-size: 1.5vh;
 }
 
 .selectedMealTypeButtons {
@@ -908,6 +909,7 @@ body {
   color: white;
   height: 3em;
   width: 7em;
+  font-size: 2vh;
 }
 
 #hideCommentsButton {
@@ -1242,6 +1244,12 @@ body {
 @media screen and (max-width: 375px) {
   .fontsizeforp {
     font-size: 2vh;
+  }
+  #file {
+    max-width: 17em;
+  }
+  .save button {
+    font-size: 1vh;
   }
 }
 
