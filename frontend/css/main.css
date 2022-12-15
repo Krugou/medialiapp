@@ -34,7 +34,7 @@
   margin: auto;
   border-radius: 5px;
   color: white;
-  max-width:80%;
+  max-width:90%;
 }
 
 .addComment form {
@@ -536,7 +536,7 @@ body {
   border-radius: 5px;
   color: black;
   margin:auto;
-  max-width:80%;
+  max-width:90%;
 }
 
 .recipeInstruction h2 {
@@ -639,7 +639,7 @@ body {
   height: auto;
   margin: auto;
   flex-direction: column;
-  max-width:80%;
+  max-width:90%;
 }
 
 .recipeTags {
