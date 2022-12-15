@@ -493,8 +493,11 @@ body {
 
 .pagemain {
   flex:1;
-  margin: auto;
+  margin: 3em auto 3em auto;
   max-width: 1440px;
+  background-color:#f6f6f6;
+  padding:3em;
+
 }
 
 .pic {
@@ -1130,6 +1133,9 @@ body {
   #profileArticle {
     width: 50em;
   }
+  .pagemain {
+    margin: 3em 0em 3em 0em;
+  }
 }
 @media screen and (max-width: 660px) {
   #profileArticle {
@@ -1151,7 +1157,7 @@ body {
     align-items: unset;
     width: 100%;
     gap: 10px;
-    height: 15em;
+    height: 17em;
     display: flex;
     flex-direction: column;
     padding-left: 1em;
