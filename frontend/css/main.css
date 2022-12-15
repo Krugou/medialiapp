@@ -330,6 +330,7 @@ body {
 .nappi {
   text-align: center;
   margin-top: 5em;
+  margin-bottom: 5em;
 }
 
 .nappi button {
@@ -1056,11 +1057,8 @@ body {
     width: 40vw;
     height: 5vw;
   }
-  #profileArticle {
-    width: 50em;
-  }
   .pagemain {
-    margin: 3em 0em 3em 0em;
+    margin: 0;
     padding:0;
   }
 }
@@ -1084,7 +1082,7 @@ body {
     align-items: unset;
     width: 100%;
     gap: 10px;
-    height: 17em;
+    height: 14em;
     display: flex;
     flex-direction: column;
     padding-left: 1em;
@@ -1134,7 +1132,7 @@ body {
   }
 }
 
-@media screen and (max-width: 525px) {
+@media screen and (max-width: 575px) {
   #recipesImage {
     height: auto;
   }
