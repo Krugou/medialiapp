@@ -27,7 +27,7 @@ const createProfileRecipes = async (username) => {
         },
     };
     console.log('username', username);
-    fetch(url + '/recipes/profile/' + username, fetchOptions)
+    fetch(url + '/recipeslimited/profile/' + username, fetchOptions)
         .then(response => {
             if (response.ok) {
                 return response.json();
@@ -62,7 +62,7 @@ const createProfileUser = async (username) => {
     let Imagefilepath
     // KIRJAUTUMATON KÄYTTÄJÄ
     if (!sessionStorage.getItem('token') || !sessionStorage.getItem('user')) {
-        const response = await fetch(url + '/users/limited/' + username);
+        const response = await fetch(url + '/userslimited/limited/' + username);
         const json = await response.json();
         console.log("tietoa KIRJAUTUMATON", json);
         Imagefilepath = json[0]?.Imagefilepath;

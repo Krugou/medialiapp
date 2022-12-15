@@ -60,10 +60,6 @@ const get_reguser_owned_recipes = async (req, res, next) => {
 };
 const get_user_owned_recipes = async (req, res, next) => {
     console.log(req.params.username);
-    const data = [
-        req.user.Userid,
-        req.params.username
-    ]
     try {
 
         const errors = validationResult(req);

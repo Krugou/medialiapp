@@ -136,7 +136,7 @@ const get_UserProfile = async (req, res, next) => {
       next(httpError('Invalid data', 400));
       return;
     }
-    /* // OTA KÄYTTÖÖN KUN AUTH VALMIS
+     // OTA KÄYTTÖÖN KUN AUTH VALMIS
 console.log("req.user",req.user);
     console.log("req.user.Username",req.user.Username);
     console.log("req.params.Username",req.params.username);
@@ -150,21 +150,12 @@ console.log("req.user",req.user);
         info:result,
         image:result2,
       }
-      console.log("Result", result);
     } else {
        result = await getLimitedUserInfo(req.params.username, next);
 
     }
 
-     */
-
-    result = await getAllUserInfo(req.params.username, next);
-    result2 = await getLimitedUserInfo(req.params.username, next);
-    result = {
-      info: result,
-      image: result2,
-    }
-
+    console.log("result", result);
     if (result.length < 1) {
       res.json({
         Username: 'undefined',
