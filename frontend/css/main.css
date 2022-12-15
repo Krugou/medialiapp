@@ -428,6 +428,7 @@ body {
 .pagemain {
   flex:1;
   margin: auto;
+  width:100%;
   max-width: 1440px;
   background-color:#f6f6f6;
   padding:3em;
