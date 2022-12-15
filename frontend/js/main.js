@@ -25,7 +25,11 @@ function fetchFavorites() {
     },
   }
 
-  fetch(url + '/recipes/favorites/' + sessionStorage.getItem('user').Userid), fetchOptions
+  fetch(url + '/recipes/favorites/' + sessionStorage.getItem('user').Userid, {method: 'GET',
+    headers: {
+    Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+    }
+  })
     .then((response) => response.json())
     .then((json) => {
       createResults(json, presentationdata);
