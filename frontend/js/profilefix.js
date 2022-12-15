@@ -12,8 +12,6 @@ const getQParam = (param) => {
 
 
 const profileUser = getQParam('username');
-console.log(profileUser);
-
 
 const createProfileRecipes = async (username) => {
 
@@ -64,7 +62,6 @@ const createProfileUser = async (username) => {
     let Imagefilepath
     // KIRJAUTUMATON KÄYTTÄJÄ
     if (!sessionStorage.getItem('token') || !sessionStorage.getItem('user')) {
-        console.log('username', username);
         const response = await fetch(url + '/users/limited/' + username);
         const json = await response.json();
         console.log("tietoa KIRJAUTUMATON", json);
