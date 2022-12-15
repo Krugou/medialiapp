@@ -804,6 +804,9 @@ body {
   text-align: center;
   margin-left: 7em;
   margin-right: 7em;
+  border: solid 2px;
+  border-radius: 1em;
+  height: 27em;
 }
 
 .userProfile p {
@@ -901,6 +904,8 @@ body {
 
 #profilepic {
   width: 15em;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
 }
 #recipesProfilePic {
   width: 10em;
@@ -1264,6 +1269,12 @@ body {
   }
   .recipeAuthor {
     flex-direction: column;
+  }
+  #recipeFigureName {
+    font-size: 2vh;
+  }
+  .recipefigure p {
+    font-size: 1.5vh;
   }
 }
 
