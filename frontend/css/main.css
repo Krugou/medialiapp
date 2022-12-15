@@ -203,9 +203,9 @@ body {
 }
 
 .fa-heart {
-  font-size: 3em;
+  font-size: 7em;
   color: white;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .recipeCommentsThumbsUp {
@@ -237,7 +237,7 @@ body {
 }
 
 .recipeRating span {
-  font-size: 1.5em;
+  font-size: 4em;
   cursor: pointer;
   padding: 0.5vh;
 }
@@ -1255,6 +1255,7 @@ body {
   .fa-heart {
     margin-top: 1em;
     margin-bottom: 1em;
+    font-size:4em;
   }
   .recipename {
     display: flex;
