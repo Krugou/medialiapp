@@ -17,6 +17,15 @@ function loopThumbnails(json) {
 
   generateRecipesFrontpage(json);
 }
+function fetchFavorites() {
+  fetch(url + '/recipes/favorites/'+ sessionStorage.getItem('user').Userid)
+    .then((response) => response.json())
+    .then((json) => {
+      createResults(json, presentationdata);
+
+    }
+  );
+}
 
 async function fetchNewestPresentationData() {
   const response = await fetch(url + '/recipeslimited/newest');
@@ -29,6 +38,10 @@ async function fetchOldestPresentationData() {
   const json = await response.json();
   loopThumbnails(json);
 }
+const showFavorites = document.getElementById('radio-5');
+showFavorites.addEventListener('click', () => {
+  fetchFavorites();
+});
 
 function generateRecipesFrontpage(json) {
   for (let i = 0; i < (json.length); i++) {

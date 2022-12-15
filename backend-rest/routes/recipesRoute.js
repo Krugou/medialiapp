@@ -55,7 +55,7 @@ const {
   comment_like,
   comment_dislike,
   get_reguser_owned_recipes, recipes_put, get_user_owned_recipes, recipe_delete, comment_delete, comment_getloggedinuser,
-  recipe_getloggedinuser,
+  recipe_getloggedinuser, get_user_favorites
 } = require('../controllers/recipesController');
 const { body } = require('express-validator');
 
@@ -65,11 +65,11 @@ router.get('/reguserprofile/:userid', get_reguser_owned_recipes);
 
 
 router.get('/comment/:id',
-    body('id').escape(),
-    comment_getloggedinuser);
+  body('id').escape(),
+  comment_getloggedinuser);
 router.get('/:id',
-    body('id').escape(),
-    recipe_getloggedinuser);
+  body('id').escape(),
+  recipe_getloggedinuser);
 
 
 
@@ -84,16 +84,16 @@ router.post('/',
   body('mealtypes').optional({ checkFalsy: true }).escape(),
   recipes_post);
 router.put('/',
-    upload.single('recipeImage'),
-    body('name').isLength({ min: 1 }).escape(),
-    body('guide').isLength({ min: 1 }).escape(),
-    body('course').isLength({ min: 1 }).escape(),
-    body('time').escape(),
-    body('recipeid').isNumeric(),
-    body('price').optional({ checkFalsy: true }).isNumeric(),
-    body('mealtypes').optional({ checkFalsy: true }).escape(),
+  upload.single('recipeImage'),
+  body('name').isLength({ min: 1 }).escape(),
+  body('guide').isLength({ min: 1 }).escape(),
+  body('course').isLength({ min: 1 }).escape(),
+  body('time').escape(),
+  body('recipeid').isNumeric(),
+  body('price').optional({ checkFalsy: true }).isNumeric(),
+  body('mealtypes').optional({ checkFalsy: true }).escape(),
 
-    recipes_put);
+  recipes_put);
 
 router.post('/comment',
   body('comment').isLength({ min: 1 }).escape(),
@@ -118,9 +118,10 @@ router.post('/dislike/:id',
   body('id').escape(),
   recipe_dislike)
 router.delete('/:id',
-    body('id').escape(),
-    recipe_delete)
+  body('id').escape(),
+  recipe_delete)
 router.delete('/comment/:id',
-    body('id').escape(),
-     comment_delete)
+  body('id').escape(),
+  comment_delete)
+router.get('/favorites/:id', body('id').escape(), get_user_favorites);
 module.exports = router;

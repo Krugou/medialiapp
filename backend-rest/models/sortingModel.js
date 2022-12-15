@@ -28,6 +28,18 @@ const getrecipeswiththislowrecipepriceto0 = async (recipePrice, next) => {
     next(httpError('Database error', 500));;
   }
 };
+const getuserfavorites = async (userid, next) => {
+  try {
+    console.log('userid', userid)
+    const [rows] = await promisePoolRegUser.execute(`
+SELECT * FROM Recipes WHERE Recipeid IN
+(SELECT Recipeid FROM Recipefavorite WHERE userid = "${userid}");`);
+    return rows;
+  } catch (e) {
+    next(httpError('Database error', 500));
+  }
+};
+
 
 
 
@@ -35,4 +47,5 @@ module.exports = {
   getrecipeswiththiscoursetype,
   getrecipeswiththismealtype,
   getrecipeswiththislowrecipepriceto0,
+  getuserfavorites  
 };

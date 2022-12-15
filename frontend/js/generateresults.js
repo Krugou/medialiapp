@@ -1,6 +1,19 @@
 const presentationdata = document.getElementById('presentationdata');
 
 function createResults(json, target, length) {
+  for (let i = 0; i < (json.length); i++) {
+    if (screen.width >= 1000) {
+      thumbnail_imagefilepath = 'thumbnails/' + json.recipesTable[i].Imagefilepath +
+        '_500px.png';
+      json.recipesTable[i]['thumbnailImagefilepath'] = thumbnail_imagefilepath;
+    }
+    if (screen.width <= 780) {
+      thumbnail_imagefilepath = 'thumbnails/' + json.recipesTable[i].Imagefilepath +
+        '_300px.png';
+      json.recipesTable[i]['thumbnailImagefilepath'] = thumbnail_imagefilepath;
+    }
+
+  }
   if (length === undefined) {
     length = json.recipesTable.length;
   }
@@ -71,6 +84,8 @@ window.onload = () => {
 
   };
 };
+
+// if user is logged in, show create radio button for favorites
 
 let selector = "";
 const radioButtons = document.querySelectorAll('.radio-btn');
@@ -162,5 +177,5 @@ function frontPageQuery(query) {
       FieldElement1.innerText = '';
     }).catch((error) => {
     });
-  }
+  } 
 }
