@@ -78,7 +78,7 @@ function generateRecipesFrontpage(json) {
       location.href = 'recipe.html?id=' + json[i].Recipeid;
     });
     p.innerText = json[i].Recipename;
-    p2.innerText = json[i].Recipetime;
+    p2.innerText = "Aika: " + json[i].Recipetime +"min";
     p3.innerText = json[i].Coursetype;
     p4.innerText = json[i].Mealtype;
     p5.innerText = "Hinta: " + json[i].Recipeprice.toFixed(2) + "€";

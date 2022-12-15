@@ -43,7 +43,7 @@ function createResults(json, target, length) {
       location.href = 'recipe.html?id=' + json.recipesTable[i].Recipeid;
     });
     p.innerText = json.recipesTable[i].Recipename;
-    p2.innerText = json.recipesTable[i].Recipetime;
+    p2.innerText = "Aika: "+ json.recipesTable[i].Recipetime+"min" ;
     p3.innerText = json.recipesTable[i]?.Coursetype;
     p4.innerText = json.recipesTable[i]?.Mealtype;
     p5.innerText = "Hinta: " + json.recipesTable[i].Recipeprice.toFixed(2) + "€";
