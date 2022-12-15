@@ -500,6 +500,7 @@ body {
   margin: 1rem;
   background-color: #dfedf2;
   text-align: center;
+  max-width: 40em;
 }
 
 .recipefigure button {
@@ -1076,11 +1077,6 @@ body {
   .recipeStats {
     width: 90%;
   }
-  .radio-group {
-    flex-direction: column;
-    gap: 1em;
-    margin-top: 2em;
-  }
 }
 @media screen and (max-width: 850px) {
   .checknappi {
@@ -1251,6 +1247,19 @@ body {
   }
   .save button {
     font-size: 1vh;
+  }
+}
+@media screen and (min-width: 1700px) {
+  .pagemain {
+    max-width:4000px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .radio-group {
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 2em;
   }
 }
 

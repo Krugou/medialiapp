@@ -40,6 +40,19 @@ SELECT * FROM Recipes WHERE Recipeid IN
   }
 };
 
+const getmostlikedrecipes = async (next) => {
+  try {
+    console.log('userid', userid)
+    const [rows] = await promisePoolRegUser.execute(`
+SELECT Recipeid, COUNT(*) FROM recipefavorite GROUP BY Recipeid;
+`);
+    return rows;
+  } catch (e) {
+    next(httpError('Database error', 500));
+  }
+};
+
+
 
 
 
@@ -47,5 +60,6 @@ module.exports = {
   getrecipeswiththiscoursetype,
   getrecipeswiththismealtype,
   getrecipeswiththislowrecipepriceto0,
-  getuserfavorites  
+  getuserfavorites,
+  getmostlikedrecipes
 };
