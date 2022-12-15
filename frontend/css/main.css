@@ -34,6 +34,7 @@
   margin: auto;
   border-radius: 5px;
   color: white;
+  max-width:80%;
 }
 
 .addComment form {
@@ -535,6 +536,7 @@ body {
   border-radius: 5px;
   color: black;
   margin:auto;
+  max-width:80%;
 }
 
 .recipeInstruction h2 {
@@ -636,6 +638,8 @@ body {
   background-color: lightgray;
   height: auto;
   margin: auto;
+  flex-direction: column;
+  max-width:80%;
 }
 
 .recipeTags {
@@ -1091,6 +1095,14 @@ body {
   .recipeStats {
     width: 90%;
   }
+  .radio-group {
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 2em;
+  }
+  #radio_group2 {
+    flex-direction: column;
+  }
 }
 @media screen and (max-width: 850px) {
   .checknappi {
@@ -1105,7 +1117,7 @@ body {
     justify-content: unset;
     align-items: unset;
     width: 100%;
-    height: 11em;
+    height: 13em;
     display: flex;
     flex-direction: column;
     padding-left: 1em;
@@ -1263,19 +1275,7 @@ body {
     font-size: 1vh;
   }
 }
-@media screen and (min-width: 1700px) {
-  .pagemain {
-    max-width:4000px;
-  }
-}
 
-@media screen and (max-width: 1150px) {
-  .radio-group {
-    flex-direction: column;
-    gap: 1em;
-    margin-top: 2em;
-  }
-}
 
 .favorited {
   color: #d73030;
