@@ -803,6 +803,7 @@ body {
 .userProfile {
   text-align: center;
   margin-left: 7em;
+  margin-right: 7em;
 }
 
 .userProfile p {
