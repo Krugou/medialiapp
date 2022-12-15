@@ -19,13 +19,13 @@ function loopThumbnails(json) {
 }
 
 async function fetchNewestPresentationData() {
-  const response = await fetch(url + '/recipes/newest');
+  const response = await fetch(url + '/recipeslimited/newest');
   const json = await response.json();
   loopThumbnails(json);
 }
 
 async function fetchOldestPresentationData() {
-  const response = await fetch(url + '/recipes/oldest');
+  const response = await fetch(url + '/recipeslimited/oldest');
   const json = await response.json();
   loopThumbnails(json);
 }
