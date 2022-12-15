@@ -25,13 +25,13 @@ function fetchFavorites() {
     },
   }
 
-  fetch(url + '/recipes/favorites/' + sessionStorage.getItem('user').Userid, fetchOptions) 
+  fetch(url + '/recipes/favorites/' + sessionStorage.getItem('user').Userid), fetchOptions
     .then((response) => response.json())
     .then((json) => {
       createResults(json, presentationdata);
 
     }
-  );
+    );
 }
 
 async function fetchNewestPresentationData() {
