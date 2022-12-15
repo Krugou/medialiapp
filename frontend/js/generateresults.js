@@ -61,6 +61,7 @@ function createResults(json, target, length) {
     figure.appendChild(p5);
     figure.appendChild(button);
     figure.classList.add('recipefigure');
+    console.log("🚀 ~ file: generateresults.js:68 ~ createResults ~ figure", figure)
     target.appendChild(figure);
 
   };
