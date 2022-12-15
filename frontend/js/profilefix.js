@@ -150,7 +150,6 @@ function profiledetails(Imagefilepath, username) {
                     // 'Content-Type': 'application/json',
                     Authorization: 'Bearer ' + sessionStorage.getItem('token'),
 
-
                 },
                 body: formData
             }).then((response) => {

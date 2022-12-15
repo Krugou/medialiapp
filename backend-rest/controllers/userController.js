@@ -22,7 +22,7 @@ const putNewProfileDetails = async (req, res, next) => {
 
     console.error('putNewProfileDetails validation', errors.array());
     res.json({
-      message: 'Check email, password & username again',
+      message: 'Varmista sähköposti, salasana ja käyttäjätunnus uudelleen',
     });
     next(httpError('Invalid data', 400));
     return;
@@ -32,17 +32,26 @@ const putNewProfileDetails = async (req, res, next) => {
     const result = await findUsersByUsernameRegUser(req.body.Username, next);
     if (result.length > 0) {
       res.json({
-        message: 'Username already exists',
+        message: 'Käyttäjänimi on jo olemassa.',
       });
       next(httpError('Username already exists', 400));
       return;
     }
     let data = [req.body.Username, req.body.oldUsername]
+    // Katsotaan onko käyttäjä sama, kuin vanha käyttäjä
+    if (req.user.Username === req.body.oldUsername) {
 
-    // console.log("🚀 ~ file: userController.js:56 ~ putNewProfileDetails ~ data", data)
-    const result2 = await putNewwProfileDetails(data, next);
-    // console.log("🚀 ~ file: userController.js:48 ~ putNewProfileDetails ~ result2", result2)
-    res.json(result2);
+
+      // console.log("🚀 ~ file: userController.js:56 ~ putNewProfileDetails ~ data", data)
+      const result2 = await putNewwProfileDetails(data, next);
+      // console.log("🚀 ~ file: userController.js:48 ~ putNewProfileDetails ~ result2", result2)
+      res.json(result2);
+    }
+    else {
+      res.json({
+        message: 'Et omista tätä käyttäjää.',
+      });
+    }
   } catch (e) {
     console.error('putNewProfileDetails', e.message);
     next(httpError('Internal server error', 500));
@@ -96,7 +105,7 @@ const get_UserProfileLimited = async (req, res, next) => {
       // Error messages can be returned in an array using `errors.array()`.
       console.error('get_UserProfileLimited validation', errors.array());
       res.json({
-        message: 'Check email, password & username again',
+        message: 'Käyttäjänimi on jo olemassa',
       });
       next(httpError('Invalid data', 400));
       return;
