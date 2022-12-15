@@ -16,7 +16,6 @@ const { httpError } = require('../utils/errors');
 const bcrypt = require('bcryptjs');
 const putNewProfileDetails = async (req, res, next) => {
   // check if username exists
-console.log("PÄÄSTIIN TÄNNE");
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
 
@@ -27,9 +26,6 @@ console.log("PÄÄSTIIN TÄNNE");
     next(httpError('Invalid data', 400));
     return;
   }
-
-
-
     try {
 
       // jos uploadattiin kuva niin lisätään se profiilikuvaksi
@@ -39,10 +35,7 @@ console.log("PÄÄSTIIN TÄNNE");
           req.user.Userid,
           req.file.filename,
         ]
-        console.log("JOO2")
         const result = await addProfileImageToImages(data, next);
-        console.log("JOO3")
-
         if (result.affectedRows < 1) {
           res.json({
             message: 'Virheellistä dataa',
