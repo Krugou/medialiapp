@@ -939,6 +939,9 @@ body {
   margin-right: auto;
   width: 15em;
 }
+#recipeFigureName {
+  font-size:2em;
+}
 
 #tag {
   background-color:var(--main-bg-color);
@@ -954,6 +957,14 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 2em;
+}
+#radio_group2 {
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5em;
+  margin-bottom: 5em;
 }
 
 #userPostTitle {

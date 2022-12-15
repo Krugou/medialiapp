@@ -44,6 +44,8 @@ function createResults(json, target, length) {
     });
     p.innerText = json.recipesTable[i].Recipename;
     p2.innerText = "Aika: "+ json.recipesTable[i].Recipetime+"min" ;
+    p.setAttribute("id", "recipeFigureName")
+    p2.innerText = json.recipesTable[i].Recipetime;
     p3.innerText = json.recipesTable[i]?.Coursetype;
     p4.innerText = json.recipesTable[i]?.Mealtype;
     p5.innerText = "Hinta: " + json.recipesTable[i].Recipeprice.toFixed(2) + "€";
@@ -180,7 +182,8 @@ function frontPageQuery(query) {
       FieldElement1.innerText = '';
     }).catch((error) => {
     });
-  } else if (selectedOption === '6') {
+  } const mostlikedbetter = document.getElementById('mostliked');
+  mostlikedbetter.onclick = () => {
     fetch(url + `/recipeslimited/filterbylikes/`).then(response => {
       if (response.ok) {
         return response.json();
