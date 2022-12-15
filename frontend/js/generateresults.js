@@ -37,6 +37,7 @@ function createResults(json, target, length) {
     const p2 = document.createElement('p');
     const p3 = document.createElement('p');
     const p4 = document.createElement('p');
+    const p5 = document.createElement('p');
     const button = document.createElement('button');
     button.addEventListener('click', () => {
       location.href = 'recipe.html?id=' + json.recipesTable[i].Recipeid;
@@ -45,12 +46,14 @@ function createResults(json, target, length) {
     p2.innerText = json.recipesTable[i].Recipetime;
     p3.innerText = json.recipesTable[i]?.Coursetype;
     p4.innerText = json.recipesTable[i]?.Mealtype;
+    p5.innerText = "Hinta: " + json.recipesTable[i].Recipeprice.toFixed(2) + "€";
     button.innerText = 'Katso resepti';
     figure.appendChild(img);
     figure.appendChild(p);
     figure.appendChild(p2);
     figure.appendChild(p3);
     figure.appendChild(p4);
+    figure.appendChild(p5);
     figure.appendChild(button);
     figure.classList.add('recipefigure');
     target.appendChild(figure);
