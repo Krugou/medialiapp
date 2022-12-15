@@ -22,7 +22,6 @@ function createResults(json, target, length) {
     console.log("🚀 ~ file: generateresults.js:23 ~ createResults ~ target", target)
     target = presentationdata;
   }
-  console.table(json.recipesTable[i])
   for (let i = 0; i < (length); i++) {
     const figure = document.createElement('figure');
     const img = document.createElement('img');
@@ -66,6 +65,7 @@ function createResults(json, target, length) {
 
   };
 }
+
 // random number generator 1 - 2000
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
