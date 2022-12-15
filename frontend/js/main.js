@@ -18,7 +18,14 @@ function loopThumbnails(json) {
   generateRecipesFrontpage(json);
 }
 function fetchFavorites() {
-  fetch(url + '/recipes/favorites/'+ sessionStorage.getItem('user').Userid)
+  const fetchOptions = {
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+    },
+  }
+
+  fetch(url + '/recipes/favorites/' + sessionStorage.getItem('user').Userid, fetchOptions) 
     .then((response) => response.json())
     .then((json) => {
       createResults(json, presentationdata);
