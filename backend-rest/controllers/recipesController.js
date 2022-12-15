@@ -49,7 +49,7 @@ const get_recipes_with_this_coursetype = async (req, res, next) => {
 };
 const get_user_favorites = async (req, res, next) => {
     try {
-        const recipesTable = await getuserfavorites(req.params.userid, next);
+        const recipesTable = await getuserfavorites(req.params.id, next);
         if (recipesTable.length < 1) {
             return next(httpError('No recipes found', 404));
         }
