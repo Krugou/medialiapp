@@ -180,7 +180,8 @@ function frontPageQuery(query) {
       FieldElement1.innerText = '';
     }).catch((error) => {
     });
-  } else if (selectedOption === '6') {
+  } const mostlikedbetter = document.getElementById('mostliked');
+  mostlikedbetter.onclick = () => {
     fetch(url + `/recipeslimited/filterbylikes/`).then(response => {
       if (response.ok) {
         return response.json();
