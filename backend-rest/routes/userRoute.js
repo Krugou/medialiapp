@@ -48,9 +48,7 @@ router.route('/').post(body('email').isEmail(),
 router.route('/profiledetails/:username').delete(deleteUsersReg_User);
 // update route for user
 router.route('/profiledetails/:username').put(upload.single('userImage'), body('Username').isLength({ min: 3 }).escape(), body('oldUsername').isLength({ min: 3 }).escape(), putNewProfileDetails);
-router.get('/limited/:username',
-    body('username').escape(),
-    get_UserProfileLimited)
+
 
 //AUTHENTIKOINNILLA
 router.get('/:username',

@@ -13,7 +13,9 @@ const router = express.Router();
 // ilman autentikointia (ei tokenia)
 router.get('/profiledetails/image/:userid', getReg_UserDetailImage);
 router.get('/profiledetails/username/:userid', getReg_UserDetailUsername);
-
+router.get('/limited/:username',
+  body('username').escape(),
+  get_UserProfileLimited)
 
 module.exports = router;
 
