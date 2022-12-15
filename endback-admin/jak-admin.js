@@ -20,13 +20,13 @@ if (process.env.NODE_ENV === 'production') {
   require('./utils/localhost')(app, process.env.HTTP_PORT || 3001);
 }
 
-app.get('/', function(req, res) { res.send('hello world'); });
+app.get('/', function(req, res) { res.send('get out'); });
 app.use('/front', require('./routes/frontRoute'));
 app.use('/auth', require('./routes/authRoute'));
 
 app.use('/status', require('./routes/statusRoute'));
 app.use('/a', require('./routes/getAdminRoute'));
-
+app.use ('/b', require('./routes/deleteAdminRoute'));
 // app.use((req, res, next) => {
 //     const err = httpError('Not found', 404);
 //     next(err);
