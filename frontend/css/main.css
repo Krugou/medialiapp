@@ -20,7 +20,9 @@
   flex-direction: column;
   padding: 0;
 }
-
+.hideindesktop {
+  display: none;
+}
 .pageFooterContainerListTitle {
     display: flex;
     /* text-align: center; */
@@ -1136,6 +1138,10 @@ body {
 @media screen and (max-width: 575px) {
   #recipesImage {
     height: auto;
+  }
+  .hideindesktop
+  {
+    display: block;
   }
   .recipefigure {
     width: 60vw;
