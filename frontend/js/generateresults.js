@@ -16,10 +16,11 @@ console.table(json.recipesTable[i])
 
   }
   if (length === undefined) {
+    console.log("🚀 ~ file: generateresults.js:19 ~ createResults ~ length", length)
     length = json.recipesTable.length;
   }
   if (target === undefined) {
-    const presentationdata = document.getElementById('presentationdata');
+    console.log("🚀 ~ file: generateresults.js:23 ~ createResults ~ target", target)
     target = presentationdata;
   }
   console.table(json.recipesTable[i])
@@ -44,10 +45,10 @@ console.table(json.recipesTable[i])
     button.addEventListener('click', () => {
       location.href = 'recipe.html?id=' + json.recipesTable[i]?.Recipeid;
     });
-    p.innerText = json.recipesTable[i].Recipename;
-    p2.innerText = "Aika: "+ json.recipesTable[i].Recipetime+"min" ;
+    p.innerText = json.recipesTable[i]?.Recipename;
+    p2.innerText = "Aika: "+ json.recipesTable[i]?.Recipetime+"min" ;
     p.setAttribute("id", "recipeFigureName")
-    p2.innerText = json.recipesTable[i].Recipetime;
+    p2.innerText = json.recipesTable[i]?.Recipetime;
     p.innerText = json.recipesTable[i]?.Recipename;
     p2.innerText = json.recipesTable[i]?.Recipetime;
     p3.innerText = json.recipesTable[i]?.Coursetype;
@@ -62,6 +63,8 @@ console.table(json.recipesTable[i])
     figure.appendChild(p5);
     figure.appendChild(button);
     figure.classList.add('recipefigure');
+    console.log("🚀 ~ file: generateresults.js:67 ~ createResults ~ figure", figure)
+    
     target.appendChild(figure);
     console.log(target)
 
@@ -211,7 +214,7 @@ mostlikedbetter.onclick = () => {
 }
 const newest = document.getElementById('newest');
 newest.onclick = () => {
-
+clearPage();
     fetchNewestPresentationData()
  
 }
