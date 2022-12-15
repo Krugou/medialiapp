@@ -3,24 +3,26 @@ const presentationdata = document.getElementById('presentationdata');
 function createResults(json, target, length) {
   for (let i = 0; i < (json.length); i++) {
     if (screen.width >= 1000) {
-      thumbnail_imagefilepath = 'thumbnails/' + json.recipesTable[i].Imagefilepath +
+      thumbnail_imagefilepath = 'thumbnails/' + json.recipesTable[i]?.Imagefilepath +
         '_500px.png';
       json.recipesTable[i]['thumbnailImagefilepath'] = thumbnail_imagefilepath;
     }
     if (screen.width <= 780) {
-      thumbnail_imagefilepath = 'thumbnails/' + json.recipesTable[i].Imagefilepath +
+      thumbnail_imagefilepath = 'thumbnails/' + json.recipesTable[i]?.Imagefilepath +
         '_300px.png';
       json.recipesTable[i]['thumbnailImagefilepath'] = thumbnail_imagefilepath;
     }
+console.table(json.recipesTable[i])
 
   }
   if (length === undefined) {
     length = json.recipesTable.length;
   }
   if (target === undefined) {
+    const presentationdata = document.getElementById('presentationdata');
     target = presentationdata;
   }
-
+  console.table(json.recipesTable[i])
   for (let i = 0; i < (length); i++) {
     const figure = document.createElement('figure');
     const img = document.createElement('img');
@@ -32,7 +34,8 @@ function createResults(json, target, length) {
       img.src = url + '/' + json.recipesTable[i]?.Imagefilepath;
 
     }
-    img.alt = json.recipesTable[i].Recipename;
+    console.table(json.recipesTable[i])
+    img.alt = json.recipesTable[i]?.Recipename;
     const p = document.createElement('p');
     const p2 = document.createElement('p');
     const p3 = document.createElement('p');
@@ -40,15 +43,20 @@ function createResults(json, target, length) {
     const p5 = document.createElement('p');
     const button = document.createElement('button');
     button.addEventListener('click', () => {
-      location.href = 'recipe.html?id=' + json.recipesTable[i].Recipeid;
+      location.href = 'recipe.html?id=' + json.recipesTable[i]?.Recipeid;
     });
+<<<<<<< Updated upstream
     p.innerText = json.recipesTable[i].Recipename;
     p2.innerText = "Aika: "+ json.recipesTable[i].Recipetime+"min" ;
     p.setAttribute("id", "recipeFigureName")
     p2.innerText = json.recipesTable[i].Recipetime;
+=======
+    p.innerText = json.recipesTable[i]?.Recipename;
+    p2.innerText = json.recipesTable[i]?.Recipetime;
+>>>>>>> Stashed changes
     p3.innerText = json.recipesTable[i]?.Coursetype;
     p4.innerText = json.recipesTable[i]?.Mealtype;
-    p5.innerText = "Hinta: " + json.recipesTable[i].Recipeprice.toFixed(2) + "€";
+    p5.innerText = "Hinta: " + json.recipesTable[i]?.Recipeprice.toFixed(2) + "€";
     button.innerText = 'Katso resepti';
     figure.appendChild(img);
     figure.appendChild(p);
@@ -59,6 +67,8 @@ function createResults(json, target, length) {
     figure.appendChild(button);
     figure.classList.add('recipefigure');
     target.appendChild(figure);
+    console.log(target)
+
   };
 }
 // random number generator 1 - 2000
@@ -182,22 +192,24 @@ function frontPageQuery(query) {
       FieldElement1.innerText = '';
     }).catch((error) => {
     });
-  } const mostlikedbetter = document.getElementById('mostliked');
-  mostlikedbetter.onclick = () => {
-    fetch(url + `/recipeslimited/filterbylikes/`).then(response => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        throw 'HTTP ERROR';
-      }
-    }).then((queryData) => {  
-      clearPage();
-      createResults(queryData, presentationdata);
-      FieldElement1.innerText = '';
-    }).catch((error) => {
+  }
+}
 
-
+const mostlikedbetter = document.getElementById('mostliked');
+mostlikedbetter.onclick = () => {
+  fetch(url + `/recipeslimited/filterbylikes/`).then(response => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw 'HTTP ERROR';
     }
-    );
-  } 
+  }).then((queryData) => {
+    clearPage();
+    createResults(queryData,presentationdata);
+    FieldElement1.innerText = '';
+  }).catch((error) => {
+
+
+  }
+  );
 }
