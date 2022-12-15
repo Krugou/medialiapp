@@ -22,7 +22,7 @@ const {
     recipe_dislike,
     comment_like,
     comment_dislike,
-    get_reguser_owned_recipes, recipes_put, get_user_owned_recipes, recipe_delete, comment_delete,
+    get_reguser_owned_recipes, recipes_put, get_user_owned_recipes, recipe_delete, comment_delete, get_mostlikedrecipes
 } = require('../controllers/recipesController');
 const { body } = require('express-validator');
 
@@ -32,7 +32,7 @@ router.get('/newest', getAllNewestRecipesController);
 router.get('/oldest', getAllOldestRecipesController);
 router.get('/:id',
     body('id').escape(),
-     recipe_get);
+    recipe_get);
 router.get('/filterrecipes/:recipename', filter_Recipes_By_Recipe_Name);
 router.get('/filtercoursetypes/:coursetype', get_recipes_with_this_coursetype);
 router.get('/filtermealtypes/:mealtype', get_recipes_with_this_mealtype);
@@ -45,6 +45,6 @@ router.get('/profile/:username',
     body('username').escape(),
     get_user_owned_recipes);
 
-router.get('/filterbylikes', get_mostlikedrecipes);   
+router.get('/filterbylikes', get_mostlikedrecipes);
 
 module.exports = router;
