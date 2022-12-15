@@ -6,11 +6,12 @@ const app = express();
 const fs = require('fs');
 const authRoute = require('./routes/authRoute');
 const userRoute = require('./routes/userRoute');
+const userlimitedRoute = require('./routes/userslimitedRoute');
+
 const frontRoute = require('./routes/frontRoute');
 const statusRoute = require('./routes/statusRoute');
 const recipesRoute = require('./routes/recipesRoute');
 const recipeslimitedRoute = require('./routes/recipeslimitedRoute');
-const userlimitedRoute = require('./routes/userslimitedRoute');
 
 const {httpError} = require('./utils/errors');
 const passport = require('./utils/pass');
@@ -39,9 +40,8 @@ if (process.env.NODE_ENV === 'production') {
 app.use('/front', frontRoute);
 app.use('/auth', authRoute);
 app.use('/recipes', passport.authenticate('jwt', {session: false}), recipesRoute)
-
-app.use('/recipeslimited', recipeslimitedRoute);
 app.use('/userslimited', userlimitedRoute);
+app.use('/recipeslimited', recipeslimitedRoute);
 app.use('/users', passport.authenticate('jwt', {session: false}), userRoute);
 app.use('/status', statusRoute);
 

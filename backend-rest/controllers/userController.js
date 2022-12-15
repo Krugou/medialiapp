@@ -22,7 +22,7 @@ const putNewProfileDetails = async (req, res, next) => {
 
     console.error('putNewProfileDetails validation', errors.array());
     res.json({
-      message: 'Check email, password & username again',
+      message: 'Varmista sähköposti, salasana ja käyttäjätunnus uudelleen',
     });
     next(httpError('Invalid data', 400));
     return;
@@ -32,17 +32,26 @@ const putNewProfileDetails = async (req, res, next) => {
     const result = await findUsersByUsernameRegUser(req.body.Username, next);
     if (result.length > 0) {
       res.json({
-        message: 'Username already exists',
+        message: 'Käyttäjänimi on jo olemassa.',
       });
       next(httpError('Username already exists', 400));
       return;
     }
     let data = [req.body.Username, req.body.oldUsername]
+    // Katsotaan onko käyttäjä sama, kuin vanha käyttäjä
+    if (req.user.Username === req.body.oldUsername) {
 
-    // console.log("🚀 ~ file: userController.js:56 ~ putNewProfileDetails ~ data", data)
-    const result2 = await putNewwProfileDetails(data, next);
-    // console.log("🚀 ~ file: userController.js:48 ~ putNewProfileDetails ~ result2", result2)
-    res.json(result2);
+
+      // console.log("🚀 ~ file: userController.js:56 ~ putNewProfileDetails ~ data", data)
+      const result2 = await putNewwProfileDetails(data, next);
+      // console.log("🚀 ~ file: userController.js:48 ~ putNewProfileDetails ~ result2", result2)
+      res.json(result2);
+    }
+    else {
+      res.json({
+        message: 'Et omista tätä käyttäjää.',
+      });
+    }
   } catch (e) {
     console.error('putNewProfileDetails', e.message);
     next(httpError('Internal server error', 500));
@@ -96,14 +105,17 @@ const get_UserProfileLimited = async (req, res, next) => {
       // Error messages can be returned in an array using `errors.array()`.
       console.error('get_UserProfileLimited validation', errors.array());
       res.json({
-        message: 'Check email, password & username again',
+        message: 'Käyttäjänimi on jo olemassa',
       });
       next(httpError('Invalid data', 400));
       return;
     }
 
-    const result = await getLimitedUserInfo(req.params.username, next);
-
+    let result = await getLimitedUserInfo(req.params.username, next);
+          result = {
+      info:result[0],
+      image:result,
+    }
     if (result.length < 1) {
       res.json({
         Username: 'undefined',
@@ -114,10 +126,6 @@ const get_UserProfileLimited = async (req, res, next) => {
     res.json(result);
   } catch (e) {
     next(httpError('get_UserProfileLimited', 404));
-    return;
-    res.json({
-      Username: 'undefined',
-    });
   }
 };
 const get_UserProfile = async (req, res, next) => {
@@ -136,11 +144,6 @@ const get_UserProfile = async (req, res, next) => {
       next(httpError('Invalid data', 400));
       return;
     }
-    /* // OTA KÄYTTÖÖN KUN AUTH VALMIS
-console.log("req.user",req.user);
-    console.log("req.user.Username",req.user.Username);
-    console.log("req.params.Username",req.params.username);
-
 
     if (req.user.Username === req.params.username){
       console.log("ASDASDADSD");
@@ -150,21 +153,16 @@ console.log("req.user",req.user);
         info:result,
         image:result2,
       }
-      console.log("Result", result);
     } else {
        result = await getLimitedUserInfo(req.params.username, next);
-
+       console.log("resultennen", result);
+      result = {
+        info:result[0],
+        image:result,
+      }
     }
 
-     */
-
-    result = await getAllUserInfo(req.params.username, next);
-    result2 = await getLimitedUserInfo(req.params.username, next);
-    result = {
-      info: result,
-      image: result2,
-    }
-
+    console.log("result", result);
     if (result.length < 1) {
       res.json({
         Username: 'undefined',
@@ -175,10 +173,6 @@ console.log("req.user",req.user);
     res.json(result);
   } catch (e) {
     next(httpError('get_UserProfile', 404));
-    return;
-    res.json({
-      Username: 'undefined',
-    });
   }
 };
 const user_post = async (req, res, next) => {

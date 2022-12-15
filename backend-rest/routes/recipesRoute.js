@@ -63,9 +63,7 @@ const { body } = require('express-validator');
 // authentikoidun käyttäjän kanssa
 router.get('/reguserprofile/:userid', get_reguser_owned_recipes);
 
-router.get('/profile/:username',
-    body('username').escape(),
-    get_user_owned_recipes);
+
 router.get('/comment/:id',
     body('id').escape(),
     comment_getloggedinuser);

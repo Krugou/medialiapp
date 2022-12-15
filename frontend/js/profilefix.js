@@ -27,7 +27,7 @@ const createProfileRecipes = async (username) => {
         },
     };
     console.log('username', username);
-    fetch(url + '/recipes/profile/' + username, fetchOptions)
+    fetch(url + '/recipeslimited/profile/' + username, fetchOptions)
         .then(response => {
             if (response.ok) {
                 return response.json();
@@ -59,31 +59,25 @@ const createProfileRecipes = async (username) => {
 };
 
 const createProfileUser = async (username) => {
+    let response;
     let Imagefilepath
     // KIRJAUTUMATON KÄYTTÄJÄ
     if (!sessionStorage.getItem('token') || !sessionStorage.getItem('user')) {
-        const response = await fetch(url + '/users/limited/' + username);
-        const json = await response.json();
-        console.log("tietoa KIRJAUTUMATON", json);
-        Imagefilepath = json[0]?.Imagefilepath;
-        username = json[0]?.Username;
-        profiledetails(Imagefilepath, username);
-    } else { // KIRJAUTUNUT KÄYTTÄJÄ
+        response = await fetch(url + '/userslimited/limited/' + username);
+    } else {
         const fetchOptions = {
             headers: {
                 Authorization: 'Bearer ' + sessionStorage.getItem('token'),
             },
         };
-        const response = await fetch(url + '/users/' + username, fetchOptions);
+        response = await fetch(url + '/users/' + username, fetchOptions);
+    }
         const json = await response.json();
-        console.log("tietoa KIRJAUTUNUT EI AUTHENTIKOI KÄYTTÄJÄÄ VIELÄ", json);
         Imagefilepath = json.image[0]?.Imagefilepath;
         username = json.info.Username;
         profiledetails(Imagefilepath, username);
-    }
 
     // Rakenna profiili sivulle
-
 
 };
 function profiledetails(Imagefilepath, username) {
@@ -155,7 +149,6 @@ function profiledetails(Imagefilepath, username) {
                 headers: {
                     // 'Content-Type': 'application/json',
                     Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-
 
                 },
                 body: formData

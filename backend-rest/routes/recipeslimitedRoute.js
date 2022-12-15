@@ -41,6 +41,9 @@ router.get('/filterbyprice/:lowRecipePrice',
 router.get('/comment/:id',
     body('id').escape(),
     comment_get);
+router.get('/profile/:username',
+    body('username').escape(),
+    get_user_owned_recipes);
 
 
 
