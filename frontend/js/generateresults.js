@@ -12,7 +12,6 @@ function createResults(json, target, length) {
         '_300px.png';
       json.recipesTable[i]['thumbnailImagefilepath'] = thumbnail_imagefilepath;
     }
-console.table(json.recipesTable[i])
 
   }
   if (length === undefined) {
@@ -46,7 +45,7 @@ console.table(json.recipesTable[i])
       location.href = 'recipe.html?id=' + json.recipesTable[i]?.Recipeid;
     });
     p.innerText = json.recipesTable[i]?.Recipename;
-    p2.innerText = "Aika: "+ json.recipesTable[i]?.Recipetime+"min" ;
+    p2.innerText = "Aika: " + json.recipesTable[i]?.Recipetime + "min";
     p.setAttribute("id", "recipeFigureName")
     p2.innerText = json.recipesTable[i]?.Recipetime;
     p.innerText = json.recipesTable[i]?.Recipename;
@@ -63,10 +62,7 @@ console.table(json.recipesTable[i])
     figure.appendChild(p5);
     figure.appendChild(button);
     figure.classList.add('recipefigure');
-    console.log("🚀 ~ file: generateresults.js:67 ~ createResults ~ figure", figure)
-    
     target.appendChild(figure);
-    console.log(target)
 
   };
 }
@@ -204,7 +200,7 @@ mostlikedbetter.onclick = () => {
     }
   }).then((queryData) => {
     clearPage();
-    createResults(queryData,presentationdata);
+    createResults(queryData, presentationdata);
     FieldElement1.innerText = '';
   }).catch((error) => {
 
@@ -214,7 +210,7 @@ mostlikedbetter.onclick = () => {
 }
 const newest = document.getElementById('newest');
 newest.onclick = () => {
-clearPage();
-    fetchNewestPresentationData()
- 
+  clearPage();
+  fetchNewestPresentationData()
+
 }
