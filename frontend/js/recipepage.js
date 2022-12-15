@@ -405,17 +405,14 @@ const addOrRemoveFavorite = async (id) => {
             }
         }
     }
-
 };
+
 recipeLike.addEventListener('click', async evt => {
     console.log("asd");
     await updateRecipeRating("like", recipe_id);
-
 });
 recipeDislike.addEventListener('click', async evt => {
-
     await updateRecipeRating("dislike", recipe_id);
-
 });
 
 // Arvostellaan resepti
@@ -436,7 +433,6 @@ const updateRecipeRating = async (rating, id) => {
         recipeDislike.classList.add('disliked')
     }
     console.log("response");
-
 }
 
 getRecipe(recipe_id);

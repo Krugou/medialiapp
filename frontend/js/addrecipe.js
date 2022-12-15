@@ -78,7 +78,7 @@ postButton.addEventListener('click', async (evt) => {
   const response = await fetch(url + '/recipes', fetchOptions);
   const json = await response.json();
   alert(json.message);
-  if (json.message ==="Recipe Added") {
+  if (json.message ==='Resepti lisätty') {
     location.href = 'frontpage.html';
   }
 });

@@ -40,10 +40,7 @@ const upload = multer({
 
 });
 
-router.route('/').post(body('email').isEmail(),
-    body('password').matches(/(?=.*\p{Lu}).{8,}/u),
-    body('username').isLength({ min: 3 }).escape(),
-    user_post);
+
 // delete route for user
 router.route('/profiledetails/:username').delete(deleteUsersReg_User);
 // update route for user

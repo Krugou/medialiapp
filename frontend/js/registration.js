@@ -24,13 +24,13 @@ signupButton.addEventListener('click', async (evt) => {
     body: JSON.stringify(data),
   };
 
-  const response = await fetch(url + '/users', fetchOptions);
+  const response = await fetch(url + '/userslimited', fetchOptions);
   const json = await response.json();
   alert(json.message);
   document.querySelector('#emailInput').value = '';
   document.querySelector('#passwordInput').value = '';
 
-  if (json.message === 'User Created' || '') {
+  if (json.message === 'Tili luotu' || '') {
     location.href = 'signIn.html';
   }
 

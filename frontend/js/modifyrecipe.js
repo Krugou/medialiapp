@@ -148,7 +148,7 @@ postButton.addEventListener('click', async (evt) => {
     const response = await fetch(url + '/recipes', fetchOptions);
     const json = await response.json();
     alert(json.message);
-    if (json.message === 'Recipe modified') {
+    if (json.message === 'Reseptiä muokattu') {
         location.href = 'recipe.html?id=' + recipe_id;
     }
 });
