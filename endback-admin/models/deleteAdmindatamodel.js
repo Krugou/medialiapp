@@ -27,17 +27,83 @@ const deletecomments = async (commentid) => {
     }
 }
 
-const deleterecipes = async (recipeid) => {
-    try {// console log oppenheimer quote
+const deleterecipes = async (data) => {
+    
+// console log oppenheimer quote
         console.log('i have become death, destroyer of worlds');
+        let rows, rows2, rows3;
+        try {
+            try {
+                [rows] = await promisePoolAdmin.execute(`DELETE
+                                                       FROM Images
+                                                       WHERE Imagerecipe = ${data};`,
+                    data);
+            }
+            catch (e) {
 
-        const [rows] = await promisePoolAdmin.execute(
-            'DELETE FROM `jakrecipes`.`Recipes` WHERE Recipeid = ?;', [recipeid]);
-        return rows;
-    } catch (e) {
-        console.error('error deleterecipes', e.message);
-    }
-}
+            }
+            try {
+                [rows2] = await promisePoolAdmin.execute(`DELETE
+                                                        FROM Recipemealtype
+                                                        WHERE Recipeid = ${data};`,
+                    data);
+            }
+            catch (e) {
+
+            }
+            try {
+                [rows3] = await promisePoolAdmin.execute(`DELETE
+                                                  FROM Recipefavorite
+                                                  WHERE Recipeid = ${data};`,
+                    data);
+            }
+            catch (e) {
+
+            }
+            try {
+                let [rows4] = await promisePoolAdmin.execute(`DELETE
+                                                  FROM Reciperating
+                                                  WHERE Recipeid = ${data};`,
+                    data);
+            }
+            catch (e) {
+
+            }
+            try {
+                let [rows5] = await promisePoolAdmin.execute(`DELETE
+                                                  FROM Commentrating
+                                                  WHERE  Commentrating.Commentid IN (
+                                                    SELECT Comments.Commentid FROM Comments
+                                                    WHERE Commentrecipe = ${data}); ;`,
+                    data);
+            }
+            catch (e) {
+
+            }
+            try {
+                let [rows6] = await promisePoolAdmin.execute(`DELETE
+                                                  FROM Comments
+                                                  WHERE Commentrecipe = ${data};`,
+                    data);
+            }
+            catch (e) {
+
+            }
+            try {
+                let [rows7] = await promisePoolAdmin.execute(`DELETE
+                                                        FROM Recipes
+                                                        WHERE Recipeid = ${data};`,
+                    data);
+            }
+            catch (e) {
+
+            }
+            return rows;
+        } catch (e) {
+            console.error('deleteRecipeAdmin', e.message);
+            next(httpError('Database error', 500));
+        }
+    };
 
 module.exports = {
     deletecomments
