@@ -56,6 +56,7 @@
 
 .addRecipes {
   text-align: center;
+  margin-bottom: 5em;
 }
 
 .stupid_marquee {
@@ -493,7 +494,7 @@ body {
 
 .pagemain {
   flex:1;
-  margin: 3em auto 3em auto;
+  margin: auto;
   max-width: 1440px;
   background-color:#f6f6f6;
   padding:3em;
@@ -1135,6 +1136,7 @@ body {
   }
   .pagemain {
     margin: 3em 0em 3em 0em;
+    padding:0;
   }
 }
 @media screen and (max-width: 660px) {
@@ -1308,6 +1310,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  .recipeAuthor {
+    flex-direction: column;
   }
 }
 
