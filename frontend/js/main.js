@@ -32,6 +32,7 @@ function fetchFavorites() {
   })
     .then((response) => response.json())
     .then((json) => {
+      clearPage()
       createResults(json, presentationdata);
 
     }
