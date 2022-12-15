@@ -500,6 +500,7 @@ body {
   margin: 1rem;
   background-color: #dfedf2;
   text-align: center;
+  max-width: 40em;
 }
 
 .recipefigure button {
@@ -1251,6 +1252,11 @@ body {
   }
   .save button {
     font-size: 1vh;
+  }
+}
+@media screen and (min-width: 1700px) {
+  .pagemain {
+    max-width:4000px;
   }
 }
 
