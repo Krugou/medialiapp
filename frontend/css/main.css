@@ -958,6 +958,14 @@ body {
   align-items: center;
   gap: 2em;
 }
+#radio_group2 {
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5em;
+  margin-bottom: 5em;
+}
 
 #userPostTitle {
   text-align: center;
