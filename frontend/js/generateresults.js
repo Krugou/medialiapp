@@ -45,15 +45,12 @@ console.table(json.recipesTable[i])
     button.addEventListener('click', () => {
       location.href = 'recipe.html?id=' + json.recipesTable[i]?.Recipeid;
     });
-<<<<<<< Updated upstream
     p.innerText = json.recipesTable[i].Recipename;
     p2.innerText = "Aika: "+ json.recipesTable[i].Recipetime+"min" ;
     p.setAttribute("id", "recipeFigureName")
     p2.innerText = json.recipesTable[i].Recipetime;
-=======
     p.innerText = json.recipesTable[i]?.Recipename;
     p2.innerText = json.recipesTable[i]?.Recipetime;
->>>>>>> Stashed changes
     p3.innerText = json.recipesTable[i]?.Coursetype;
     p4.innerText = json.recipesTable[i]?.Mealtype;
     p5.innerText = "Hinta: " + json.recipesTable[i]?.Recipeprice.toFixed(2) + "€";
@@ -212,4 +209,10 @@ mostlikedbetter.onclick = () => {
 
   }
   );
+}
+const newest = document.getElementById('newest');
+newest.onclick = () => {
+
+    fetchNewestPresentationData()
+ 
 }
