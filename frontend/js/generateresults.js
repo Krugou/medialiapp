@@ -100,7 +100,7 @@ function frontPageQuery(query) {
   let selectedOption = selector.value;
   if (selectedOption === '1') {
     FieldElement1.innerText = 'Haetaan reseptejä nimen mukaan...';
-    fetch(url + `/recipes/filterrecipes/` + query).then(response => {
+    fetch(url + `/recipeslimited/filterrecipes/` + query).then(response => {
       if (response.ok) {
         return response.json();
       } else {
@@ -115,7 +115,7 @@ function frontPageQuery(query) {
   } else if (selectedOption === '2') {
     FieldElement1.innerText = 'Haetaan reseptejä ruokalajin mukaan...';
 
-    fetch(url + `/recipes/filtermealtypes/` + query).then(response => {
+    fetch(url + `/recipeslimited/filtermealtypes/` + query).then(response => {
       if (response.ok) {
 
         return response.json();
@@ -131,7 +131,7 @@ function frontPageQuery(query) {
   } else if (selectedOption === '3') {
     FieldElement1.innerText = 'Haetaan reseptejä aterialajin mukaan...';
 
-    fetch(url + `/recipes/filtercoursetypes/` + query).then(response => {
+    fetch(url + `/recipeslimited/filtercoursetypes/` + query).then(response => {
       if (response.ok) {
         return response.json();
       } else {
@@ -150,7 +150,7 @@ function frontPageQuery(query) {
       return;
     }
 
-    fetch(url + `/recipes/filterbyprice/` + query).then(response => {
+    fetch(url + `/recipeslimited/filterbyprice/` + query).then(response => {
       if (response.ok) {
         return response.json();
       } else {
