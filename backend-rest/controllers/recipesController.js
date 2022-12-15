@@ -160,17 +160,6 @@ const recipe_get = async (req, res, next) => {
         console.error('recipe_get', e.message);
         next(httpError('Database error', 500));
     }
-    /*
-            if (rows2.length>5) {
-                console.log("asd");
-                res.json({
-                    recipes: rows1.pop(),
-                    mealtypes: rows2
-                });
-            }
-
-     */
-
 };
 const recipe_getloggedinuser = async (req, res, next) => {
     let rows1, rows2, rows3, rows4, rows5, rows6, rows7, rows8, rows9;
@@ -194,7 +183,6 @@ const recipe_getloggedinuser = async (req, res, next) => {
             value: rows6, //Onko reseptistä liketty vai disliketty
             find: rows6.length >= 1, // Onko Käyttäjä tehnyt kumpaakaan reseptille
         }
-        //rows6  +=rows6.length >= 1; // True tai False, jos löytyy niin true
 
         rows7 = await getRecipeRatingByRecipe(req.params.id, next);
         rows8 = await getRecipemaker(req.params.id, next);
@@ -327,20 +315,8 @@ const comment_get = async (req, res, next) => {
             };
         }
         console.log(findComments);
-        //const findCommentRatings = await getRecipeCommentRatingsByCommentId()
-        // const getUserByUserId = await findUsersByUseridRegUser()
         res.json(findComments);
 
-        /*
-              res.json({
-                  recipes: rows1.pop(), //Ainoastaan yksi matchaava resepti, niin pop
-                  mealtypes: rows2, //Voi olla monta, niin ei pop
-                  images: rows3, //Voi olla tulevaisuudessa monta kuvaa, niin ei pop
-                  course: rows4.pop(), // Ainoastaan yksi course, niin pop
-                  favorite:rows5,
-              });
-
-         */
     } catch (e) {
 
         console.error('comment_get', e.message);
@@ -393,20 +369,8 @@ const comment_getloggedinuser = async (req, res, next) => {
             };
         }
         console.log(findComments);
-        //const findCommentRatings = await getRecipeCommentRatingsByCommentId()
-        // const getUserByUserId = await findUsersByUseridRegUser()
         res.json(findComments);
 
-        /*
-              res.json({
-                  recipes: rows1.pop(), //Ainoastaan yksi matchaava resepti, niin pop
-                  mealtypes: rows2, //Voi olla monta, niin ei pop
-                  images: rows3, //Voi olla tulevaisuudessa monta kuvaa, niin ei pop
-                  course: rows4.pop(), // Ainoastaan yksi course, niin pop
-                  favorite:rows5,
-              });
-
-         */
     } catch (e) {
 
         console.error('comment_get', e.message);
@@ -440,7 +404,7 @@ const comment_post = async (req, res, next) => {
             return;
         }
         res.json({
-            message: 'Comment Added',
+            message: 'Kommentti lisätty',
         });
     } catch (e) {
         console.error('comment_post', e.message);
@@ -474,7 +438,7 @@ const recipe_favorite = async (req, res, next) => {
             return;
         }
         res.json({
-            message: 'Recipe Favorited',
+            message: 'Resepti lisätty suosikkeihin',
         });
 
     } catch (e) {
@@ -507,7 +471,7 @@ const recipe_removefavorite = async (req, res, next) => {
             return;
         }
         res.json({
-            message: 'Favorite removed',
+            message: 'Resepti poistettu suosikeista',
         });
 
     } catch (e) {
@@ -588,7 +552,7 @@ const recipes_put = async (req, res, next) => {
             return;
         }
         res.json({
-            message: 'Recipe modified',
+            message: 'Reseptiä muokattu',
         });
 
     } catch (e) {
@@ -652,7 +616,7 @@ const recipes_post = async (req, res, next) => {
             return;
         }
         res.json({
-            message: 'Recipe Added',
+            message: 'Resepti lisätty',
         });
 
     } catch (e) {
@@ -691,7 +655,7 @@ const recipe_like = async (req, res, next) => {
 
         const result = await addLike(data, next);
         res.json({
-            message: 'like Added',
+            message: 'Tykätty',
         });
         if (result.affectedRows < 1) {
             next(httpError('Invalid data', 400));
@@ -726,7 +690,7 @@ const recipe_dislike = async (req, res, next) => {
         }
         const result = await addDislike(data, next);
         res.json({
-            message: 'dislike Added',
+            message: 'Palaute annettu',
         });
         if (result.affectedRows < 1) {
             next(httpError('Invalid data', 400));
@@ -762,7 +726,7 @@ const comment_like = async (req, res, next) => {
         }
         const result = await addCommentLike(data, next);
         res.json({
-            message: 'Like Added',
+            message: 'Tykätty',
         });
         if (result.affectedRows < 1) {
             next(httpError('Invalid data', 400));
@@ -800,7 +764,7 @@ const comment_dislike = async (req, res, next) => {
         }
         const result = await addCommentDisLike(data, next);
         res.json({
-            message: 'Dislike Added',
+            message: 'Palaute annettu',
         });
         if (result.affectedRows < 1) {
             next(httpError('Invalid data', 400));
@@ -825,17 +789,11 @@ const recipe_delete = async (req, res, next) => {
             next(httpError('Invalid data', 400));
             return;
         }
-
-
-
-
         const data = [
             req.user.Userid,
             req.params.id,
 
         ];
-
-
         if (req.user.Userrole === 0){
             try {
                 const result = await deleteRecipeAdmin(data, next);
@@ -843,11 +801,8 @@ const recipe_delete = async (req, res, next) => {
                     next(httpError('Invalid data', 400));
                 }
                 res.json({
-                    message: 'Recipe Deleted',
+                    message: 'Resepti poistettu',
                 });
-
-
-
             }
             catch (e) {
                 console.error('recipe_delete', e.message);
@@ -871,7 +826,7 @@ const recipe_delete = async (req, res, next) => {
             next(httpError('Invalid data', 400));
         }
         res.json({
-            message: 'Recipe Deleted',
+            message: 'Resepti poistettu',
         });
     } catch (e) {
         console.error('recipe_delete', e.message);
@@ -906,12 +861,12 @@ const comment_delete = async (req, res, next) => {
                             next(httpError('Invalid data', 400));
                         }
                         res.json({
-                            message: 'Recipe Deleted',
+                            message: 'Kommentti poistettu',
                         });
 
                     }
                     catch (e) {
-                        console.error('recipe_delete', e.message);
+                        console.error('comment_delete', e.message);
                         next(httpError('Internal server error', 500));
                     }
 
@@ -933,7 +888,7 @@ const comment_delete = async (req, res, next) => {
             next(httpError('Invalid data', 400));
         }
         res.json({
-            message: 'Comment Deleted',
+            message: 'Kommentti poistettu',
         });
     } catch (e) {
         console.error('comment_delete', e.message);
