@@ -157,7 +157,7 @@ function profiledetails(Imagefilepath, username) {
                 method: 'PUT',
                 headers: {
                     // 'Content-Type': 'application/json',
-                    // Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+                    Authorization: 'Bearer ' + sessionStorage.getItem('token'),
 
 
                 },
