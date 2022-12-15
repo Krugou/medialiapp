@@ -15,11 +15,9 @@ function createResults(json, target, length) {
 
   }
   if (length === undefined) {
-    console.log("🚀 ~ file: generateresults.js:19 ~ createResults ~ length", length)
     length = json.recipesTable.length;
   }
   if (target === undefined) {
-    console.log("🚀 ~ file: generateresults.js:23 ~ createResults ~ target", target)
     target = presentationdata;
   }
   for (let i = 0; i < (length); i++) {
@@ -43,6 +41,7 @@ function createResults(json, target, length) {
     button.addEventListener('click', () => {
       location.href = 'recipe.html?id=' + json.recipesTable[i]?.Recipeid;
     });
+
     p.innerText = json.recipesTable[i]?.Recipename;
     p2.innerText = "Aika: " + json.recipesTable[i]?.Recipetime + "min";
     p.setAttribute("id", "recipeFigureName")
@@ -51,7 +50,7 @@ function createResults(json, target, length) {
     p2.innerText = json.recipesTable[i]?.Recipetime;
     p3.innerText = json.recipesTable[i]?.Coursetype;
     p4.innerText = json.recipesTable[i]?.Mealtype;
-    p5.innerText = "Hinta: " + json.recipesTable[i]?.Recipeprice.toFixed(2) + "€";
+    p5.innerText = "Hinta: " + json.recipesTable[i]?.Recipeprice?.toFixed(2) + "€";
     button.innerText = 'Katso resepti';
     figure.appendChild(img);
     figure.appendChild(p);
@@ -61,7 +60,6 @@ function createResults(json, target, length) {
     figure.appendChild(p5);
     figure.appendChild(button);
     figure.classList.add('recipefigure');
-    console.log("🚀 ~ file: generateresults.js:68 ~ createResults ~ figure", figure)
     target.appendChild(figure);
 
   };
@@ -200,7 +198,9 @@ mostlikedbetter.onclick = () => {
       throw 'HTTP ERROR';
     }
   }).then((queryData) => {
+    console.log("🚀 ~ file: generateresults.js:203 ~ fetch ~ queryData", queryData)
     clearPage();
+    
     createResults(queryData, presentationdata);
     FieldElement1.innerText = '';
   }).catch((error) => {
