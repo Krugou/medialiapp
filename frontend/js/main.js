@@ -77,7 +77,7 @@ function generateRecipesFrontpage(json) {
       console.log('katso resepti');
       location.href = 'recipe.html?id=' + json[i].Recipeid;
     });
-    p.innerText = json[i].Recipename
+    p.innerText = json[i].Recipename;
 
     p2.innerText = "Aika: " + json[i].Recipetime +"min";
 
