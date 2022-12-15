@@ -27,7 +27,6 @@
     justify-content: center;
 }
 .addComment {
-  width: 70%;
   background-color:var(--main-bg-color);
   height: auto;
   margin: auto;
@@ -525,7 +524,6 @@ body {
 }
 
 .recipeInstruction {
-  width: 70%;
   background-color: lightgray;
   height: auto;
   border-radius: 5px;
@@ -622,7 +620,6 @@ body {
 }
 
 .recipeStats {
-  width: 70%;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -847,6 +844,7 @@ body {
   height: 3em;
   width: 7em;
   font-size: 2vh;
+  cursor: pointer;
 }
 
 #hideCommentsButton {
@@ -979,6 +977,9 @@ body {
 .commentStats p {
   font-size: 2em;
 }
+.recipeLikes p {
+  word-break: normal;
+}
 
 @keyframes slide-left {
   from {
@@ -1026,6 +1027,9 @@ body {
   .recipeSearchInput {
     height: 4vw;
   }
+  .recipeStats {
+    flex-direction: column;
+  }
 }
 
 @media screen and (max-width: 770px) {
@@ -1066,6 +1070,11 @@ body {
   }
   .recipeStats {
     width: 90%;
+  }
+  .radio-group {
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 2em;
   }
 }
 @media screen and (max-width: 850px) {
@@ -1134,10 +1143,6 @@ body {
     height: 100%;
   }
 
-  .frontUp {
-    flex-direction: column;
-  }
-
   .recipebutton {
     margin: 7%;
   }
@@ -1171,7 +1176,6 @@ body {
   }
 
   .recipeStats {
-    flex-direction: column;
     gap: unset;
   }
 

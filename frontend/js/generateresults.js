@@ -1,6 +1,19 @@
 const presentationdata = document.getElementById('presentationdata');
 
 function createResults(json, target, length) {
+  for (let i = 0; i < (json.length); i++) {
+    if (screen.width >= 1000) {
+      thumbnail_imagefilepath = 'thumbnails/' + json.recipesTable[i].Imagefilepath +
+        '_500px.png';
+      json.recipesTable[i]['thumbnailImagefilepath'] = thumbnail_imagefilepath;
+    }
+    if (screen.width <= 780) {
+      thumbnail_imagefilepath = 'thumbnails/' + json.recipesTable[i].Imagefilepath +
+        '_300px.png';
+      json.recipesTable[i]['thumbnailImagefilepath'] = thumbnail_imagefilepath;
+    }
+
+  }
   if (length === undefined) {
     length = json.recipesTable.length;
   }
@@ -24,6 +37,7 @@ function createResults(json, target, length) {
     const p2 = document.createElement('p');
     const p3 = document.createElement('p');
     const p4 = document.createElement('p');
+    const p5 = document.createElement('p');
     const button = document.createElement('button');
     button.addEventListener('click', () => {
       location.href = 'recipe.html?id=' + json.recipesTable[i].Recipeid;
@@ -32,12 +46,14 @@ function createResults(json, target, length) {
     p2.innerText = json.recipesTable[i].Recipetime;
     p3.innerText = json.recipesTable[i]?.Coursetype;
     p4.innerText = json.recipesTable[i]?.Mealtype;
+    p5.innerText = "Hinta: " + json.recipesTable[i].Recipeprice.toFixed(2) + "€";
     button.innerText = 'Katso resepti';
     figure.appendChild(img);
     figure.appendChild(p);
     figure.appendChild(p2);
     figure.appendChild(p3);
     figure.appendChild(p4);
+    figure.appendChild(p5);
     figure.appendChild(button);
     figure.classList.add('recipefigure');
     target.appendChild(figure);
@@ -71,6 +87,8 @@ window.onload = () => {
 
   };
 };
+
+// if user is logged in, show create radio button for favorites
 
 let selector = "";
 const radioButtons = document.querySelectorAll('.radio-btn');
@@ -162,5 +180,5 @@ function frontPageQuery(query) {
       FieldElement1.innerText = '';
     }).catch((error) => {
     });
-  }
+  } 
 }
