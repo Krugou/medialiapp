@@ -27,6 +27,8 @@ const {
 const { body } = require('express-validator');
 
 // ilman authentikointia
+router.get('/filterbylikes/', get_mostlikedrecipes);
+
 router.get('/mealtypes', recipes_mealtypes_get);
 router.get('/newest', getAllNewestRecipesController);
 router.get('/oldest', getAllOldestRecipesController);
@@ -45,6 +47,5 @@ router.get('/profile/:username',
     body('username').escape(),
     get_user_owned_recipes);
 
-router.get('/filterbylikes', get_mostlikedrecipes);
 
 module.exports = router;

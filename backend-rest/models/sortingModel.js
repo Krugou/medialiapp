@@ -42,13 +42,9 @@ SELECT * FROM Recipes WHERE Recipeid IN
 
 const getmostlikedrecipes = async (next) => {
   try {
-    console.log('userid', userid)
     const [rows] = await promisePoolRegUser.execute(`
-SELECT
-	*
-FROM
-	jakrecipes.mostlikedbetter r;
-`);
+SELECT * FROM 	jakrecipes.mostlikedbetter ;
+`)
     return rows;
   } catch (e) {
     next(httpError('Database error', 500));
