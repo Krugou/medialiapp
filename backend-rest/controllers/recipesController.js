@@ -38,9 +38,11 @@ const { getRecipeRatingByRecipe } = require("../models/ratingModel");
 const get_mostlikedrecipes = async (req, res, next) => {
     try {
         const recipesTable = await getmostlikedrecipes(next);
+        console.log("🚀 ~ file: recipesController.js:41 ~ constget_mostlikedrecipes= ~ recipesTable", recipesTable)
         if (recipesTable.length < 1) {
             return next(httpError('No recipes found', 404));
         }
+        
         res.json({ recipesTable });
     } catch (e) {
         console.error('get_mostlikedrecipes', e.message);
