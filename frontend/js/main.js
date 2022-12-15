@@ -78,6 +78,7 @@ function generateRecipesFrontpage(json) {
       location.href = 'recipe.html?id=' + json[i].Recipeid;
     });
     p.innerText = json[i].Recipename;
+    p.setAttribute("id", "recipeFigureName")
     p2.innerText = json[i].Recipetime;
     p3.innerText = json[i].Coursetype;
     p4.innerText = json[i].Mealtype;

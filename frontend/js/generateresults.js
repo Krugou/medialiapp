@@ -43,6 +43,7 @@ function createResults(json, target, length) {
       location.href = 'recipe.html?id=' + json.recipesTable[i].Recipeid;
     });
     p.innerText = json.recipesTable[i].Recipename;
+    p.setAttribute("id", "recipeFigureName")
     p2.innerText = json.recipesTable[i].Recipetime;
     p3.innerText = json.recipesTable[i]?.Coursetype;
     p4.innerText = json.recipesTable[i]?.Mealtype;

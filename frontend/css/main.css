@@ -939,6 +939,9 @@ body {
   margin-right: auto;
   width: 15em;
 }
+#recipeFigureName {
+  font-size:1.5em;
+}
 
 #tag {
   background-color:var(--main-bg-color);
