@@ -20,6 +20,7 @@ const {
     getrecipeswiththiscoursetype,
     getrecipeswiththislowrecipepriceto0,
     getrecipeswiththismealtype,
+    getuserfavorites,
 } = require('../models/sortingModel');
 const {validationResult} = require('express-validator');
 const {httpError} = require('../utils/errors');
@@ -44,6 +45,18 @@ const get_recipes_with_this_coursetype = async (req, res, next) => {
         console.error('get_recipes_with_this_coursetype', e.message);
         next(httpError('Database error', 500));
 
+    }
+};
+const get_user_favorites = async (req, res, next) => {
+    try {
+        const recipesTable = await getuserfavorites(req.params.userid, next);
+        if (recipesTable.length < 1) {
+            return next(httpError('No recipes found', 404));
+        }
+        res.json({ recipesTable });
+    } catch (e) {
+        console.error('get_user_favorites', e.message);
+        next(httpError('Database error', 500));
     }
 };
 const get_reguser_owned_recipes = async (req, res, next) => {
@@ -920,6 +933,7 @@ module.exports = {
     comment_delete,
     comment_getloggedinuser,
     recipe_getloggedinuser,
+    get_user_favorites,
 };
 
 
