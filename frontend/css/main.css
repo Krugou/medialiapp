@@ -1071,6 +1071,11 @@ body {
   .recipeStats {
     width: 90%;
   }
+  .radio-group {
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 2em;
+  }
 }
 @media screen and (max-width: 850px) {
   .checknappi {
@@ -1136,10 +1141,6 @@ body {
   .userPosts figure {
     width: auto;
     height: 100%;
-  }
-
-  .frontUp {
-    flex-direction: column;
   }
 
   .recipebutton {
