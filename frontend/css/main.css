@@ -624,7 +624,7 @@ body {
   align-items: center;
   text-align: center;
   border-radius: 1em;
-  padding: 1em;
+  padding: 2em;
   gap: 3em;
   display: flex;
   background-color: lightgray;
@@ -957,6 +957,9 @@ body {
 #editRecipeModal {
   flex-direction: column;
 }
+#authorUsername {
+  font-size:2em;
+}
 
 .recipeComments {
   margin: auto;
@@ -1254,7 +1257,7 @@ body {
   color: #d73030;
 }
 .positive {
-  color: #2bf52b;
+  color: #3f3fea;
 }
 .negative {
   color: #d73030;
