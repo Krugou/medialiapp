@@ -454,6 +454,7 @@ body {
   height: 4em;
   width: 7em;
   font-size: 1.2em;
+  cursor:pointer;
 }
 
 .postRecipe {
