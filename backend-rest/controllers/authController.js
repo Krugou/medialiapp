@@ -9,18 +9,18 @@ const login = (req, res, next) => {
     console.log('info: ', info);
     console.log('err1: ', err);
     if (err || !user) {
-      next(httpError('Kirjautumisvirhe', 403));
+      next(httpError('Virhe kirjautuessa', 403));
       res.json({
-        message: 'Kirjautumisvirhe',
+        message: 'Virhe kirjautuessa',
       });
       return;
     }
     req.login(user, {session: false}, (err) => {
       if (err) {
         console.log('err2: ', err);
-        next(httpError('Kirjautmisvirhe 2', 403));
+        next(httpError('Virhe kirjautuessa', 403));
         res.json({
-          message: 'Kirjautumisvirhe',
+          message: 'Virhe kirjautuessa',
         });
         return;
       }
