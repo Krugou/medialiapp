@@ -59,31 +59,25 @@ const createProfileRecipes = async (username) => {
 };
 
 const createProfileUser = async (username) => {
+    let response;
     let Imagefilepath
     // KIRJAUTUMATON KÄYTTÄJÄ
     if (!sessionStorage.getItem('token') || !sessionStorage.getItem('user')) {
-        const response = await fetch(url + '/userslimited/limited/' + username);
-        const json = await response.json();
-        console.log("tietoa KIRJAUTUMATON", json);
-        Imagefilepath = json[0]?.Imagefilepath;
-        username = json[0]?.Username;
-        profiledetails(Imagefilepath, username);
-    } else { // KIRJAUTUNUT KÄYTTÄJÄ
+        response = await fetch(url + '/userslimited/limited/' + username);
+    } else {
         const fetchOptions = {
             headers: {
                 Authorization: 'Bearer ' + sessionStorage.getItem('token'),
             },
         };
-        const response = await fetch(url + '/users/' + username, fetchOptions);
+        response = await fetch(url + '/users/' + username, fetchOptions);
+    }
         const json = await response.json();
-        console.log("tietoa KIRJAUTUNUT EI AUTHENTIKOI KÄYTTÄJÄÄ VIELÄ", json);
         Imagefilepath = json.image[0]?.Imagefilepath;
         username = json.info.Username;
         profiledetails(Imagefilepath, username);
-    }
 
     // Rakenna profiili sivulle
-
 
 };
 function profiledetails(Imagefilepath, username) {

@@ -102,8 +102,11 @@ const get_UserProfileLimited = async (req, res, next) => {
       return;
     }
 
-    const result = await getLimitedUserInfo(req.params.username, next);
-
+    let result = await getLimitedUserInfo(req.params.username, next);
+          result = {
+      info:result[0],
+      image:result,
+    }
     if (result.length < 1) {
       res.json({
         Username: 'undefined',
@@ -114,10 +117,6 @@ const get_UserProfileLimited = async (req, res, next) => {
     res.json(result);
   } catch (e) {
     next(httpError('get_UserProfileLimited', 404));
-    return;
-    res.json({
-      Username: 'undefined',
-    });
   }
 };
 const get_UserProfile = async (req, res, next) => {
@@ -136,11 +135,6 @@ const get_UserProfile = async (req, res, next) => {
       next(httpError('Invalid data', 400));
       return;
     }
-     // OTA KÄYTTÖÖN KUN AUTH VALMIS
-console.log("req.user",req.user);
-    console.log("req.user.Username",req.user.Username);
-    console.log("req.params.Username",req.params.username);
-
 
     if (req.user.Username === req.params.username){
       console.log("ASDASDADSD");
@@ -152,7 +146,11 @@ console.log("req.user",req.user);
       }
     } else {
        result = await getLimitedUserInfo(req.params.username, next);
-
+       console.log("resultennen", result);
+      result = {
+        info:result[0],
+        image:result,
+      }
     }
 
     console.log("result", result);
@@ -166,10 +164,6 @@ console.log("req.user",req.user);
     res.json(result);
   } catch (e) {
     next(httpError('get_UserProfile', 404));
-    return;
-    res.json({
-      Username: 'undefined',
-    });
   }
 };
 const user_post = async (req, res, next) => {
