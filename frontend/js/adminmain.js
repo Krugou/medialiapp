@@ -246,6 +246,22 @@ function getRecipeData(amount) {
     }
 
   });
+  const deletebutton = document.getElementById('deletebutton');
+  deletebutton.addEventListener('click', function () {
+    const deleteid = document.getElementById('deleteid').value;
+    fetch(urladmin + '/b/recipes/' + deleteid, {
+      method: 'DELETE',
+    }).then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      console.log(data);
+      // reload page 
+      
+    });
+    window.location.reload(true);
+  }
+  );
+
 }
 function getUsersData(amount) {
   fetch(urladmin + '/a/au').then(function (response) {
@@ -327,7 +343,21 @@ function getUsersData(amount) {
     }
 
   });
+  const deletebutton = document.getElementById('deletebutton');
+  deletebutton.addEventListener('click', function () {
+    const deleteid = document.getElementById('deleteid').value;
+    fetch(urladmin + '/b/users/' + deleteid, {
+      method: 'DELETE',
+    }).then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      console.log(data);
+      // reload page 
 
+    });
+    window.location.reload(true);
+  }
+  );
 }
 function getAllcomments(amount) {
   fetch(urladmin + '/a/co').then(function (response) {
@@ -396,8 +426,23 @@ function getAllcomments(amount) {
     }
 
   });
+  const deletebutton = document.getElementById('deletebutton');
+  deletebutton.addEventListener('click', function () {
+    const deleteid = document.getElementById('deleteid').value;
+    fetch(urladmin + '/b/comments/' + deleteid, {
+      method: 'DELETE',
+    }).then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      console.log(data);
+      // reload page 
 
+    });
+    window.location.reload(true);
+  }
+  );
 }
+
 
 const getallrecipesbutton = document.getElementById('getallrecipesbutton');
 getallrecipesbutton.addEventListener('click', function () {
