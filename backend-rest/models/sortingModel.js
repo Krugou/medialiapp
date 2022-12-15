@@ -44,7 +44,10 @@ const getmostlikedrecipes = async (next) => {
   try {
     console.log('userid', userid)
     const [rows] = await promisePoolRegUser.execute(`
-SELECT Recipeid, COUNT(*) FROM recipefavorite GROUP BY Recipeid;
+SELECT
+	*
+FROM
+	jakrecipes.mostlikedbetter r;
 `);
     return rows;
   } catch (e) {

@@ -181,8 +181,7 @@ function frontPageQuery(query) {
     }).catch((error) => {
     });
   } else if (selectedOption === '6') {
-    FieldElement1.innerText = 'Haetaan reseptejä tykätyimpien mukaan...';
-    fetch(url + `/recipeslimited/filterbylikes/` + query).then(response => {
+    fetch(url + `/recipeslimited/filterbylikes/`).then(response => {
       if (response.ok) {
         return response.json();
       } else {

@@ -45,6 +45,6 @@ router.get('/profile/:username',
     body('username').escape(),
     get_user_owned_recipes);
 
-
+router.get('/filterbylikes', get_mostlikedrecipes);   
 
 module.exports = router;
