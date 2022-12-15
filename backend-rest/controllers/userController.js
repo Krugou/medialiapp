@@ -37,10 +37,12 @@ const putNewProfileDetails = async (req, res, next) => {
       next(httpError('Username already exists', 400));
       return;
     }
+
     let data = [req.body.Username, req.body.oldUsername]
     // Katsotaan onko käyttäjä sama, kuin vanha käyttäjä
-    if (req.user.Username === req.body.oldUsername) {
 
+
+    if (req.user.Username === req.body.oldUsername) {
 
       // console.log("🚀 ~ file: userController.js:56 ~ putNewProfileDetails ~ data", data)
       const result2 = await putNewwProfileDetails(data, next);
@@ -48,8 +50,9 @@ const putNewProfileDetails = async (req, res, next) => {
       res.json(result2);
     }
     else {
+
       res.json({
-        message: 'Et omista tätä käyttäjää.',
+        message: 'Et omista kyseistä käyttäjää',
       });
     }
   } catch (e) {

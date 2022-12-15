@@ -144,28 +144,28 @@ function profiledetails(Imagefilepath, username) {
             // put new username into sessionstorage
 
 
-            fetch(url + '/users/profiledetails/' + JSON.parse(sessionStorage.getItem('user')).Username, {
-                method: 'PUT',
-                headers: {
-                    // 'Content-Type': 'application/json',
-                    Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+    fetch(url + '/users/profiledetails/' + JSON.parse(sessionStorage.getItem('user')).Username, {
+        method: 'PUT',
+        headers: {
+            // 'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + sessionStorage.getItem('token'),
 
-                },
-                body: formData
-            }).then((response) => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw 'HTTP ERROR';
-                }
-            }).then((data) => {
-                const user = JSON.parse(sessionStorage.getItem('user'));
-                user.Username = newusername;
-                sessionStorage.setItem('user', JSON.stringify(user));
-                window.location.href = 'profile.html?username=' + newusername;
-            }).catch((error) => {
-                console.log('error', error);
-            });
+        },
+        body: formData
+    }).then((response) => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw 'HTTP ERROR';
+        }
+    }).then((data) => {
+        const user = JSON.parse(sessionStorage.getItem('user'));
+        user.Username = newusername;
+        sessionStorage.setItem('user', JSON.stringify(user));
+        location.href = 'logout.html';
+    }).catch((error) => {
+        console.log('error', error);
+    });
 
             editProfile.style.display = 'none';
         };
