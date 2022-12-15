@@ -41,7 +41,7 @@ const addTags = (tags) => { // Syötetään objekti jossa ruokalajien infot
 tagButton.addEventListener('click', async (evt) => {
   evt.preventDefault();
   try {
-    const response = await fetch(url + '/recipes/mealtypes');
+    const response = await fetch(url + '/recipeslimited/mealtypes');
     const tags2 = await response.json();
     addTags(tags2); //Luodaan tagit modaliin kutsumalla sen funktiota
   } catch (e) {
@@ -59,7 +59,6 @@ postButton.addEventListener('click', async (evt) => {
 
   const addForm = document.querySelector('#recipeAddimagebutton');
 
-  console.log(selectedTags);
   const fd = new FormData(addForm);
   fd.append('name', recipenameInput);
   fd.append('guide', recipeguide);
@@ -68,20 +67,18 @@ postButton.addEventListener('click', async (evt) => {
   fd.append('mealtypes', selectedTags);
   fd.append('price', recipepriceInput);
 
-  console.log('fd', fd);
 
   const fetchOptions = {
     method: 'POST',
     headers: {
-      // Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+       Authorization: 'Bearer ' + sessionStorage.getItem('token'),
     },
-    //  body: JSON.stringify(data),
     body: fd,
   };
-  console.log(fetchOptions);
   const response = await fetch(url + '/recipes', fetchOptions);
   const json = await response.json();
   alert(json.message);
-  //  location.href = 'frontpage.html';
-
+  if (json.message ==="Recipe Added") {
+    location.href = 'frontpage.html';
+  }
 });

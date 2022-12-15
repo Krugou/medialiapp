@@ -33,7 +33,6 @@ const getRecipe = async (id) => {
     const response = await fetch(url + '/recipes/' + id, fetchOptions);
     const recipe = await response.json();
 
-    console.log(recipe);
 
     recipenameInput.value = recipe.recipes.Recipename;
     recipeguide.value = recipe.recipes.Recipeguide;
@@ -47,7 +46,6 @@ const getRecipe = async (id) => {
         selectedTags.push(recipe.mealtypes[i].Mealtype);
         removeFromSelectedButtons(recipe.mealtypes[i].Mealtype);
     }
-    console.log(selectedTags);
 
     //
 };
@@ -63,13 +61,11 @@ const addTags = (tags) => { // Syötetään objekti jossa mealtype infot
         const button = document.createElement('button');
         button.innerHTML = tag.Mealtype;
         button.classList.add('mealtypeButtons');
-        console.log(selectedTags);
         if (!selectedTags.includes(tag.Mealtype)) { // Valmiiksi valittuja tageja ei luoda enää uusiksi
             tagModal.appendChild(button);
         }
         button.addEventListener('click', () => {
             selectedTags.push(tag.Mealtype); // Laitetaan Valittuihin tageihin ainoastaan ruokalajit
-            console.log(selectedTags);
             tagModal.removeChild(button);
             removeFromSelectedButtons(tag)
 
@@ -82,7 +78,6 @@ const addTags = (tags) => { // Syötetään objekti jossa mealtype infot
 const removeFromSelectedButtons = (tag) => {
     const button2 = document.createElement('button');
     let poista;
-    console.log(tag.Mealtype);
     if (tag.Mealtype === undefined) {
         button2.innerHTML = tag;
         poista = tag;
@@ -96,7 +91,7 @@ const removeFromSelectedButtons = (tag) => {
         let poista2 = selectedTags.indexOf(poista);
         selectedTags.splice(poista2, 1);
         instructionDiv.removeChild(button2);
-        console.log("asd", selectedTags)
+
         alert('Tagi: "' + button2.innerHTML + '" poistettiin.');
     });
 
@@ -104,9 +99,8 @@ const removeFromSelectedButtons = (tag) => {
 tagButton.addEventListener('click', async (evt) => {
     evt.preventDefault();
     try {
-        const response = await fetch(url + '/recipes/mealtypes');
+        const response = await fetch(url + '/recipeslimited/mealtypes');
         const tags2 = await response.json();
-        console.log(tags2);
         addTags(tags2);
     } catch (e) {
         console.log(e.message);
@@ -122,13 +116,13 @@ postButton.addEventListener('click', async (evt) => {
     const recipetimeInput = document.querySelector('#recipetimeInput').value;
     const recipepriceInput = document.querySelector('#addrecipePrice').value;
 
-    const addForm = document.querySelector('#recipeAddimagebutton');
+    const addForm = document.querySelector('#recipeAddimagebutton2');
 
 
     let tags2;
 
     try {
-        const response = await fetch(url + '/recipes/mealtypes');
+        const response = await fetch(url + '/recipeslimited/mealtypes');
         tags2 = await response.json();
     } catch (e) {
         console.log(e.message);
@@ -143,7 +137,6 @@ postButton.addEventListener('click', async (evt) => {
         }
     }
 
-    console.log("asd", selectedTags);
 
 
     const fd = new FormData(addForm);
@@ -156,8 +149,6 @@ postButton.addEventListener('click', async (evt) => {
     fd.append("recipeid", recipe_id);
 
 
-    console.log('fd', fd);
-
     const fetchOptions = {
         method: 'PUT',
         headers: {
@@ -165,12 +156,7 @@ postButton.addEventListener('click', async (evt) => {
         },
         body: fd,
     };
-
-
-    console.log(fetchOptions);
     const response = await fetch(url + '/recipes', fetchOptions);
-
-
     const json = await response.json();
     alert(json.message);
     if (json.message === 'Recipe modified') {

@@ -263,42 +263,16 @@ const deleteRecipeByAuthorId = async (id, next) => {
     next(httpError('Database error', 500));
   }
 };
-// ei valmis frontti ohjaus puuttuu
-/*
-const addRecipes = async (data, next) => {
-    try {
-        const [rows] = await promisePoolRegUser.execute(`INSERT INTO Recipes (Recipename,Recipetime,Recipeguide,Recipemaker,Recipecourse)
-                                                            VALUES ('asdasd',30,'fdsadf',33,4) ;
-                                                            INSERT INTO Recipemealtype (Recipeid,Mealid) 
-                                                            VALUES ( LAST_INSERT_ID() ,1) ;
-                                                            INSERT INTO Images (ImageRecipe ,Imagefilepath) 
-                                                            VALUES ( LAST_INSERT_ID() ,'./media/logos/jakRecipesjakRecipesjakRecipeslogo.svg.') ;`,
-            data);
-        return rows;
-    } catch (e) {
-        console.error('addRecipes', e.message);
-        next(httpError('Database error', 500));
-    }
-}
 
- */
 const addRecipes = async (data, next) => {
   let rows2;
   let rows3;
   try {
-    /*
-            const [rows] = await promisePoolRegUser.execute(`INSERT INTO Recipes (Recipename, Recipeguide, Recipecourse, Recipetime, Recipemaker)
-                                                                VALUES ("asd", "jep", 1, "232", 32);`, data
-
-
-            );
-            */
-
     const [rows] = await promisePoolRegUser.execute(` 
                                                         INSERT INTO Recipes (Recipename, Recipeguide, Recipecourse, Recipetime, Recipeprice, Recipemaker)
-                                                         VALUES ("${data[0]}", "${data[1]}", "${data[2]}", "${data[3]}", "${data[4]}", 37);
+                                                         VALUES ("${data[0]}", "${data[1]}", "${data[2]}", "${data[3]}", "${data[4]}", "${data[5]}");
                                                         `, data);
-    const tempArray = data[5].split(',');
+    const tempArray = data[6].split(',');
     try {
       for (let i = 0; i < tempArray.length; i++) {
         [rows2] = await promisePoolRegUser.execute(`INSERT INTO Recipemealtype (Recipeid, Mealid)
@@ -309,7 +283,7 @@ const addRecipes = async (data, next) => {
     }
     try {
       [rows3] = await promisePoolRegUser.execute(`INSERT INTO Images (Images.Imagerecipe, Images.Imagefilepath)
-                                                              VALUES (LAST_INSERT_ID(), '${data[6]}');
+                                                              VALUES (LAST_INSERT_ID(), '${data[7]}');
             `, data);
 
     } catch (e) {
@@ -325,14 +299,6 @@ const modifyRecipes = async (data, next) => {
   let rows2;
   let rows3;
   try {
-    /*
-            const [rows] = await promisePoolRegUser.execute(`INSERT INTO Recipes (Recipename, Recipeguide, Recipecourse, Recipetime, Recipemaker)
-                                                                VALUES ("asd", "jep", 1, "232", 32);`, data
-
-
-            );
-            */
-
     const [rows] = await promisePoolRegUser.execute(`
                                                         UPDATE Recipes SET Recipename = "${data[0]}", Recipeguide = "${data[1]}", Recipecourse = "${data[2]}", Recipetime = "${data[3]}", Recipeprice = "${data[4]}"
                                                  WHERE Recipeid = ${data[7]} AND Recipemaker = ${data[5]}; 
@@ -352,8 +318,8 @@ const modifyRecipes = async (data, next) => {
       try {
         console.log("asdasdasdads");
         [rows3] = await promisePoolRegUser.execute(`UPDATE Images
-                                                    SET Images.Imagefilepath = '${data[8]}'
-                                                    WHERE Images.Imagerecipe = ${data[7]};
+                                                    SET Images.Imagefilepath = "${data[8]}"
+                                                    WHERE Images.Imagerecipe = "${data[7]}";
         `, data);
 
       } catch (e) {
@@ -384,7 +350,7 @@ const verifyRecipeOwnership = async (data, next) => {
 const addFavorite = async (data, next) => {
   try {
     const [rows] = await promisePoolRegUser.execute(`INSERT INTO Recipefavorite (Userid, Recipeid)
-                                                                VALUES (37,?);`,
+                                                                VALUES (?,?);`,
         data);
     return rows;
   } catch (e) {
@@ -395,7 +361,7 @@ const addFavorite = async (data, next) => {
 const removeFavorite = async (data, next) => {
   try {
     const [rows] = await promisePoolRegUser.execute(`DELETE FROM Recipefavorite
-                                                        WHERE Userid = 37 AND Recipeid = ?;`,
+                                                        WHERE Userid = ? AND Recipeid = ?;`,
         data);
     return rows;
   } catch (e) {
@@ -427,7 +393,7 @@ const addDislike = async (data, next) => {
 };
 const removePreviousReciperating = async (data, next) => {
   try {
-    const [rows] = await promisePoolRegUser.execute(`DELETE FROM Reciperating WHERE Userid ="${data[0]}" AND Recipeid = "${data[1]}";`, // Vaihda 32 pois, kun softa valmis
+    const [rows] = await promisePoolRegUser.execute(`DELETE FROM Reciperating WHERE Userid ="${data[0]}" AND Recipeid = "${data[1]}";`,
         data);
     return rows;
   } catch (e) {
@@ -457,9 +423,45 @@ const deleteRecipe = async (data, next) => {
 
     }
     try {
+      [rows3] = await promisePoolRegUser.execute(`DELETE
+                                                  FROM Recipefavorite
+                                                  WHERE Recipeid = ${data[1]};`,
+          data);
+    }
+    catch (e) {
 
+    }
+    try {
+     let [rows4] = await promisePoolRegUser.execute(`DELETE
+                                                  FROM Reciperating
+                                                  WHERE Recipeid = ${data[1]};`,
+          data);
+    }
+    catch (e) {
 
-       [rows3] = await promisePoolRegUser.execute(`DELETE
+    }
+    try {
+     let  [rows5] = await promisePoolRegUser.execute(`DELETE
+                                                  FROM Commentrating
+                                                  WHERE  Commentrating.Commentid IN (
+                                                    SELECT Comments.Commentid FROM Comments
+                                                    WHERE Commentrecipe = ${data[1]}); ;`,
+          data);
+    }
+    catch (e) {
+
+    }
+    try {
+     let [rows6] = await promisePoolRegUser.execute(`DELETE
+                                                  FROM Comments
+                                                  WHERE Commentrecipe = ${data[1]};`,
+          data);
+    }
+    catch (e) {
+
+    }
+    try {
+      let [rows7] = await promisePoolRegUser.execute(`DELETE
                                                         FROM Recipes
                                                         WHERE Recipeid = ${data[1]}
                                                           AND Recipemaker = ${data[0]};`,
@@ -496,9 +498,45 @@ const deleteRecipeAdmin = async (data, next) => {
 
     }
     try {
-
-
       [rows3] = await promisePoolRegUser.execute(`DELETE
+                                                  FROM Recipefavorite
+                                                  WHERE Recipeid = ${data[1]};`,
+          data);
+    }
+    catch (e) {
+
+    }
+    try {
+      let [rows4] = await promisePoolRegUser.execute(`DELETE
+                                                  FROM Reciperating
+                                                  WHERE Recipeid = ${data[1]};`,
+          data);
+    }
+    catch (e) {
+
+    }
+    try {
+      let  [rows5] = await promisePoolRegUser.execute(`DELETE
+                                                  FROM Commentrating
+                                                  WHERE  Commentrating.Commentid IN (
+                                                    SELECT Comments.Commentid FROM Comments
+                                                    WHERE Commentrecipe = ${data[1]}); ;`,
+          data);
+    }
+    catch (e) {
+
+    }
+    try {
+      let [rows6] = await promisePoolRegUser.execute(`DELETE
+                                                  FROM Comments
+                                                  WHERE Commentrecipe = ${data[1]};`,
+          data);
+    }
+    catch (e) {
+
+    }
+    try {
+      let [rows7] = await promisePoolRegUser.execute(`DELETE
                                                         FROM Recipes
                                                         WHERE Recipeid = ${data[1]};`,
           data);

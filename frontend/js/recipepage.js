@@ -30,12 +30,19 @@ const authorUsername = document.getElementById('authorUsername');
 const authorImage = document.getElementById('recipesProfilePic');
 //Tällä haetaan reseptin tiedot sivulle
 const getRecipe = async (id) => {
+  let response;
   const fetchOptions = {
     headers: {
         Authorization: 'Bearer ' + sessionStorage.getItem('token'),
     },
   };
-  const response = await fetch(url + '/recipes/' + id, fetchOptions);
+  // Jos käyttäjä on kirjatunut, haetaan eri reitistä dataa
+  if (sessionStorage.getItem('token') || sessionStorage.getItem('user')) {
+     response = await fetch(url + '/recipes/' + id, fetchOptions);
+  } else {
+    response = await fetch(url + '/recipeslimited/' + id, fetchOptions);
+
+  }
   const recipe = await response.json();
 
   console.log(recipe);
@@ -153,6 +160,7 @@ const getRecipe = async (id) => {
 };
 const deleteThisRecipe = async (id) => {
 
+
   const fetchOptions = {
     method: 'DELETE',
     headers: {
@@ -195,13 +203,18 @@ postComment.addEventListener('click', async evt => {
 //Haetaan kommentit
 const getComments = async (id) => {
   let comments;
-
+  let response;
   const fetchOptions = {
     headers: {
        Authorization: 'Bearer ' + sessionStorage.getItem('token'),
     },
   };
-  const response = await fetch(url + '/recipes/comment/' + id, fetchOptions);
+  if (sessionStorage.getItem('token') || sessionStorage.getItem('user')) {
+    response = await fetch(url + '/recipes/comment/' + id, fetchOptions);
+  } else {
+    response = await fetch(url + '/recipeslimited/comment/' + id, fetchOptions);
+
+  }
    comments = await response.json();
 
   console.log(comments);
@@ -262,16 +275,14 @@ const getComments = async (id) => {
     }
 
     // Lisätään like/dislike ikoneille eventlistener, joka kutsuu kommentti tietojen päivitystä
-    spanUp.addEventListener('click', evt => {
-      console.log("liked")
-      updateCommentRating("like", comments[i].Commentid)
-      console.log("hahaha")
+    spanUp.addEventListener('click', async evt => {
+      let rating = await updateCommentRating("like", comments[i].Commentid)
       spanDown.firstChild.classList.remove('disliked');
       spanUp.firstChild.classList.add('liked');
     });
-    spanDown.addEventListener('click', evt => {
+    spanDown.addEventListener('click', async evt => {
       console.log("disliked")
-      updateCommentRating("dislike", comments[i].Commentid)
+      let rating = await updateCommentRating("dislike", comments[i].Commentid)
       spanUp.firstChild.classList.remove('liked');
       spanDown.firstChild.classList.add('disliked');
     });
@@ -320,17 +331,8 @@ const getComments = async (id) => {
       },
     };
     const response = await fetch(url + '/recipes/comment/'+rating+'/' + id, fetchOptions);
-
-
-    if (response.ok && rating==="like"){
-      recipeDislike.classList.remove('disliked')
-      recipeLike.classList.add('liked')
-    }
-    if (response.ok && rating==="dislike"){
-      recipeLike.classList.remove('liked')
-      recipeDislike.classList.add('disliked')
-    }
-    console.log("response");
+    const json = await response.json();
+    return (json);
 
   }
 };

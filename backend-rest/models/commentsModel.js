@@ -49,7 +49,7 @@ const getCommentratingByUserid = async (data, next) => {
 const addComment = async (data, next) => {
   try {
     const [rows] = await promisePoolRegUser.execute(`INSERT INTO Comments (Commenttext, Commentrecipe, Commentuserid) 
-                                                    VALUES (?, ?, ?);`, // Vaihda 32 pois, kun softa valmis
+                                                    VALUES (?, ?, ?);`,
         data);
     return rows;
   } catch (e) {
@@ -103,6 +103,13 @@ const removePreviousCommentrating = async (data, next) => {
 };
 const deleteCommentAdmin = async (data, next) => {
   try {
+    let [rows] = await promisePoolRegUser.execute(`DELETE
+                                                      FROM Commentrating
+                                                      WHERE Commentid = ${data[1]};`,
+        data);
+  }catch (e) {
+  }
+  try {
     const  [rows] = await promisePoolRegUser.execute(`DELETE
                                                         FROM Comments
                                                         WHERE Commentid = ${data[1]};`,
@@ -126,6 +133,14 @@ const verifyCommentOwnership = async (data, next) => {
   }
 }
 const deleteComment = async (data, next) => {
+// Pitää ekaksi poistaa kommentin arvostelut, muuten tulee foreign key erroria
+  try {
+    let [rows] = await promisePoolRegUser.execute(`DELETE
+                                                      FROM Commentrating
+                                                      WHERE Commentid = ${data[1]};`,
+        data);
+  }catch (e) {
+  }
   try {
     const  [rows] = await promisePoolRegUser.execute(`DELETE
                                                         FROM Comments

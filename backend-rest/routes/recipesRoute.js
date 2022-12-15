@@ -54,23 +54,10 @@ const {
   recipe_dislike,
   comment_like,
   comment_dislike,
-  get_reguser_owned_recipes, recipes_put, get_user_owned_recipes, recipe_delete, comment_delete,
+  get_reguser_owned_recipes, recipes_put, get_user_owned_recipes, recipe_delete, comment_delete, comment_getloggedinuser,
+  recipe_getloggedinuser,
 } = require('../controllers/recipesController');
 const { body } = require('express-validator');
-
-// ilman authentikointia
-router.get('/mealtypes', recipes_mealtypes_get);
-router.get('/newest', getAllNewestRecipesController);
-router.get('/oldest', getAllOldestRecipesController);
-router.get('/:id', recipe_get);
-router.get('/filterrecipes/:recipename', filter_Recipes_By_Recipe_Name);
-router.get('/filtercoursetypes/:coursetype', get_recipes_with_this_coursetype);
-router.get('/filtermealtypes/:mealtype', get_recipes_with_this_mealtype);
-router.get('/filterbyprice/:lowRecipePrice',
-  get_recipes_with_this_low_recipe_price_to_0);
-router.get('/comment/:id',
-    body('id').escape(),
-    comment_get);
 
 
 // authentikoidun käyttäjän kanssa
@@ -79,6 +66,14 @@ router.get('/reguserprofile/:userid', get_reguser_owned_recipes);
 router.get('/profile/:username',
     body('username').escape(),
     get_user_owned_recipes);
+router.get('/comment/:id',
+    body('id').escape(),
+    comment_getloggedinuser);
+router.get('/:id',
+    body('id').escape(),
+    recipe_getloggedinuser);
+
+
 
 
 router.post('/',

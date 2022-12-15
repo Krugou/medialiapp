@@ -1,12 +1,9 @@
-/*(async () => {
+/*
+(async () => {
   'use strict';
  // const url = 'http://localhost:3000'; // change url when uploading to server
 
   // check sessionStorage
-  if (!sessionStorage.getItem('token') || !sessionStorage.getItem('user')) {
-    location.href = 'signIn.html';
-    return;
-  }
   // check if token valid
   try {
     const fetchOptions = {
@@ -28,4 +25,6 @@
 
 
  */
+
+
 

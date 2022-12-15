@@ -9,6 +9,8 @@ const userRoute = require('./routes/userRoute');
 const frontRoute = require('./routes/frontRoute');
 const statusRoute = require('./routes/statusRoute');
 const recipesRoute = require('./routes/recipesRoute');
+const recipeslimitedRoute = require('./routes/recipeslimitedRoute');
+
 const {httpError} = require('./utils/errors');
 const passport = require('./utils/pass');
 app.use(cors());
@@ -35,7 +37,10 @@ if (process.env.NODE_ENV === 'production') {
 // käytettävät polut
 app.use('/front', frontRoute);
 app.use('/auth', authRoute);
-app.use('/recipes', recipesRoute);
+app.use('/recipes', passport.authenticate('jwt', {session: false}), recipesRoute)
+
+app.use('/recipeslimited', recipeslimitedRoute);
+
 app.use('/users', userRoute);
 app.use('/status', statusRoute);
 
