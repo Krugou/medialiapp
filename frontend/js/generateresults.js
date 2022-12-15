@@ -34,7 +34,6 @@ console.table(json.recipesTable[i])
       img.src = url + '/' + json.recipesTable[i]?.Imagefilepath;
 
     }
-    console.table(json.recipesTable[i])
     img.alt = json.recipesTable[i]?.Recipename;
     const p = document.createElement('p');
     const p2 = document.createElement('p');
