@@ -47,7 +47,6 @@ const getRecipe = async (id) => {
         removeFromSelectedButtons(recipe.mealtypes[i].Mealtype);
     }
 
-    //
 };
 // Kutsutaan hakua reseptin idllä
 getRecipe(recipe_id);
@@ -68,11 +67,8 @@ const addTags = (tags) => { // Syötetään objekti jossa mealtype infot
             selectedTags.push(tag.Mealtype); // Laitetaan Valittuihin tageihin ainoastaan ruokalajit
             tagModal.removeChild(button);
             removeFromSelectedButtons(tag)
-
         });
-
     });
-
 };
 //Tehdään napit, jossa näkyy selectatut ruokalaji "tagit" joista voi myös poistaa tagin.
 const removeFromSelectedButtons = (tag) => {
@@ -115,12 +111,8 @@ postButton.addEventListener('click', async (evt) => {
     const courseselect = document.querySelector('#courseselect').value;
     const recipetimeInput = document.querySelector('#recipetimeInput').value;
     const recipepriceInput = document.querySelector('#addrecipePrice').value;
-
     const addForm = document.querySelector('#recipeAddimagebutton2');
-
-
     let tags2;
-
     try {
         const response = await fetch(url + '/recipeslimited/mealtypes');
         tags2 = await response.json();
@@ -137,8 +129,6 @@ postButton.addEventListener('click', async (evt) => {
         }
     }
 
-
-
     const fd = new FormData(addForm);
     fd.append('name', recipenameInput);
     fd.append('guide', recipeguide);
@@ -148,11 +138,10 @@ postButton.addEventListener('click', async (evt) => {
     fd.append('price', recipepriceInput);
     fd.append("recipeid", recipe_id);
 
-
     const fetchOptions = {
         method: 'PUT',
         headers: {
-             Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+            Authorization: 'Bearer ' + sessionStorage.getItem('token'),
         },
         body: fd,
     };
