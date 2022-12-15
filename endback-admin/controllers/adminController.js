@@ -55,7 +55,10 @@ const getAdminDataAllcommentswithauthors = async (req, res, next) => {
 
 const delete_users = async (req, res, next) => {
   try {
-    const userid = req.params.userid;
+    const userid = [
+      req.params.id,
+
+    ];
     const [rows] = await deleteusers(userid);
     res.json(rows);
   } catch (e) {
@@ -64,7 +67,10 @@ const delete_users = async (req, res, next) => {
 };
 const delete_comments = async (req, res, next) => {
   try {
-    const commentid = req.params.commentid;
+    const commentid = [
+      req.params.id,
+
+    ];
     const [rows] = await deletecomments(commentid);
     res.json(rows);
   } catch (e) {
@@ -73,8 +79,11 @@ const delete_comments = async (req, res, next) => {
 };
 const delete_recipes = async (req, res, next) => {
   try {
-    const recipeid = req.params.recipeid;
-    const [rows] = await deleterecipes(recipeid);
+    const data = [
+      req.params.id,
+
+    ];
+    const [rows] = await deleterecipes(data);
     res.json(rows);
   } catch (e) {
     next(httpError('Virhe poistaessa reseptiä', 500));
