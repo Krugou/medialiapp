@@ -80,6 +80,9 @@ function generateRecipesFrontpage(json) {
     p2.innerText = json[i].Recipetime;
     p3.innerText = json[i].Coursetype;
     p4.innerText = json[i].Mealtype;
+    if (json[i].Recipeprice == 'undefined') {
+      p5.innerText = "Hinta: Ei määritetty";
+    }
     p5.innerText = "Hinta: " + json[i].Recipeprice.toFixed(2) + "€";
     button.innerText = 'Katso resepti';
     figure.appendChild(img);
