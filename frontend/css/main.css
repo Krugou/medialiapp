@@ -510,7 +510,7 @@ body {
   height: 3em;
   width: 6em;
   cursor: pointer;
-  font-size: 2vh;
+  font-size: 1.5vh;
 }
 
 .recipefigure img {
@@ -765,8 +765,8 @@ body {
 }
 
 .userPosts figure {
+  width: 20em;
   border: solid 1px black;
-  width: 10vw;
   height: auto;
   font-size: 15px;
   padding-bottom: 15px;
@@ -885,7 +885,7 @@ body {
 }
 
 #profileArticle section {
-  width: 35em;
+  width: 45em;
   margin: auto;
 }
 
