@@ -1,11 +1,15 @@
 :root {
   --main-bg-color: #0d1e40;
 }
+@font-face {
+  font-family: 'Mona Sans';
+  src: url('Mona-Sans-SemiBold.woff2') format('woff2');
+}
 * {
   box-sizing: border-box;
   text-decoration: none;
   list-style: none;
-  font-family: monospace;
+  font-family: 'Mona Sans';
 }
 
 #aboutus {}
