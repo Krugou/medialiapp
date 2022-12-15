@@ -133,7 +133,7 @@ const getRecipe = async (id) => {
             const editButton = document.createElement('button');
             editButton.id = "editRecipe";
             editButton.classList.add('postRecipe');
-            editButton.innerHTML = "Edit recipe";
+            editButton.innerHTML = "Muokkaa reseptiä";
             editButton.addEventListener('click', evt => {
                 location.href = 'modifyrecipe.html?id=' + recipe_id;
             });
@@ -143,7 +143,7 @@ const getRecipe = async (id) => {
 
             const deleteButton = document.createElement('button');
             deleteButton.id = "deleteRecipe";
-            deleteButton.innerHTML = "Poista Resepti";
+            deleteButton.innerHTML = "Poista resepti";
             deleteButton.classList.add('postRecipe');
             deleteButton.addEventListener('click', evt => {
                 let confirmDelete = confirm("Haluatko poistaa reseptin?")

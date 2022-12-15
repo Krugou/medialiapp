@@ -145,16 +145,16 @@
                 </p>
             </div>
             <div id="openComments">
-                <button id="openCommentsButton" onclick="openFunction()">Show Comments</button>
+                <button id="openCommentsButton" onclick="openFunction()">Näytä kommentit</button>
             </div>
             <section id="comments">
                 <div class="addComment">
                     <form>
-                        <h2>Add Comment</h2>
+                        <h2>Lisää kommentti</h2>
                         <textarea maxlength="300" id="commentField"></textarea>
                     </form>
                     <div class="postCommentButton">
-                        <button id="postACommentButton">Post Comment</button>
+                        <button id="postACommentButton">Lähetä</button>
                     </div>
                 </div>
                 <ul class="recipeComments" id="recipeCommentsId">
@@ -200,7 +200,7 @@
             document.getElementById('openCommentsButton').remove();
             const hide = document.createElement('button');
             hide.setAttribute('id', 'openCommentsButton');
-            hide.innerText = 'Hide Comments';
+            hide.innerText = 'Piilota kommentit';
             document.getElementById('openComments').append(hide);
 
             document.getElementById('openCommentsButton').addEventListener('click', function () {
