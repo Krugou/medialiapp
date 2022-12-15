@@ -23,7 +23,6 @@
     justify-content: center;
 }
 .addComment {
-  width: 70%;
   background-color:var(--main-bg-color);
   height: auto;
   margin: auto;
@@ -522,7 +521,6 @@ body {
 }
 
 .recipeInstruction {
-  width: 70%;
   background-color: lightgray;
   height: auto;
   border-radius: 5px;
@@ -619,7 +617,6 @@ body {
 }
 
 .recipeStats {
-  width: 70%;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -959,7 +956,6 @@ body {
 }
 
 .recipeComments {
-  width: 70%;
   margin: auto;
   padding: 0;
 }
@@ -1061,6 +1057,18 @@ body {
     margin: 0;
     padding:0;
   }
+  .recipeInstruction {
+    width: 90%;
+  }
+  .addComment {
+    width: 90%;
+  }
+  .recipeComments {
+    width: 90%;
+  }
+  .recipeStats {
+    width: 90%;
+  }
 }
 @media screen and (max-width: 660px) {
   #profileArticle {
@@ -1081,8 +1089,7 @@ body {
     justify-content: unset;
     align-items: unset;
     width: 100%;
-    gap: 10px;
-    height: 14em;
+    height: 13em;
     display: flex;
     flex-direction: column;
     padding-left: 1em;
@@ -1119,16 +1126,6 @@ body {
   .commentContent {
     margin: 0.25em 0.25em 0.25em 0.25em;
     padding-right: 1.5em;
-  }
-}
-@media screen and (max-width: 1500px) {
-  .recipeStats {
-    flex-direction: column;
-  }
-}
-
-@media screen and (min-width: 1600px) {
-  .recipeStats {
   }
 }
 
@@ -1253,18 +1250,7 @@ body {
 
 @media screen and (max-width: 1120px) {
 
-  .recipeInstruction {
-    width: 90%;
-  }
-  .addComment {
-    width: 90%;
-  }
-  .recipeComments {
-    width: 90%;
-  }
-  .recipeStats {
-    width: 90%;
-  }
+
 }
 
 .favorited {
