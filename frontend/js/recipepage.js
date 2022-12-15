@@ -71,7 +71,7 @@ const getRecipe = async (id) => {
 
   authorUsername.innerHTML = recipe.author.Username;
   if (recipe.authorimg) {
-    authorImage.src = recipe.authorimg.Imagefilepath;
+    authorImage.src = url+'/'+ recipe.authorimg.Imagefilepath;
   }
 
 
