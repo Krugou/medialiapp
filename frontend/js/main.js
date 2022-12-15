@@ -79,10 +79,9 @@ function generateRecipesFrontpage(json) {
     });
     p.innerText = json[i].Recipename;
 
-    p2.innerText = "Aika: " + json[i].Recipetime +"min";
 
     p.setAttribute("id", "recipeFigureName")
-    p2.innerText = json[i].Recipetime;
+    p2.innerText = "Aika: " + json[i].Recipetime+ "min";
 
     p3.innerText = json[i].Coursetype;
     p4.innerText = json[i].Mealtype;
