@@ -238,6 +238,7 @@ body {
 .recipeRating span {
   font-size: 1.5em;
   cursor: pointer;
+  padding: 0.5vh;
 }
 
 .filtersave {
@@ -556,7 +557,7 @@ body {
 }
 
 .recipePic {
-  width: 50em;
+  width: 40em;
   margin: auto;
   text-align: center;
 }
@@ -1193,7 +1194,7 @@ body {
     height: 15em;
   }
   svg {
-    font-size: 3vh;
+    font-size: 4vh;
   }
   .recipeCommentsThumbsUp {
     font-size: 2.5vh;
