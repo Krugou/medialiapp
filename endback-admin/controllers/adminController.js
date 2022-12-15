@@ -6,9 +6,10 @@ const {
   getAllrecipeData,
   getAllcommentswithauthors,
 } = require('../models/getAdminDataModel');
-const {validationResult} = require('express-validator');
-const {httpError} = require('../utils/errors');
-
+const { deleteusers, deletecomments, deleterecipes } = require('../models/deleteAdmindatamodel');
+const { validationResult } = require('express-validator');
+const { httpError } = require('../utils/errors');
+// get admin data
 const getAdminDataCounts = async (req, res, next) => {
   try {
     const allthecounts = await getCounts();
@@ -50,6 +51,36 @@ const getAdminDataAllcommentswithauthors = async (req, res, next) => {
     next(httpError('Virhe haettaessa admin-tietoja', 500));
   }
 };
+// delete admin data
+
+const delete_users = async (req, res, next) => {
+  try {
+    const userid = req.params.userid;
+    const [rows] = await deleteusers(userid);
+    res.json(rows);
+  } catch (e) {
+    next(httpError('Virhe poistaessa käyttäjää', 500));
+  }
+};
+const delete_comments = async (req, res, next) => {
+  try {
+    const commentid = req.params.commentid;
+    const [rows] = await deletecomments(commentid);
+    res.json(rows);
+  } catch (e) {
+    next(httpError('Virhe poistaessa kommenttia', 500));
+  }
+};
+const delete_recipes = async (req, res, next) => {
+  try {
+    const recipeid = req.params.recipeid;
+    const [rows] = await deleterecipes(recipeid);
+    res.json(rows);
+  } catch (e) {
+    next(httpError('Virhe poistaessa reseptiä', 500));
+  }
+};
+
 
 module.exports = {
   getAdminDataCounts,
@@ -57,5 +88,8 @@ module.exports = {
   getAdminDataAllusers,
   getAdminDataAllrecipeData,
   getAdminDataAllcommentswithauthors,
+  delete_users,
+  delete_comments,
+  delete_recipes,
 
 };
