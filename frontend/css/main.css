@@ -23,6 +23,7 @@
     justify-content: center;
 }
 .addComment {
+  width: 70%;
   background-color:var(--main-bg-color);
   height: auto;
   margin: auto;
@@ -521,6 +522,7 @@ body {
 }
 
 .recipeInstruction {
+  width: 70%;
   background-color: lightgray;
   height: auto;
   border-radius: 5px;
@@ -617,6 +619,7 @@ body {
 }
 
 .recipeStats {
+  width: 70%;
   justify-content: center;
   align-items: center;
   text-align: center;
