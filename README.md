@@ -1,13 +1,31 @@
 # Gradatim Ferociter
 
-Get cooking with Jakrecipes!
+Get cooking with jakrecipes!
 
-Jakrecipes: Where home cooks come to share and discover
+jakrecipes: Where home cooks come to share and discover
 
-Find your next favorite dish on Jakrecipes
+Find your next favorite dish on jakrecipes
 
-Jakrecipes: Your go-to source for tasty, easy-to-follow recipes
+jakrecipes: Your go-to source for tasty, easy-to-follow recipes
 
-Join the Jakrecipes community and share your culinary creations
+Join the jakrecipes community and share your culinary creations
 
-Jakrecipes: The ultimate destination for food lovers
+jakrecipes: The ultimate destination for food lovers
+
+jakrecipes: The best recipes, all in one place
+
+Cook like a pro with jakrecipes
+
+jakrecipes: The ultimate destination for food lovers
+
+Discover the world of culinary delights with jakrecipes
+
+jakrecipes: Where every meal is a masterpiece
+
+Impress your friends and family with jakrecipes
+
+jakrecipes: Your one-stop shop for delicious recipes
+
+Unleash your inner chef with jakrecipes
+
+jakrecipes: The easiest way to elevate your home cooking
