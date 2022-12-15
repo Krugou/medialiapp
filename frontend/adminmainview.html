@@ -64,9 +64,11 @@
 
     <!-- title -->
     <!-- <link rel="stylesheet" href="./css/extra.css" /> -->
+    <script defer src="./js/utils/chart.js"></script>
     <link href="./css/main.css" rel="stylesheet" />
     <script defer src="./js/utils/url.js"></script>
     <script defer src="./js/adminmain.js"></script>
+   
     <style>
         .admin_body {
             display: flex;
@@ -241,6 +243,9 @@
             padding: 1em;
             margin: 1em;
         }
+        #myChart{
+            max-width: 100%;
+        }
     </style>
 </head>
 
@@ -305,7 +310,7 @@
 
             </div>
             <hr>
-            <div class="adminchart" id="adminchart"></div>
+            <div class="adminchart" id="adminchart"> <canvas id="myChart"></canvas></div>
 
         </section>
         <section class="admin_main_section" id="entryTables">

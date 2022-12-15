@@ -42,6 +42,27 @@ function getCounts() {
         data[8].count;
     commentratingcount.style = 'background-color: #00df30;';
 
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['alluserscount', 'userscount', 'recipecount', 'commentcount', 'imagecount', 'reciperatingcount', 'commentratingcount'],
+        datasets: [{
+          label: 'counts',
+          data: [data[2].count, data[1].count, data[0].count, data[3].count, data[5].count, data[6].count, data[8].count],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
   });
 }
 
