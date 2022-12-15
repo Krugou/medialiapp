@@ -10,3 +10,6 @@ const router = express.Router();
 
 router.get('/profiledetails/image/:userid', getReg_UserDetailImage);
 router.get('/profiledetails/username/:userid', getReg_UserDetailUsername);
+
+
+module.exports = router;
