@@ -46,9 +46,6 @@ function createResults(json, target, length) {
     p2.innerText = json.recipesTable[i].Recipetime;
     p3.innerText = json.recipesTable[i]?.Coursetype;
     p4.innerText = json.recipesTable[i]?.Mealtype;
-    if (json.recipesTable[i].Recipeprice == 'undefined') {
-      p5.innerText = "Hinta: Ei määritetty";
-    }
     p5.innerText = "Hinta: " + json.recipesTable[i].Recipeprice.toFixed(2) + "€";
     button.innerText = 'Katso resepti';
     figure.appendChild(img);
