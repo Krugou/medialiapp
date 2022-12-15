@@ -755,7 +755,6 @@ body {
 .userPosts {
   display: flex;
   flex-wrap: wrap;
-  width: 70em;
   justify-content: center;
   box-shadow: 1px 2px 14px 5px rgba(0, 0, 0, 0.75);
 }
@@ -795,9 +794,8 @@ body {
 }
 
 .userProfile {
-  width: 20em;
   text-align: center;
-  margin-left: 5em;
+  margin-left: 7em;
 }
 
 .userProfile p {
@@ -888,7 +886,8 @@ body {
 }
 
 #profileArticle section {
-
+  width: 35em;
+  margin: auto;
 }
 
 #profilepic {
@@ -996,23 +995,17 @@ body {
     width: 30vw;
   }
 
-  .recipeStats {
-  }
-
   .Recipe_desc {
     width: 80%;
   }
 
   #profileArticle {
-    width: 75em;
     flex-direction: column-reverse;
-
   }
 
   .userPosts {
     margin: auto;
     flex-wrap: wrap;
-    width: 80%;
   }
 
   #profileArticle section {
@@ -1024,9 +1017,7 @@ body {
   }
 
   .userProfile {
-    width: auto;
-    margin-bottom: 5em;
-    margin-left:0;
+    margin: auto auto 5em auto;
   }
 
   #recipesImage {
