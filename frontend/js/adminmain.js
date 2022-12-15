@@ -12,6 +12,10 @@ const mariadbuptime = document.getElementById('mariadbuptime');
 const serveruptime = document.getElementById('serveruptime');
 const quotesinput = document.getElementById('admin-quotes');
 
+// get username from sessionstorage 
+const username = sessionStorage.getItem('username');
+const token = sessionStorage.getItem('token');
+
 function checkData() {
 
 }
@@ -21,20 +25,20 @@ function getCounts() {
     return response.json();
   }).then(function(data) {
 
-    alluserscount.innerHTML = '<h4>alluserscount</h4>  <br><p>' + data[2].count;
+    alluserscount.innerHTML = 'alluserscount  ' + data[2].count;
     alluserscount.style = 'background-color: #00df30;';
-    userscount.innerHTML = '<h4>userscount</h4>  <br><p>' + data[1].count;
+    userscount.innerHTML = 'userscount  ' + data[1].count;
     userscount.style = 'background-color: #00df30;';
-    recipecount.innerHTML = '<h4>recipecount</h4>  <br><p>' + data[0].count;
+    recipecount.innerHTML = 'recipecount  ' + data[0].count;
     recipecount.style = 'background-color: #00df30;';
-    commentcount.innerHTML = '<h4>commentcount</h4>  <br><p>' + data[3].count;
+    commentcount.innerHTML = 'commentcount  ' + data[3].count;
     commentcount.style = 'background-color: #00df30;';
-    imagecount.innerHTML = '<h4>imagecount</h4>  <br><p>' + data[5].count;
+    imagecount.innerHTML = 'imagecount  ' + data[5].count;
     imagecount.style = 'background-color: #00df30;';
-    reciperatingcount.innerHTML = '<h4>reciperatingcount</h4>  <br><p>' +
+    reciperatingcount.innerHTML = 'reciperatingcount  ' +
         data[6].count;
     reciperatingcount.style = 'background-color: #00df30;';
-    commentratingcount.innerHTML = '<h4>commentratingcount</h4>  <br><p>' +
+    commentratingcount.innerHTML = 'commentratingcount  ' +
         data[8].count;
     commentratingcount.style = 'background-color: #00df30;';
 
@@ -57,7 +61,7 @@ function getmariadb() {
   fetch(urladmin + '/a/m').then(function(response) {
     return response.json();
   }).then(function(data) {
-    mariadbstatus.innerHTML = '<h4>mariadbstatus: ' + data[0].status;
+    mariadbstatus.innerHTML = 'mariadbstatus: ' + data[0].status;
     mariadbstatus.style = 'background-color: #00df30;';
   });
 }
@@ -68,7 +72,7 @@ function getapache() {
   fetch(urladmin + '/a/a').then(function(response) {
     return response.json();
   }).then(function(data) {
-    apachestatus.innerHTML = '<h4>apachestatus: ' + data[0].status;
+    apachestatus.innerHTML = 'apachestatus: ' + data[0].status;
     apachestatus.style = 'background-color: #00df30;';
   });
 }
@@ -85,24 +89,24 @@ function getmariadbuptime() {
     let hours = Math.floor((newdate / (60 * 60)) % 24);
     let days = Math.floor(newdate / (60 * 60 * 24));
     if (days == 0 && hours > 0) {
-      mariadbuptime.innerHTML = '<h4>mariadbuptime:</h4>  <br><p>' + hours +
-          ' hours ' + minutes + ' mins ' + seconds + ' secs </p>';
+      mariadbuptime.innerHTML = 'mariadbuptime:  ' + hours +
+          ' hours ' + minutes + ' mins ' + seconds + ' secs ';
       mariadbuptime.style = 'background-color: #00df30;';
 
     } else if (days == 0 && hours == 0 && minutes > 0) {
-      mariadbuptime.innerHTML = '<h4>mariadbuptime:</h4>  <br><p>' + minutes +
-          ' mins ' + seconds + ' secs </p>';
+      mariadbuptime.innerHTML = 'mariadbuptime:  ' + minutes +
+          ' mins ' + seconds + ' secs ';
       mariadbuptime.style = 'background-color: #00df30;';
 
     } else if (days == 0 && hours == 0 && minutes == 0 && seconds > 0) {
-      mariadbuptime.innerHTML = '<h4>mariadbuptime:</h4>  <br><p>' + seconds +
-          ' secs </p>';
+      mariadbuptime.innerHTML = 'mariadbuptime:  ' + seconds +
+          ' secs ';
       mariadbuptime.style = 'background-color: #00df30;';
 
     } else {
-      mariadbuptime.innerHTML = '<h4>mariadbuptime:</h4>  <br><p>' + days +
+      mariadbuptime.innerHTML = 'mariadbuptime:  ' + days +
           ' days ' + hours + ' hours ' + minutes + ' mins ' + seconds +
-          ' secs </p>';
+          ' secs ';
       mariadbuptime.style = 'background-color: #00df30;';
 
     }
@@ -122,24 +126,24 @@ function getServeruptime() {
     let days = Math.floor(newdate / (60 * 60 * 24));
     if (days == 0 && hours > 0) {
 
-      serveruptime.innerHTML = '<h4>serveruptime:</h4>  <br><p>' + hours +
-          ' hours ' + minutes + ' mins ' + seconds + ' secs </p>';
+      serveruptime.innerHTML = 'serveruptime:  ' + hours +
+          ' hours ' + minutes + ' mins ' + seconds + ' secs ';
       serveruptime.style = 'background-color: #00df30;';
 
     } else if (days == 0 && hours == 0 && minutes > 0) {
-      serveruptime.innerHTML = '<h4>serveruptime:</h4> <br><p>' + minutes +
-          ' mins ' + seconds + ' secs </p>';
+      serveruptime.innerHTML = 'serveruptime: ' + minutes +
+          ' mins ' + seconds + ' secs ';
       serveruptime.style = 'background-color: #00df30;';
 
     } else if (days == 0 && hours == 0 && minutes == 0) {
-      serveruptime.innerHTML = '<h4>serveruptime:</h4>  <br><p>' + seconds +
-          ' secs </p>';
+      serveruptime.innerHTML = 'serveruptime:  ' + seconds +
+          ' secs ';
       serveruptime.style = 'background-color: #00df30;';
 
     } else {
-      serveruptime.innerHTML = '<h4>serveruptime:</h4>  <br><p>' + days +
+      serveruptime.innerHTML = 'serveruptime:  ' + days +
           ' days ' + hours + ' hours ' + minutes + ' mins ' + seconds +
-          ' secs </p>';
+          ' secs ';
       serveruptime.style = 'background-color: #00df30;';
 
     }
@@ -151,6 +155,8 @@ function getRecipeData(amount) {
     return response.json();
   }).then(function(data) {
     const section = document.getElementById('entryTables');
+    const admintable2 = document.getElementById('admintable');
+    console.log("🚀 ~ file: adminmain.js:159 ~ fetch ~ admintable2", admintable2)
 
     const table = document.createElement('table');
     table.setAttribute('id', 'admintable');
@@ -183,7 +189,7 @@ function getRecipeData(amount) {
     tr.appendChild(Imagefilepath,
     );
     table.appendChild(tr);
-    for (let i = 0; i < amount; i++) {
+    for (let i = 0; i < data.length; i++) {
       const tr = document.createElement('tr');
       const Recipeid = document.createElement('td');
       const Recipename = document.createElement('td');
@@ -213,7 +219,9 @@ function getRecipeData(amount) {
       table.appendChild(tr);
 
     }
-
+    if (admintable2 !== null){
+      admintable2.remove();
+    }
     section.appendChild(table);
     const tableHeader = document.querySelectorAll('th');
     for (let i = 0; i < tableHeader.length; i++) {
@@ -239,9 +247,177 @@ function getRecipeData(amount) {
 
   });
 }
+function getUsersData(amount) {
+  fetch(urladmin + '/a/au').then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    
+    const section = document.getElementById('entryTables');
+    const admintable2 = document.getElementById('admintable');
+
+    const table = document.createElement('table');
+    table.setAttribute('id', 'admintable');
+    table.setAttribute('class', 'admintable');
+    const tr = document.createElement('tr');
+    table.appendChild(tr);
+    const Userid = document.createElement('th');
+    const Username = document.createElement('th');
+    const Useremail = document.createElement('th');
+    const Userpassword = document.createElement('th');
+    const Userrole = document.createElement('th');
+    const Userimage = document.createElement('th');
+    Userid.innerHTML = 'Userid';
+    Username.innerHTML = 'Username';
+    Useremail.innerHTML = 'Useremail';
+    Userpassword.innerHTML = 'Userpassword';
+    Userrole.innerHTML = 'Userrole';
+    Userimage.innerHTML = 'Userimage';
+    tr.appendChild(Userid);
+    tr.appendChild(Username);
+    tr.appendChild(Useremail);
+    tr.appendChild(Userpassword);
+    tr.appendChild(Userrole);
+    tr.appendChild(Userimage,
+    );
+    table.appendChild(tr);
+    for (let i = 0; i < data.length; i++) {
+      const tr = document.createElement('tr');
+      const Userid = document.createElement('td');
+      const Username = document.createElement('td');
+      const Useremail = document.createElement('td');
+      const Userpassword = document.createElement('td');
+      const Userrole = document.createElement('td');
+      const Userimage = document.createElement('td');
+      Userid.innerHTML = data[i].Userid;
+      Username.innerHTML = data[i].Username;
+      Useremail.innerHTML = data[i].Useremail;
+      Userpassword.innerHTML = data[i].Userpassword;
+      Userrole.innerHTML = data[i].Userrole;
+      Userimage.innerHTML = data[i].Userimage;
+      tr.appendChild(Userid);
+      tr.appendChild(Username);
+      tr.appendChild(Useremail);
+      tr.appendChild(Userpassword);
+      tr.appendChild(Userrole);
+      tr.appendChild(Userimage);
+      table.appendChild(tr);
+    }
+    admintable2.remove();
+    section.appendChild(table);
+    const tableHeader = document.querySelectorAll('th');
+    for (let i = 0; i < tableHeader.length; i++) {
+      tableHeader[i].classList.add('admin-table-th');
+      
+    }
+
+    const tableDataCell = document.querySelectorAll('td');
+    for (let i = 0; i < tableDataCell.length; i++) {
+      tableDataCell[i].classList.add('admin-table-td');
+
+    }
+
+    const tableRow = document.querySelectorAll('tr');
+    for (let i = 0; i < tableRow.length; i++) {
+
+      if (i % 2 == 0) {
+        tableRow[i].classList.add('admin-table-tr-even');
+      } else {
+        tableRow[i].classList.add('admin-table-tr-odd');
+      }
+    }
+
+  });
+
+}
+function getAllcomments(amount) {
+  fetch(urladmin + '/a/co').then(function (response) {
+    return response.json();
+  }
+  ).then(function (data) {
+    const section = document.getElementById('entryTables');
+    const admintable2 = document.getElementById('admintable');
+    
+    const table = document.createElement('table');
+    table.setAttribute('id', 'admintable');
+    table.setAttribute('class', 'admintable');
+    const tr = document.createElement('tr');
+    table.appendChild(tr);
+    const Commentid = document.createElement('th');
+    const Commenttext = document.createElement('th');
+    const Commentrecipe = document.createElement('th');
+    const Commentuserid = document.createElement('th');
+    Commentid.innerHTML = 'Commentid';
+    Commenttext.innerHTML = 'Commenttext';
+    Commentrecipe.innerHTML = 'Commentrecipe';
+    Commentuserid.innerHTML = 'Commentuserid';
+    tr.appendChild(Commentid);
+    tr.appendChild(Commenttext);
+    tr.appendChild(Commentrecipe);
+    tr.appendChild(Commentuserid);
+    table.appendChild(tr);
+    for (let i = 0; i < data.length; i++) {
+      const tr = document.createElement('tr');
+      const Commentid = document.createElement('td');
+      const Commenttext = document.createElement('td');
+      const Commentrecipe = document.createElement('td');
+      const Commentuserid = document.createElement('td');
+      Commentid.innerHTML = data[i].Commentid;
+      Commenttext.innerHTML = data[i].Commenttext;
+      Commentrecipe.innerHTML = data[i].Commentrecipe;
+      Commentuserid.innerHTML = data[i].Commentuserid;
+      tr.appendChild(Commentid);
+      tr.appendChild(Commenttext);
+      tr.appendChild(Commentrecipe);
+      tr.appendChild(Commentuserid);
+      table.appendChild(tr);
+    }
+    admintable2.remove();
+    section.appendChild(table);
+    const tableHeader = document.querySelectorAll('th');
+    for (let i = 0; i < tableHeader.length; i++) {
+      tableHeader[i].classList.add('admin-table-th');
+
+    }
+
+    const tableDataCell = document.querySelectorAll('td');
+    for (let i = 0; i < tableDataCell.length; i++) {
+      tableDataCell[i].classList.add('admin-table-td');
+
+    }
+
+    const tableRow = document.querySelectorAll('tr');
+    for (let i = 0; i < tableRow.length; i++) {
+
+      if (i % 2 == 0) {
+        tableRow[i].classList.add('admin-table-tr-even');
+      } else {
+        tableRow[i].classList.add('admin-table-tr-odd');
+      }
+    }
+
+  });
+
+}
+
+const getallrecipesbutton = document.getElementById('getallrecipesbutton');
+getallrecipesbutton.addEventListener('click', function () {
+  getRecipeData();
+});
+const getallusersbutton = document.getElementById('getallusersbutton');
+getallusersbutton.addEventListener('click', function () {
+  getUsersData();
+});
+const getallcommentsbutton = document.getElementById('getallcommentsbutton');
+getallcommentsbutton.addEventListener('click', function () {
+  getAllcomments();
+});
+
+
+
+
 
 // default quote if api is offline
-quotesinput.innerHTML = '<h4 id="admin-quotes">“The only thing that interferes with my learning is my education.” <br>  Albert Einstein</h4>';
+quotesinput.innerHTML = '<h4 id="admin-quotes">“The only thing that interferes with my learning is my education.”   Albert Einstein';
 let theRandomNumber;
 
 function quotes() {
@@ -254,8 +430,8 @@ function quotes() {
     }
 
     quotesinput.innerHTML = '<h4 id="admin-quotes">' +
-        data[theRandomNumber].text + ' <br>  -' + data[theRandomNumber].author +
-        '</h4>';
+        data[theRandomNumber].text + '   -' + data[theRandomNumber].author +
+        '';
   });
 
 }
