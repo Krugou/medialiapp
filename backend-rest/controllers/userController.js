@@ -256,7 +256,7 @@ const user_post = async (req, res, next) => {
     }
 
     res.json({
-      message: 'User Created',
+      message: 'Tili luotu',
     });
   } catch (e) {
     console.error('user_post', e.message);

@@ -49,10 +49,7 @@ const getLimitedUserInfo = async (username, next) => {
     next(httpError('Database error', 500));
   }
 };
-
-
 module.exports = {
-
   getAllNewestRecipesMainPage,
   getAllOldestRecipesMainPage,
   getRecipesByRecipeName,
