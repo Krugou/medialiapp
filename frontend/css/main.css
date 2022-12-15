@@ -428,6 +428,7 @@ body {
 .pagemain {
   flex:1;
   margin: auto;
+  width:100%;
   max-width: 1440px;
   background-color:#f6f6f6;
   padding:3em;
@@ -504,7 +505,7 @@ body {
   margin: 1rem;
   background-color: #dfedf2;
   text-align: center;
-  max-width: 40em;
+  max-width: 25em;
 }
 
 .recipefigure button {
@@ -802,6 +803,7 @@ body {
 .userProfile {
   text-align: center;
   margin-left: 7em;
+  margin-right: 7em;
 }
 
 .userProfile p {
