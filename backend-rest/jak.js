@@ -10,6 +10,7 @@ const frontRoute = require('./routes/frontRoute');
 const statusRoute = require('./routes/statusRoute');
 const recipesRoute = require('./routes/recipesRoute');
 const recipeslimitedRoute = require('./routes/recipeslimitedRoute');
+const userlimitedRoute = require('./routes/userslimitedRoute');
 
 const {httpError} = require('./utils/errors');
 const passport = require('./utils/pass');
@@ -40,8 +41,8 @@ app.use('/auth', authRoute);
 app.use('/recipes', passport.authenticate('jwt', {session: false}), recipesRoute)
 
 app.use('/recipeslimited', recipeslimitedRoute);
-
-app.use('/users', userRoute);
+app.use('/userslimited', userlimitedRoute);
+app.use('/users', passport.authenticate('jwt', {session: false}), userRoute);
 app.use('/status', statusRoute);
 
 // app.use((req, res, next) => {
