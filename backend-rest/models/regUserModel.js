@@ -70,7 +70,7 @@ const addUsersRegUser = async (data, next) => {
       data);
     return rows;
   } catch (e) {
-    console.error('addUsersAdmin', e.message);
+    console.error('addUsersRegUser', e.message);
     next(httpError('Database error', 500));
   }
 };
@@ -126,6 +126,28 @@ WHERE Users.Username = "${username}";
   }
 };
 
+const addProfileImageToImages = async (data, next) => {
+
+  try {
+    const [rows] = await promisePoolRegUser.execute(`INSERT INTO Images (Imagefilepath) 
+                                                    VALUES ("${data[1]}");`, data);
+    return rows;
+  } catch (e) {
+    console.error('addProfileImageToImages', e.message);
+    next(httpError('Database error', 500));
+  }
+};
+const updateProfileImageToUser = async (data, next) => {
+
+  try {
+    const [rows] = await promisePoolRegUser.execute(`UPDATE Users SET Userimg = LAST_INSERT_ID() WHERE Userid = ${data[0]};`, data);
+    return rows;
+  } catch (e) {
+    console.error('addUsersAdmin', e.message);
+    next(httpError('Database error', 500));
+  }
+};
+
 module.exports = {
 
   addUsersRegUser,
@@ -139,4 +161,6 @@ module.exports = {
   getAllUserInfo,
   deleteUsersRegUser,
   putNewwProfileDetails,
+  addProfileImageToImages,
+  updateProfileImageToUser,
 };

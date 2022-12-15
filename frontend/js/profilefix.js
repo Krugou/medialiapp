@@ -90,7 +90,7 @@ function profiledetails(Imagefilepath, username) {
     const profilePic = document.createElement('IMG');
     profilePic.setAttribute('alt', 'jakrecipeslogo');
     profilePic.setAttribute('id', 'profilepic');
-    profilePic.setAttribute('src', Imagefilepath);
+    profilePic.src=url+'/'+Imagefilepath;
     userProfile.appendChild(profilePic);
 
     const profileP = document.createElement('P');

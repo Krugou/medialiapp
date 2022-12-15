@@ -49,8 +49,8 @@ router.route('/profiledetails/:username').delete(deleteUsersReg_User);
 // update route for user
 router.route('/profiledetails/:username').
 put(upload.single('userImage'),
-    body('Username').isLength({ min: 3 }).escape(),
-    body('oldUsername').isLength({ min: 3 }).escape(), putNewProfileDetails);
+    body('Username').optional({ checkFalsy: true }).isLength({ min: 3 }).escape(),
+    body('oldUsername').optional({ checkFalsy: true }).isLength({ min: 3 }).escape(), putNewProfileDetails);
 
 
 //AUTHENTIKOINNILLA

@@ -5,7 +5,7 @@ const {
   findUsersByUsernameRegUser,
   getRegUserProfileImage,
   getRegUserProfileUsername, getAllUserInfo,
-  deleteUsersRegUser, putNewwProfileDetails
+  deleteUsersRegUser, putNewwProfileDetails, addProfileImageToImages, updateProfileImageToUser
 
 } = require('../models/regUserModel');
 const {
@@ -16,7 +16,7 @@ const { httpError } = require('../utils/errors');
 const bcrypt = require('bcryptjs');
 const putNewProfileDetails = async (req, res, next) => {
   // check if username exists
-
+console.log("PÄÄSTIIN TÄNNE");
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
 
@@ -27,40 +27,70 @@ const putNewProfileDetails = async (req, res, next) => {
     next(httpError('Invalid data', 400));
     return;
   }
-  try {
 
-    const result = await findUsersByUsernameRegUser(req.body.Username, next);
-    if (result.length > 0) {
-      res.json({
-        message: 'Käyttäjänimi on jo olemassa.',
-      });
-      next(httpError('Username already exists', 400));
-      return;
+
+
+    try {
+
+      // jos uploadattiin kuva niin lisätään se profiilikuvaksi
+      if (req.file) {
+        console.log("req.file", req.file);
+        const data = [
+          req.user.Userid,
+          req.file.filename,
+        ]
+        console.log("JOO2")
+        const result = await addProfileImageToImages(data, next);
+        console.log("JOO3")
+
+        if (result.affectedRows < 1) {
+          res.json({
+            message: 'Virheellistä dataa',
+          });
+          next(httpError('Invalid data', 400));
+          return;
+        }
+        const result2 = await updateProfileImageToUser(data, next);
+        if (result2.affectedRows < 1) {
+          res.json({
+            message: 'Virheellistä dataa',
+          });
+          next(httpError('Invalid data', 400));
+        }
+      }
+      if (req.body.Username !== "") {
+        const result = await findUsersByUsernameRegUser(req.body.Username, next);
+        if (result.length > 0) {
+          res.json({
+            message: 'Käyttäjänimi on jo olemassa.',
+          });
+          next(httpError('Username already exists', 400));
+          return;
+        }
+
+        let data = [req.body.Username, req.body.oldUsername]
+        // Katsotaan onko käyttäjä sama, kuin vanha käyttäjä
+
+
+        if (req.user.Username === req.body.oldUsername) {
+
+          // console.log("🚀 ~ file: userController.js:56 ~ putNewProfileDetails ~ data", data)
+          const result2 = await putNewwProfileDetails(data, next);
+          // console.log("🚀 ~ file: userController.js:48 ~ putNewProfileDetails ~ result2", result2)
+          res.json(result2);
+        } else {
+
+          res.json({
+            message: 'Et omista kyseistä käyttäjää',
+          });
+        }
+      }
     }
-
-    let data = [req.body.Username, req.body.oldUsername]
-    // Katsotaan onko käyttäjä sama, kuin vanha käyttäjä
-
-
-    if (req.user.Username === req.body.oldUsername) {
-
-      // console.log("🚀 ~ file: userController.js:56 ~ putNewProfileDetails ~ data", data)
-      const result2 = await putNewwProfileDetails(data, next);
-      // console.log("🚀 ~ file: userController.js:48 ~ putNewProfileDetails ~ result2", result2)
-      res.json(result2);
+      catch (e) {
+      console.error('putNewProfileDetails', e.message);
+      next(httpError('Internal server error', 500));
     }
-    else {
-
-      res.json({
-        message: 'Et omista kyseistä käyttäjää',
-      });
-    }
-  } catch (e) {
-    console.error('putNewProfileDetails', e.message);
-    next(httpError('Internal server error', 500));
-  }
-
-};
+  };
 
 const getReg_UserDetailImage = async (req, res, next) => {
   try {
