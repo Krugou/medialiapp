@@ -5,12 +5,13 @@ const promisePoolRegUser = poolRegUser.promise();
 const getRecipeCommentsByRecipe = async (params, next) => {
   try {
     const [rows] = await promisePoolRegUser.execute(
-        `SELECT Commentid, Commenttext, Users.Username FROM Comments
-                 INNER JOIN Users ON Comments.Commentuserid = Users.Userid WHERE CommentRecipe = "${params}";
+        `SELECT Commentid, Commenttext, Users.Username, Images.Imagefilepath FROM Comments
+                 INNER JOIN Users ON Comments.Commentuserid = Users.Userid
+                    LEFT JOIN Images ON Users.Userimg = Images.Imageid WHERE CommentRecipe = "${params}";
                         `);
     return rows;
   } catch (e) {
-    console.error('getRecipeCommentsByRecipeid', e.message);
+    console.error('getRecipeCommentsByRecipe', e.message);
     next(httpError('Database error', 500));
   }
 };

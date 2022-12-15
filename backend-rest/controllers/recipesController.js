@@ -316,15 +316,15 @@ const comment_get = async (req, res, next) => {
         }
 
         for (let i = 0; i < findComments.length; i++) {
-            const findCommentRatings = await getRecipeCommentRatingsByCommentId(
-                findComments[i].Commentid, next); // Haetaan Kommenttien ideillä niiden arvostelut
-
+            const findCommentRatings = await getRecipeCommentRatingsByCommentId(findComments[i].Commentid, next); // Haetaan Kommenttien ideillä niiden arvostelut
 
             findComments[i] = {
                 Commenttext: findComments[i].Commenttext,
                 Username: findComments[i].Username,
                 Commentrating: findCommentRatings[0].dvalue,
                 Commentid: findComments[i].Commentid,
+                Userimg:findComments[i].Imagefilepath,
+
             };
         }
         console.log(findComments);
@@ -379,6 +379,7 @@ const comment_getloggedinuser = async (req, res, next) => {
                 Commentrating: findCommentRatings[0].dvalue,
                 Commentid: findComments[i].Commentid,
                 rating: rows,
+                Userimg:findComments[i].Imagefilepath,
             };
         }
         console.log(findComments);

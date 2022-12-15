@@ -236,8 +236,15 @@ const getComments = async (id) => {
     divStats.classList.add('commentStats');
 
     const img = document.createElement('img');
-    img.src = 'media/logos/jakrecipeslogo.svg';
-    img.alt = 'Käyttäjän profiilikuva';
+
+    if (comments[i].Userimg === null)
+    {
+      img.src = './media/logos/jakrecipeslogo.svg';
+    } else {
+      img.src = url + '/' + comments[i].Userimg;
+    }
+
+
     divUsername.appendChild(img);
 
     const a = document.createElement('a');
