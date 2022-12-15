@@ -14,7 +14,6 @@ const getReguserOwnedRecipesNew = async (username, next) => {
   try {
     console.log("data", username);
     const [rows] = await promisePoolRegUser.execute(`SELECT * FROM reguserprofileview WHERE Username = "${username}" group by Recipeid ORDER BY Recipeid DESC;`);
-    // "${userid}"
     return rows;
   } catch (e) {
     next(httpError('Database error', 500));
