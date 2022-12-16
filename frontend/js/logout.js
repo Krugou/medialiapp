@@ -6,7 +6,7 @@
     // remove token
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('user');
-    document.write('Redirecting to  Homepage...');
+    document.write('Sinut ohjataan etusivulle...');
 
     function redirect() {
 
