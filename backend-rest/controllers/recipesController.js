@@ -7,7 +7,7 @@ const {
     getImageByRecipeId,
     getCoursetypeByCourseId, addFavorite, getFavorite, removeFavorite, addLike, addDislike, removePreviousRating,
     getReciperatingByUser, removePreviousReciperating, modifyRecipes, findRecipesByAuthorId, verifyRecipeOwnership,
-    deleteRecipe, deleteRecipeAdmin, getRecipemaker, getRecipemakerImage,
+    deleteRecipe, deleteRecipeAdmin, getRecipemaker, getRecipemakerImage, modifyRecipesAdmin,
 } = require('../models/recipesModel');
 
 const {
@@ -553,6 +553,17 @@ const recipes_put = async (req, res, next) => {
                 data[5],
                 data[7],
             ]
+            if (req.user.Userrole === 0){
+                const result = await modifyRecipesAdmin(data, next);
+                if (result.affectedRows < 1) {
+                    console.log("asd");
+                    next(httpError('Invalid data', 400));
+                    return;
+                }
+                res.json({
+                    message: 'Reseptiä muokattu',
+                });
+            }
             const findIfUserOwnsRecipe = await verifyRecipeOwnership(verifyData, next);
             if (findIfUserOwnsRecipe.length < 1) {
                 res.json({
