@@ -485,9 +485,9 @@ body {
   text-align: center;
 }
 .recipeLikes {
-  display:flex;
-  gap: 2em;
-  margin-right: 2em;
+  display: flex;
+  gap: 1em;
+  margin-left: 2em;
 }
 
 .Recipe_desc {
@@ -636,7 +636,7 @@ body {
   text-align: center;
   border-radius: 1em;
   padding: 1em;
-  gap: 3em;
+  gap: 1em;
   display: flex;
   background-color: lightgray;
   height: auto;
