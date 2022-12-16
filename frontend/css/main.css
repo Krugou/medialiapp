@@ -338,8 +338,8 @@ body {
 
 .nappi {
   text-align: center;
-  margin-top: 5em;
-  margin-bottom: 5em;
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
 
 .nappi button {
@@ -432,7 +432,7 @@ body {
   width:100%;
   max-width: 1440px;
   background-color:#f6f6f6;
-  padding:3em;
+  padding:2em;
 
 }
 
