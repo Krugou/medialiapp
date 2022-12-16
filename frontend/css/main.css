@@ -238,7 +238,7 @@ body {
 }
 
 .recipeRating span {
-  font-size: 2em;
+  font-size: 1.5em;
   cursor: pointer;
   padding: 0.5vh;
 }
