@@ -171,7 +171,7 @@ const deleteThisRecipe = async (id) => {
     const response = await fetch(url + '/recipes/' + id, fetchOptions)
     const json = await response.json();
     alert(json.message);
-    if (json.message === "Recipe Deleted") {
+    if (json.message === "Resepti poistettu") {
         location.href = "index.html";
     }
 
