@@ -462,10 +462,10 @@ body {
 }
 
 .postRecipe {
-  height: 4em;
-  width: 8em;
-  font-size: 1.5em;
-  background-color:var(--main-bg-color);
+  height: 3em;
+  width: 7em;
+  font-size: 1em;
+  background-color: var(--main-bg-color);
   border: solid 1px #0d1e40;
   border-radius: 1em;
   color: white;
