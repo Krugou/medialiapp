@@ -956,8 +956,6 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   box-shadow: 1px 2px 14px 5px rgba(0, 0, 0, 0.75);
-  height: 30em;
-;
 }
 
 .hakuvalikko {
@@ -1000,7 +998,7 @@ body {
   margin-right: 7em;
   border: solid 2px;
   border-radius: 1em;
-  height: 27em;
+  height: 30em;
 }
 .recipeTags button {
   height: 3em;
