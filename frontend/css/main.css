@@ -746,9 +746,9 @@ body {
 
 .tiedot input {
   width: 17em;
-  height: 2em;
+  height: 2.3em;
   padding: 0.5em;
-  font-size: 1.5em;
+  font-size: 1em;
 }
 
 .uploadimage {
