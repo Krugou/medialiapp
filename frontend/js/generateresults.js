@@ -92,12 +92,13 @@ window.onload = () => {
     }, 2500);
 
   };
-};
-const haebutton = document.getElementById('haebutton');
-haebutton.addEventListener('click', () => {
-  const typeInputFieldElement = document.getElementById('typeInputField');
-  frontPageQuery(typeInputFieldElement.value);
-});
+}; function haeButton() {
+  const haebutton = document.getElementById('haebutton');
+  haebutton.addEventListener('click', () => {
+    const typeInputFieldElement = document.getElementById('typeInputField');
+    frontPageQuery(typeInputFieldElement.value);
+  });
+}
 // if user is logged in, show create radio button for favorites
 
 let selector = "";
@@ -204,7 +205,7 @@ mostlikedbetter.onclick = () => {
   }).then((queryData) => {
     console.log("🚀 ~ file: generateresults.js:203 ~ fetch ~ queryData", queryData)
     clearPage();
-    
+
     createResults(queryData, presentationdata);
     FieldElement1.innerText = '';
   }).catch((error) => {
