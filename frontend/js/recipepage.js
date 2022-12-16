@@ -311,7 +311,6 @@ const getComments = async (id) => {
         recipeComments.appendChild(li);
 
         // Luodaan poista-nappi kommentteille.
-        console.log(comments);
         if (JSON.parse(sessionStorage.getItem('user')).Username === comments[i].Username) {
 
             const deleteCommentButton = document.createElement('button');
