@@ -24,7 +24,7 @@ function createResults(json, target, length) {
     const figure = document.createElement('figure');
     const img = document.createElement('img');
     // jos kuvaa ei ole, laitetaan placeholder
-    if (json.recipesTable[i]?.Imagefilepath === 'null') {
+    if (json.recipesTable[i]?.Imagefilepath === 'undefined') {
       img.src = './media/logos/jakrecipeslogo.svg';
 
     } else {
