@@ -4,6 +4,10 @@ const router = express.Router();
 const {login} = require('../controllers/authController');
 const {body} = require('express-validator');
 
-router.post('/login', login);
+router.post('/login',
+    body('username').escape(),
+    body('email').escape(),
+    body('password').escape(),login)
+
 
 module.exports = router;

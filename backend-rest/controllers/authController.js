@@ -2,8 +2,23 @@
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const {httpError} = require('../utils/errors');
+const { validationResult } = require('express-validator');
 
 const login = (req, res, next) => {
+
+  // Extract the validation errors from a request.
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    // There are errors.
+    // Error messages can be returned in an array using `errors.array()`.
+    console.error('get_UserProfileLimited validation', errors.array());
+    res.json({
+      message: 'Käyttäjänimi on jo olemassa',
+    });
+    next(httpError('Invalid data', 400));
+    return;
+  }
 
   passport.authenticate('local', {session: false}, (err, user, info) => {
     console.log('info: ', info);
