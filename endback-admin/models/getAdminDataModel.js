@@ -24,7 +24,7 @@ const getUptime = async () => {
 const getAllusers = async () => {
   try {
     const [allusers] = await promisePoolAdmin.execute(
-      'SELECT distinct * FROM `jakrecipes`.`Users` ;');
+      'SELECT distinct * FROM `jakrecipes`.`Users` order by Userid desc;');
     return allusers;
   } catch (e) {
     console.error('error getAllusers', e.message);
@@ -33,7 +33,7 @@ const getAllusers = async () => {
 const getAllrecipeData = async () => {
   try {
     const [allrecipes] = await promisePoolAdmin.execute(
-      'SELECT Recipes.Recipeid,Recipes.Recipename , Recipes.Recipetime, Recipes.Recipeguide, Recipes.Recipemaker, Courses.Coursetype, Mealtypes.Mealtype, Images.Imagefilepath FROM Recipes INNER JOIN Recipemealtype  INNER JOIN Mealtypes  INNER JOIN Courses ON Recipes.Recipecourse = Courses.Courseid   INNER JOIN Images  ON  Recipes.Recipeid = Images.ImageRecipe GROUP BY Recipeid ;');
+      'SELECT Recipes.Recipeid,Recipes.Recipename , Recipes.Recipetime, Recipes.Recipeguide, Recipes.Recipemaker, Courses.Coursetype, Mealtypes.Mealtype, Images.Imagefilepath FROM Recipes INNER JOIN Recipemealtype  INNER JOIN Mealtypes  INNER JOIN Courses ON Recipes.Recipecourse = Courses.Courseid   INNER JOIN Images  ON  Recipes.Recipeid = Images.ImageRecipe GROUP BY Recipeid order by Recipeid desc ;');
     return allrecipes;
   } catch (e) {
     console.error('error getAllrecipes', e.message);
@@ -42,7 +42,7 @@ const getAllrecipeData = async () => {
 const getAllcommentswithauthors = async () => {
   try {
     const [allcomments] = await promisePoolAdmin.execute(
-      'SELECT distinct * FROM `jakrecipes`.`Comments` inner join Users on Comments.Commentuserid = Users.Userid  ;');
+      'SELECT distinct * FROM `jakrecipes`.`Comments` inner join Users on Comments.Commentuserid = Users.Userid  order by Commentid desc;');
     return allcomments;
   } catch (e) {
     console.error('error getAllcomments', e.message);
