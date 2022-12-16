@@ -68,9 +68,9 @@ jakbot.on('ready', async jakbot => {
       } else {
         jakbot.channels.cache.get(ChannelIDwebsite).
           send('Server uptime: ' +
-            Math.floor((howlonghavewebeenthere) / 10000 / (60 * 60) % 24) +
+            Math.floor((howlonghavewebeenthere) / 1000 / (60 * 60) % 24) +
             ' hours ' +
-            Math.floor((howlonghavewebeenthere) / 10000 / 60 % 60) +
+            Math.floor((howlonghavewebeenthere) / 1000 / 60 % 60) +
             ' minutes ' + Math.floor((howlonghavewebeenthere) / 10000 % 60) +
             ' seconds');
       }
@@ -98,10 +98,10 @@ jakbot.on('ready', async jakbot => {
       } else {
         jakbot.channels.cache.get(ChannelIDwebsite).
           send('Server uptime: ' +
-            Math.floor((howlonghavewebeenthere) / 10000 / (60 * 60) % 24) +
+            Math.floor((howlonghavewebeenthere) / 1000 / (60 * 60) % 24) +
             ' hours ' +
-            Math.floor((howlonghavewebeenthere) / 10000 / 60 % 60) +
-            ' minutes ' + Math.floor((howlonghavewebeenthere) / 10000 % 60) +
+            Math.floor((howlonghavewebeenthere) / 1000 / 60 % 60) +
+            ' minutes ' + Math.floor((howlonghavewebeenthere) / 1000 % 60) +
             ' seconds');
       }
 
