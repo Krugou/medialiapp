@@ -699,7 +699,6 @@ body {
   text-align: center;
   max-width: 25em;
   align-self: stretch;
-  flex-basis:fit-content;
 }
 
 .recipefigure button {
