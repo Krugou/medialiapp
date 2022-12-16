@@ -107,7 +107,7 @@ jakbot.on('ready', async jakbot => {
 
     }
     jakbot.user.setUsername('J A K B O T');
-  }, 1000000);
+  }, 1800000);
 });
 
 jakbot.on('ready', jakbot => {
@@ -132,7 +132,7 @@ jakbot.on('ready', jakbot => {
       },
     );
     jakbot.user.setUsername('J A K B O T');
-  }, 6500000); // 1 hour 50 minutes
+  }, 1800000); // 1 hour 50 minutes
   setInterval(() => {
     jakbot.user.setUsername('JAK-BOT counting');
     admin.query(
@@ -152,7 +152,7 @@ jakbot.on('ready', jakbot => {
       });
     jakbot.user.setUsername('J A K B O T');
 
-  }, 4500000); // 1,5 hours
+  }, 1800000); // 1,5 hours
 
   setInterval(() => {
     jakbot.user.setUsername('JAK-BOT new data');
@@ -171,7 +171,7 @@ jakbot.on('ready', jakbot => {
       });
     jakbot.user.setUsername('J A K B O T');
 
-  }, 60000); // 1 min in ms 60000
+  }, 1800000); // 1 min in ms 60000
   setInterval(() => {
     jakbot.user.setUsername('JAK-BOT new usr');
     admin.query(
@@ -188,7 +188,7 @@ jakbot.on('ready', jakbot => {
         }
       });
     jakbot.user.setUsername('J A K B O T');
-  }, 120000);
+  }, 1800000);
 
 });
 
