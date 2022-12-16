@@ -203,7 +203,7 @@ body {
 }
 
 .fa-heart {
-  font-size: 7em;
+  font-size: 4em;
   color: white;
   cursor: pointer;
 }
@@ -237,7 +237,7 @@ body {
 }
 
 .recipeRating span {
-  font-size: 4em;
+  font-size: 2em;
   cursor: pointer;
   padding: 0.5vh;
 }
@@ -640,7 +640,6 @@ body {
   background-color: lightgray;
   height: auto;
   margin: auto;
-  flex-direction: column;
   max-width:90%;
 }
 
