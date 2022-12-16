@@ -21,7 +21,7 @@ const admin = mysql.createConnection({
   password: process.env.DB_PASS_ALL,
   database: process.env.DB_NAME,
   waitForConnections: true,
-  connectionLimit: 10000,
+  connectionLimit: 100000,
   queueLimit: 0,
   multipleStatements: true,
 });
@@ -59,7 +59,7 @@ jakbot.on('ready', async jakbot => {
         'https://10.114.34.72/jak/status/starttime');
       const fetchDataJson3 = await response3.json();
       const howlonghavewebeenthere = dateStarted - fetchDataJson3[0].datenow;
-      if (howlonghavewebeenthere < 120000) { // what 2 minutes is in ms? 120000
+      if (howlonghavewebeenthere < 1200000) { // what 2 minutes is in ms? 1200000
         jakbot.channels.cache.get(ChannelIDwebsite).
           send('Server restarted less than 2 minutes ago');
       } else if (howlonghavewebeenthere < 0) {
@@ -68,28 +68,28 @@ jakbot.on('ready', async jakbot => {
       } else {
         jakbot.channels.cache.get(ChannelIDwebsite).
           send('Server uptime: ' +
-            Math.floor((howlonghavewebeenthere) / 1000 / (60 * 60) % 24) +
+            Math.floor((howlonghavewebeenthere) / 10000 / (60 * 60) % 24) +
             ' hours ' +
-            Math.floor((howlonghavewebeenthere) / 1000 / 60 % 60) +
-            ' minutes ' + Math.floor((howlonghavewebeenthere) / 1000 % 60) +
+            Math.floor((howlonghavewebeenthere) / 10000 / 60 % 60) +
+            ' minutes ' + Math.floor((howlonghavewebeenthere) / 10000 % 60) +
             ' seconds');
       }
     } else {
       const response1 = await fetch(
-        'http://localhost:3000/status/apachestatus');
+        'http://localhost:30000/status/apachestatus');
       const fetchDataJson1 = await response1.json();
       jakbot.channels.cache.get(ChannelIDApache).
         send(' Local Apache status: ' + fetchDataJson1[0].status);
       const response2 = await fetch(
-        'http://localhost:3000/status/mariadbstatus');
+        'http://localhost:30000/status/mariadbstatus');
       const fetchDataJson2 = await response2.json();
       jakbot.channels.cache.get(ChannelIDMariadb).
         send(' Local MariaDB status: ' + fetchDataJson2[0].status);
-      const response3 = await fetch('http://localhost:3000/status/starttime');
+      const response3 = await fetch('http://localhost:30000/status/starttime');
       const fetchDataJson3 = await response3.json();
       const howlonghavewebeenthere = dateStarted - fetchDataJson3[0].datenow;
 
-      if (howlonghavewebeenthere < 120000) { // what 2 minutes is in ms? 120000
+      if (howlonghavewebeenthere < 1200000) { // what 2 minutes is in ms? 1200000
         jakbot.channels.cache.get(ChannelIDwebsite).
           send('Server restarted less than 2 minutes ago');
       } else if (howlonghavewebeenthere < 0) {
@@ -98,16 +98,16 @@ jakbot.on('ready', async jakbot => {
       } else {
         jakbot.channels.cache.get(ChannelIDwebsite).
           send('Server uptime: ' +
-            Math.floor((howlonghavewebeenthere) / 1000 / (60 * 60) % 24) +
+            Math.floor((howlonghavewebeenthere) / 10000 / (60 * 60) % 24) +
             ' hours ' +
-            Math.floor((howlonghavewebeenthere) / 1000 / 60 % 60) +
-            ' minutes ' + Math.floor((howlonghavewebeenthere) / 1000 % 60) +
+            Math.floor((howlonghavewebeenthere) / 10000 / 60 % 60) +
+            ' minutes ' + Math.floor((howlonghavewebeenthere) / 10000 % 60) +
             ' seconds');
       }
 
     }
     jakbot.user.setUsername('J A K B O T');
-  }, 100000);
+  }, 1000000);
 });
 
 jakbot.on('ready', jakbot => {
@@ -132,7 +132,7 @@ jakbot.on('ready', jakbot => {
       },
     );
     jakbot.user.setUsername('J A K B O T');
-  }, 650000); // 1 hour 50 minutes
+  }, 6500000); // 1 hour 50 minutes
   setInterval(() => {
     jakbot.user.setUsername('JAK-BOT counting');
     admin.query(
@@ -152,7 +152,7 @@ jakbot.on('ready', jakbot => {
       });
     jakbot.user.setUsername('J A K B O T');
 
-  }, 450000); // 1,5 hours
+  }, 4500000); // 1,5 hours
 
   setInterval(() => {
     jakbot.user.setUsername('JAK-BOT new data');
@@ -171,7 +171,7 @@ jakbot.on('ready', jakbot => {
       });
     jakbot.user.setUsername('J A K B O T');
 
-  }, 600000); // 2 hours
+  }, 60000); // 1 min in ms 60000
   setInterval(() => {
     jakbot.user.setUsername('JAK-BOT new usr');
     admin.query(
@@ -188,7 +188,7 @@ jakbot.on('ready', jakbot => {
         }
       });
     jakbot.user.setUsername('J A K B O T');
-  }, 12000);
+  }, 120000);
 
 });
 
