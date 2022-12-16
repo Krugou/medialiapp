@@ -39,7 +39,7 @@ const getRecipesByRecipeName = async (recipeName, next) => {
 const getLimitedUserInfo = async (username, next) => {
   console.log("username limited", username);
   try {
-    let [rows] = await promisePoolUser.execute(` SELECT Images.Imagefilepath, Users.Username FROM Users INNER JOIN Images ON Users.Userimg = Images.Imageid WHERE Username = "${username}"; `);
+    let [rows] = await promisePoolUser.execute(` SELECT Images.Imagefilepath, Users.Username FROM Users LEFT JOIN Images ON Users.Userimg = Images.Imageid WHERE Username = "${username}"; `);
 
     if (rows.length<1) {
       rows=[];
