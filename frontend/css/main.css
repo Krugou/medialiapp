@@ -826,7 +826,7 @@ body {
 #addrecipesButton {
   width: 9em;
   height: 4em;
-  font-size: 1.5em;
+  font-size: 1em;
   padding: 0.5em;
   background-color:var(--main-bg-color);
   border-color: #0d1e40;
