@@ -138,6 +138,10 @@ const get_UserProfileLimited = async (req, res, next) => {
     }
 
     let result = await getLimitedUserInfo(req.params.username, next);
+    console.log("result", result);
+        if (result[0]===null) {
+          result==='undefined';
+        }
           result = {
       info:result[0],
       image:result,
