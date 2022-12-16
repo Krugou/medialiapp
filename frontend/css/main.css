@@ -1265,9 +1265,7 @@ body {
     font-size: 1em;
   }
   .fa-heart {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    font-size:4em;
+    font-size: 2em;
   }
   .recipename {
     display: flex;
