@@ -93,7 +93,11 @@ window.onload = () => {
 
   };
 };
-
+const haebutton = document.getElementById('haebutton');
+haebutton.addEventListener('click', () => {
+  const typeInputFieldElement = document.getElementById('typeInputField');
+  frontPageQuery(typeInputFieldElement.value);
+});
 // if user is logged in, show create radio button for favorites
 
 let selector = "";
