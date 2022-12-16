@@ -70,10 +70,13 @@ const getRecipe = async (id) => {
     }
 
     authorUsername.innerHTML = recipe.author.Username;
+    authorUsername.style.color="black";
+    authorUsername.style.textDecoration="underline";
+
+    authorUsername.href="profile.html?username="+recipe.author.Username
     if (recipe.authorimg) {
         authorImage.src = url + '/' + recipe.authorimg.Imagefilepath;
     }
-
 
     //Luodaan "course"- eli ruuan tarjoiluaika sivulle.
     const button = document.createElement('button');
