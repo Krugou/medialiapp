@@ -98,10 +98,11 @@ const getRecipe = async (id) => {
 
     // Lisätään hinta näkyviin, jos se on määritetty
     if (recipe.recipes?.Recipeprice !== null) {
-        console.log('Reseptin hinta', recipe.recipes.Recipeprice.toFixed(2));
         const p = document.createElement('p');
-        p.innerText = 'Kokonaishinta: ' + recipe.recipes.Recipeprice.toFixed(2) +
-            '€';
+        if (recipe.recipes.Recipeprice>0) {
+            p.innerText = 'Kokonaishinta: ' + recipe.recipes.Recipeprice.toFixed(2) +
+                '€';
+        }
         p.classList.add('fontsizeforp');
         recipeTime.appendChild(p);
 
@@ -177,8 +178,6 @@ postComment.addEventListener('click', async evt => {
 
     let commentField = document.querySelector('#commentField').value;
     evt.preventDefault();
-    console.log('jepjep');
-    console.log(commentField);
     const data = {
         comment: commentField,
         recipeid: recipe_id,
@@ -214,9 +213,7 @@ const getComments = async (id) => {
     }
     comments = await response.json();
 
-    console.log(comments);
-    console.log(comments.length);
-    console.log('asdawiojd');
+
 
     // Luodaan kommentit sivulle
     for (let i = 0; i < comments.length; i++) {
@@ -269,7 +266,6 @@ const getComments = async (id) => {
         // Jos käyttäjä on tykännyt kommentista ennen, vaihetaan sen ikonin väri
         if (comments[i].rating?.find === true) {
             if (comments[i].rating.value[0].Direction === 1) {
-                console.log("ON TYKÄTTY")
                 spanUp.firstChild.classList.add('liked');
             }
             if (comments[i].rating.value[0].Direction === -1) {
@@ -284,7 +280,6 @@ const getComments = async (id) => {
             spanUp.firstChild.classList.add('liked');
         });
         spanDown.addEventListener('click', async evt => {
-            console.log("disliked")
             let rating = await updateCommentRating("dislike", comments[i].Commentid)
             spanUp.firstChild.classList.remove('liked');
             spanDown.firstChild.classList.add('disliked');
@@ -360,7 +355,6 @@ const deleteThisComment = async (commentid) => {
 
 openComments.addEventListener('click', async evt => {
     //  evt.preventDefault();
-    console.log('asd');
     await getComments(recipe_id);
 });
 
@@ -379,7 +373,6 @@ const addOrRemoveFavorite = async (id) => {
                 Authorization: 'Bearer ' + sessionStorage.getItem('token'),
             },
         };
-        console.log(fetchOptions);
         const response = await fetch(url + '/recipes/addfavorite/' + id,
             fetchOptions);
         if (response.ok) {
@@ -408,7 +401,6 @@ const addOrRemoveFavorite = async (id) => {
 };
 
 recipeLike.addEventListener('click', async evt => {
-    console.log("asd");
     await updateRecipeRating("like", recipe_id);
 });
 recipeDislike.addEventListener('click', async evt => {
@@ -432,7 +424,6 @@ const updateRecipeRating = async (rating, id) => {
         recipeLike.classList.remove('liked')
         recipeDislike.classList.add('disliked')
     }
-    console.log("response");
 }
 
 getRecipe(recipe_id);

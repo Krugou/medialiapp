@@ -23,8 +23,8 @@ const {
     getuserfavorites,
     getmostlikedrecipes,
 } = require('../models/sortingModel');
-const { validationResult } = require('express-validator');
-const { httpError } = require('../utils/errors');
+const {validationResult} = require('express-validator');
+const {httpError} = require('../utils/errors');
 const sharp = require('sharp');
 const {
     addComment,
@@ -32,8 +32,13 @@ const {
     getRecipeCommentRatingsByCommentId, removePreviousCommentrating, addCommentLike, addCommentDisLike,
     getCommentratingByUserid, deleteCommentAdmin, verifyCommentOwnership, deleteComment,
 } = require('../models/commentsModel');
-const { getReguserOwnedRecipes, getReguserOwnedRecipes2, getReguserOwnedRecipess, getReguserOwnedRecipesNew, } = require('../models/regUserModel');
-const { getRecipeRatingByRecipe } = require("../models/ratingModel");
+const {
+    getReguserOwnedRecipes,
+    getReguserOwnedRecipes2,
+    getReguserOwnedRecipess,
+    getReguserOwnedRecipesNew,
+} = require('../models/regUserModel');
+const {getRecipeRatingByRecipe} = require("../models/ratingModel");
 
 const get_mostlikedrecipes = async (req, res, next) => {
     try {
@@ -41,8 +46,8 @@ const get_mostlikedrecipes = async (req, res, next) => {
         if (recipesTable.length < 1) {
             return next(httpError('No recipes found', 404));
         }
-        
-        res.json({ recipesTable });
+
+        res.json({recipesTable});
     } catch (e) {
         console.error('get_mostlikedrecipes', e.message);
         next(httpError('Database error', 500));
@@ -55,7 +60,7 @@ const get_recipes_with_this_coursetype = async (req, res, next) => {
         if (recipesTable.length < 1) {
             return next(httpError('No recipes found', 404));
         }
-        res.json({ recipesTable });
+        res.json({recipesTable});
     } catch (e) {
         console.error('get_recipes_with_this_coursetype', e.message);
         next(httpError('Database error', 500));
@@ -68,7 +73,13 @@ const get_user_favorites = async (req, res, next) => {
         if (recipesTable.length < 1) {
             return next(httpError('No recipes found', 404));
         }
-        res.json({ recipesTable });
+        if (recipesTable.length < 1) {
+            res.json({
+                message: "Suosikeita ei löytynyt"
+            });
+
+        }
+        res.json({recipesTable});
     } catch (e) {
         console.error('get_user_favorites', e.message);
         next(httpError('Database error', 500));
@@ -80,7 +91,7 @@ const get_reguser_owned_recipes = async (req, res, next) => {
         if (recipesTable.length < 1) {
             return next(httpError('No recipes found', 404));
         }
-        res.json({ recipesTable });
+        res.json({recipesTable});
     } catch (e) {
         console.error('get_reguser_owned_recipes', e.message);
         next(httpError('Database error', 500));
@@ -108,7 +119,7 @@ const get_user_owned_recipes = async (req, res, next) => {
         if (recipesTable.length < 1) {
             return next(httpError('No recipes found', 404));
         }
-        res.json({ recipesTable });
+        res.json({recipesTable});
     } catch (e) {
         console.error('get_user_owned_recipes', e.message);
         next(httpError('Database error', 500));
@@ -120,7 +131,7 @@ const get_recipes_with_this_mealtype = async (req, res, next) => {
         if (recipesTable.length < 1) {
             return next(httpError('No recipes found', 404));
         }
-        res.json({ recipesTable });
+        res.json({recipesTable});
     } catch (e) {
         console.error('get_recipes_with_this_mealtype', e.message);
         next(httpError('Database error', 500));
@@ -132,7 +143,7 @@ const get_recipes_with_this_low_recipe_price_to_0 = async (req, res, next) => {
         if (recipesTable.length < 1) {
             return next(httpError('No recipes found', 404));
         }
-        res.json({ recipesTable });
+        res.json({recipesTable});
     } catch (e) {
         console.error('get_recipes_with_this_low_recipe_price_to_0', e.message);
         next(httpError('Database error', 500));
@@ -156,8 +167,7 @@ const recipe_get = async (req, res, next) => {
             console.log("rows8", rows8[0].Userimg);
             rows9 = await getRecipemakerImage(rows8[0].Userimg, next);
 
-        }
-        catch (e) {
+        } catch (e) {
             next(httpError('No Image found', 404));
         }
         if (rows1.length < 1) {
@@ -293,27 +303,20 @@ const getAllOldestRecipesController = async (req, res, next) => {
 };
 const filter_Recipes_By_Recipe_Name = async (req, res, next) => {
     try {
-
         const recipesTable = await getRecipesByRecipeName(req.params.recipename,
             next);
-
-
         if (recipesTable.length < 1) {
             return next(httpError('No recipe found', 404));
         }
-
-        res.json({ recipesTable });
-
+        res.json({recipesTable});
     } catch (e) {
         console.error('filter recipes', e.message);
         next(httpError('Database error', 500));
     }
 };
 const comment_get = async (req, res, next) => {
-    let rows;
     try {
         const errors = validationResult(req);
-
         if (!errors.isEmpty()) {
             // There are errors.
             // Error messages can be returned in an array using `errors.array()`.
@@ -324,15 +327,12 @@ const comment_get = async (req, res, next) => {
             next(httpError('Invalid data', 400));
             return;
         }
-
         const findComments = await getRecipeCommentsByRecipe(req.params.id, next);
         if (findComments.length < 1) {
             return next(httpError('No comments found', 404));
         }
-
         for (let i = 0; i < findComments.length; i++) {
             const findCommentRatings = await getRecipeCommentRatingsByCommentId(findComments[i].Commentid, next); // Haetaan Kommenttien ideillä niiden arvostelut
-
             findComments[i] = {
                 Commenttext: findComments[i].Commenttext,
                 Username: findComments[i].Username,
@@ -344,9 +344,7 @@ const comment_get = async (req, res, next) => {
         }
         console.log(findComments);
         res.json(findComments);
-
     } catch (e) {
-
         console.error('comment_get', e.message);
         next(httpError('Database error', 500));
     }
@@ -366,12 +364,10 @@ const comment_getloggedinuser = async (req, res, next) => {
             next(httpError('Invalid data', 400));
             return;
         }
-
         const findComments = await getRecipeCommentsByRecipe(req.params.id, next);
         if (findComments.length < 1) {
             return next(httpError('No comments found', 404));
         }
-
         for (let i = 0; i < findComments.length; i++) {
             const findCommentRatings = await getRecipeCommentRatingsByCommentId(
                 findComments[i].Commentid, next); // Haetaan Kommenttien ideillä niiden arvostelut
@@ -386,8 +382,6 @@ const comment_getloggedinuser = async (req, res, next) => {
                 value: rows,
                 find: rows.length >= 1,
             }
-
-
             findComments[i] = {
                 Commenttext: findComments[i].Commenttext,
                 Username: findComments[i].Username,
@@ -439,7 +433,6 @@ const comment_post = async (req, res, next) => {
         console.error('comment_post', e.message);
         next(httpError('Internal server error', 500));
     }
-
 };
 
 const recipe_favorite = async (req, res, next) => {
@@ -469,7 +462,6 @@ const recipe_favorite = async (req, res, next) => {
         res.json({
             message: 'Resepti lisätty suosikkeihin',
         });
-
     } catch (e) {
         console.error('recipe_favorite', e.message);
         next(httpError('Internal server error', 500));
@@ -502,7 +494,6 @@ const recipe_removefavorite = async (req, res, next) => {
         res.json({
             message: 'Resepti poistettu suosikeista',
         });
-
     } catch (e) {
         console.error('recipe_favorite', e.message);
         next(httpError('Internal server error', 500));
@@ -527,10 +518,9 @@ const recipes_put = async (req, res, next) => {
         const thumbnailSizes = [160, 200, 300, 400, 500];
         if (req.file) {
             await thumbnailSizes.forEach(size => {
-                sharp(req.file.path).resize({ width: size }).png().toFile('./thumbnails/' + req.file.filename + '_' + size + 'px.png');
+                sharp(req.file.path).resize({width: size}).png().toFile('./thumbnails/' + req.file.filename + '_' + size + 'px.png');
 
             });
-
         }
         let data = [];
         if (req.file) {
@@ -588,7 +578,6 @@ const recipes_put = async (req, res, next) => {
         console.error('recipes_put', e.message);
         next(httpError('Internal server error', 500));
     }
-
 };
 
 const recipes_post = async (req, res, next) => {
@@ -610,10 +599,9 @@ const recipes_post = async (req, res, next) => {
         if (req.file) {
 
             await thumbnailSizes.forEach(size => {
-                sharp(req.file.path).resize({ width: size }).png().toFile('./thumbnails/' + req.file.filename + '_' + size + 'px.png');
+                sharp(req.file.path).resize({width: size}).png().toFile('./thumbnails/' + req.file.filename + '_' + size + 'px.png');
 
             });
-
         }
         let data = [];
         if (req.file) {
@@ -647,15 +635,11 @@ const recipes_post = async (req, res, next) => {
         res.json({
             message: 'Resepti lisätty',
         });
-
     } catch (e) {
         console.error('recipes_post', e.message);
         next(httpError('Internal server error', 500));
     }
-
-
 };
-
 
 const recipe_like = async (req, res, next) => {
     try {
@@ -681,7 +665,6 @@ const recipe_like = async (req, res, next) => {
         } catch (e) {
 
         }
-
         const result = await addLike(data, next);
         res.json({
             message: 'Tykätty',
@@ -780,11 +763,9 @@ const comment_dislike = async (req, res, next) => {
             next(httpError('Invalid data', 400));
             return;
         }
-
         const data = [
             req.user.Userid,
             req.params.id,
-
         ];
         try {
             const removePrevious = await removePreviousCommentrating(data, next);
@@ -821,7 +802,6 @@ const recipe_delete = async (req, res, next) => {
         const data = [
             req.user.Userid,
             req.params.id,
-
         ];
         if (req.user.Userrole === 0) {
             try {
@@ -832,15 +812,11 @@ const recipe_delete = async (req, res, next) => {
                 res.json({
                     message: 'Resepti poistettu',
                 });
-            }
-            catch (e) {
+            } catch (e) {
                 console.error('recipe_delete', e.message);
                 next(httpError('Internal server error', 500));
             }
-
         }
-
-
         const findIfUserOwnsRecipe = await verifyRecipeOwnership(data, next);
         if (findIfUserOwnsRecipe.length < 1) {
             res.json({
@@ -893,16 +869,12 @@ const comment_delete = async (req, res, next) => {
                     message: 'Kommentti poistettu',
                 });
 
-            }
-            catch (e) {
+            } catch (e) {
                 console.error('comment_delete', e.message);
                 next(httpError('Internal server error', 500));
             }
 
         }
-
-
-
         const findIfUserOwnsComment = await verifyCommentOwnership(data, next); // jos user ei ole admin, katsotaan omistaako hän kommentin
         if (findIfUserOwnsComment.length < 1) {
             res.json({
