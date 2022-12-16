@@ -92,13 +92,7 @@ window.onload = () => {
     }, 2500);
 
   };
-}; function haeButton() {
-  const haebutton = document.getElementById('haebutton');
-  haebutton.addEventListener('click', () => {
-    const typeInputFieldElement = document.getElementById('typeInputField');
-    frontPageQuery(typeInputFieldElement.value);
-  });
-}
+}; 
 // if user is logged in, show create radio button for favorites
 
 let selector = "";
@@ -193,33 +187,4 @@ function frontPageQuery(query) {
     });
   }
 }
-function mostlikedbetter() {
-  const mostlikedbetter = document.getElementById('mostliked');
-  mostlikedbetter.onclick = () => {
-    fetch(url + `/recipeslimited/filterbylikes/`).then(response => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        throw 'HTTP ERROR';
-      }
-    }).then((queryData) => {
-      console.log("🚀 ~ file: generateresults.js:203 ~ fetch ~ queryData", queryData)
-      clearPage();
 
-      createResults(queryData, presentationdata);
-      FieldElement1.innerText = '';
-    }).catch((error) => {
-
-
-    }
-    );
-  }
-}
-function newest() {
-  const newest = document.getElementById('newest');
-  newest.onclick = () => {
-    clearPage();
-    fetchNewestPresentationData()
-
-  }
-}
