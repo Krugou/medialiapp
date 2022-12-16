@@ -72,10 +72,10 @@ const createProfileUser = async (username) => {
         };
         response = await fetch(url + '/users/' + username, fetchOptions);
     }
-        const json = await response.json();
-        Imagefilepath = json.image[0]?.Imagefilepath;
-        username = json.info.Username;
-        profiledetails(Imagefilepath, username);
+    const json = await response.json();
+    Imagefilepath = json.image[0]?.Imagefilepath;
+    username = json.info.Username;
+    profiledetails(Imagefilepath, username);
 
     // Rakenna profiili sivulle
 
@@ -90,7 +90,7 @@ function profiledetails(Imagefilepath, username) {
     const profilePic = document.createElement('IMG');
     profilePic.setAttribute('alt', 'jakrecipeslogo');
     profilePic.setAttribute('id', 'profilepic');
-    profilePic.src=url+'/'+Imagefilepath;
+    profilePic.src = url + '/' + Imagefilepath;
     userProfile.appendChild(profilePic);
 
     const profileP = document.createElement('P');
@@ -144,28 +144,28 @@ function profiledetails(Imagefilepath, username) {
             // put new username into sessionstorage
 
 
-    fetch(url + '/users/profiledetails/' + JSON.parse(sessionStorage.getItem('user')).Username, {
-        method: 'PUT',
-        headers: {
-            // 'Content-Type': 'application/json',
-            Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+            fetch(url + '/users/profiledetails/' + JSON.parse(sessionStorage.getItem('user')).Username, {
+                method: 'PUT',
+                headers: {
+                    // 'Content-Type': 'application/json',
+                    Authorization: 'Bearer ' + sessionStorage.getItem('token'),
 
-        },
-        body: formData
-    }).then((response) => {
-        if (response.ok) {
-            return response.json();
-        } else {
-            throw 'HTTP ERROR';
-        }
-    }).then((data) => {
-        const user = JSON.parse(sessionStorage.getItem('user'));
-        user.Username = newusername;
-        sessionStorage.setItem('user', JSON.stringify(user));
-        location.href = 'logout.html';
-    }).catch((error) => {
-        console.log('error', error);
-    });
+                },
+                body: formData
+            }).then((response) => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw 'HTTP ERROR';
+                }
+            }).then((data) => {
+                const user = JSON.parse(sessionStorage.getItem('user'));
+                user.Username = newusername;
+                sessionStorage.setItem('user', JSON.stringify(user));
+                location.href = 'logout.html';
+            }).catch((error) => {
+                console.log('error', error);
+            });
 
             editProfile.style.display = 'none';
         };
@@ -203,7 +203,7 @@ function profiledetails(Imagefilepath, username) {
             }).then((queryData) => {
                 console.log("delete onnistui", queryData);
                 sessionStorage.clear();
-                window.location.href = 'frontpage.html';
+                window.location.href = 'index.html';
             }).catch((error) => {
                 console.log(error);
             });

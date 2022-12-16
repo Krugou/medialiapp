@@ -70,10 +70,10 @@ const getRecipe = async (id) => {
     }
 
     authorUsername.innerHTML = recipe.author.Username;
-    authorUsername.style.color="black";
-    authorUsername.style.textDecoration="underline";
+    authorUsername.style.color = "black";
+    authorUsername.style.textDecoration = "underline";
 
-    authorUsername.href="profile.html?username="+recipe.author.Username
+    authorUsername.href = "profile.html?username=" + recipe.author.Username
     if (recipe.authorimg) {
         authorImage.src = url + '/' + recipe.authorimg.Imagefilepath;
     }
@@ -102,7 +102,7 @@ const getRecipe = async (id) => {
     // Lisätään hinta näkyviin, jos se on määritetty
     if (recipe.recipes?.Recipeprice !== null) {
         const p = document.createElement('p');
-        if (recipe.recipes.Recipeprice>0) {
+        if (recipe.recipes.Recipeprice > 0) {
             p.innerText = 'Kokonaishinta: ' + recipe.recipes.Recipeprice.toFixed(2) +
                 '€';
         }
@@ -173,7 +173,7 @@ const deleteThisRecipe = async (id) => {
     const json = await response.json();
     alert(json.message);
     if (json.message === "Recipe Deleted") {
-        location.href = "frontpage.html";
+        location.href = "index.html";
     }
 
 }

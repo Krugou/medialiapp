@@ -10,7 +10,7 @@
 
     function redirect() {
 
-      location.href = 'frontpage.html';
+      location.href = 'index.html';
     }
 
     // Delay

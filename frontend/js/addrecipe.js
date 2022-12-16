@@ -71,14 +71,14 @@ postButton.addEventListener('click', async (evt) => {
   const fetchOptions = {
     method: 'POST',
     headers: {
-       Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+      Authorization: 'Bearer ' + sessionStorage.getItem('token'),
     },
     body: fd,
   };
   const response = await fetch(url + '/recipes', fetchOptions);
   const json = await response.json();
   alert(json.message);
-  if (json.message ==='Resepti lisätty') {
-    location.href = 'frontpage.html';
+  if (json.message === 'Resepti lisätty') {
+    location.href = 'index.html';
   }
 });

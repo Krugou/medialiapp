@@ -277,7 +277,7 @@ postButton.addEventListener('click', async (evt) => {
   const response = await fetch(url + '/recipes', fetchOptions);
   const json = await response.json();
   alert(json.message);
-  //  location.href = 'frontpage.html';
+  //  location.href = 'index.html';
 
 });
 
@@ -312,7 +312,7 @@ async function SignIn() {
       // save token
       sessionStorage.setItem('token', json.token);
       sessionStorage.setItem('user', JSON.stringify(json.user));
-      location.href = 'frontpage.html';
+      location.href = 'index.html';
     }
   });
 }

@@ -30,6 +30,6 @@ signinButton.addEventListener('click', async (evt) => {
     // save token
     sessionStorage.setItem('token', json.token);
     sessionStorage.setItem('user', JSON.stringify(json.user));
-    location.href = 'frontpage.html';
+    location.href = 'index.html';
   }
 });

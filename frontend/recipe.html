@@ -79,7 +79,7 @@
         <label class="logo"></label>
         <nav class="navbar">
             <ul class="nav-start">
-                <li><a href="frontpage.html" id="frontpageLink">Etusivu</a></li>
+                <li><a href="index.html" id="frontpageLink">Etusivu</a></li>
                 <li><a href="profile.html" id="profileLink">Profiili</a></li>
             </ul>
             <ul class="nav-end">
@@ -101,8 +101,8 @@
         </div>
         <div class="recipeStats" id="Stats">
             <div class="recipeLikes">
-            <p class="fontsizeforp" id="Likes">0</p>
-            <p class="fontsizeforp">Tykkää</p>
+                <p class="fontsizeforp" id="Likes">0</p>
+                <p class="fontsizeforp">Tykkää</p>
             </div>
             <div class="recipeRating">
                 <span class="recipeThumbsUp" id="recipeThumbsup">
@@ -121,45 +121,45 @@
         </div>
         <div class="Recipe_desc">
             <div class="editRecipe" id="ediRecipeDiv">
+            </div>
+        </div>
+        <div class="recipeInstruction">
+            <h2>Reseptin ohjeet</h2>
+            <p id="instructionPara">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium
+                atque consequatur,
+                corporis culpa cupiditate, dolor, error eum minus natus nihil nulla officia porro quam quasi qui
+                sit? Consectetur odio perferendis porro sed! Ipsa non, tempora? Ab consequuntur culpa, debitis eius
+                error exercitationem impedit natus nemo possimus similique sunt veniam.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque consequatur,
+                corporis culpa cupiditate, dolor, error eum minus natus nihil nulla officia porro quam quasi qui
+                sit? Consectetur odio perferendis porro sed! Ipsa non, tempora? Ab consequuntur culpa, debitis eius
+                error exercitationem impedit natus nemo possimus similique sunt veniam.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque consequatur,
+                corporis culpa cupiditate, dolor, error eum minus natus nihil nulla officia porro quam quasi qui
+                sit? Consectetur odio perferendis porro sed! Ipsa non, tempora? Ab consequuntur culpa, debitis eius
+                error exercitationem impedit natus nemo possimus similique sunt veniam.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque consequatur,
+                corporis culpa cupiditate, dolor, error eum minus natus nihil nulla officia porro quam quasi qui
+                sit? Consectetur odio perferendis porro sed! Ipsa non, tempora? Ab consequuntur culpa, debitis eius
+                error exercitationem impedit natus nemo possimus similique sunt veniam.
+            </p>
+        </div>
+        <div id="openComments">
+            <button id="openCommentsButton" onclick="openFunction()">Näytä kommentit</button>
+        </div>
+        <section id="comments">
+            <div class="addComment">
+                <form>
+                    <h2>Lisää kommentti</h2>
+                    <textarea maxlength="300" id="commentField"></textarea>
+                </form>
+                <div class="postCommentButton">
+                    <button id="postACommentButton">Lähetä</button>
                 </div>
             </div>
-            <div class="recipeInstruction">
-                <h2>Reseptin ohjeet</h2>
-                <p id="instructionPara">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium
-                    atque consequatur,
-                    corporis culpa cupiditate, dolor, error eum minus natus nihil nulla officia porro quam quasi qui
-                    sit? Consectetur odio perferendis porro sed! Ipsa non, tempora? Ab consequuntur culpa, debitis eius
-                    error exercitationem impedit natus nemo possimus similique sunt veniam.
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque consequatur,
-                    corporis culpa cupiditate, dolor, error eum minus natus nihil nulla officia porro quam quasi qui
-                    sit? Consectetur odio perferendis porro sed! Ipsa non, tempora? Ab consequuntur culpa, debitis eius
-                    error exercitationem impedit natus nemo possimus similique sunt veniam.
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque consequatur,
-                    corporis culpa cupiditate, dolor, error eum minus natus nihil nulla officia porro quam quasi qui
-                    sit? Consectetur odio perferendis porro sed! Ipsa non, tempora? Ab consequuntur culpa, debitis eius
-                    error exercitationem impedit natus nemo possimus similique sunt veniam.
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium atque consequatur,
-                    corporis culpa cupiditate, dolor, error eum minus natus nihil nulla officia porro quam quasi qui
-                    sit? Consectetur odio perferendis porro sed! Ipsa non, tempora? Ab consequuntur culpa, debitis eius
-                    error exercitationem impedit natus nemo possimus similique sunt veniam.
-                </p>
-            </div>
-            <div id="openComments">
-                <button id="openCommentsButton" onclick="openFunction()">Näytä kommentit</button>
-            </div>
-            <section id="comments">
-                <div class="addComment">
-                    <form>
-                        <h2>Lisää kommentti</h2>
-                        <textarea maxlength="300" id="commentField"></textarea>
-                    </form>
-                    <div class="postCommentButton">
-                        <button id="postACommentButton">Lähetä</button>
-                    </div>
-                </div>
-                <ul class="recipeComments" id="recipeCommentsId">
-                </ul>
-            </section>
+            <ul class="recipeComments" id="recipeCommentsId">
+            </ul>
+        </section>
 
         </div>
     </main>
