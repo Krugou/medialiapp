@@ -17,6 +17,7 @@ function loopThumbnails(json) {
 
   generateRecipesFrontpage(json);
 }
+haeButton()
 function fetchFavorites() {
   const fetchOptions = {
     method: 'GET',
@@ -25,9 +26,10 @@ function fetchFavorites() {
     },
   }
 
-  fetch(url + '/recipes/favorites/' + JSON.parse(sessionStorage.getItem('user')).Userid, {method: 'GET',
+  fetch(url + '/recipes/favorites/' + JSON.parse(sessionStorage.getItem('user')).Userid, {
+    method: 'GET',
     headers: {
-    Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+      Authorization: 'Bearer ' + sessionStorage.getItem('token'),
     }
   })
     .then((response) => response.json())
@@ -81,7 +83,7 @@ function generateRecipesFrontpage(json) {
 
 
     p.setAttribute("id", "recipeFigureName")
-    p2.innerText = "Aika: " + json[i].Recipetime+ "min";
+    p2.innerText = "Aika: " + json[i].Recipetime + "min";
 
     p3.innerText = json[i].Coursetype;
     p4.innerText = json[i].Mealtype;
