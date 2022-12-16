@@ -81,7 +81,7 @@ const createProfileUser = async (username) => {
 
 };
 function profiledetails(Imagefilepath, username) {
-    if (Imagefilepath === 'undefined' || Imagefilepath === undefined) {
+    if (Imagefilepath === 'undefined' || Imagefilepath === undefined || Imagefilepath === null || Imagefilepath === 'null' || Imagefilepath === '') {
         Imagefilepath = './media/logos/jakrecipeslogo.svg';
     }
 
