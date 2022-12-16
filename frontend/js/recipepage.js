@@ -45,7 +45,6 @@ const getRecipe = async (id) => {
     }
     const recipe = await response.json();
 
-    console.log(recipe);
     recipeName.innerHTML = recipe.recipes.Recipename;
     instructions.innerText = recipe.recipes.Recipeguide;
     instructions.classList.add('fontsizeforp');
@@ -312,16 +311,20 @@ const getComments = async (id) => {
         recipeComments.appendChild(li);
 
         // Luodaan poista-nappi kommentteille.
-        const deleteCommentButton = document.createElement('button');
-        deleteCommentButton.classList.add('deleteCommentButton');
-        deleteCommentButton.innerHTML = "Poista";
-        deleteCommentButton.style.cursor = "pointer";
-        divStats.appendChild(deleteCommentButton);
-        deleteCommentButton.addEventListener('click', async evt => {
-            evt.preventDefault();
-            await deleteThisComment(comments[i].Commentid);
+        console.log(comments);
+        if (JSON.parse(sessionStorage.getItem('user')).Username === comments[i].Username) {
 
-        });
+            const deleteCommentButton = document.createElement('button');
+            deleteCommentButton.classList.add('deleteCommentButton');
+            deleteCommentButton.innerHTML = "Poista";
+            deleteCommentButton.style.cursor = "pointer";
+            divStats.appendChild(deleteCommentButton);
+            deleteCommentButton.addEventListener('click', async evt => {
+                evt.preventDefault();
+                await deleteThisComment(comments[i].Commentid);
+
+            });
+        }
     }
     // Päivitetään kommenttien liket/disliket
     const updateCommentRating = async (rating, id) => {
@@ -349,7 +352,7 @@ const deleteThisComment = async (commentid) => {
     const response = await fetch(url + '/recipes/comment/' + commentid, fetchOptions)
     const json = await response.json();
     alert(json.message);
-    if (json.message === "Comment Deleted") {
+    if (json.message === "Kommentti poistettu") {
         document.location.reload();
     }
 
