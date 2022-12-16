@@ -17,7 +17,9 @@ function loopThumbnails(json) {
 
   generateRecipesFrontpage(json);
 }
+mostlikedbetter()
 haeButton()
+newest()
 function fetchFavorites() {
   const fetchOptions = {
     method: 'GET',
