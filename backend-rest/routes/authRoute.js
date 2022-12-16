@@ -6,7 +6,6 @@ const {body} = require('express-validator');
 
 router.post('/login',
     body('username').escape(),
-    body('email').escape(),
     body('password').escape(),login)
 
 

@@ -17,9 +17,10 @@ router.get('/limited/:username',
   body('username').escape(),
   get_UserProfileLimited)
 
-router.route('/').post(body('email').isEmail(),
+router.post('/',
+    body('email').isEmail(),
     body('password').matches(/(?=.*\p{Lu}).{8,}/u),
-    body('username').isLength({ min: 3 }).escape(),
+    body('username').isLength({ min: 3 }).escape().matches(/^[a-zA-Z0-9]+$/),
     user_post)
 module.exports = router;
 
