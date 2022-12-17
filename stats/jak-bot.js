@@ -32,7 +32,8 @@ jakbot.once(Events.ClientReady, c => {
 });
 
 jakbot.on('ready', jakbot => {
-
+  jakbot.user.setActivity('Node js ', { type: 'PLAYING' });
+  jakbot.user.username = 'JakBot';
   jakbot.channels.cache.get(channelIDstart).
     send('Node.js restarted at ' + new Date(Date.now()).toISOString());
 });
@@ -40,10 +41,11 @@ jakbot.on('ready', jakbot => {
 const restart = true;
 
 jakbot.on('ready', async jakbot => {
-  setInterval(async () => {
-    jakbot.user.setUsername('JAK-BOT status');
+  let random_number_for_timeout1 = ((Math.floor(Math.random() * 10000) + 1) * 1000);
 
-    jakbot.user.setUsername('JAK-BOT running');
+
+  setInterval(async () => {
+
     if (process.env.NODE_ENV === 'production') {
       const response1 = await fetch(
         'https://10.114.34.72/jak/status/apachestatus');
@@ -59,7 +61,7 @@ jakbot.on('ready', async jakbot => {
         'https://10.114.34.72/jak/status/starttime');
       const fetchDataJson3 = await response3.json();
       const howlonghavewebeenthere = dateStarted - fetchDataJson3[0].datenow;
-      if (howlonghavewebeenthere < 1200000) { // what 2 minutes is in ms? 1200000
+      if (howlonghavewebeenthere < 1200000) {
         jakbot.channels.cache.get(ChannelIDwebsite).
           send('Server restarted less than 2 minutes ago');
       } else if (howlonghavewebeenthere < 0) {
@@ -106,15 +108,14 @@ jakbot.on('ready', async jakbot => {
       }
 
     }
-    jakbot.user.setUsername('J A K B O T');
-  }, 1800000);
+  }, random_number_for_timeout1);
 });
 
 jakbot.on('ready', jakbot => {
-  jakbot.user.setActivity('Node js ', { type: 'PLAYING' });
+  let random_number_for_timeout2 = ((Math.floor(Math.random() * 10000) + 1) * 1000);
+
 
   setInterval(() => {
-    jakbot.user.setUsername('JAK-BOT uptime');
     admin.query(
       'show status LIKE "uptime%"',
       function (err, result) {
@@ -131,10 +132,10 @@ jakbot.on('ready', jakbot => {
             serverUptimeInMilliseconds);
       },
     );
-    jakbot.user.setUsername('J A K B O T');
-  }, 1800000); // 1 hour 50 minutes
+  }, random_number_for_timeout2); // 1 hour 50 minutes
+  let random_number_for_timeout3 = ((Math.floor(Math.random() * 10000) + 1) * 1000);
+
   setInterval(() => {
-    jakbot.user.setUsername('JAK-BOT counting');
     admin.query(
       'SELECT * FROM `jakrecipes`.`allthecounts`;',
       function (err, result) {
@@ -150,12 +151,11 @@ jakbot.on('ready', jakbot => {
             '\n Images: ' + result[5].count);
 
       });
-    jakbot.user.setUsername('J A K B O T');
 
-  }, 1800000); // 1,5 hours
+  }, random_number_for_timeout3); // 1,5 hours
+  let random_number_for_timeout4 = ((Math.floor(Math.random() * 10000) + 1) * 1000);
 
   setInterval(() => {
-    jakbot.user.setUsername('JAK-BOT new data');
     admin.query(
       'SELECT `Recipename` FROM `Recipes` group by Recipeid limit 6;',
       function (err, result) {
@@ -169,26 +169,24 @@ jakbot.on('ready', jakbot => {
             send('recipename: ' + result[i].Recipename);
         }
       });
-    jakbot.user.setUsername('J A K B O T');
+  }, random_number_for_timeout4); // 1 min in ms 60000
+  let random_number_for_timeout5 = ((Math.floor(Math.random() * 10000) + 1) * 1000);
 
-  }, 1800000); // 1 min in ms 60000
   setInterval(() => {
-    jakbot.user.setUsername('JAK-BOT new usr');
     admin.query(
-      'SELECT Useremail  FROM `Users` group by Userid limit 10;',
+      'SELECT Useremail  FROM `Users` group by Userid limit 10; order by Userid desc',
       function (err, result) {
         if (err) throw err;
 
         jakbot.channels.cache.get(channelIDwelcome).
-          send('Our newest users as time now ' +
+          send('newest users as time now ' +
             new Date(Date.now()).toISOString());
         for (let i = 0; i < result.length; i++) {
           jakbot.channels.cache.get(channelIDwelcome).
             send('Useremail: ' + result[i].Useremail);
         }
       });
-    jakbot.user.setUsername('J A K B O T');
-  }, 1800000);
+  }, random_number_for_timeout5);
 
 });
 
