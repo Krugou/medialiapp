@@ -63,9 +63,9 @@ jakbot.on('ready', async jakbot => {
       const howlonghavewebeenthere = dateStarted - fetchDataJson3[0].datenow;
       if (howlonghavewebeenthere < 1200000) {
         jakbot.channels.cache.get(ChannelIDwebsite).
-          send('Server restarted less than 2 minutes ago');
+          send('Server restarted less than 2 minutes ago' + howlonghavewebeenthere);
       } else if (howlonghavewebeenthere < 0) {
-        jakbot.channels.cache.get(ChannelIDwebsite).send('Server down');
+        jakbot.channels.cache.get(ChannelIDwebsite).send('Server down' + howlonghavewebeenthere);
 
       } else {
         jakbot.channels.cache.get(ChannelIDwebsite).
