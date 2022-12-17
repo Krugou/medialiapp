@@ -32,8 +32,8 @@ jakbot.once(Events.ClientReady, c => {
 });
 
 jakbot.on('ready', jakbot => {
-  jakbot.user.setActivity('Node js ', { type: 'PLAYING' });
-  jakbot.user.username = 'JakBot';
+  jakbot.user.setActivity('Nodejs', { type: 'PLAYING' });
+  jakbot.user.setUsername('J-A-K-B-O-T');
   jakbot.channels.cache.get(channelIDstart).
     send('Node.js restarted at ' + new Date(Date.now()).toISOString());
 });
