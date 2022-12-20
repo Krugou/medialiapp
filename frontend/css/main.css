@@ -698,6 +698,7 @@ body {
   align-self: stretch;
   flex-basis: fit-content;
   cursor: pointer;
+  user-select: auto;
 }
 .recipefigure:hover {
   box-shadow: 0 0 15px 0 var(--main-border-color);
