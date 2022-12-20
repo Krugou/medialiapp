@@ -686,7 +686,7 @@ body {
 }
 
 .recipefigure {
-  border: solid 2px  var(--main-border-color);
+  border: solid 2px var(--main-border-color);
   border-radius: var(--main-border-radius);
   width: 25vw;
   font-size: 15px;
@@ -697,6 +697,7 @@ body {
   max-width: 25em;
   align-self: stretch;
   flex-basis: fit-content;
+  cursor: pointer;
 }
 
 .recipefigure button {
