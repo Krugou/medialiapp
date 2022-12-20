@@ -1,5 +1,8 @@
 :root {
   --main-bg-color: #0d1e40;
+  --main-border-color: #0d1e40;
+  --main-text-color: white;
+  --main-border-radius: 1em;
 }
 @font-face {
   font-family: 'Mona Sans';
@@ -10,9 +13,6 @@
   text-decoration: none;
   list-style: none;
   font-family: 'Mona Sans';
-}
-
-#aboutus {
 }
 
 .pageFooterContainerList {
@@ -48,9 +48,9 @@
 
   box-shadow: 3px 4px 0px 0px #1564ad;
   background-color: var(--main-bg-color);
-  border: solid 1px #0d1e40;
-  border-radius: 1em;
-  color: white;
+  border: solid 1px var(--main-border-color);
+  border-radius: var(--main-border-radius);
+  color: var(--main-text-color);
   font-size: 1.5rem;
   font-weight: bold;
   padding: 1.2rem;
@@ -145,7 +145,7 @@
   width: 50%;
   height: 50%;
   border: 1px solid black;
-  border-radius: 1em;
+  border-radius: var(--main-border-radius);
   padding: 1em;
 }
 
@@ -160,7 +160,7 @@
 
 .admin-table-tr-even {
   background-color: var(--main-bg-color);
-  color: white;
+  color: var(--main-text-color);
 }
 
 .admin-table-tr-odd {
@@ -201,9 +201,9 @@
   display: none;
   box-shadow: 3px 4px 0px 0px #1564ad;
   background-color: var(--main-bg-color);
-  border: solid 1px #0d1e40;
-  border-radius: 1em;
-  color: white;
+  border: solid 1px var(--main-border-color);
+  border-radius: var(--main-border-radius);
+  color: var(--main-text-color);
   font-size: 17px;
   font-weight: bold;
   padding: 1.2rem;
@@ -225,7 +225,7 @@
   height: auto;
   margin: auto;
   border-radius: 5px;
-  color: white;
+  color: var(--main-text-color);
   max-width: 90%;
 }
 
@@ -356,7 +356,7 @@ body {
 }
 
 .commentUsername a {
-  color: white;
+  color: var(--main-text-color);
 }
 
 .contactUs {
@@ -393,7 +393,7 @@ body {
 
 .fa-heart {
   font-size: 3em;
-  color: white;
+  color: var(--main-text-color);
   cursor: pointer;
 }
 
@@ -422,7 +422,7 @@ body {
   margin-bottom: 2em;
 }
 .recipeRating {
-  color: white;
+  color: var(--main-text-color);
   font-size: 3em;
 }
 
@@ -440,9 +440,9 @@ body {
   width: 7em;
   height: 3em;
   background-color: var(--main-bg-color);
-  border-color: #0d1e40;
-  border-radius: 1em;
-  color: white;
+ border-color: var(--main-border-color);
+  border-radius: var(--main-border-radius);
+  color: var(--main-text-color);
 }
 
 .fontsizeforp {
@@ -507,9 +507,9 @@ body {
 
 .modal-content button {
   background-color: var(--main-bg-color);
-  border: solid 1px #0d1e40;
-  border-radius: 1em;
-  color: white;
+  border: solid 1px var(--main-border-color);
+  border-radius: var(--main-border-radius);
+  color: var(--main-text-color);
   margin: 1em;
   width: 7em;
   height: 3em;
@@ -537,9 +537,9 @@ body {
   font-size: 1em;
   padding: 0.5em;
   background-color: var(--main-bg-color);
-  border-color: #0d1e40;
-  border-radius: 1em;
-  color: white;
+ border-color: var(--main-border-color);
+  border-radius: var(--main-border-radius);
+  color: var(--main-text-color);
   box-shadow: 3px 4px 0px 0px #1564ad;
   text-shadow: 0px 1px 0px #528ecc;
   cursor: pointer;
@@ -568,7 +568,7 @@ body {
 .navbar a {
   padding: 10px;
   display: inline-block;
-  color: white;
+  color: var(--main-text-color);
 }
 
 .navbar ul {
@@ -644,7 +644,7 @@ body {
 .postCommentButton button {
   background-color: white;
   border: solid 1px white;
-  border-radius: 1em;
+  border-radius: var(--main-border-radius);
   color: #0d1e40;
   height: 3em;
   width: 6em;
@@ -657,9 +657,9 @@ body {
   width: 7em;
   font-size: 1em;
   background-color: var(--main-bg-color);
-  border: solid 1px #0d1e40;
-  border-radius: 1em;
-  color: white;
+  border: solid 1px var(--main-border-color);
+  border-radius: var(--main-border-radius);
+  color: var(--main-text-color);
   margin-bottom: 2em;
   padding: 0.5em;
   box-shadow: 3px 4px 0px 0px #1564ad;
@@ -690,7 +690,7 @@ body {
 
 .recipefigure {
   border: solid 2px #0d1e40;
-  border-radius: 1em;
+  border-radius: var(--main-border-radius);
   width: 25vw;
   font-size: 15px;
   padding-bottom: 15px;
@@ -704,9 +704,9 @@ body {
 
 .recipefigure button {
   background-color: var(--main-bg-color);
-  border: solid 1px #0d1e40;
-  border-radius: 1em;
-  color: white;
+  border: solid 1px var(--main-border-color);
+  border-radius: var(--main-border-radius);
+  color: var(--main-text-color);
   height: 3em;
   width: 6em;
   cursor: pointer;
@@ -774,9 +774,9 @@ body {
   align-items: center;
   box-shadow: 3px 4px 0px 0px #1564ad;
   background-color: var(--main-bg-color);
-  border: solid 1px #0d1e40;
-  border-radius: 1em;
-  color: white;
+  border: solid 1px var(--main-border-color);
+  border-radius: var(--main-border-radius);
+  color: var(--main-text-color);
   font-size: 17px;
   font-weight: bold;
   padding: 1.2rem;
@@ -826,7 +826,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  border-radius: 1em;
+  border-radius: var(--main-border-radius);
   padding: 1em;
   gap: 1em;
   display: flex;
@@ -849,7 +849,7 @@ body {
   height: auto;
   margin: 1em auto auto auto;
   border-radius: 5px;
-  color: white;
+  color: var(--main-text-color);
 }
 .recipeUserComment div {
   width: 100%;
@@ -860,8 +860,8 @@ body {
   font-size: 1em;
   padding: 0.5em;
   background-color: white;
-  border-color: #0d1e40;
-  border-radius: 1em;
+ border-color: var(--main-border-color);
+  border-radius: var(--main-border-radius);
   color: #0d1e40;
 }
 
@@ -903,9 +903,9 @@ body {
 
 .selectedMealTypeButtons {
   background-color: var(--main-bg-color);
-  border: solid 1px #0d1e40;
-  border-radius: 1em;
-  color: white;
+  border: solid 1px var(--main-border-color);
+  border-radius: var(--main-border-radius);
+  color: var(--main-text-color);
   height: 3em;
   width: 7em;
 }
@@ -945,9 +945,9 @@ body {
 
 .uploadimage {
   background-color: var(--main-bg-color);
-  border: solid 1px #0d1e40;
-  border-radius: 1em;
-  color: white;
+  border: solid 1px var(--main-border-color);
+  border-radius: var(--main-border-radius);
+  color: var(--main-text-color);
   height: 3em;
   width: 100%;
 }
@@ -979,9 +979,9 @@ body {
 
 .userPosts figure button {
   background-color: var(--main-bg-color);
-  border: solid 1px #0d1e40;
-  border-radius: 1em;
-  color: white;
+  border: solid 1px var(--main-border-color);
+  border-radius: var(--main-border-radius);
+  color: var(--main-text-color);
   height: 3em;
   width: 7em;
   margin: 0.5em;
@@ -998,7 +998,7 @@ body {
   margin-left: 7em;
   margin-right: 7em;
   border: solid 2px;
-  border-radius: 1em;
+  border-radius: var(--main-border-radius);
   height: 35em;
   padding-bottom: 2em;
 }
@@ -1022,9 +1022,9 @@ body {
   font-size: 1em;
   padding: 0.5em;
   background-color: var(--main-bg-color);
-  border-color: #0d1e40;
-  border-radius: 1em;
-  color: white;
+ border-color: var(--main-border-color);
+  border-radius: var(--main-border-radius);
+  color: var(--main-text-color);
   box-shadow: 3px 4px 0px 0px #1564ad;
   text-shadow: 0px 1px 0px #528ecc;
   cursor: pointer;
@@ -1033,16 +1033,11 @@ body {
 #admin-quotes {
   text-align: center;
 }
-
-#check {
+.displaynone {
   display: none;
 }
 
 #checkLike {
-  display: none;
-}
-
-#comments {
   display: none;
 }
 
@@ -1052,9 +1047,9 @@ body {
 
 #editProfile {
   background-color: var(--main-bg-color);
-  border: solid 1px #0d1e40;
-  border-radius: 1em;
-  color: white;
+  border: solid 1px var(--main-border-color);
+  border-radius: var(--main-border-radius);
+  color: var(--main-text-color);
   height: 3em;
   width: 7em;
   font-size: 2vh;
@@ -1064,8 +1059,8 @@ body {
 #hideCommentsButton {
   background-color: var(--main-bg-color);
   border: solid 1px white;
-  border-radius: 1em;
-  color: white;
+  border-radius: var(--main-border-radius);
+  color: var(--main-text-color);
   height: 4em;
   width: 10em;
   cursor: pointer;
@@ -1080,9 +1075,9 @@ body {
 #openCommentsButton {
   background-color: var(--main-bg-color);
   padding: 0.5em;
-  border-radius: 1em;
+  border-radius: var(--main-border-radius);
   font-size: 1em;
-  color: white;
+  color: var(--main-text-color);
   height: 4em;
   width: 7em;
   box-shadow: 3px 4px 0px 0px #1564ad;
@@ -1108,8 +1103,8 @@ body {
 }
 #recipesProfilePic {
   width: 10em;
-  border: solid 1px #0d1e40;
-  border-radius: 1em;
+  border: solid 1px var(--main-border-color);
+  border-radius: var(--main-border-radius);
   margin-bottom: 1.5em;
 }
 
@@ -1132,7 +1127,7 @@ body {
 #recipesImage {
   max-width: 100%;
   height: 35em;
-  border-radius: 1em;
+  border-radius: var(--main-border-radius);
   object-fit: cover;
   width: 50em;
   margin-top: 2em;
@@ -1155,9 +1150,9 @@ body {
 
 #tag {
   background-color: var(--main-bg-color);
-  border: solid 1px #0d1e40;
-  border-radius: 1em;
-  color: white;
+  border: solid 1px var(--main-border-color);
+  border-radius: var(--main-border-radius);
+  color: var(--main-text-color);
   height: 3em;
   width: 7em;
   cursor: pointer;
@@ -1169,8 +1164,9 @@ body {
   gap: 2em;
 }
 #radio_group2 {
-  justify-content: center;
   display: flex;
+  justify-content: center;
+
   flex-direction: row;
   align-items: center;
   gap: 5em;
@@ -1210,7 +1206,21 @@ body {
 .recipeLikes p {
   word-break: normal;
 }
-
+.favorited {
+  color: #d73030;
+}
+.liked {
+  color: #3f3fea;
+}
+.disliked {
+  color: #d73030;
+}
+.positive {
+  color: #3f3fea;
+}
+.negative {
+  color: #d73030;
+}
 @keyframes slide-left {
   from {
     transform: translateX(100%);
@@ -1354,7 +1364,7 @@ body {
   .fa-bars {
     font-size: 5vh;
     padding: 10px 10px 0px 10px;
-    color: white;
+    color: var(--main-text-color);
   }
   .commentContent {
     margin: 0.25em 0.25em 0.25em 0.25em;
@@ -1481,20 +1491,4 @@ body {
   .save button {
     font-size: 1vh;
   }
-}
-
-.favorited {
-  color: #d73030;
-}
-.liked {
-  color: #3f3fea;
-}
-.disliked {
-  color: #d73030;
-}
-.positive {
-  color: #3f3fea;
-}
-.negative {
-  color: #d73030;
 }
