@@ -26,7 +26,6 @@ const createProfileRecipes = async (username) => {
             Authorization: 'Bearer ' + sessionStorage.getItem('token'),
         },
     };
-    console.log('username', username);
     fetch(url + '/recipeslimited/profile/' + username, fetchOptions)
         .then(response => {
             if (response.ok) {
@@ -36,24 +35,19 @@ const createProfileRecipes = async (username) => {
             }
         }
         ).then((queryData) => {
-            console.log("reseptien tiedot", queryData);
-            if (queryData.length === 0) {
+
+            // Rakenna reseptit sivulle
+            const userposts = document.getElementById('userPosts');
+            createResults(queryData, userposts);
+        }).catch((error) => {
+            // if (queryData.length === 0) {
+                console.log(' if error')
                 const userposts = document.getElementById('userPosts');
                 const noRecipes = document.createElement('P');
                 noRecipes.setAttribute('class', 'fontsizeforp');
                 userposts.appendChild(noRecipes);
-                noRecipes.innerText = 'Ei reseptejä';
-            } else {
-                // Rakenna reseptit sivulle
-                const userposts = document.getElementById('userPosts');
-                createResults(queryData, userposts);
-            }
-        }).catch((error) => {
-            const userposts = document.getElementById('userPosts');
-            const noRecipes = document.createElement('P');
-            noRecipes.setAttribute('class', 'fontsizeforp');
-            userposts.appendChild(noRecipes);
-            noRecipes.innerText = 'Ei reseptejä';
+                noRecipes.innerText = '';
+            // }
         }
         );
 };
