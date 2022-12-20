@@ -66,6 +66,10 @@ function createResults(json, target, length) {
     target.appendChild(figure);
 
   };
+  FieldElement1.style.margin = '';
+
+  FieldElement1.style.fontSize = '';
+  FieldElement1.innerText = '';
 }
 
 // random number generator 1 - 2000
@@ -89,10 +93,7 @@ window.onload = () => {
       return;
     }
     timeoutToken = setTimeout(() => {
-      FieldElement1.style.margin = '';
 
-      FieldElement1.style.fontSize = '';
-      FieldElement1.innerText = '';
       frontPageQuery(typeInputFieldElement.value);
     }, 2500);
 
@@ -127,7 +128,7 @@ function frontPageQuery(query) {
   const FieldElement1 = document.getElementById('loading');
   let selectedOption = selector.value;
   if (selectedOption === '1') {
-    FieldElement1.style.margin = '1rem';
+    FieldElement1.style.margin = '0.5rem';
     FieldElement1.style.fontSize = '2em';
     FieldElement1.innerText = 'Haetaan reseptejä nimen mukaan...';
     fetch(url + `/recipeslimited/filterrecipes/` + query).then(response => {
@@ -141,9 +142,10 @@ function frontPageQuery(query) {
       createResults(queryData, presentationdata);
 
     }).catch((error) => {
+      FieldElement1.innerText = 'Haku epäonnistui yritä uudelleen';
     });
   } else if (selectedOption === '2') {
-    FieldElement1.style.margin = '1rem';
+    FieldElement1.style.margin = '0.5rem';
     FieldElement1.style.fontSize = '2em';
 
     FieldElement1.innerText = 'Haetaan reseptejä ruokalajin mukaan...';
@@ -158,11 +160,12 @@ function frontPageQuery(query) {
     }).then((queryData) => {
       clearPage();
       createResults(queryData, presentationdata);
-      FieldElement1.innerText = '';
     }).catch((error) => {
+      FieldElement1.innerText = 'Haku epäonnistui yritä uudelleen';
+
     });
   } else if (selectedOption === '3') {
-    FieldElement1.style.margin = '1rem';
+    FieldElement1.style.margin = '0.5rem';
     FieldElement1.style.fontSize = '2em';
 
     FieldElement1.innerText = 'Haetaan reseptejä aterialajin mukaan...';
@@ -176,11 +179,12 @@ function frontPageQuery(query) {
     }).then((queryData) => {
       clearPage();
       createResults(queryData, presentationdata);
-      FieldElement1.innerText = '';
     }).catch((error) => {
+      FieldElement1.innerText = 'Haku epäonnistui yritä uudelleen';
+
     });
   } else if (selectedOption === '4') {
-    FieldElement1.style.margin = '1rem';
+    FieldElement1.style.margin = '0.5rem';
     FieldElement1.style.fontSize = '2em';
 
     FieldElement1.innerText = 'Haetaan reseptejä hinnan mukaan...';
@@ -198,8 +202,9 @@ function frontPageQuery(query) {
     }).then((queryData) => {
       clearPage();
       createResults(queryData, presentationdata);
-      FieldElement1.innerText = '';
     }).catch((error) => {
+      FieldElement1.innerText = 'Haku epäonnistui yritä uudelleen';
+
     });
   }
 }
