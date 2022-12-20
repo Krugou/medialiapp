@@ -142,6 +142,7 @@ function frontPageQuery(query) {
       createResults(queryData, presentationdata);
 
     }).catch((error) => {
+      console.log("🚀 ~ file: generateresults.js:145 ~ fetch ~ error", error)
       FieldElement1.innerText = 'Haku epäonnistui yritä uudelleen';
     });
   } else if (selectedOption === '2') {
@@ -161,6 +162,7 @@ function frontPageQuery(query) {
       clearPage();
       createResults(queryData, presentationdata);
     }).catch((error) => {
+      console.log("🚀 ~ file: generateresults.js:164 ~ fetch ~ error", error)
       FieldElement1.innerText = 'Haku epäonnistui yritä uudelleen';
 
     });
@@ -180,6 +182,7 @@ function frontPageQuery(query) {
       clearPage();
       createResults(queryData, presentationdata);
     }).catch((error) => {
+      console.log("🚀 ~ file: generateresults.js:183 ~ fetch ~ error", error)
       FieldElement1.innerText = 'Haku epäonnistui yritä uudelleen';
 
     });
@@ -203,9 +206,14 @@ function frontPageQuery(query) {
       clearPage();
       createResults(queryData, presentationdata);
     }).catch((error) => {
+      console.log("🚀 ~ file: generateresults.js:206 ~ fetch ~ error", error)
       FieldElement1.innerText = 'Haku epäonnistui yritä uudelleen';
 
     });
   }
+  FieldElement1.style.margin = '';
+
+  FieldElement1.style.fontSize = '';
+  FieldElement1.innerText = '';
 }
 
