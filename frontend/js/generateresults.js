@@ -32,12 +32,12 @@ function createResults(json, target, length) {
 
     }
     img.alt = json.recipesTable[i]?.Recipename;
-    const p = document.createElement('p');
-    const p2 = document.createElement('p');
-    const p3 = document.createElement('p');
-    const p4 = document.createElement('p');
-    const p5 = document.createElement('p');
-    const button = document.createElement('button');
+    const p = document.createElement('p'); // Create a new paragraph element.
+    const p2 = document.createElement('p'); // Create a new paragraph element.
+    const p3 = document.createElement('p'); // Create a new paragraph element.
+    const p4 = document.createElement('p'); // Create a new paragraph element.
+    const p5 = document.createElement('p'); // Create a new paragraph element.
+    const button = document.createElement('button'); // Create a new button element.
     figure.addEventListener('click', () => {
       location.href = 'recipe.html?id=' + json.recipesTable[i]?.Recipeid;
     });

@@ -55,24 +55,23 @@ const createProfileRecipes = async (username) => {
 const createProfileUser = async (username) => {
     let response;
     let Imagefilepath
-    // KIRJAUTUMATON KÄYTTÄJÄ
-    if (!sessionStorage.getItem('token') || !sessionStorage.getItem('user')) {
-        response = await fetch(url + '/userslimited/limited/' + username);
-    } else {
-        const fetchOptions = {
-            headers: {
-                Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-            },
-        };
-        response = await fetch(url + '/users/' + username, fetchOptions);
-    }
+  // Check if the user is logged in
+if (!sessionStorage.getItem('token') || !sessionStorage.getItem('user')) {
+    // If not, use the limited endpoint
+    response = await fetch(url + '/userslimited/limited/' + username);
+} else {
+    // If the user is logged in, use the endpoint that requires authentication
+    const fetchOptions = {
+        headers: {
+            Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+        },
+    };
+    response = await fetch(url + '/users/' + username, fetchOptions);
+}
     const json = await response.json();
     Imagefilepath = json.image[0]?.Imagefilepath;
     username = json.info.Username;
     profiledetails(Imagefilepath, username);
-
-    // Rakenna profiili sivulle
-
 };
 function profiledetails(Imagefilepath, username) {
     if (Imagefilepath === 'undefined' || Imagefilepath === undefined || Imagefilepath === null || Imagefilepath === 'null' || Imagefilepath === '') {
