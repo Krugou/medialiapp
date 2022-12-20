@@ -699,6 +699,9 @@ body {
   flex-basis: fit-content;
   cursor: pointer;
 }
+.recipefigure:hover {
+  box-shadow: 0 0 15px 0 var(--main-border-color);
+}
 
 .recipefigure button {
   background-color: var(--main-bg-color);
