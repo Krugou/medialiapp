@@ -686,7 +686,7 @@ body {
 }
 
 .recipefigure {
-  border: solid 1px  var(--main-border-color);
+  border: solid 2px  var(--main-border-color);
   border-radius: var(--main-border-radius);
   width: 25vw;
   font-size: 15px;
