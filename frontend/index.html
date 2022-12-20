@@ -88,128 +88,48 @@
             </ul>
         </nav>
     </header>
-    <section class="frontUp">
-        <div class="recipeSearch">
-            <input aria-label="Reseptien haku" class="recipeSearchInput" id="typeInputField"
-                placeholder="Hae Resepti valitun kriteerin mukaan" type="text">
-            <!-- <select class="hakuvalikko" id="my-selector">
-                <option value="1">reseptin nimen mukaan</option>
 
-                <option value="2">Ruokalajin mukaan</option>
-
-                <option value="3">Aterianmukaan</option>
-
-                <option value="4">Reseptin hinnan mukaan</option>
-            </select> -->
-            <!-- radio group with 4 options -->
-            <div id="radio_group" class="radio-group">
-                <button class="hideindesktop" id="haebutton">Hae</button>
-                <label class="radio_button_item radio_btn_active" for="radio-1"><input type="radio" id="radio-1"
-                        name="radio" class="radio-btn" value="1" checked>Reseptinimi</label>
-
-                <label class="radio_button_item" for="radio-2"><input type="radio" id="radio-2" name="radio"
-                        class="radio-btn" value="2">Ruokalaji</label>
-
-                <label class="radio_button_item" for="radio-3"><input type="radio" id="radio-3" name="radio"
-                        class="radio-btn" value="3">Ateria</label>
-
-                <label class="radio_button_item" for="radio-4"><input type="radio" id="radio-4" name="radio"
-                        class="radio-btn" value="4"> Reseptikustannus</label>
-
-            </div>
-            <!-- <button class="filterStyle" id="filter">Filter</button> -->
-        </div>
-        <!-- <div class="modal" id="filterModal">
-            <div class="modal-content">
-                <span class="close" id="close">&times;</span>
-                <div class="modaladd">
-                    <H3>Add Filters</H3>
-                    <div class="filters">
-                    </div>
-                    <div class="filtersave">
-                    </div>
-                </div>
-            </div>
-            <h4>valitse valikosta tapa millä hakea</h4>
-
-        </div>  -->
-
-
-        <p class="loadingState " id="loading"></p>
-        <div class="addRecipes">
-            <button href="addRecipe.html" id="addrecipesButton">Tee resepti</a></button>
-        </div>
-    </section>
     <main class="pagemain">
+        <section class="frontUp">
+            <div class="recipeSearch">
+                <div id="radio_group" class="radio-group">
+                    <label class="radio_button_item radio_btn_active" for="radio-1"><input type="radio" id="radio-1"
+                            name="radio" class="radio-btn" value="1" checked>Reseptinimi</label>
+
+                    <label class="radio_button_item" for="radio-2"><input type="radio" id="radio-2" name="radio"
+                            class="radio-btn" value="2">Ruokalaji</label>
+
+                    <label class="radio_button_item" for="radio-3"><input type="radio" id="radio-3" name="radio"
+                            class="radio-btn" value="3">Ateria</label>
+
+                    <label class="radio_button_item" for="radio-4"><input type="radio" id="radio-4" name="radio"
+                            class="radio-btn" value="4"> Reseptikustannus</label>
+
+                </div>
+                <input aria-label="Reseptien haku" class="recipeSearchInput" id="typeInputField"
+                    placeholder="Hae Resepti valitun kriteerin mukaan" type="text">
+                <button href="addRecipe.html" class="recipesbuttonforadd" id="addrecipesButton">Tee resepti</a></button>
+
+
+            </div>
+
+
+
+            <p class="loadingState " id="loading"></p>
+            <button class="hideindesktop" id="haebutton">Hae</button>
+
+            <div id="radio_group2" class="radio-group">
+                <label id="suosikitButton" class="radio_button_item" for="radio-5"><input type="radio" id="radio-5"
+                        name="radio" class="radio-btn" value="5"> Suosikkisi</label>
+                <button class="radio_button_item" id="mostliked"> Tykätyimmät</button>
+                <button class="radio_button_item" id="newest"> Uusimmat</button>
+            </div>
+        </section>
         <h2 class="otsikko" id="frontPageHeader">Reseptit</h2>
-        <div id="radio_group2" class="radio-group">
-            <label id="suosikitButton" class="radio_button_item" for="radio-5"><input type="radio" id="radio-5"
-                    name="radio" class="radio-btn" value="5"> Suosikkisi</label>
-            <button class="radio_button_item" id="mostliked"> Tykätyimmät</button>
-            <button class="radio_button_item" id="newest"> Uusimmat</button>
-        </div>
+
         <hr>
         <div class="reseptit " id="presentationdata">
-            <!-- <figure class="recipefigure" >
-            <img src="media/logos/jakrecipeslogo.svg">
-            <p class="fontsizeforp">Nimi</p>
-            <p class="fontsizeforp">Aika</p>
-            <p class="fontsizeforp">Vaikeus</p>
-            <p class="fontsizeforp">Arviot</p>
-            <p class="fontsizeforp">Hinta</p>
-            <p class="fontsizeforp">Tags</p>
-            <button>Katso resepti</button>
-        </figure>
-        <figure class="recipefigure">
-            <img src="media/logos/jakrecipeslogo.svg">
-            <p class="fontsizeforp">Nimi</p>
-            <p class="fontsizeforp">Aika</p>
-            <p class="fontsizeforp">Vaikeus</p>
-            <p class="fontsizeforp">Arviot</p>
-            <p class="fontsizeforp">Hinta</p>
-            <p class="fontsizeforp">Tags</p>
-            <button>Katso resepti</button>
-        </figure>
-        <figure class="recipefigure">
-            <img src="media/logos/jakrecipeslogo.svg">
-            <p class="fontsizeforp">Nimi</p>
-            <p class="fontsizeforp">Aika</p>
-            <p class="fontsizeforp">Vaikeus</p>
-            <p class="fontsizeforp">Arviot</p>
-            <p class="fontsizeforp">Hinta</p>
-            <p class="fontsizeforp">Tags</p>
-            <button>Katso resepti</button>
-        </figure>
-        <figure class="recipefigure">
-            <img src="media/logos/jakrecipeslogo.svg">
-            <p class="fontsizeforp">Nimi</p>
-            <p class="fontsizeforp">Aika</p>
-            <p class="fontsizeforp">Vaikeus</p>
-            <p class="fontsizeforp">Arviot</p>
-            <p class="fontsizeforp">Hinta</p>
-            <p class="fontsizeforp">Tags</p>
-            <button>Katso resepti</button>
-        </figure>
-        <figure class="recipefigure">
-            <img src="media/logos/jakrecipeslogo.svg">
-            <p class="fontsizeforp">Nimi</p>
-            <p class="fontsizeforp">Aika</p>
-            <p class="fontsizeforp">Vaikeus</p>
-            <p class="fontsizeforp">Arviot</p>
-            <p class="fontsizeforp">Hinta</p>
-            <p class="fontsizeforp">Tags</p>
-            <button>Katso resepti</button>
-        </figure>
-        <figure class="recipefigure">
-            <img src="media/logos/jakrecipeslogo.svg">
-            <p class="fontsizeforp">Nimi</p>
-            <p class="fontsizeforp">Aika</p>
-            <p class="fontsizeforp">Vaikeus</p>
-            <p class="fontsizeforp">Arviot</p>
-            <p class="fontsizeforp">Hinta</p>
-            <p class="fontsizeforp">Tags</p>
-            <button>Katso resepti</button>
-        </figure> -->
+
         </div>
     </main>
     <footer class="pageFooter">
