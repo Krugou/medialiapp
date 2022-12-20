@@ -38,27 +38,30 @@ function createResults(json, target, length) {
     const p4 = document.createElement('p');
     const p5 = document.createElement('p');
     const button = document.createElement('button');
-    button.addEventListener('click', () => {
+    figure.addEventListener('click', () => {
       location.href = 'recipe.html?id=' + json.recipesTable[i]?.Recipeid;
     });
 
     p.innerText = json.recipesTable[i]?.Recipename;
     p2.innerText = "Aika: " + json.recipesTable[i]?.Recipetime + "min";
     p.setAttribute("id", "recipeFigureName")
+    p.classList.add('cardtitle')
     p2.innerText = json.recipesTable[i]?.Recipetime;
     p.innerText = json.recipesTable[i]?.Recipename;
     p2.innerText = json.recipesTable[i]?.Recipetime;
     p3.innerText = json.recipesTable[i]?.Coursetype;
     p4.innerText = json.recipesTable[i]?.Mealtype;
     p5.innerText = "Hinta: " + json.recipesTable[i]?.Recipeprice?.toFixed(2) + "€";
-    button.innerText = 'Katso resepti';
+    p2.classList.add('cardtext')
+    p3.classList.add('cardtext')
+    p4.classList.add('cardtext')
+    p5.classList.add('cardtext')
     figure.appendChild(img);
     figure.appendChild(p);
     figure.appendChild(p2);
     figure.appendChild(p3);
     figure.appendChild(p4);
     figure.appendChild(p5);
-    figure.appendChild(button);
     figure.classList.add('recipefigure');
     target.appendChild(figure);
 
@@ -92,7 +95,7 @@ window.onload = () => {
     }, 2500);
 
   };
-}; 
+};
 // if user is logged in, show create radio button for favorites
 
 let selector = "";

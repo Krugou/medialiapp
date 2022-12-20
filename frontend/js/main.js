@@ -74,27 +74,28 @@ function generateRecipesFrontpage(json) {
     const p4 = document.createElement('p');
     const p5 = document.createElement('p');
     const button = document.createElement('button');
-    button.addEventListener('click', () => {
-      console.log('katso resepti');
-      location.href = 'recipe.html?id=' + json[i].Recipeid;
-    });
+
     p.innerText = json[i].Recipename;
 
-
     p.setAttribute("id", "recipeFigureName")
+    p.classList.add('cardtitle')
+    figure.addEventListener('click', () => {
+      location.href = 'recipe.html?id=' + json[i].Recipeid;
+    });
     p2.innerText = "Aika: " + json[i].Recipetime + "min";
-
     p3.innerText = json[i].Coursetype;
     p4.innerText = json[i].Mealtype;
     p5.innerText = "Hinta: " + json[i].Recipeprice.toFixed(2) + "€";
-    button.innerText = 'Katso resepti';
+    p2.classList.add('cardtext')
+    p3.classList.add('cardtext')
+    p4.classList.add('cardtext')
+    p5.classList.add('cardtext')
     figure.appendChild(img);
     figure.appendChild(p);
     figure.appendChild(p2);
     figure.appendChild(p3);
     figure.appendChild(p4);
     figure.appendChild(p5);
-    figure.appendChild(button);
     figure.classList.add('recipefigure');
     presentationdata.appendChild(figure);
   }
@@ -103,35 +104,35 @@ if (!sessionStorage.getItem('token') || !sessionStorage.getItem('user')) {
   const suosikitButton = document.getElementById('suosikitButton');
   suosikitButton.remove();
 }
-  const mostlikedbetter = document.getElementById('mostliked');
-  mostlikedbetter.onclick = () => {
-    fetch(url + `/recipeslimited/filterbylikes/`).then(response => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        throw 'HTTP ERROR';
-      }
-    }).then((queryData) => {
-      console.log("🚀 ~ file: generateresults.js:203 ~ fetch ~ queryData", queryData)
-      clearPage();
-
-      createResults(queryData, presentationdata);
-      FieldElement1.innerText = '';
-    }).catch((error) => {
-
-
+const mostlikedbetter = document.getElementById('mostliked');
+mostlikedbetter.onclick = () => {
+  fetch(url + `/recipeslimited/filterbylikes/`).then(response => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw 'HTTP ERROR';
     }
-    );
-  }
-  const newest = document.getElementById('newest');
-  newest.onclick = () => {
+  }).then((queryData) => {
+    console.log("🚀 ~ file: generateresults.js:203 ~ fetch ~ queryData", queryData)
     clearPage();
-    fetchNewestPresentationData()
+
+    createResults(queryData, presentationdata);
+    FieldElement1.innerText = '';
+  }).catch((error) => {
+
+
+  }
+  );
+}
+const newest = document.getElementById('newest');
+newest.onclick = () => {
+  clearPage();
+  fetchNewestPresentationData()
 
 }
-  const haebutton = document.getElementById('haebutton');
-  haebutton.addEventListener('click', () => {
-    const typeInputFieldElement = document.getElementById('typeInputField');
-    frontPageQuery(typeInputFieldElement.value);
-  });
+const haebutton = document.getElementById('haebutton');
+haebutton.addEventListener('click', () => {
+  const typeInputFieldElement = document.getElementById('typeInputField');
+  frontPageQuery(typeInputFieldElement.value);
+});
 fetchNewestPresentationData();
