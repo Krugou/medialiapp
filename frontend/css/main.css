@@ -681,7 +681,7 @@ body {
   margin-left: 2em;
 }
 
-.Recipe_desc {
+.recipe_desc {
   display: flex;
   flex-direction: column;
   width: 60%;
@@ -699,7 +699,7 @@ body {
   text-align: center;
   max-width: 25em;
   align-self: stretch;
-  flex-basis:fit-content;
+  flex-basis: fit-content;
 }
 
 .recipefigure button {
@@ -1225,7 +1225,7 @@ body {
     width: 30vw;
   }
 
-  .Recipe_desc {
+  .recipe_desc {
     width: 80%;
   }
 
@@ -1272,7 +1272,7 @@ body {
     flex-direction: column;
   }
 
-  .Recipe_desc {
+  .recipe_desc {
     width: 90%;
   }
 
