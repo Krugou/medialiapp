@@ -66,6 +66,8 @@ function createResults(json, target, length) {
     target.appendChild(figure);
 
   };
+  let FieldElement1 = document.getElementById('loading');
+
   FieldElement1.style.margin = '';
 
   FieldElement1.style.fontSize = '';
@@ -84,7 +86,8 @@ function clearPage() {
 
 let timeoutToken = 0;
 window.onload = () => {
-  const FieldElement1 = document.getElementById('loading');
+  let FieldElement1 = document.getElementById('loading');
+
   const typeInputFieldElement = document.getElementById('typeInputField');
   typeInputFieldElement.onkeyup = (event) => {
 
@@ -125,9 +128,13 @@ for (let i = 0; i < radioitems.length; i++) {
 }
 
 function frontPageQuery(query) {
-  const FieldElement1 = document.getElementById('loading');
+  let FieldElement1 = document.getElementById('loading');
+
   let selectedOption = selector.value;
   if (selectedOption === '1') {
+    let FieldElement1 = document.getElementById('loading');
+
+
     FieldElement1.style.margin = '0.5rem';
     FieldElement1.style.fontSize = '2em';
     FieldElement1.innerText = 'Haetaan reseptejä nimen mukaan...';
@@ -142,10 +149,12 @@ function frontPageQuery(query) {
       createResults(queryData, presentationdata);
 
     }).catch((error) => {
-      console.log("🚀 ~ file: generateresults.js:145 ~ fetch ~ error", error)
       FieldElement1.innerText = 'Haku epäonnistui yritä uudelleen';
     });
   } else if (selectedOption === '2') {
+    let FieldElement1 = document.getElementById('loading');
+
+
     FieldElement1.style.margin = '0.5rem';
     FieldElement1.style.fontSize = '2em';
 
@@ -162,11 +171,13 @@ function frontPageQuery(query) {
       clearPage();
       createResults(queryData, presentationdata);
     }).catch((error) => {
-      console.log("🚀 ~ file: generateresults.js:164 ~ fetch ~ error", error)
       FieldElement1.innerText = 'Haku epäonnistui yritä uudelleen';
 
     });
   } else if (selectedOption === '3') {
+    let FieldElement1 = document.getElementById('loading');
+
+
     FieldElement1.style.margin = '0.5rem';
     FieldElement1.style.fontSize = '2em';
 
@@ -182,18 +193,21 @@ function frontPageQuery(query) {
       clearPage();
       createResults(queryData, presentationdata);
     }).catch((error) => {
-      console.log("🚀 ~ file: generateresults.js:183 ~ fetch ~ error", error)
       FieldElement1.innerText = 'Haku epäonnistui yritä uudelleen';
 
     });
   } else if (selectedOption === '4') {
+    let FieldElement1 = document.getElementById('loading');
+
+
     FieldElement1.style.margin = '0.5rem';
     FieldElement1.style.fontSize = '2em';
 
     FieldElement1.innerText = 'Haetaan reseptejä hinnan mukaan...';
     // if query contains letters, do nothing
     if (query.match(/[a-z]/i)) {
-      return;
+
+      throw FieldElement1.innerText = 'Numeroita vain';
     }
 
     fetch(url + `/recipeslimited/filterbyprice/` + query).then(response => {
@@ -206,11 +220,11 @@ function frontPageQuery(query) {
       clearPage();
       createResults(queryData, presentationdata);
     }).catch((error) => {
-      console.log("🚀 ~ file: generateresults.js:206 ~ fetch ~ error", error)
       FieldElement1.innerText = 'Haku epäonnistui yritä uudelleen';
 
     });
   }
+
   FieldElement1.style.margin = '';
 
   FieldElement1.style.fontSize = '';
