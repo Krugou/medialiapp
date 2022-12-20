@@ -95,7 +95,7 @@ window.onload = () => {
     timeoutToken = setTimeout(() => {
 
       frontPageQuery(typeInputFieldElement.value);
-    }, 2500);
+    }, 500); // half second in ms 
 
   };
 };
