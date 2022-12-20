@@ -89,7 +89,9 @@ window.onload = () => {
       return;
     }
     timeoutToken = setTimeout(() => {
+      FieldElement1.style.margin = '';
 
+      FieldElement1.style.fontSize = '';
       FieldElement1.innerText = '';
       frontPageQuery(typeInputFieldElement.value);
     }, 2500);
@@ -125,6 +127,8 @@ function frontPageQuery(query) {
   const FieldElement1 = document.getElementById('loading');
   let selectedOption = selector.value;
   if (selectedOption === '1') {
+    FieldElement1.style.margin = '1rem';
+    FieldElement1.style.fontSize = '2em';
     FieldElement1.innerText = 'Haetaan reseptejä nimen mukaan...';
     fetch(url + `/recipeslimited/filterrecipes/` + query).then(response => {
       if (response.ok) {
@@ -139,6 +143,9 @@ function frontPageQuery(query) {
     }).catch((error) => {
     });
   } else if (selectedOption === '2') {
+    FieldElement1.style.margin = '1rem';
+    FieldElement1.style.fontSize = '2em';
+
     FieldElement1.innerText = 'Haetaan reseptejä ruokalajin mukaan...';
 
     fetch(url + `/recipeslimited/filtermealtypes/` + query).then(response => {
@@ -155,6 +162,9 @@ function frontPageQuery(query) {
     }).catch((error) => {
     });
   } else if (selectedOption === '3') {
+    FieldElement1.style.margin = '1rem';
+    FieldElement1.style.fontSize = '2em';
+
     FieldElement1.innerText = 'Haetaan reseptejä aterialajin mukaan...';
 
     fetch(url + `/recipeslimited/filtercoursetypes/` + query).then(response => {
@@ -170,6 +180,9 @@ function frontPageQuery(query) {
     }).catch((error) => {
     });
   } else if (selectedOption === '4') {
+    FieldElement1.style.margin = '1rem';
+    FieldElement1.style.fontSize = '2em';
+
     FieldElement1.innerText = 'Haetaan reseptejä hinnan mukaan...';
     // if query contains letters, do nothing
     if (query.match(/[a-z]/i)) {
