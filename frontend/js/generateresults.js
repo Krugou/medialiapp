@@ -2,7 +2,8 @@ const presentationdata = document.getElementById('presentationdata');
 
 function createResults(json, target, length) {
   for (let i = 0; i < (json.length); i++) {
-    if (screen.width >= 1000) {
+   // Check the screen width and assign the corresponding size for the thumbnail image file path
+if (screen.width >= 1000) {
       thumbnail_imagefilepath = 'thumbnails/' + json.recipesTable[i]?.Imagefilepath +
         '_500px.png';
       json.recipesTable[i]['thumbnailImagefilepath'] = thumbnail_imagefilepath;
