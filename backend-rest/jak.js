@@ -46,15 +46,15 @@ app.use('/users', passport.authenticate('jwt', { session: false }), userRoute);
 app.use('/status', statusRoute);
 
 
-// redirect http to https
-app.use((req, res, next) => {
-  if (req.secure) {
-    next();
-  } else {
-    res.redirect('https://' + req.headers.host + req.url);
-  }
-}
-);
+// // redirect http to https
+// app.use((req, res, next) => {
+//   if (req.secure) {
+//     next();
+//   } else {
+//     res.redirect('https://' + req.headers.host + req.url);
+//   }
+// }
+// );
 
 // app.use((req, res, next) => {
 //     const err = httpError('Not found', 404);
