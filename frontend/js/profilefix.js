@@ -1,26 +1,13 @@
 'use strict';
-
-
-
 const getQParam = (param) => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     return urlParams.get(param);
 };
-
-
-
-
 const profileUser = getQParam('username');
 
 const createProfileRecipes = async (username) => {
-
-
-
-
     // KIRJAUTUNUT KÄYTTÄJÄ
-
-
     const fetchOptions = {
         headers: {
             Authorization: 'Bearer ' + sessionStorage.getItem('token'),
@@ -35,19 +22,24 @@ const createProfileRecipes = async (username) => {
             }
         }
         ).then((queryData) => {
-
-            // Rakenna reseptit sivulle
-            const userposts = document.getElementById('userPosts');
-            createResults(queryData, userposts);
-        }).catch((error) => {
-            // if (queryData.length === 0) {
-                console.log(' if error')
+            console.log("reseptien tiedot", queryData);
+            if (queryData.length === 0) {
                 const userposts = document.getElementById('userPosts');
                 const noRecipes = document.createElement('P');
                 noRecipes.setAttribute('class', 'fontsizeforp');
                 userposts.appendChild(noRecipes);
-                noRecipes.innerText = '';
-            // }
+                noRecipes.innerText = 'Ei reseptejä';
+            } else {
+                // Rakenna reseptit sivulle
+                const userposts = document.getElementById('userPosts');
+                createResults(queryData, userposts);
+            }
+        }).catch((error) => {
+            const userposts = document.getElementById('userPosts');
+            const noRecipes = document.createElement('P');
+            noRecipes.setAttribute('class', 'fontsizeforp');
+            userposts.appendChild(noRecipes);
+            noRecipes.innerText = 'Ei reseptejä';
         }
         );
 };
@@ -55,23 +47,24 @@ const createProfileRecipes = async (username) => {
 const createProfileUser = async (username) => {
     let response;
     let Imagefilepath
-  // Check if the user is logged in
-if (!sessionStorage.getItem('token') || !sessionStorage.getItem('user')) {
-    // If not, use the limited endpoint
-    response = await fetch(url + '/userslimited/limited/' + username);
-} else {
-    // If the user is logged in, use the endpoint that requires authentication
-    const fetchOptions = {
-        headers: {
-            Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-        },
-    };
-    response = await fetch(url + '/users/' + username, fetchOptions);
-}
+    // KIRJAUTUMATON KÄYTTÄJÄ
+    if (!sessionStorage.getItem('token') || !sessionStorage.getItem('user')) {
+        response = await fetch(url + '/userslimited/limited/' + username);
+    } else {
+        const fetchOptions = {
+            headers: {
+                Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+            },
+        };
+        response = await fetch(url + '/users/' + username, fetchOptions);
+    }
     const json = await response.json();
     Imagefilepath = json.image[0]?.Imagefilepath;
     username = json.info.Username;
     profiledetails(Imagefilepath, username);
+
+    // Rakenna profiili sivulle
+
 };
 function profiledetails(Imagefilepath, username) {
     if (Imagefilepath === 'undefined' || Imagefilepath === undefined || Imagefilepath === null || Imagefilepath === 'null' || Imagefilepath === '') {
@@ -207,7 +200,3 @@ function profiledetails(Imagefilepath, username) {
 }
 createProfileRecipes(profileUser)
 createProfileUser(profileUser)
-
-
-
-
