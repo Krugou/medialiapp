@@ -495,7 +495,7 @@ const recipe_removefavorite = async (req, res, next) => {
             message: 'Resepti poistettu suosikeista',
         });
     } catch (e) {
-        console.error('recipe_favorite', e.message);
+        console.error('recipe_removefavorite', e.message);
         next(httpError('Internal server error', 500));
     }
 };
@@ -907,6 +907,68 @@ const comment_delete = async (req, res, next) => {
         next(httpError('Internal server error', 500));
     }
 }
+const recipe_removerating = async (req, res, next) => {
+    try {
+        // Extract the validation errors from a request.
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            // There are errors.
+            // Error messages can be returned in an array using `errors.array()`.
+            console.error('recipe_removerating validation', errors.array());
+            res.json({
+                message: 'Jokin meni pieleen',
+            });
+            next(httpError('Invalid data', 400));
+            return;
+        }
+        const data = [
+            req.user.Userid,
+            req.params.id,
+        ];
+        const result = await removePreviousReciperating(data, next);
+        if (result.affectedRows < 1) {
+            next(httpError('Invalid data', 400));
+        }
+        res.json({
+            message: 'Arvostelu poistettu',
+        });
+    } catch (e) {
+        console.error('recipe_removerating', e.message);
+        next(httpError('Internal server error', 500));
+    }
+};
+const comment_removerating = async (req, res, next) => {
+    try {
+        // Extract the validation errors from a request.
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            // There are errors.
+            // Error messages can be returned in an array using `errors.array()`.
+            console.error('comment_removerating validation', errors.array());
+            res.json({
+                message: 'Jokin meni pieleen',
+            });
+            next(httpError('Invalid data', 400));
+            return;
+        }
+        const data = [
+            req.user.Userid,
+            req.params.id,
+        ];
+
+        const result = await removePreviousCommentrating(data, next);
+        if (result.affectedRows < 1) {
+            next(httpError('Invalid data', 400));
+        }
+        res.json({
+            message: 'Arvostelu poistettu',
+        });
+    } catch (e) {
+        console.error('comment_removerating', e.message);
+        next(httpError('Internal server error', 500));
+    }
+};
+
 module.exports = {
     getAllNewestRecipesController,
     getAllOldestRecipesController,
@@ -934,7 +996,8 @@ module.exports = {
     recipe_getloggedinuser,
     get_user_favorites,
     get_mostlikedrecipes,
-
+    recipe_removerating,
+    comment_removerating,
 
 };
 
