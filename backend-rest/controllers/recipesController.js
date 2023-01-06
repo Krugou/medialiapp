@@ -677,12 +677,11 @@ const recipe_like = async (req, res, next) => {
 
         }
         const result = await addLike(data, next);
-        res.json({
-            message: 'Tykätty',
-        });
         if (result.affectedRows < 1) {
             next(httpError('Invalid data', 400));
         }
+        const updateLikes = await getRecipeRatingByRecipe(data[1], next);
+        res.json(updateLikes.pop());
     } catch (e) {
         console.error('recipe_like', e.message);
         next(httpError('Internal server error', 500));
@@ -712,12 +711,12 @@ const recipe_dislike = async (req, res, next) => {
 
         }
         const result = await addDislike(data, next);
-        res.json({
-            message: 'Palaute annettu',
-        });
         if (result.affectedRows < 1) {
             next(httpError('Invalid data', 400));
         }
+        const updateLikes = await getRecipeRatingByRecipe(data[1], next);
+        res.json(updateLikes.pop());
+
     } catch (e) {
         console.error('recipe_dislike', e.message);
         next(httpError('Internal server error', 500));
@@ -748,12 +747,11 @@ const comment_like = async (req, res, next) => {
 
         }
         const result = await addCommentLike(data, next);
-        res.json({
-            message: 'Tykätty',
-        });
         if (result.affectedRows < 1) {
             next(httpError('Invalid data', 400));
         }
+        const updateRating = await getRecipeCommentRatingsByCommentId(data[1], next);
+        res.json(updateRating.pop());
     } catch (e) {
         console.error('comment_like', e.message);
         next(httpError('Internal server error', 500));
@@ -784,12 +782,11 @@ const comment_dislike = async (req, res, next) => {
 
         }
         const result = await addCommentDisLike(data, next);
-        res.json({
-            message: 'Palaute annettu',
-        });
         if (result.affectedRows < 1) {
             next(httpError('Invalid data', 400));
         }
+        const updateRating = await getRecipeCommentRatingsByCommentId(data[1], next);
+        res.json(updateRating.pop());
     } catch (e) {
         console.error('comment_dislike', e.message);
         next(httpError('Internal server error', 500));
@@ -929,9 +926,8 @@ const recipe_removerating = async (req, res, next) => {
         if (result.affectedRows < 1) {
             next(httpError('Invalid data', 400));
         }
-        res.json({
-            message: 'Arvostelu poistettu',
-        });
+        const updateLikes = await getRecipeRatingByRecipe(data[1], next);
+        res.json(updateLikes.pop());
     } catch (e) {
         console.error('recipe_removerating', e.message);
         next(httpError('Internal server error', 500));
@@ -960,9 +956,8 @@ const comment_removerating = async (req, res, next) => {
         if (result.affectedRows < 1) {
             next(httpError('Invalid data', 400));
         }
-        res.json({
-            message: 'Arvostelu poistettu',
-        });
+        const updateRating = await getRecipeCommentRatingsByCommentId(data[1], next);
+        res.json(updateRating.pop());
     } catch (e) {
         console.error('comment_removerating', e.message);
         next(httpError('Internal server error', 500));
