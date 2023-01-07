@@ -725,7 +725,7 @@
   text-align: center;
   border-radius: var(--main-border-radius);
   padding: 1em;
-  gap: 2.5em;
+  gap: 2em;
   display: flex;
   background-color: #d3d3d3;
   margin: auto;
