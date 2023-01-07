@@ -23,7 +23,7 @@
   border: 4px solid #fff;
   border-radius: 4px;
   padding: 0.5em;
-  font-size: 1.5em;
+  font-size: 1.5vh;
   resize: none;
 }
 .addComment form {
@@ -42,7 +42,7 @@
   height: auto;
   margin: auto;
   border-radius: 5px;
-  max-width: 90%;
+  max-width: 80%;
 }
 .addRecipe_detail {
   display: flex;
@@ -244,7 +244,7 @@
   float: left;
 }
 .commentContent {
-  padding-left: 1.5em;
+  padding-left: 2em;
   padding-right: 0.5em;
 }
 .commentStats {
@@ -263,7 +263,7 @@
 }
 .commentUsername {
   margin-top: 1.75em;
-  padding-left: 0.8em;
+  padding-left: 1em;
   font-size: 2em;
   display: flex;
   align-items: center;
@@ -663,7 +663,7 @@
 .recipeInstruction,
 .recipeStats,
 .recipeUserComment {
-  max-width: 90%;
+  max-width: 80%;
   height: auto;
 }
 .recipeInstruction {
@@ -1316,7 +1316,7 @@ body {
 
 @media screen and (max-width: 375px) {
   .fontsizeforp {
-    font-size: 2vh;
+    font-size: 1.5vh;
   }
 
   #file {
