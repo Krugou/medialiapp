@@ -149,6 +149,7 @@ function profiledetails(Imagefilepath, username) {
                 user.Username = newusername;
                 sessionStorage.setItem('user', JSON.stringify(user));
                 location.href = 'logout.html';
+                alert("Sinut on kirjattu ulos");
             }).catch((error) => {
                 console.log('error', error);
             });
