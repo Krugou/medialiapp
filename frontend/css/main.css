@@ -27,7 +27,8 @@
   resize: none;
 }
 .addComment form {
-  padding-left: 2.5em;
+  padding-left: 2em;
+  padding-right: 1em;
 }
 .addComment h2,
 .commentContent {
@@ -724,7 +725,7 @@
   text-align: center;
   border-radius: var(--main-border-radius);
   padding: 1em;
-  gap: 1em;
+  gap: 2.5em;
   display: flex;
   background-color: #d3d3d3;
   margin: auto;
@@ -991,9 +992,9 @@
   object-fit: cover;
 }
 #recipesImage {
-  height: 30em;
+  height: 25em;
   border-radius: var(--main-border-radius);
-  width: 40em;
+  width: 35em;
   margin-top: 2em;
   margin-bottom: 2em;
 }
