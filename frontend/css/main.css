@@ -984,6 +984,7 @@
 #recipeName {
   font-size: 2em;
   margin-top: 1em;
+  word-break: break-word;
 }
 #recipenameInput {
   width: 16em;
