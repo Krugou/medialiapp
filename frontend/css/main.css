@@ -556,7 +556,7 @@
 .recipesbuttonforadd {
   background-color: var(--main-bg-color);
   color: var(--main-text-color);
-  font-size: 1.5vh;
+  font-size: 15px;
   font-weight: 700;
   padding: 1.2rem;
   text-decoration: none;
@@ -880,10 +880,8 @@
   color: var(--main-text-color);
 }
 #addrecipesButton {
-  width: 9em;
-  height: 4em;
-  font-size: 1.5vh;
-  padding: 0.5em;
+  width: 8em;
+  font-size: 15px;
   border-color: var(--main-border-color);
   border-radius: var(--main-border-radius);
   box-shadow: 3px 4px 0 0 #1564ad;
