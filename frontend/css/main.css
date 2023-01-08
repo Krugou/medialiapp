@@ -1319,13 +1319,13 @@ body {
   #authorUsername {
     margin-bottom: 1em;
   }
-}
-
-@media screen and (max-width: 375px) {
   .fontsizeforp {
     font-size: 2vh;
   }
 
+}
+
+@media screen and (max-width: 375px) {
   #file {
     max-width: 17em;
   }
