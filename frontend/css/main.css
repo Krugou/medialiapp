@@ -790,6 +790,7 @@
 .selectPicture {
   font-size: 1.5vh;
   text-align: center;
+  margin:0;
 }
 .selectedMealTypeButtons {
   background-color: var(--main-bg-color);
