@@ -37,9 +37,9 @@ function fetchFavorites() {
       createResults(json, presentationdata);
       ;
     }
-  ).catch((error) => {
-    alert('Virhe haettaessa suosikkeja');
-  });
+    ).catch((error) => {
+      alert('Suosikkeja ei löytynyt');
+    });
 }
 
 async function fetchNewestPresentationData() {
