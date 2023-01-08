@@ -530,6 +530,7 @@
 }
 .postRecipe {
   width: 7em;
+  height: 4em;
   font-size: 1em;
   border: solid 1px var(--main-border-color);
   border-radius: var(--main-border-radius);
@@ -1318,7 +1319,7 @@ body {
 
 @media screen and (max-width: 375px) {
   .fontsizeforp {
-    font-size: 1.5vh;
+    font-size: 2vh;
   }
 
   #file {
