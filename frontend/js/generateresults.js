@@ -47,9 +47,6 @@ if (screen.width >= 1000) {
     p2.innerText = "Aika: " + json.recipesTable[i]?.Recipetime + "min";
     p.setAttribute("id", "recipeFigureName")
     p.classList.add('cardtitle')
-    p2.innerText = json.recipesTable[i]?.Recipetime;
-    p.innerText = json.recipesTable[i]?.Recipename;
-    p2.innerText = json.recipesTable[i]?.Recipetime;
     p3.innerText = json.recipesTable[i]?.Coursetype;
     p4.innerText = json.recipesTable[i]?.Mealtype;
     p5.innerText = "Hinta: " + json.recipesTable[i]?.Recipeprice?.toFixed(2) + "€";
