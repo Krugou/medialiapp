@@ -1316,6 +1316,9 @@ body {
   .recipefigure p {
     font-size: 1.5vh;
   }
+  #authorUsername {
+    margin-bottom: 1em;
+  }
 }
 
 @media screen and (max-width: 375px) {
