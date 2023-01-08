@@ -35,9 +35,11 @@ function fetchFavorites() {
     .then((json) => {
       clearPage()
       createResults(json, presentationdata);
-
+      ;
     }
-    );
+  ).catch((error) => {
+    alert('Virhe haettaessa suosikkeja');
+  });
 }
 
 async function fetchNewestPresentationData() {
