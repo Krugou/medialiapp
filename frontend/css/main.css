@@ -786,6 +786,10 @@
 .uploadimage {
   border: solid 1px var(--main-border-color);
 }
+.selectPicture {
+  font-size: 1.5vh;
+  text-align: center;
+}
 .selectedMealTypeButtons {
   background-color: var(--main-bg-color);
   border-radius: var(--main-border-radius);
