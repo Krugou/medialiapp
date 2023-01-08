@@ -343,7 +343,7 @@
   border-radius: var(--main-border-radius);
 }
 .fontsizeforp {
-  font-size: 1.5vh;
+  font-size: 2vh;
   word-break: break-word;
 }
 .hakuvalikko {
@@ -733,7 +733,7 @@
   margin: auto;
 }
 .recipeTags button {
-  font-size: 1vh;
+  font-size: 1.5vh;
 }
 .recipeTags {
   padding-top: 2em;
