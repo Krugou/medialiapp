@@ -22,7 +22,7 @@ const createProfileRecipes = async (username) => {
             }
         }
         ).then((queryData) => {
-            console.log("reseptien tiedot", queryData);
+            console.log("reseptien tiedot", queryData.length);
             if (queryData.length === 0) {
                 const userposts = document.getElementById('userPosts');
                 const noRecipes = document.createElement('P');
@@ -35,11 +35,11 @@ const createProfileRecipes = async (username) => {
                 createResults(queryData, userposts);
             }
         }).catch((error) => {
-            const userposts = document.getElementById('userPosts');
-            const noRecipes = document.createElement('P');
-            noRecipes.setAttribute('class', 'fontsizeforp');
-            userposts.appendChild(noRecipes);
-            noRecipes.innerText = 'Ei reseptejä';
+            // const userposts = document.getElementById('userPosts');
+            // const noRecipes = document.createElement('P');
+            // noRecipes.setAttribute('class', 'fontsizeforp');
+            // userposts.appendChild(noRecipes);
+            // noRecipes.innerText = 'Ei reseptejä';
         }
         );
 };
