@@ -407,6 +407,7 @@
   border: 1px solid #888;
   width: 60%;
   text-align: center;
+  height: auto;
 }
 .modal {
   display: none;
@@ -507,6 +508,10 @@
 .pic {
   margin-top: 20%;
   text-align: center;
+}
+.pic p {
+  margin-bottom: 4em;
+  margin-top: 4em;
 }
 .postCommentButton button {
   background-color: #fff;
@@ -778,7 +783,7 @@
 .save {
   display: flex;
   justify-content: space-between;
-  margin-top: 20%;
+  margin-top: 5em;
   text-align: center;
   gap: 10px;
 }
