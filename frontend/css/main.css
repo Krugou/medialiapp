@@ -897,7 +897,7 @@
 #authorUsername,
 .commentStats p,
 .recipeRating {
-  font-size: 2em;
+  font-size: 1.5em;
 }
 #checkLike,
 .displaynone {
@@ -1002,7 +1002,7 @@
   margin-bottom: 2em;
 }
 #recipesProfilePic {
-  width: 10em;
+  width: 7em;
   border: solid 1px var(--main-border-color);
   border-radius: var(--main-border-radius);
   margin-bottom: 1.5em;
