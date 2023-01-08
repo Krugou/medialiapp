@@ -305,7 +305,7 @@
 .editRecipe button {
   width: 8em;
   height: 4em;
-  font-size: 1em;
+  font-size: 1.5vh;
 }
 .editRecipe {
   justify-content: center;
@@ -945,7 +945,7 @@
 #openCommentsButton {
   padding: 0.5em;
   border-radius: var(--main-border-radius);
-  font-size: 1em;
+  font-size: 1.5vh;
   height: 4em;
   width: 7em;
   box-shadow: 3px 4px 0 0 #1564ad;
