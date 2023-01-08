@@ -725,13 +725,13 @@
   text-align: center;
   border-radius: var(--main-border-radius);
   padding: 1em;
-  gap: 2em;
+  gap: 1.5em;
   display: flex;
   background-color: #d3d3d3;
   margin: auto;
 }
 .recipeTags button {
-  font-size: 1em;
+  font-size: 1vh;
 }
 .recipeTags {
   padding-top: 2em;
@@ -1169,7 +1169,7 @@ body {
   .nav-start {
     margin: 0;
     padding: 0;
-    gap: 2vh;
+    gap: 1vh;
     flex-direction: column;
   }
 
