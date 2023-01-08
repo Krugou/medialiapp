@@ -3,20 +3,15 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const fs = require('fs');
 const authRoute = require('./routes/authRoute');
 const userRoute = require('./routes/userRoute');
 const userlimitedRoute = require('./routes/userslimitedRoute');
-
-const frontRoute = require('./routes/frontRoute');
-const statusRoute = require('./routes/statusRoute');
 const recipesRoute = require('./routes/recipesRoute');
 const recipeslimitedRoute = require('./routes/recipeslimitedRoute');
 
 const { httpError } = require('./utils/errors');
 const passport = require('./utils/pass');
 app.use(cors());
-app.set('view engine', 'ejs');
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true }));
 
@@ -37,13 +32,11 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // käytettävät polut
-app.use('/front', frontRoute);
 app.use('/auth', authRoute);
 app.use('/recipes', passport.authenticate('jwt', { session: false }), recipesRoute)
 app.use('/userslimited', userlimitedRoute);
 app.use('/recipeslimited', recipeslimitedRoute);
 app.use('/users', passport.authenticate('jwt', { session: false }), userRoute);
-app.use('/status', statusRoute);
 
 
 // // redirect http to https
